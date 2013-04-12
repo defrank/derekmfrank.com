@@ -1,0 +1,32 @@
+head	1.1;
+access;
+symbols;
+locks;
+comment	@# @;
+
+
+1.1
+date	2013.04.02.08.36.27;	author dmfrank;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@{% extends "base.html" %}
+
+{% block pageclass %}nb-account{% endblock %}
+
+{% block content-id %}center{% endblock %}
+{% block content %}
+  <p>Your account settings will be managed here.</p>
+{% endblock %}
+
+@

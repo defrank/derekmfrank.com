@@ -1,0 +1,69 @@
+/*******************************************************************************
+ * $Id: navbar.css,v 1.63 2013-04-11 18:39:02-07 dmfrank - $
+ * Derek Frank (derekmfrank@gmail.com)
+ *
+ * Theme Name: Trumur
+ *
+ * Original CSS code written by archlinux.org.
+ * Taken and altered by Derek Frank.
+ *
+ * NAME
+ *   navbar.css - Global Navigation Bar
+ *
+ * DESCRIPTION
+ *   Global Navigation Bar.
+ *
+ * NOTES
+ *   - Forcing all generic selectors with !important to help prevent other
+ *     stylesheets from interfering.
+ *
+ ******************************************************************************/
+
+
+/* container for the entire bar */
+#navbar { height: 24px !important; width: 100% !important; margin 0 !important; padding: 6px 0 !important; background: #000011 !important; border-bottom: 4px #0099cc solid !important; }
+
+/* container for the navbar */
+#navbarcontainer { width: 1024px !important; margin 0 auto !important; padding: 0 14px !important;}
+
+/* logo trickery -- GIF for IE6 and PNG for the rest */
+/* #navbarlogo { float: left !important; margin: 0 !important; padding: 0 !important; height: 24px !important; width: 120px !important; } */
+#navbarlogo { float: left !important; margin: 0 !important; padding: 0 !important; height: 24px !important; width: 82px !important; }
+/* IE6 doesn't support alpha PNGs so we serve it a GIF */
+#navbarlogo { backround: url('trumurlogo.gif') no-repeat !important; }
+/* and use a proper PNG for all other modern browsers */
+html > body #navbarlogo { background: url('trumurlogo.png') no-repeat !important; }
+
+/* move the heading/paragraph text offscreen */
+#navbarlogo p { margin: 0 !important; padding: 0 !important; text-indent: -9999px !important; }
+#navbarlogo h1 { margin: 0 !important; padding: 0 !important; text-indent: -9999px !important; }
+
+/* make the link the same size as the logo */
+/* #navbarlogo a { display: block !important; height: 24px !important; width: 120px !important; } */
+#navbarlogo a { display: block !important; height: 24px !important; width: 82px !important; }
+
+/* display the list inline, float it to the left and style it */
+#navbarmenu ul { display: inline !important; float: left !important; list-style: none !important; margin: auto 8px auto 8px !important; padding: 0 !important; }
+#navbarwidget ul { display: inline !important; float: right !important; list-style: none !important; margin: auto 8px auto 8px !important; padding: 0 !important; }
+#navbarmenu ul li, #navbarwidget ul li { color: #ffffff; float: left !important; font-size: 12px !important; font-family: sans-serif !important; line-height: 29px !important; padding-right: 8px !important; padding-left: 8px !important; }
+
+/* style the links */
+#navbarmenu  ul#navbarlist li a, #navbarwidget ul#navbaritems li a { color: #ffffff; font-weight: bold !important; text-decoration: none; }
+#navbarmenu  ul li a:hover, #navbarwidget ul li a:hover { color: #aaaaaa !important; }
+
+
+/* style the google search bar */
+#navbargoogle { overflow: hidden !important; height: 0px !important; width: 0px !important; }
+
+/* style the search bar */
+#navbarsearch { float: right !important; margin: auto 8px auto 0 !important; padding: 0 !important; border: none !important; }
+#navbarsearch form { margin: auto 0 !important; padding: 4px 0 0 !important; border: 0 !important; }
+#navbarsearch input[type=text] { position: relative !important; right: -5px !important; height: 18px !important; width: 200px !important; margin: auto 0 !important; font-size: 12px !important; font-family: sans-serif !important; background: #ffffff !important; border: none; }
+
+#navbarsearch input[type=submit] { position: relative !important; overflow: hidden !important; background: url('searchbutton.png?v=1') no-repeat !important; width: 20px !important; height: 20px !important; cursor: pointer !important; border: none !important; margin: 0 !important; padding: 0 !important; text-indent: -999px !important; }
+#navbarsearch input:hover[type=submit] { }
+#navbarsearch input:active[type=submit] { background-position: 0 -36px !important; cursor: wait !important; }
+#navbarsearch input:active[type=text] { width: 300px !important; }
+#navbarsearch input:focus[type=text] { width: 300px !important; }
+
+#navbarsearch input:hover { }

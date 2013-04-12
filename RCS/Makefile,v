@@ -1,6 +1,28 @@
-###############################################################################
-# $Id: Makefile,v 1.1 2013-04-11 22:19:33-07 dmfrank - $
-# Derek Frank (dmfrank@greenghoti.com)
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.04.12.05.19.33;	author dmfrank;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@###############################################################################
+# $Id: Makefile,v 1.1 2012-08-25 15:35:26-07 dmfrank - $
+# Derek Frank (dmfrank@@greenghoti.com)
 #
 # NAME
 #   Makefile
@@ -66,7 +88,7 @@ gitinit :
 	git init
 	git add README Makefile
 	git commit -m "First commit"
-	git remote add origin git@bitbucket.org:dmfrank/${CWD}.git
+	git remote add origin git@@bitbucket.org:dmfrank/${CWD}.git
 	git push -u origin master
 
 #
@@ -86,3 +108,4 @@ clean :
 	- rm blah
 
 spotless : clean
+@

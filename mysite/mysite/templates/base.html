@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+
+<!--
+  {{ SITE_URL }}
+ -->
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+  <meta name="Keywords" content="trumur,rumor,truth,honesty,social,profiles" />
+  <meta name="Description" content="A points-based Social Discussion Network." />
+  <title>{% block title %}{{ SITENAME_ }}{% endblock %}</title>
+  <link media="all" rel="stylesheet" type="text/css" href="{{ CSS_URL }}style.css?v={% now "U" %}" />
+  <link rel="icon" href="{{ IMG_URL }}favicon.ico?v=1" type="image/x-icon" />
+  <link rel="shortcut icon" href="{{ IMG_URL }}favicon.ico?v=1" type="image/x-icon" />
+  <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+{% block extra_head %}
+  <meta name="google-site-verification" content="pqyvI-IxhxcTQ0QVAuoyBkeNPAZs6C8bsKSr77mS2m4" />
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39564024-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+{% endblock %}
+
+  <script>
+    (function() {
+      var cx = '009210632355945993876:imklak97cjw';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                  '//www.google.com/cse/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+
+</head>
+
+<body class="no-js">
+{% block navbar %}
+  <nav id="navbar" class="clearfix {% block pageclass %}{% endblock %}">
+    <div id="navbarcontainer" class="center">
+      <div id="navbarlogo">
+        <h1><a href="/" title="Return to the home page"><span>{{ SITENAME_ }}</span></a></h1>
+      </div>
+      <div id="navbarmenu" >
+        <ul id="navbarlist">
+        {% if user.is_authenticated %}
+          <li id="nb-profile"><a href="{{ PROFILE_URL }}" title="Your page if linked"><span>☡ You</span></a></li>
+          <li id="nb-friends"><a href="{{ FRIENDS_URL }}" title="The people you have interenst in"><span>☺ Friends</span></a></li>
+          <li id="nb-history"><a href="{{ HISTORY_URL }}" title="Your trumur history"><span>✇ History</span></a></li>
+          {% if request.path != "/" and request.path != "/home/" %}<li class="nb-separator"><span style="color: #0099cc;" >|</span></li><li id="nb-home"><a href="{{ HOME_URL }}" title="Homepage"><span>⚛ Home</span></a></li>{% endif %}
+        {% endif %}
+        </ul>
+      </div>
+      <div id="navbargoogle" >
+        <gcse:search></gcse:search>
+      </div>
+      <div id="navbarwidget" >
+        <ul id="navbaritems">
+        {% if user.is_authenticated %}
+          <li id="nb-points"><a href="{{ POINTS_URL }}" title="Your honesty and caliber points"><span>{{ honesty_points }}☸{{ caliber_points }}</span></a></li>
+          <li id="nb-notifications"><a href="{{ NOTIFICATION_URL }}" title="Your notifications"><span>⚐</span></a></li>
+          <li id="nb-account"><a href="{{ ACCOUNT_URL }}" title="Your Account"><span>⚙</span></a></li>
+        {% else %}
+          <li id="nb-account"><a href="{{ LOGIN_URL }}" title="Login"><span>Login</span></a></li>
+        {% endif %}
+        </ul>
+      </div>
+      <div id="navbarsearch" class="clearfix" >
+        <form id="searchbox_009210632355945993876:imklak97cjw" name="search" action="" onsubmit="validatesearch()" >
+          <input type="hidden" name="cx" value="009210632355945993876:imklak97cjw" />
+          <input id="q" type="text" name="q" maxlength="100" placeholder="Search for people" value="" size="40" />
+          <input type="hidden" name="cof" value="FORID:11" />
+          <input type="hidden" name="ie" value="UTF-8" />
+          <input type="submit" name="sa" value="search" />
+        </form>
+        <!--
+        <form action="{{ SEARCH_URL }}" method="get">
+          <input type="submit" value="" />
+          <input type="text" name="q" maxlength="100" placeholder="Search for people" value="" />
+          <input type="hidden" name="domains" value="{{ SITE_URL }}" />
+          <input type="hidden" name="sitesearch" value="{{ SITE_URL }}" />
+        </form>
+        -->
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+  
+  <div id="container" class="clearfix" >
+    <div id="content-wrapper" class="clearfix" >
+      <div id="{% block content-id %}content-left{% endblock %}">
+{% block content %}{% endblock %}
+      </div>
+{% block extra_content %}{% endblock %}
+    </div>
+  </div>
+
+{% block footer %}
+  <div id="footer">
+    <p><a href="mailto:admin@{{ SITE_URL }}" title="Contact {{ SITENAME_ }}">{{ SITENAME_ }}™</a> 2013</p>
+    <p>www.{{ SITE_URL }}</p>
+  </div>
+{% endblock %}
+
+</body>
+</html>
