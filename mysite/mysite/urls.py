@@ -1,9 +1,9 @@
 from django.conf.urls.defaults import patterns, include, url
-from views import view_functions, views, account_views
+from views import view_functions, views
 
 # Uncomment the next two lines to enable the admin:
-from django.contrib import admin
-admin.autodiscover()
+#from django.contrib import admin
+#admin.autodiscover()
 
 urlpatterns = patterns('',
     # Google Analytics/Webmaster

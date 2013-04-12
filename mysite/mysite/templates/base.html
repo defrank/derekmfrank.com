@@ -56,44 +56,13 @@
       </div>
       <div id="navbarmenu" >
         <ul id="navbarlist">
-        {% if user.is_authenticated %}
-          <li id="nb-profile"><a href="{{ PROFILE_URL }}" title="Your page if linked"><span>☡ You</span></a></li>
-          <li id="nb-friends"><a href="{{ FRIENDS_URL }}" title="The people you have interenst in"><span>☺ Friends</span></a></li>
-          <li id="nb-history"><a href="{{ HISTORY_URL }}" title="Your trumur history"><span>✇ History</span></a></li>
-          {% if request.path != "/" and request.path != "/home/" %}<li class="nb-separator"><span style="color: #0099cc;" >|</span></li><li id="nb-home"><a href="{{ HOME_URL }}" title="Homepage"><span>⚛ Home</span></a></li>{% endif %}
-        {% endif %}
+          {% if request.path != "/" and request.path != "/home/" %}<li id="nb-home"><a href="{{ HOME_URL }}" title="Homepage"><span>⚛ Home</span></a></li>{% endif %}
+          <li id="nb-blog"><a href="{{ BLOG_URL }}" title="My blog"><span>Blog</span></a></li>
+          <li id="nb-portfolio"><a href="{{ PORTFOLIO_URL }}" title="My portfolio"><span>Portfolio</span></a></li>
+          <li id="nb-aboutme"><a href="{{ ABOUTME_URL }}" title="My about me"><span>About Me</span></a></li>
+          <li class="nb-separator"><span>|</span></li>
+          <li id="nb-mff"><a href="{{ MFF_URL }}" title="Michael Frank"><span>MFF</span></a></li>
         </ul>
-      </div>
-      <div id="navbargoogle" >
-        <gcse:search></gcse:search>
-      </div>
-      <div id="navbarwidget" >
-        <ul id="navbaritems">
-        {% if user.is_authenticated %}
-          <li id="nb-points"><a href="{{ POINTS_URL }}" title="Your honesty and caliber points"><span>{{ honesty_points }}☸{{ caliber_points }}</span></a></li>
-          <li id="nb-notifications"><a href="{{ NOTIFICATION_URL }}" title="Your notifications"><span>⚐</span></a></li>
-          <li id="nb-account"><a href="{{ ACCOUNT_URL }}" title="Your Account"><span>⚙</span></a></li>
-        {% else %}
-          <li id="nb-account"><a href="{{ LOGIN_URL }}" title="Login"><span>Login</span></a></li>
-        {% endif %}
-        </ul>
-      </div>
-      <div id="navbarsearch" class="clearfix" >
-        <form id="searchbox_009210632355945993876:imklak97cjw" name="search" action="" onsubmit="validatesearch()" >
-          <input type="hidden" name="cx" value="009210632355945993876:imklak97cjw" />
-          <input id="q" type="text" name="q" maxlength="100" placeholder="Search for people" value="" size="40" />
-          <input type="hidden" name="cof" value="FORID:11" />
-          <input type="hidden" name="ie" value="UTF-8" />
-          <input type="submit" name="sa" value="search" />
-        </form>
-        <!--
-        <form action="{{ SEARCH_URL }}" method="get">
-          <input type="submit" value="" />
-          <input type="text" name="q" maxlength="100" placeholder="Search for people" value="" />
-          <input type="hidden" name="domains" value="{{ SITE_URL }}" />
-          <input type="hidden" name="sitesearch" value="{{ SITE_URL }}" />
-        </form>
-        -->
       </div>
     </div>
   </nav>
@@ -110,6 +79,12 @@
 
 {% block footer %}
   <div id="footer">
+    <p>
+      Wonder what a 
+      <a href="https://en.wikipedia.org/wiki/Ghoti"
+         title="What's a ghoti? &#013;&#013;    lauGH &#013;    wOmen &#013;    cauTIon &#013;&#013;Well, it's fish...">
+         ghoti</a> is?
+    </p>
     <p><a href="mailto:admin@{{ SITE_URL }}" title="Contact {{ SITENAME_ }}">{{ SITENAME_ }}™</a> 2013</p>
     <p>www.{{ SITE_URL }}</p>
   </div>

@@ -133,7 +133,7 @@ ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     '/home/dmfrank/derekmfrank.com/mysite/mysite/templates',
-    #'/home/dmfrank/derekmfrank.com/mysite/templates',
+    '/home/dmf/dev/websites/derekmfrank.com/mysite/mysite/templates',
     os.path.join(os.getenv('PWD'), 'templates').replace('\\','/'),
 
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
