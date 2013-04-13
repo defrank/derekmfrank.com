@@ -3,6 +3,6 @@ RewriteEngine On
 RewriteBase /
 
 # Redirect to greenghoti.com
-redirect /portfolio/ https://www.greenghoti.com/portfolio/
-redirect /portfolio https://www.greenghoti.com/portfolio/
-redirect / https://www.greenghoti.com/aboutme/
+#redirect /portfolio/ https://www.greenghoti.com/portfolio/
+#redirect /portfolio https://www.greenghoti.com/portfolio/
+#redirect / https://www.greenghoti.com/aboutme/
