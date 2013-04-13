@@ -4,8 +4,9 @@ cwd = os.getcwd()
 myapp_directory = cwd + '/mysite/apps'
 sys.stdout = sys.stderr
 sys.path.insert(0,myapp_directory)
-sys.path.append(cwd)
+#sys.path.append(cwd)
 sys.path.append(os.path.join(cwd, 'mysite').replace('\\','/'))
+sys.path.append(os.path.join(cwd, 'mysite/mysite').replace('\\','/'))
 
 if sys.version < "2.4": os.execl("/usr/bin/python2.4", "python2.4", *sys.argv)
 #sys.path.insert(1, os.path.join(os.getenv('HOME'), 'django/source').replace('\\','/'))
