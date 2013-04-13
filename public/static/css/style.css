@@ -47,7 +47,7 @@ html[xmlns] .clearfix {
 
 /* general styling */
 body {
-    min-width: 1024px;
+    min-width: 650px; /*1024px;*/
     min-height: 550px;
     background: #f6f9fc;
     color: #001f00;
@@ -530,7 +530,7 @@ table.bio-entry {
         }
 
 #navbar span.nb-separator,
-#navbar.nb-separator ul li#nb-separator {
+#navbar.nb-separator ul li.nb-separator {
     color: #33cc33 !important;
     font-weight: bold !important;
 }
