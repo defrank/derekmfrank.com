@@ -8,11 +8,11 @@
 
 <head>
   <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
-  <meta name="Keywords" content="trumur,rumor,truth,honesty,social,profiles" />
-  <meta name="Description" content="A points-based Social Discussion Network." />
+  <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
+  <meta name="Description" content="Derek Michael Frank's personal website." />
   <title>{% block title %}{{ SITENAME_ }}{% endblock %}</title>
   <link media="all" rel="stylesheet" type="text/css" href="{{ CSS_URL }}style.css?v={% now "U" %}" />
-  <link rel="icon" href="{{ IMG_URL }}favicon.ico?v=1" type="image/x-icon" />
+  <link rel="icon" href="{{ IMG_URL }}favicon.ico?v=2" type="image/x-icon" />
   <link rel="shortcut icon" href="{{ IMG_URL }}favicon.ico?v=1" type="image/x-icon" />
   <!--[if IE]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,47 +20,25 @@
 
 {% block extra_head %}
   <meta name="google-site-verification" content="pqyvI-IxhxcTQ0QVAuoyBkeNPAZs6C8bsKSr77mS2m4" />
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-39564024-1']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
 {% endblock %}
-
-  <script>
-    (function() {
-      var cx = '009210632355945993876:imklak97cjw';
-      var gcse = document.createElement('script');
-      gcse.type = 'text/javascript';
-      gcse.async = true;
-      gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-                  '//www.google.com/cse/cse.js?cx=' + cx;
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(gcse, s);
-    })();
-  </script>
-
 </head>
 
 <body class="no-js">
 {% block navbar %}
   <nav id="navbar" class="clearfix {% block pageclass %}{% endblock %}">
     <div id="navbarcontainer" class="center">
+    <!--
       <div id="navbarlogo">
         <h1><a href="/" title="Return to the home page"><span>{{ SITENAME_ }}</span></a></h1>
       </div>
+    -->
       <div id="navbarmenu" >
-        <ul id="navbarlist">
-          {% if request.path != "/" and request.path != "/home/" %}<li id="nb-home"><a href="{{ HOME_URL }}" title="Homepage"><span>⚛ Home</span></a></li>{% endif %}
+        <ul id="navbarlist" >
+          <li id="nb-home"><a href="/" title="Homepage"><span>Home</span></a></li>
           <li id="nb-blog"><a href="{{ BLOG_URL }}" title="My blog"><span>Blog</span></a></li>
           <li id="nb-portfolio"><a href="{{ PORTFOLIO_URL }}" title="My portfolio"><span>Portfolio</span></a></li>
           <li id="nb-aboutme"><a href="{{ ABOUTME_URL }}" title="My about me"><span>About Me</span></a></li>
-          <li class="nb-separator"><span>|</span></li>
+          <li class="nb-separator"><span class="nb-separator">|</span></li>
           <li id="nb-mff"><a href="{{ MFF_URL }}" title="Michael Frank"><span>MFF</span></a></li>
         </ul>
       </div>
@@ -70,22 +48,17 @@
   
   <div id="container" class="clearfix" >
     <div id="content-wrapper" class="clearfix" >
-      <div id="{% block content-id %}content-left{% endblock %}">
-{% block content %}{% endblock %}
+{% block content %}
+      <div id="content">
       </div>
-{% block extra_content %}{% endblock %}
+{% endblock %}
     </div>
+{% block extra_content %}{% endblock %}
   </div>
 
 {% block footer %}
   <div id="footer">
-    <p>
-      Wonder what a 
-      <a href="https://en.wikipedia.org/wiki/Ghoti"
-         title="What's a ghoti? &#013;&#013;    lauGH &#013;    wOmen &#013;    cauTIon &#013;&#013;Well, it's fish...">
-         ghoti</a> is?
-    </p>
-    <p><a href="mailto:admin@{{ SITE_URL }}" title="Contact {{ SITENAME_ }}">{{ SITENAME_ }}™</a> 2013</p>
+    <p><a href="mailto:dmfrank@{{ SITE_URL }}" title="Contact {{ SITENAME_ }}">{{ SITENAME_ }}</a> 2013</p>
     <p>www.{{ SITE_URL }}</p>
   </div>
 {% endblock %}

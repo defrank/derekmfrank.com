@@ -32,82 +32,57 @@ def home(request):
   return response(request, template, context)
 
 
-# Search page view
-def search(request):
+# Blog page view
+def blog(request):
   errors = []
   message = ''
-  q = None
-  if 'q' in request.GET:
-    q = request.GET['q']
-  if not q:
-    errors.append('Specify a search')
-  elif len(q) > 200:
-    errors.append('Search is too long')
-  else:
-    message = 'You are searching for "%s"' % request.GET['q']
-  template = 'search.html'
+  dt = datetime.datetime.now()
+  template = 'blog.html'
   context = {
     'errors': errors,
-    'message': message
+    'message': message,
+    'current_datetime': dt
   }
   return response(request, template, context)
 
 
-# Notifications page view
-def notifications(request):
+# Portfolio page view
+def portfolio(request):
   errors = []
   message = ''
-  template = 'notifications.html'
+  dt = datetime.datetime.now()
+  template = 'portfolio.html'
   context = {
     'errors': errors,
-    'message': message
+    'message': message,
+    'current_datetime': dt
   }
   return response(request, template, context)
 
 
-# Friends page view
-def friends(request):
+# About Me page view
+def aboutme(request):
   errors = []
   message = ''
-  template = 'friends.html'
+  dt = datetime.datetime.now()
+  template = 'aboutme.html'
   context = {
     'errors': errors,
-    'message': message
+    'message': message,
+    'current_datetime': dt
   }
   return response(request, template, context)
 
 
-# Points page view
-def points(request):
+# MFF page view
+def mff(request):
   errors = []
   message = ''
-  template = 'points.html'
+  dt = datetime.datetime.now()
+  template = 'mff.html'
   context = {
     'errors': errors,
-    'message': message
-  }
-  return response(request, template, context)
-
-
-# History page view
-def history(request):
-  errors = []
-  message = ''
-  template = 'history.html'
-  context = {
-    'errors': errors,
-    'message': message
-  }
-  return response(request, template, context)
-
-
-# Personal Profile page view
-def profile(request):
-  errors = []
-  message = ''
-  template = 'profile.html'
-  context = {
-    'errors': errors,
-    'message': message
+    'message': message,
+    'current_datetime': dt
   }
   return response(request, template, context)

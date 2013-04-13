@@ -1,0 +1,6 @@
+$Id: $
+Derek Frank (green.ghoti@gmail.com)
+
+This file is used to give sources for the images used on greenghoti.com.
+
+<a href="http://www.publicdomainpictures.net/view-image.php?image=17282&picture=ocean-view">Ocean View</a>

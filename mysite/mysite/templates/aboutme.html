@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block pageclass %}nb-aboutme{% endblock %}
+
+{% block content %}
+  <div id="content-left">
+    <div class="clearfix box" style="min-width: 640px;" >
+      <h2>About me</h2>
+      <p>
+        My name is Derek.  
+        I recently graduated from the University of California, 
+        Santa Cruz with a Bachelor of Science degree in Computer Science.
+        I went to Venice High School and currently live in Marina del Rey.
+      </p>
+      <p>
+        My interests and hobbies include:
+        <ul>
+          <li>Space and the cosmos</li>
+          <li>Reading science fiction and fantasy novels (<a href="http://www.goodreads.com/dmfrank" title="Check out my reading list">Goodreads</a>)</li>
+          <li>Music, music, and more music (<a href="http://www.last.fm/user/derekmfrank" title="Check out what kind of music I like">Last.fm</a>)</li>
+          <li>Playing the guitar</li>
+          <li>Snowboarding</li>
+          <li>Longboarding</li>
+          <li>Swimming</li>
+          <li>Biking</li>
+          <li>And being a geek, of course (<a href="http://www.archlinux.org" title="Source of geekiness">Arch Linux</a>, <a href="http://crux.nu" title="Another source of geekiness">Crux Linux</a>)</li>
+        </ul>
+      </p>
+      <p>
+        I love to think about the universe and all of it's endless possibilities.
+        I am a strong advocater for Linux and other free software.
+        Very passionate about freedom of expression and the Internet.
+      </p>
+      <p>You can check out more about me at 
+        <a href="{{ LINKEDIN_URL }}" >LinkedIn</a>.
+      </p>
+    </div>
+  </div>
+
+  <div id="content-right" >
+    <div class="clearfix box">
+      <div class="center">
+        <img class="center" src="{{ IMG_URL }}personal-1.jpg" alt="Me" width="200" height="300" />
+      </div>
+      <h3>Contact & Other Information</h3>
+      <ul>
+        Derek M. Frank<br />
+        Software Engineer<br />
+        <a href="mailto:derekmfrank@gmail.com" title="Email Derek Frank: derekmfrank@gmail.com">
+          Gmail</a><br />
+        <a href="{{ LINKEDIN_URL }}" title="Derek's LinkedIn profile">
+          LinkedIn</a> | 
+        <a href="{{ FLAVORSME_URL }}" title="Derek's Flavors.me profile">
+          Flavors.me</a><br />
+      </ul>
+      <h3>Documents</h3>
+      <ul>
+        <a href="{{ RESUME_LINK }}" title="Derek's resume">
+          My resume</a>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

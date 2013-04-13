@@ -23,12 +23,10 @@ urlpatterns = patterns('',
     # Base Views
     url(r'^$', views.home, name='home'),
     url(r'^home/$', views.home, name='home'),
-    url(r'^search/$', views.search, name='search'),
-    url(r'^notifications/$', views.notifications, name='notifications'),
-    url(r'^friends/$', views.friends, name='friends'),
-    url(r'^points/$', views.points, name='points'),
-    url(r'^history/$', views.history, name='history'),
-    url(r'^profile/$', views.profile, name='profile'),
+    url(r'^blog/$', views.blog, name='blog'),
+    url(r'^portfolio/$', views.portfolio, name='portfolio'),
+    url(r'^aboutme/$', views.aboutme, name='aboutme'),
+    url(r'^mff/$', views.mff, name='mff'),
 
     # Example:
     # (r'^mysite/', include('mysite.foo.urls')),

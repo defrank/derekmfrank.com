@@ -2,7 +2,7 @@
  * $Id: style.css,v 1.114 2013-04-11 18:39:02-07 dmfrank - $                                                                       
  * Derek Frank (derekmfrank@gmail.com)                                          
  *                                                                              
- * Theme Name: trumur
+ * Theme Name: dmf
  *                                                                              
  * Original CSS code written by archlinux.org.
  * Taken and altered by Derek Frank.
@@ -11,13 +11,13 @@
  *   style.css - Web Style
  *
  * DESCRIPTION
- *   CSS stylesheet for trumur.com.
+ *   CSS stylesheet for derekmfrank.com.
  *
  ******************************************************************************/
 
 /* import the global navbar stylesheet */
 /* @import url('{{ CSS_URL }}navbar/navbar.css'); */
-@import url("navbar/navbar.css?v=127");
+@import url("navbar/navbar.css?v=131");
 
 /* simple reset */
 * {
@@ -47,10 +47,10 @@ html[xmlns] .clearfix {
 
 /* general styling */
 body {
-    min-width: 1040px;
+    min-width: 1024px;
     min-height: 550px;
-    background: #eeeeee;
-    color: #000000;
+    background: #f6f9fc;
+    color: #001f00;
     font: normal 100% sans-serif;
     text-align: center;
     margin: 0;
@@ -175,15 +175,14 @@ h1 {
 
 h2 {
     font-size: 1.5em;
-    color: #ffffff;
-    
-    /* margin-bottom: 0.5em;
-    border-bottom: 1px dashed black; */
+    color: #000000;
+    margin-bottom: 0.5em;
+    border-bottom: 1px dashed #33cc33;
 }
 
 h3 {
     font-size: 1.25em;
-    margin-top: .5em;
+    /* margin-top: .5em; */
 }
 
 h4 {
@@ -211,14 +210,12 @@ div#container {
 div#content-wrapper {
     width: 100%;
     height: 100%;
-    min-height: 768px;
+    /* min-height: 768px; */
     /* margin-top: 20px;
     padding-left seems to cause issues
     padding-top: 14px;
     padding-bottom: 14px;
     */
-    border-left: 1px dashed #0099cc;
-    border-right: 1px dashed #0099cc;
     text-align: left;
 }
 
@@ -227,20 +224,28 @@ div#content-left-wrapper {
     width: 100%; /* req to keep content above sidebar in source code */
 }
 
+div#content {
+    width: 95%;
+    margin: 12px auto;
+    text_align: left;
+}
+
 div#content-left {
-    margin: 12px;
+    margin: 12px 340px 0 12px;
     float: left;
 }
 
 div#content-right {
     float: left;
     width: 300px;
-    margin-left: -300px;
+    margin-left: -312px;
+    margin-top: 12px;
+    margin-right: 12px;
 }
 
 div.box {
     margin-bottom: 1.5em;
-    padding: 0.65em;
+    padding: 1em;  /* 0.65em; */
     background: #ccffcc; /* ecf2f5; */
     border: 1px solid #33cc33; /* bcd; */
 }
@@ -287,50 +292,6 @@ td.center,
 th.center {
     text-align: center;
 }
-
-/* Feed/homepage styles */
-div.feedbox {
-    float: left;
-    min-height: 64px;
-    min-width: 512px;
-    max-width: 700px;
-    margin: 8px;
-    padding: 10px;
-    background-color: #000011;
-    border: none;
-    /* border: 4px inset #ffffff; */
-}
-div.feedbox-right {
-    float: right;
-    min-height: 64px;
-    min-width: 512px;
-    max-width: 700px;
-    margin: 8px;
-    padding: 10px;
-    background-color: #000011;
-    border: none;
-}
-div.feedbox p {
-    color: #ff0000; /* #00ff00; #0000ff; #ffff00; #ff00ff; #00ffff; */
-    font-size: 0.9em;
-}
-div.feedbox h2 {
-    color: #ffffff;
-    font-size: 1em;
-    font-style: bold;
-    padding-bottom: 0.2em;
-}
-div.feedbox-right p {
-    color: #ff0000; /* #00ff00; #0000ff; #ffff00; #ff00ff; #00ffff; */
-    font-size: 0.9em;
-}
-div.feedbox-right h2 {
-    color: #ffffff;
-    font-size: 1em;
-    font-style: bold;
-    padding-bottom: 0.2em;
-}
-
 
 /* table generics */
 table {
@@ -568,22 +529,17 @@ table.bio-entry {
             padding-bottom: 0.25em;
         }
 
+#navbar span.nb-separator,
 #navbar.nb-separator ul li#nb-separator {
-    color: #0099cc !important;
+    color: #33cc33 !important;
     font-weight: bold !important;
 }
 /* highlight current website in the navbar */
 #navbar.nb-home ul li#nb-home a,
-#navbar.nb-account ul li#nb-account a,
-#navbar.nb-profile ul li#nb-profile a,
-#navbar.nb-search ul li#nb-search a,
-#navbar.nb-friends ul li#nb-friends a,
-#navbar.nb-points ul li#nb-points a,
-#navbar.nb-notifications ul li#nb-notifications a,
-#navbar.nb-history ul li#nb-history a,
-#navbar.nb-messages ul li#nb-messages a,
-#navbar.nb-discussion ul li#nb-discussions a,
-#navbar.nb-pictures ul li#nb-pictures a {
+#navbar.nb-blog ul li#nb-blog a,
+#navbar.nb-portfolio ul li#nb-portfolio a,
+#navbar.nb-aboutme ul li#nb-aboutme a,
+#navbar.nb-mff ul li#nb-mff a,
     color: #aaaaaa !important;
     font-weight: bold !important;
 }
