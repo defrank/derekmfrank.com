@@ -1,7 +1,9 @@
+from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.static import static
 from django.views.static import serve as views_static_serve
-from mysite.settings import STATIC_ROOT
 from mysite.views import view_functions, views
+#from mysite.settings import STATIC_ROOT
 
 # Uncomment the next two lines to enable the admin:
 #from django.contrib import admin
@@ -20,7 +22,7 @@ urlpatterns = patterns('',
     url(r'^mff/$', views.mff, name='mff'),
 
     # Media
-    url(r'^static/(?P<path>.*)$', views_static_serve, { 'document_root': STATIC_ROOT, }),
+    url(r'^static/(?P<path>.*)$', views_static_serve, { 'document_root': settings.STATIC_ROOT, }),
 
     # Necessary redirection
     url(r'^accounts/profile/$', view_functions.redirect_to_home, name='home'),
@@ -34,3 +36,5 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     #url(r'^admin/', include(admin.site.urls)),
 )
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
