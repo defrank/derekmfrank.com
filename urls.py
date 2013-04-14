@@ -1,1 +1,0 @@
-mysite/mysite/urls.py

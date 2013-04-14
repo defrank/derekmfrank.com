@@ -1,6 +1,10 @@
 # Django settings for mysite project.
 import os
 
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+PACKAGE_ROOT = os.path.abspath(os.path.dirname(__file__))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -49,8 +53,7 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-#MEDIA_ROOT = os.path.join(os.getenv('PWD'), os.pardir, 'public/media').replace('\\','/')
-MEDIA_ROOT = '/home/dmfrank/derekmfrank.com/public/media'
+MEDIA_ROOT = os.path.join(PACKAGE_ROOT, 'media').replace('\\','/')
 
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
@@ -63,7 +66,7 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = '/home/dmfrank/derekmfrank.com/public/static'
+STATIC_ROOT = os.path.join(PACKAGE_ROOT, 'static').replace('\\','/')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -84,13 +87,7 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-#ADMIN_MEDIA_PREFIX = '/media/'  # Deprecated
-
 # Make this unique, and don't share it with anybody.
-#SECRET_KEY = 'inw8r7h%f)2pww6o(_cg%f!wb0ft*_qc=btu)fi_y2cqokd3gs'
 SECRET_KEY = '7bg85vn0cz7%3qwliju6rkuqox&amp;1=_c#=v4^te9i7kaa*%sa7f'
 
 # List of callables that know how to import templates from various sources.
@@ -111,7 +108,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.messages.context_processors.messages',
 
     # mysite
-    'templates.context_processors.global_vars',
+    'mysite.context_processors.global_vars',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -127,16 +124,16 @@ MIDDLEWARE_CLASSES = (
     # mysite
 )
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'mysite.urls'
+
+# Python dotted path to the WSGI application used by Django's runserver.
+#WSGI_APPLICATION = ""
 
 TEMPLATE_DIRS = (
-    '/home/dmfrank/derekmfrank.com/mysite/mysite/templates',
-    '/home/dmf/dev/websites/derekmfrank.com/mysite/mysite/templates',
-    os.path.join(os.getenv('PWD'), 'templates').replace('\\','/'),
-
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PACKAGE_ROOT, 'templates').replace('\\','/'),
 )
 
 INSTALLED_APPS = (
@@ -152,7 +149,10 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     #'django.contrib.admindocs',
 
-    # mysite
+    # external
+
+    # project
+    'mysite',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -183,3 +183,9 @@ LOGGING = {
         },
     }
 }
+
+FIXTURES_DIRS = (
+    #os.path.join(PROJECT_ROOT, 'fixtures'),
+)
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.
