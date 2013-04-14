@@ -188,4 +188,4 @@ FIXTURES_DIRS = (
     #os.path.join(PROJECT_ROOT, 'fixtures'),
 )
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
