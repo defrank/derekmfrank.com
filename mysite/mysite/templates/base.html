@@ -14,7 +14,7 @@
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
     <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
     <meta name="Description" content="Derek Michael Frank's personal website." />
-    <title>{% block head_title %}{{ request.get_host|cut:"www."|cut:".com"|title }}{% endblock %}</title>
+    <title>{% block head_title %}{{ SITENAME_ }}{% endblock %}</title>
     {% block viewport %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
@@ -57,7 +57,7 @@
     {% endblock %}
 </head>
 
-<body class="{% block body_class %}no-js{% endblock %}" id="{% block body_id %}{% endblock %}" >
+<body class="{% block body_class %}clearfix no-js{% endblock %}" id="{% block body_id %}{% endblock %}" >
     {% block navbar %}
         <nav id="navbar" class="clearfix {% block navbar_class %}{% endblock %}">
             <div id="navbarcontainer" class="center">
@@ -83,7 +83,7 @@
     {% endblock %}
   
     {% block body_content %}
-    <div id="{% block body_container_id %}container{% endblock %}" class="{% body_container_class %}clearfix{% endblock %}" >
+    <div id="{% block body_container_id %}container{% endblock %}" class="{% block body_container_class %}clearfix{% endblock %}" >
         <div id="{% block body_wrapper_id %}content-wrapper{% endblock %}" class="{% block body_wrapper_class %}clearfix{% endblock %}" >
                 {% block body_inner_content %}<div id="content"></div>{% endblock %}
             </div>
@@ -92,7 +92,7 @@
 
     {% block footer %}
         <footer>
-            <p><a href="mailto:dmfrank@{{ request.get_host|cut:"www." }}" title="Contact {{ request.get_host|cut:"www."|title }}">{{ request.get_host|cut:"www."|cut:".com"|title }}</a> 2013</p>
+            <p><a href="mailto:dmfrank@{{ request.get_host|cut:"www." }}" title="Contact {{ SITENAME_ }}">{{ SITENAME_ }}</a> 2013</p>
             <p>{{ request.get_host }}</p>
         </footer>
     {% endblock %}

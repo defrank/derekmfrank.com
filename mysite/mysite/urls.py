@@ -25,7 +25,7 @@ urlpatterns = patterns('',
     url(r'^static/(?P<path>.*)$', views_static_serve, { 'document_root': settings.STATIC_ROOT, }),
 
     # Necessary redirection
-    url(r'^accounts/profile/$', view_functions.redirect_to_home, name='home'),
+    url(r'^accounts/profile/$', view_functions.redirect_to_home),
 
     # Example:
     # (r'^mysite/', include('mysite.foo.urls')),
