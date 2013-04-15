@@ -1,47 +1,48 @@
 {% extends "base.html" %}
+{% load static from staticfiles %}
 
-{% block pageclass %}nb-mff{% endblock %}
+{% block navbar_class %}nb-mff{% endblock %}
 
-{% block content %}
-  <div id="content-left">
-    <div class="box" style="min-height: 340px;">
-      <h2>Michael F. Frank, Attorney at Law</h2>
-        <div class="center" >
-          <a href="http://www.greenghoti.com/mff/" title="">
-            <img src="{{ IMG_URL }}mff/flyer-1.jpg" alt="Employee" width="200" height="300" align="middle" />
-            <br /><i>Se habla espa&ntilde;ol</i>
-          </a>
+{% block body_inner_content %}
+    <div id="content-left">
+        <div class="box" style="min-height: 340px;">
+            <h2>Michael F. Frank, Attorney at Law</h2>
+            <div class="center" >
+                <a href="http://www.greenghoti.com/mff/" title="">
+                    <img src="{% static "img/mff/flyer-1.jpg" %} alt="Employee" width="200" height="300" align="middle" />
+                    <br /><i>Se habla espa&ntilde;ol</i>
+                </a>
+            </div>
+            <h3>Practice Areas</h3>
+            <ul>
+                <li>Family Law</li>
+                <li>Bankruptcy</li>
+                <li>Litigation</li>
+                <li>Criminal Defense</li>
+                <li>Real Estate</li>
+                <li>Business</li>
+            </ul>
         </div>
-        <h3>Practice Areas</h3>
-        <ul>
-          <li>Family Law</li>
-          <li>Bankruptcy</li>
-          <li>Litigation</li>
-          <li>Criminal Defense</li>
-          <li>Real Estate</li>
-          <li>Business</li>
-        </ul>
     </div>
-  </div>
   
-  <div id="content-right" >
-    <div class="box">
-      <h3>Contact Information</h3>
-      <ul>
-        Michael F. Frank<br />
-        Attorney at Law<br />
-        <a href="mailto:mfrankatty@aol.com" title="Contact Michael Frank">
-          mfrankatty@aol.com</a><br />
-        9901 Durant Drive, Suite H<br />
-        Beverly Hills, California 90212<br />
-        (310) 227 - 2559 office<br />
-        (310) 279 - 2860 fax<br />
-        (310) 497 - 0120 direct<br />
-      </ul>
-      <h3>More Information</h3>
-      <ul>
-        <a href="http://www.ashouri.com/FrankBio.htm">Michael F. Frank</a>
-      </ul>
+    <div id="content-right" >
+        <div class="box">
+            <h3>Contact Information</h3>
+            <ul>
+                Michael F. Frank<br />
+                Attorney at Law<br />
+                <a href="mailto:mfrankatty@aol.com" title="Contact Michael Frank">
+                    mfrankatty@aol.com</a><br />
+                9901 Durant Drive, Suite H<br />
+                Beverly Hills, California 90212<br />
+                (310) 227 - 2559 office<br />
+                (310) 279 - 2860 fax<br />
+                (310) 497 - 0120 direct<br />
+            </ul>
+            <h3>More Information</h3>
+            <ul>
+                <a href="http://www.ashouri.com/FrankBio.htm">Michael F. Frank</a>
+            </ul>
+        </div>
     </div>
-  </div>
 {% endblock %}

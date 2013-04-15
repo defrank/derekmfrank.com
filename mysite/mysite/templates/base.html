@@ -1,79 +1,102 @@
+{% load static from staticfiles %}
+{% load url from future %}
 <!DOCTYPE html>
 
 <!--
-  {{ SITE_URL }}
+  {{ request.get_host|cut:"www." }}
  -->
 
-<html lang="en">
+{% url "home" as home_url %}
+
+<html lang="{{ LANGUAGE_CODE }}">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
-  <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
-  <meta name="Description" content="Derek Michael Frank's personal website." />
-  <title>{% block title %}{{ SITENAME_ }}{% endblock %}</title>
-  <link media="all" rel="stylesheet" type="text/css" href="{{ CSS_URL }}style.css?v={% now "U" %}" />
-  <link rel="icon" href="{{ IMG_URL }}favicon.ico?v=2" type="image/x-icon" />
-  <link rel="shortcut icon" href="{{ IMG_URL }}favicon.ico?v=1" type="image/x-icon" />
-  <!--[if IE]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
+    <meta name="Description" content="Derek Michael Frank's personal website." />
+    <title>{% block head_title %}{{ request.get_host|cut:"www."|cut:".com"|title }}{% endblock %}</title>
+    {% block viewport %}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% endblock %}
 
-{% block extra_head %}
-  <meta name="google-site-verification" content="pqyvI-IxhxcTQ0QVAuoyBkeNPAZs6C8bsKSr77mS2m4" />
+    {% block stylesheets %}
+        <link href="{% static "css/style.css" %}?v={% now "U" %}" rel="stylesheet" type="text/css" media="all" />
+    {% endblock %}
 
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-40117529-1']);
-    _gaq.push(['_trackPageview']);
+    {% block favicon %}
+        <link href="{% static "img/favicon.ico" %}" rel="icon" type="image/x-icon" />
+        <link href="{% static "img/favicon.ico" %}" rel="shortcut icon" type="image/x-icon" />
+    {% endblock %}
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
-{% endblock %}
+    {% block html5shiv %}
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    {% endblock %}
+
+    {% block extra_head %}{% endblock %}
+
+    {% block head_google %}
+        {% block google_webmaster %}
+            <meta name="google-site-verification" content="pqyvI-IxhxcTQ0QVAuoyBkeNPAZs6C8bsKSr77mS2m4" />
+        {% endblock %}
+
+        {% block google_analytics %}
+            <script type="text/javascript">
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-40117529-1']);
+                _gaq.push(['_trackPageview']);
+
+                (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+            </script>
+        {% endblock %}
+    {% endblock %}
 </head>
 
-<body class="no-js">
-{% block navbar %}
-  <nav id="navbar" class="clearfix {% block pageclass %}{% endblock %}">
-    <div id="navbarcontainer" class="center">
-    <!--
-      <div id="navbarlogo">
-        <h1><a href="/" title="Return to the home page"><span>{{ SITENAME_ }}</span></a></h1>
-      </div>
-    -->
-      <div id="navbarmenu" >
-        <ul id="navbarlist" >
-          <li id="nb-home"><a href="/" title="Homepage"><span>Home</span></a></li>
-          <li id="nb-blog"><a href="{{ BLOG_URL }}" title="My blog"><span>Blog</span></a></li>
-          <li id="nb-portfolio"><a href="{{ PORTFOLIO_URL }}" title="My portfolio"><span>Portfolio</span></a></li>
-          <li id="nb-aboutme"><a href="{{ ABOUTME_URL }}" title="My about me"><span>About Me</span></a></li>
-          <li class="nb-separator"><span class="nb-separator">|</span></li>
-          <li id="nb-mff"><a href="{{ MFF_URL }}" title="Michael Frank"><span>MFF</span></a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-{% endblock %}
+<body class="{% block body_class %}no-js{% endblock %}" id="{% block body_id %}{% endblock %}" >
+    {% block navbar %}
+        <nav id="navbar" class="clearfix {% block navbar_class %}{% endblock %}">
+            <div id="navbarcontainer" class="center">
+                {% comment %}
+                    <div id="navbarlogo">
+                        <h1><a href="/" title="Return to the home page"><span>{{ request.get_host|title }}</span></a></h1>
+                    </div>
+                {% endcomment %}
+                {% block navbar_menu %}
+                    <div id="navbarmenu" >
+                        <ul id="navbarlist" >
+                            <li id="nb-home"><a href="{{ home_url }}" title="Homepage">Home</a></li>
+                            <li id="nb-blog"><a href="{% url "blog" %}" title="My blog">Blog</a></li>
+                            <li id="nb-portfolio"><a href="{% url "portfolio" %}" title="My portfolio">Portfolio</a></li>
+                            <li id="nb-aboutme"><a href="{% url "aboutme" %}" title="My about me">About Me</a></li>
+                            <li class="nb-separator"><span class="nb-separator">|</span></li>
+                            <li id="nb-mff"><a href="{% url "mff" %}" title="Michael Frank">MFF</a></li>
+                        </ul>
+                    </div>
+                {% endblock %}
+            </div>
+        </nav>
+    {% endblock %}
   
-  <div id="container" class="clearfix" >
-    <div id="content-wrapper" class="clearfix" >
-{% block content %}
-      <div id="content">
-      </div>
-{% endblock %}
-    </div>
-{% block extra_content %}{% endblock %}
-  </div>
+    {% block body_content %}
+    <div id="{% block body_container_id %}container{% endblock %}" class="{% body_container_class %}clearfix{% endblock %}" >
+        <div id="{% block body_wrapper_id %}content-wrapper{% endblock %}" class="{% block body_wrapper_class %}clearfix{% endblock %}" >
+                {% block body_inner_content %}<div id="content"></div>{% endblock %}
+            </div>
+        </div>
+    {% endblock %}
 
-{% block footer %}
-  <div id="footer">
-    <p><a href="mailto:dmfrank@{{ SITE_URL }}" title="Contact {{ SITENAME_ }}">{{ SITENAME_ }}</a> 2013</p>
-    <p>www.{{ SITE_URL }}</p>
-  </div>
-{% endblock %}
+    {% block footer %}
+        <footer>
+            <p><a href="mailto:dmfrank@{{ request.get_host|cut:"www." }}" title="Contact {{ request.get_host|cut:"www."|title }}">{{ request.get_host|cut:"www."|cut:".com"|title }}</a> 2013</p>
+            <p>{{ request.get_host }}</p>
+        </footer>
+    {% endblock %}
 
+    {% block body_script %}{% endblock %}
 </body>
 </html>

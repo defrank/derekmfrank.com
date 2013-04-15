@@ -250,12 +250,12 @@ div.box {
     border: 1px solid #33cc33; /* bcd; */
 }
 
-div#footer {
+footer, div#footer {
     clear: both;
     margin: 2em 0 1em;
 }
 
-    div#footer p {
+    footer p, div#footer p {
         margin: 0;
         text-align: center !important;
         font-size: 0.85em;
