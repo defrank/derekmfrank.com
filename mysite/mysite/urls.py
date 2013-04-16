@@ -10,12 +10,8 @@ from mysite.views import view_functions, views
 #admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Google Analytics/Webmaster
-    url(r'^google0a2e75908547fa0e.html$', views.webmaster, name='webmaster'),
-
     # Base Views
     url(r'^$', views.home, name='home'),
-    url(r'^home/$', views.home, name='homepage'),
     url(r'^blog/$', views.blog, name='blog'),
     url(r'^portfolio/$', views.portfolio, name='portfolio'),
     url(r'^aboutme/$', views.aboutme, name='aboutme'),
@@ -34,8 +30,15 @@ urlpatterns = patterns('',
     #url(r'^admin/', include(admin.site.urls)),
 )
 
-# Debug Media files serve
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# Media files serve only with DEBUG mode set
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Google apps specific urls
+urlpatterns += patterns('',
+    # Google Analytics/Webmaster
+    url(r'^google0a2e75908547fa0e.html$', views.webmaster, name='webmaster'),
+)
 
 # Necessary redirection for unavailable pages
 urlpatterns += patterns('',
