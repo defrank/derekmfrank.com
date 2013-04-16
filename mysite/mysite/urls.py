@@ -24,9 +24,6 @@ urlpatterns = patterns('',
     # Media
     url(r'^static/(?P<path>.*)$', views_static_serve, { 'document_root': settings.STATIC_ROOT, }),
 
-    # Necessary redirection
-    url(r'^accounts/profile/$', view_functions.redirect_to_home),
-
     # Example:
     # (r'^mysite/', include('mysite.foo.urls')),
 
@@ -37,4 +34,10 @@ urlpatterns = patterns('',
     #url(r'^admin/', include(admin.site.urls)),
 )
 
+# Debug Media files serve
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Necessary redirection for unavailable pages
+urlpatterns += patterns('',
+    url(r'^.+$', view_functions.redirect_to_home, name='redirect'),
+)

@@ -21,7 +21,7 @@ def response(request, template, context):
  
 # A redirect to home view
 def redirect_to_home(request):
-  return redirect('/home/')
+  return redirect('/')
 
 
 # A function to require the user be authenticated/logged in
