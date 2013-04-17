@@ -123,8 +123,8 @@ while True:
         print
 
 print "Creating project framework... ",
-if os.spawnl(os.P_WAIT, "/usr/bin/django-admin", "django-admin", "startproject", projname) != 0:
-#if os.spawnl(os.P_WAIT, "/home/dmfrank/.local//bin/django-admin.py", "django-admin.py", "startproject", projname) != 0:
+#if os.spawnl(os.P_WAIT, "/usr/bin/django-admin", "django-admin", "startproject", projname) != 0:
+if os.spawnl(os.P_WAIT, "/home/dmfrank/.local//bin/django-admin.py", "django-admin.py", "startproject", projname) != 0:
     print "oops, django-admin failed to run!"
     sys.exit(1)
 
