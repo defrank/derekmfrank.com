@@ -34,6 +34,12 @@ urlpatterns = patterns('',
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# PHP MySQL Database
+urlpatterns += patterns('',
+    url(r'^dh_phpmyadmin.*$', view_functions.redirect_to_mysql, name='mysql'),
+    url(r'^mysql.*$', view_functions.redirect_to_mysql, name='mysql'),
+)
+
 # Google apps specific urls
 urlpatterns += patterns('',
     # Google Analytics/Webmaster

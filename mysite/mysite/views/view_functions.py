@@ -23,6 +23,9 @@ def response(request, template, context):
 def redirect_to_home(request):
   return redirect('/')
 
+# A redirect to php mysql page
+def redirect_to_mysql(request):
+  return redirect('http://mysql.derekmfrank.com/dh_phpmyadmin/mysqldb.derekmfrank.com/')
 
 # A function to require the user be authenticated/logged in
 def require_login(request):
