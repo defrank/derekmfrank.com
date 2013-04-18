@@ -1,6 +1,6 @@
 import sys, os
 
-cwd = os.getcwd()
+cwd = os.path.abspath(os.path.dirname(__file__))
 myapp_directory = cwd + '/mysite'
 sys.stdout = sys.stderr
 sys.path.insert(0,myapp_directory)
@@ -16,7 +16,7 @@ myproject = os.path.join(cwd, 'mysite', 'mysite').replace('\\','/')
 
 if sys.version < "2.4": os.execl("/usr/bin/python2.4", "python2.4", *sys.argv)
 
-os.environ['PYTHON_EGG_CACHE'] = os.path.join(os.environ['HOME'], 'tmp')
+#os.environ['PYTHON_EGG_CACHE'] = os.path.join(os.environ['HOME'], 'tmp')
 os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
 
 from paste.exceptions.errormiddleware import ErrorMiddleware
