@@ -1,7 +1,29 @@
-{% comment %}
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.04.19.21.12.27;	author dmfrank;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@{% comment %}
  *
- * $Id: mff.html,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
- * Derek Frank (derekmfrank@gmail.com)
+ * $Id: $
+ * Derek Frank (derekmfrank@@gmail.com)
  *
  * NAME
  *     mff.html
@@ -45,8 +67,8 @@
             <ul>
                 Michael F. Frank<br />
                 Attorney at Law<br />
-                <a href="mailto:mfrankatty@aol.com" title="Contact Michael Frank">
-                    mfrankatty@aol.com</a><br />
+                <a href="mailto:mfrankatty@@aol.com" title="Contact Michael Frank">
+                    mfrankatty@@aol.com</a><br />
                 9901 Durant Drive, Suite H<br />
                 Beverly Hills, California 90212<br />
                 (310) 227 - 2559 office<br />
@@ -60,3 +82,4 @@
         </div>
     </div>
 {% endblock %}
+@

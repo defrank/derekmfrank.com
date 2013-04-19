@@ -1,6 +1,28 @@
-/*******************************************************************************
- * $Id: style.css,v 1.1 2013-04-19 14:12:27-07 dmfrank - $                                                                       
- * Derek Frank (derekmfrank@gmail.com)                                          
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.04.19.21.12.27;	author dmfrank;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@/*******************************************************************************
+ * $Id: style.css,v 1.114 2013-04-11 18:39:02-07 dmfrank - $                                                                       
+ * Derek Frank (derekmfrank@@gmail.com)                                          
  *                                                                              
  * Theme Name: dmf
  *                                                                              
@@ -16,8 +38,8 @@
  ******************************************************************************/
 
 /* import the global navbar stylesheet */
-/* @import url('{{ CSS_URL }}navbar/navbar.css'); */
-@import url("navbar/navbar.css?v=131");
+/* @@import url('{{ CSS_URL }}navbar/navbar.css'); */
+@@import url("navbar/navbar.css?v=131");
 
 /* simple reset */
 * {
@@ -577,3 +599,4 @@ table.bio-entry {
 }
 
 
+@

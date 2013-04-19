@@ -1,7 +1,29 @@
-{% comment %}
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.04.19.21.12.27;	author dmfrank;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@{% comment %}
  *
- * $Id: portfolio.html,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
- * Derek Frank (derekmfrank@gmail.com)
+ * $Id: $
+ * Derek Frank (derekmfrank@@gmail.com)
  *
  * NAME
  *     portfolio.html
@@ -364,3 +386,4 @@
         </div>
     </div>
 {% endblock %}
+@

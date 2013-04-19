@@ -1,4 +1,26 @@
-# $Id: context_processors.py,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.04.19.21.12.27;	author dmfrank;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@# $Id: context_processors.py,v 1.5 2013-04-02 01:36:27-07 dmfrank - $
 # -*- coding: utf-8 -*-
 # Global template variables populated with context_processors.
 
@@ -34,3 +56,4 @@ def site(request):
         'MFF_URL': '/mff/',
     }
     return context
+@

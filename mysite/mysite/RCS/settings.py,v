@@ -1,4 +1,26 @@
-# Django settings for mysite project.
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.04.19.21.12.27;	author dmfrank;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@# Django settings for mysite project.
 import os
 
 
@@ -10,8 +32,8 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
-    ('Derek Frank', 'derekmfrank@gmail.com'),
+    # ('Your Name', 'your_email@@domain.com'),
+    ('Derek Frank', 'derekmfrank@@gmail.com'),
 )
 
 MANAGERS = ADMINS
@@ -193,3 +215,4 @@ LOGGING = {
 #)
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+@

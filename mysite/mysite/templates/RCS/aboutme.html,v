@@ -1,7 +1,29 @@
-{% comment %}
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.04.19.21.12.27;	author dmfrank;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@{% comment %}
  *
- * $Id: aboutme.html,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
- * Derek Frank (derekmfrank@gmail.com)
+ * $Id: $
+ * Derek Frank (derekmfrank@@gmail.com)
  *
  * NAME
  *     aboutme.html
@@ -61,7 +83,7 @@
             <ul>
                 Derek M. Frank<br />
                 Software Engineer<br />
-                <a href="mailto:derekmfrank@gmail.com" title="Email Derek Frank: derekmfrank@gmail.com">
+                <a href="mailto:derekmfrank@@gmail.com" title="Email Derek Frank: derekmfrank@@gmail.com">
                     Gmail</a><br />
                 <a href="{{ LINKEDIN_URL }}" title="Derek's LinkedIn profile">
                     LinkedIn</a> | 
@@ -76,3 +98,4 @@
         </div>
     </div>
 {% endblock %}
+@
