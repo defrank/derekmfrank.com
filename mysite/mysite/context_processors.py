@@ -1,6 +1,7 @@
 # $Id: context_processors.py,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
 # -*- coding: utf-8 -*-
 # Global template variables populated with context_processors.
+import datetime
 
 def site(request):
     site_years = '2013'

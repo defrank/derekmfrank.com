@@ -41,7 +41,7 @@ urlpatterns += patterns('',
 
 # Webmasters and other 3rd party apps
 urlpatterns += patterns('',
-    url(r'^$', include('webmaster.urls')),
+    url(r'^', include('webmaster.urls')),
 )
 
 # Necessary redirection for unavailable pages
