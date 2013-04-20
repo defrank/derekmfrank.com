@@ -17,7 +17,7 @@
 
 /* import the global navbar stylesheet */
 /* @import url('{{ CSS_URL }}navbar/navbar.css'); */
-@import url("navbar/navbar.css?v=131");
+@import url("navbar/navbar.css?v=132");
 
 /* simple reset */
 * {
