@@ -60,7 +60,7 @@ HTMLFILES       = ${DIR_HTML}base.html          ${DIR_HTML}home.html           \
                   ${DIR_HTML}blog.html          ${DIR_HTML}portfolio.html      \
                   ${DIR_HTML}aboutme.html       ${DIR_HTML}mff.html
 VIEWFILES       = ${DIR_VIEWS}view_functions.py ${DIR_VIEWS}views.py
-DJANGOFILES     = mysite/manage.py              ${DIR_DJANGO}settings.py       \
+DJANGOFILES     = ${DIR_APPS}manage.py          ${DIR_DJANGO}settings.py       \
                   ${DIR_DJANGO}urls.py     ${DIR_DJANGO}context_processors.py  \
 				  ${VIEWFILES} ${HTMLFILES}
 

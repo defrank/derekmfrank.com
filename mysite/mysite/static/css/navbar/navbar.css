@@ -32,7 +32,11 @@
 }
 
 /* container for the navbar */
-#navbarcontainer { width: 1000px !important; margin 0 auto !important; padding: 0 14px !important;}
+#navbarcontainer { 
+    width:                      1000px !important; 
+    margin:                     0 auto !important; 
+    padding:                    0 14px !important;
+}
 
 /* logo trickery -- GIF for IE6 and PNG for the rest */
 #navbarlogo { 
@@ -43,16 +47,31 @@
     width:                      39px !important; 
 }
 /* IE6 doesn't support alpha PNGs so we serve it a GIF */
-#navbarlogo { backround: url('logo.gif') no-repeat !important; }
+#navbarlogo { 
+    background:                 url('logo.gif') no-repeat !important; 
+}
 /* and use a proper PNG for all other modern browsers */
-html > body #navbarlogo { background: url('logo.png') no-repeat !important; }
+html > body #navbarlogo { 
+    background:                 url('logo.png') no-repeat !important; 
+}
 
 /* move the heading/paragraph text offscreen */
-#navbarlogo p { margin: 0 !important; padding: 0 !important; text-indent: -9999px !important; }
-#navbarlogo h1 { margin: 0 !important; padding: 0 !important; text-indent: -9999px !important; }
+#navbarlogo p { 
+    margin:                     0 !important; 
+    padding:                    0 !important; 
+    text-indent:                -9999px !important; 
+}
+#navbarlogo h1 { 
+    margin:                     0 !important; 
+    padding:                    0 !important; 
+    text-indent:                -9999px !important; }
 
 /* make the link the same size as the logo */
-#navbarlogo a { display: block !important; height: 24px !important; width: 39px !important; }
+#navbarlogo a { 
+    display:                    block !important; 
+    height:                     24px !important; 
+    width:                      39px !important; 
+}
 
 /* display the list inline, float it to the left and style it */
 #navbarmenu ul { 
@@ -73,5 +92,11 @@ html > body #navbarlogo { background: url('logo.png') no-repeat !important; }
 }
 
 /* style the links */
-#navbarmenu  ul#navbarlist li a { color: #ffffff; font-weight: bold !important; text-decoration: none; }
-#navbarmenu  ul li a:hover { color: #aaaaaa !important; }
+#navbarmenu ul#navbarlist li a { 
+    color:                      #ffffff; 
+    font-weight:                bold !important; 
+    text-decoration:            none; 
+}
+#navbarmenu ul li a:hover { 
+    color:                      #aaaaaa !important; 
+}
