@@ -1,3 +1,13 @@
+# $Id: $
+# Derek Frank (dmfrank@gmx.com)
+#
+# NAME
+#   view_functions.py - mysite
+#
+# DESCRIPTION
+#   Functions for template views.
+#
+
 from django.shortcuts import render_to_response
 from django.shortcuts import redirect
 from django.template.context import RequestContext

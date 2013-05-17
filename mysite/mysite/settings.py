@@ -1,4 +1,13 @@
-# Django settings for mysite project.
+# $Id: $
+# Derek Frank (dmfrank@gmx.com)
+#
+# NAME
+#   settings.py
+#
+# DESCRIPTION
+#   Django settings for mysite project.
+#
+
 import os
 
 
@@ -10,7 +19,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Derek Frank', 'derekmfrank@gmail.com'),
+    ('Derek Frank', 'dmfrank@gmx.com'),
 )
 
 MANAGERS = ADMINS

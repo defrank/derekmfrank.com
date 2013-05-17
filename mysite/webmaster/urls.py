@@ -1,3 +1,13 @@
+# $Id: $
+# Derek Frank (dmfrank@gmx.com)
+#
+# NAME
+#   urls.py - webmaster
+#
+# DESCRIPTION
+#   A url patterns definition for webmasters.
+#
+
 from django.conf.urls import patterns, url
 from webmaster import views
 

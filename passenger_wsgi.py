@@ -1,3 +1,12 @@
+# $Id: $
+# Derek Frank (dmfrank@gmx.com)
+#
+# NAME
+#   passenger_wsgi.py
+#
+# DESCRIPTION
+#   Wsgi script required by Dreamhost for Passenger.
+#
 import sys, os
 
 cwd = os.path.abspath(os.path.dirname(__file__))

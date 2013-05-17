@@ -1,3 +1,13 @@
+# $Id: $
+# Derek Frank (dmfrank@gmx.com)
+#
+# NAME
+#   .htaccess
+#
+# DESCRIPTION
+#   Root directory occess.
+#
+
 Options +FollowSymLinks
 RewriteEngine On
 RewriteBase /

@@ -1,3 +1,13 @@
+# $Id: $
+# Derek Frank (dmfrank@gmx.com)
+#
+# NAME
+#   views.py - webmaster
+#
+# DESCRIPTION
+#   Template views for webmasters.
+#
+
 from django.conf import settings
 from django.shortcuts import render_to_response
 

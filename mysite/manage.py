@@ -1,4 +1,11 @@
 #!/usr/bin/env python
+# $Id: $
+# Derek Frank (dmfrank@gmx.com)
+#
+# NAME
+#   manage.py
+#
+
 import os, sys
 from django.core.management import execute_manager
 #try:

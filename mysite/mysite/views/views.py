@@ -1,3 +1,13 @@
+# $Id: $
+# Derek Frank (dmfrank@gmx.com)
+#
+# NAME
+#   views.py - mysite
+#
+# DESCRIPTION
+#   A template views definition for mysite derekmfrank.com.
+#
+
 from mysite.views.view_functions import response
 from django.conf import settings
 from django.shortcuts import render_to_response
@@ -9,13 +19,6 @@ from django.template.context import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.sites.models import get_current_site
 import datetime
-
-
-# Google Webmaster view
-def webmaster(request):
-  template = 'google0a2e75908547fa0e.html'
-  context = {}
-  return render_to_response(template, context)
 
 
 # Home page view

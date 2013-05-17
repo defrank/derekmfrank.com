@@ -1,3 +1,13 @@
+# $Id: context_processors.py,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
+# Derek Frank (dmfrank@gmx.com)
+#
+# NAME
+#   urls.py - mysite
+#
+# DESCRIPTION
+#   A url patterns definition for mysite derekmfrank.com.
+#
+
 from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
 from django.conf.urls.static import static

@@ -1,3 +1,13 @@
+# $Id: $
+# Derek Frank (dmfrank@gmx.com)
+#
+# NAME
+#   .htaccess - media files
+#
+# DESCRIPTION
+#   Used for the caching of media files.
+#
+
 ExpiresActive on
 ExpiresDefault "access plus 15 minutes"
 ExpiresByType image/gif "access plus 1 hours"

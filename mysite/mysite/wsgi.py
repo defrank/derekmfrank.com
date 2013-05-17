@@ -1,3 +1,13 @@
+# $Id: $
+# Derek Frank (dmfrank@gmx.com)
+#
+# NAME
+#   wsgi.py - mysite
+#
+# DESCRIPTION
+#   A wsgi script for mysite.  Currently non-functional.
+#
+
 """
 WSGI config for mysite project.
 
