@@ -47,8 +47,7 @@ DIR_APPS        = mysite/
 DIR_WEBMASTER   = mysite/
 
 ## MEDIA/STATIC
-IMGFILES        = ${DIR_IMG}favicon.ico         ${DIR_IMG}favicon.gif          \
-                  ${DIR_IMG}searchbutton3.xcf   ${DIR_IMG}searchbutton3.png
+IMGFILES        = ${DIR_IMG}favicon.ico         ${DIR_IMG}favicon.gif
 JSFILES         = 
 ICOFILES        = ${DIR_ICO}favicon.ico         ${DIR_ICO}favicon.gif
 LOGOFILES       = 
@@ -62,13 +61,13 @@ HTMLFILES       = ${DIR_HTML}base.html          ${DIR_HTML}home.html           \
 VIEWFILES       = ${DIR_VIEWS}view_functions.py ${DIR_VIEWS}views.py
 DJANGOFILES     = ${DIR_APPS}manage.py          ${DIR_DJANGO}settings.py       \
                   ${DIR_DJANGO}urls.py     ${DIR_DJANGO}context_processors.py  \
-				  ${VIEWFILES} ${HTMLFILES}
+				  ${DIR_DJANGO}dmf.db           ${VIEWFILES} ${HTMLFILES}
 
 ## APPS
 APP_WEBMASTER   = ${DIR_WEBMASTER}__init__.py   ${DIR_WEBMASTER}urls.py        \
 				  ${DIR_WEBMASTER}views.py                                     \
 				  ${DIR_WEBMASTER}templates/google0a2e75908547fa0e.html        \
-				  ${DIR_WEBMASTER}templates/.BingSiteAuth.xml
+				  ${DIR_WEBMASTER}templates/BingSiteAuth.xml
 APPSFILES       = ${APP_WEBMASTER}
 
 ## MISC
