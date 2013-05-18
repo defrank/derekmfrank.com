@@ -1,9 +1,14 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
-locks; strict;
+locks;
 comment	@# @;
 
+
+1.2
+date	2013.05.18.00.33.56;	author dmfrank;	state -;
+branches;
+next	1.1;
 
 1.1
 date	2013.04.19.21.12.27;	author dmfrank;	state -;
@@ -15,12 +20,22 @@ desc
 @@
 
 
-1.1
+1.2
 log
 @-
 @
 text
-@from mysite.views.view_functions import response
+@# $Id: $
+# Derek Frank (dmfrank@@gmx.com)
+#
+# NAME
+#   views.py - mysite
+#
+# DESCRIPTION
+#   A template views definition for mysite derekmfrank.com.
+#
+
+from mysite.views.view_functions import response
 from django.conf import settings
 from django.shortcuts import render_to_response
 from django.shortcuts import redirect
@@ -31,13 +46,6 @@ from django.template.context import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.sites.models import get_current_site
 import datetime
-
-
-# Google Webmaster view
-def webmaster(request):
-  template = 'google0a2e75908547fa0e.html'
-  context = {}
-  return render_to_response(template, context)
 
 
 # Home page view
@@ -108,4 +116,21 @@ def mff(request):
     'current_datetime': dt
   }
   return response(request, template, context)
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 10
+a21 7
+
+
+# Google Webmaster view
+def webmaster(request):
+  template = 'google0a2e75908547fa0e.html'
+  context = {}
+  return render_to_response(template, context)
 @

@@ -1,9 +1,14 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
-locks; strict;
+locks;
 comment	@# @;
 
+
+1.2
+date	2013.05.18.00.33.56;	author dmfrank;	state -;
+branches;
+next	1.1;
 
 1.1
 date	2013.04.19.21.12.27;	author dmfrank;	state -;
@@ -15,14 +20,23 @@ desc
 @@
 
 
-1.1
+1.2
 log
 @-
 @
 text
-@# $Id: context_processors.py,v 1.5 2013-04-02 01:36:27-07 dmfrank - $
-# -*- coding: utf-8 -*-
-# Global template variables populated with context_processors.
+@# -*- coding: utf-8 -*-
+# $Id: context_processors.py,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
+# Derek Frank (dmfrank@@gmx.com)
+#
+# NAME
+#   context_processors.py
+#
+# DESCRIPTION
+#   Global template variables populated with context_processors.
+#
+
+import datetime
 
 def site(request):
     site_years = '2013'
@@ -56,4 +70,17 @@ def site(request):
         'MFF_URL': '/mff/',
     }
     return context
+@
+
+
+1.1
+log
+@-
+@
+text
+@a0 1
+# $Id: context_processors.py,v 1.5 2013-04-02 01:36:27-07 dmfrank - $
+d2 11
+a12 1
+# Global template variables populated with context_processors.
 @

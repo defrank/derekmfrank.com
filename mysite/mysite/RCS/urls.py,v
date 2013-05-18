@@ -1,9 +1,14 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
-locks; strict;
+locks;
 comment	@# @;
 
+
+1.2
+date	2013.05.18.00.33.56;	author dmfrank;	state -;
+branches;
+next	1.1;
 
 1.1
 date	2013.04.19.21.12.27;	author dmfrank;	state -;
@@ -15,12 +20,22 @@ desc
 @@
 
 
-1.1
+1.2
 log
 @-
 @
 text
-@from django.conf import settings
+@# $Id: context_processors.py,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
+# Derek Frank (dmfrank@@gmx.com)
+#
+# NAME
+#   urls.py - mysite
+#
+# DESCRIPTION
+#   A url patterns definition for mysite derekmfrank.com.
+#
+
+from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
 from django.conf.urls.static import static
 from django.views.static import serve as views_static_serve
@@ -63,11 +78,23 @@ urlpatterns += patterns('',
 
 # Webmasters and other 3rd party apps
 urlpatterns += patterns('',
-    url(r'^$', include('webmaster.urls')),
+    url(r'^', include('webmaster.urls')),
 )
 
 # Necessary redirection for unavailable pages
 urlpatterns += patterns('',
     url(r'^.+$', view_functions.redirect_to_home, name='redirect'),
 )
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 10
+d54 1
+a54 1
+    url(r'^$', include('webmaster.urls')),
 @

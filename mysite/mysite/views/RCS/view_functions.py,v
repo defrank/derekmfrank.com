@@ -1,9 +1,14 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
-locks; strict;
+locks;
 comment	@# @;
 
+
+1.2
+date	2013.05.18.00.33.56;	author dmfrank;	state -;
+branches;
+next	1.1;
 
 1.1
 date	2013.04.19.21.12.27;	author dmfrank;	state -;
@@ -15,12 +20,22 @@ desc
 @@
 
 
-1.1
+1.2
 log
 @-
 @
 text
-@from django.shortcuts import render_to_response
+@# $Id: $
+# Derek Frank (dmfrank@@gmx.com)
+#
+# NAME
+#   view_functions.py - mysite
+#
+# DESCRIPTION
+#   Functions for template views.
+#
+
+from django.shortcuts import render_to_response
 from django.shortcuts import redirect
 from django.template.context import RequestContext
 
@@ -55,4 +70,13 @@ def require_login(request):
     #return HttpResponseRedirect('/login/?next=%s&username=%s' % (request.path, username))
     return redirect('/accounts/login/?next=%s' % request.path)
   return None
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 10
 @

@@ -1,9 +1,14 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
-locks; strict;
+locks;
 comment	@# @;
 
+
+1.2
+date	2013.05.18.00.33.56;	author dmfrank;	state -;
+branches;
+next	1.1;
 
 1.1
 date	2013.04.19.21.12.27;	author dmfrank;	state -;
@@ -15,12 +20,19 @@ desc
 @@
 
 
-1.1
+1.2
 log
 @-
 @
 text
 @#!/usr/bin/env python
+# $Id: $
+# Derek Frank (dmfrank@@gmx.com)
+#
+# NAME
+#   manage.py
+#
+
 import os, sys
 from django.core.management import execute_manager
 #try:
@@ -35,4 +47,13 @@ if __name__ == "__main__":
     from django.core.management import execute_from_command_line
     execute_from_command_line(sys.argv)
     #execute_manager(settings)
+@
+
+
+1.1
+log
+@-
+@
+text
+@d2 7
 @

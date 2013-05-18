@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.1 2013-04-11 22:19:33-07 dmfrank - $
+# $Id: Makefile,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -97,6 +97,7 @@ check : ${CHKSRC}
 #
 ci :
 ifeq (${WHOAMI},dmf)
+	#rcs -U ${ALLFILES}
 	${CICMD} + ${ALLFILES}
 endif
 

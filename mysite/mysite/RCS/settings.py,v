@@ -1,9 +1,14 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
-locks; strict;
+locks;
 comment	@# @;
 
+
+1.2
+date	2013.05.18.00.33.56;	author dmfrank;	state -;
+branches;
+next	1.1;
 
 1.1
 date	2013.04.19.21.12.27;	author dmfrank;	state -;
@@ -15,12 +20,21 @@ desc
 @@
 
 
-1.1
+1.2
 log
 @-
 @
 text
-@# Django settings for mysite project.
+@# $Id: $
+# Derek Frank (dmfrank@@gmx.com)
+#
+# NAME
+#   settings.py
+#
+# DESCRIPTION
+#   Django settings for mysite project.
+#
+
 import os
 
 
@@ -32,20 +46,19 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@@domain.com'),
-    ('Derek Frank', 'derekmfrank@@gmail.com'),
+    ('Derek Frank', 'dmfrank@@gmx.com'),
 )
 
 MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'dmfdb',                      # Or path to database file if using sqlite3.
-        'USER': 'dmfrank',                      # Not used with sqlite3.
-        'PASSWORD': 'bugnem2125',                  # Not used with sqlite3.
-        'HOST': 'mysqldb.derekmfrank.com',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': os.path.join(PACKAGE_ROOT, 'mysite.db').replace('\\','/'), # Or path to database file if using sqlite3.
+        #'USER': '',                      # Not used with sqlite3.
+        #'PASSWORD': '',                  # Not used with sqlite3.
+        #'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        #'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
     }
 }
 
@@ -215,4 +228,27 @@ LOGGING = {
 #)
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 10
+a10 1
+# Django settings for mysite project.
+d22 1
+a22 2
+    # ('Your Name', 'your_email@@domain.com'),
+    ('Derek Frank', 'derekmfrank@@gmail.com'),
+d29 6
+a34 6
+        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'dmfdb',                      # Or path to database file if using sqlite3.
+        'USER': 'dmfrank',                      # Not used with sqlite3.
+        'PASSWORD': 'bugnem2125',                  # Not used with sqlite3.
+        'HOST': 'mysqldb.derekmfrank.com',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
 @

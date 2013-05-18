@@ -1,9 +1,14 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
-locks; strict;
+locks;
 comment	@# @;
 
+
+1.2
+date	2013.05.18.00.33.56;	author dmfrank;	state -;
+branches;
+next	1.1;
 
 1.1
 date	2013.04.19.21.12.27;	author dmfrank;	state -;
@@ -15,23 +20,23 @@ desc
 @@
 
 
-1.1
+1.2
 log
 @-
 @
 text
-@{% comment %}
- *
- * $Id: $
- * Derek Frank (derekmfrank@@gmail.com)
+@{% comment %}<!--
+/*
+ * $Id: base.html,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
+ * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
  *     base.html
  *
  * DESCRIPTION
  *     Base HTML template.
- *
-{% endcomment %}
+ */
+-->{% endcomment %}
 {% load static from staticfiles %}
 {% load url from future %}
 <!DOCTYPE html>
@@ -73,15 +78,14 @@ text
 
     {% block head_google %}
         {% block google_webmaster %}
-            {% comment %}<meta name="google-site-verification" content="pqyvI-IxhxcTQ0QVAuoyBkeNPAZs6C8bsKSr77mS2m4" />{% endcomment %}
+            <meta name="google-site-verification" content="pqyvI-IxhxcTQ0QVAuoyBkeNPAZs6C8bsKSr77mS2m4" />
         {% endblock %}
 
         {% block google_analytics %}
             <script type="text/javascript">
                 var _gaq = _gaq || [];
-                _gaq.push(['_setAccount', 'UA-40117529-1']);
+                _gaq.push(['_setAccount', 'UA-39564024-2']);
                 _gaq.push(['_trackPageview']);
-
                 (function() {
                     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
                     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
@@ -93,6 +97,7 @@ text
     {% block head_bing %}
         {% block bing_webmaster %}
             {% comment %}<meta name="msvalidate.01" content="FF05F7E277E01C4AC7E5831648039812" />{% endcomment %}
+            <meta name="msvalidate.01" content="FF05F7E277E01C4AC7E5831648039812" />
         {% endblock %}
     {% endblock %}
 </head>
@@ -140,4 +145,31 @@ text
     {% block body_script %}{% endblock %}
 </body>
 </html>
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 4
+a4 4
+{% comment %}
+ *
+ * $Id: $
+ * Derek Frank (derekmfrank@@gmail.com)
+d11 2
+a12 2
+ *
+{% endcomment %}
+d54 1
+a54 1
+            {% comment %}<meta name="google-site-verification" content="pqyvI-IxhxcTQ0QVAuoyBkeNPAZs6C8bsKSr77mS2m4" />{% endcomment %}
+d60 1
+a60 1
+                _gaq.push(['_setAccount', 'UA-40117529-1']);
+a61 1
+
+d73 1
 @

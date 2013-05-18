@@ -1,9 +1,14 @@
-head	1.1;
+head	1.2;
 access;
 symbols;
-locks; strict;
+locks;
 comment	@# @;
 
+
+1.2
+date	2013.05.18.00.33.56;	author dmfrank;	state -;
+branches;
+next	1.1;
 
 1.1
 date	2013.04.19.21.12.27;	author dmfrank;	state -;
@@ -15,14 +20,15 @@ desc
 @@
 
 
-1.1
+1.2
 log
 @-
 @
 text
-@{% comment %}
+@{% extends "base.html" %}
+{% comment %}
  *
- * $Id: $
+ * $Id: portfolio.html,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
  * Derek Frank (derekmfrank@@gmail.com)
  *
  * NAME
@@ -32,7 +38,6 @@ text
  *     Portfolio HTML template.
  *
 {% endcomment %}
-{% extends "base.html" %}
 
 {% block navbar_class %}nb-portfolio{% endblock %}
 
@@ -386,4 +391,18 @@ text
         </div>
     </div>
 {% endblock %}
+@
+
+
+1.1
+log
+@-
+@
+text
+@d1 1
+d4 1
+a4 1
+ * $Id: $
+a13 1
+{% extends "base.html" %}
 @
