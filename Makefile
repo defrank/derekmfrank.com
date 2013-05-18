@@ -61,7 +61,7 @@ HTMLFILES       = ${DIR_HTML}base.html          ${DIR_HTML}home.html           \
 VIEWFILES       = ${DIR_VIEWS}view_functions.py ${DIR_VIEWS}views.py
 DJANGOFILES     = ${DIR_APPS}manage.py          ${DIR_DJANGO}settings.py       \
                   ${DIR_DJANGO}urls.py     ${DIR_DJANGO}context_processors.py  \
-				  ${DIR_DJANGO}dmf.db           ${VIEWFILES} ${HTMLFILES}
+				  ${DIR_DJANGO}mysite.db        ${VIEWFILES} ${HTMLFILES}
 
 ## APPS
 APP_WEBMASTER   = ${DIR_WEBMASTER}__init__.py   ${DIR_WEBMASTER}urls.py        \
