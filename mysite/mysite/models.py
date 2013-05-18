@@ -8,6 +8,7 @@
 #   A models (database bridge) definition for mysite derekmfrank.com.
 #
 
+from django.db import models
 
 ## BLOG
 class BlogPost(models.Model):
