@@ -1,9 +1,14 @@
-head	1.7;
+head	1.8;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.8
+date	2013.05.24.02.47.36;	author dmf;	state -;
+branches;
+next	1.7;
 
 1.7
 date	2013.05.24.02.21.46;	author dmf;	state -;
@@ -45,7 +50,7 @@ desc
 @@
 
 
-1.7
+1.8
 log
 @-
 @
@@ -53,7 +58,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: aboutme.html,v 1.6 2013-05-23 18:27:44-07 dmf - $
+ * $Id: aboutme.html,v 1.7 2013-05-23 19:21:46-07 dmf - $
  * Derek Frank (derekmfrank@@gmail.com)
  *
  * NAME
@@ -66,6 +71,8 @@ text
 {% load static from staticfiles %}
 {% load url from future %}
 {% load static from staticfiles %}
+
+{% block head_title %}About Me | {{ SITENAME_ }}{% endblock %}
 
 {% block navbar_class %}nb-aboutme{% endblock %}
 
@@ -142,6 +149,18 @@ text
         </div>
     </div>
 {% endblock %}
+@
+
+
+1.7
+log
+@-
+@
+text
+@d4 1
+a4 1
+ * $Id: aboutme.html,v 1.6 2013-05-23 18:27:44-07 dmf - $
+d17 2
 @
 
 
