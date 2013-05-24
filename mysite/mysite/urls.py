@@ -21,7 +21,7 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Base Views
     url(r'^$', views.home, name='home'),
-    url(r'^blog/$', views.blog, name='blog'),
+    url(r'^blog/', include('blog.urls')),
     url(r'^portfolio/$', views.portfolio, name='portfolio'),
     url(r'^aboutme/$', views.aboutme, name='aboutme'),
     url(r'^mff/$', views.mff, name='mff'),

@@ -35,20 +35,6 @@ def home(request):
   return response(request, template, context)
 
 
-# Blog page view
-def blog(request):
-  errors = []
-  message = ''
-  dt = datetime.datetime.now()
-  template = 'blog.html'
-  context = {
-    'errors': errors,
-    'message': message,
-    'current_datetime': dt
-  }
-  return response(request, template, context)
-
-
 # Portfolio page view
 def portfolio(request):
   errors = []

@@ -22,9 +22,10 @@ CATEGORY_CHOICES = (
 )
 
 # Post
+
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    image_url = models.URLField(blank=True, verify_exists=True)
+    image_url = models.URLField(verify_exists=True, null=True)
     body = models.TextField()
     timestamp = models.DateTimeField()
     
@@ -45,10 +46,10 @@ class Link(models.Model):
 ## BLOG ADMIN
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('timestamp', 'title')
+    list_display = ('title', 'timestamp')
 
 class LinkAdmin(admin.ModelAdmin):
-    list_display = ('timestamp', 'title')
+    list_display = ('title', 'timestamp')
 
 
 ## ADMIN REGISTER

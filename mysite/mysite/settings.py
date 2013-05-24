@@ -144,6 +144,10 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.abspath(os.path.join(PROJECT_ROOT, 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'webmaster', 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'blog/templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'portfolio/templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'aboutme/templates').replace('\\','/')),
 )
 
 INSTALLED_APPS = (
