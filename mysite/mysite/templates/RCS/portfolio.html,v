@@ -1,9 +1,14 @@
-head	1.2;
+head	1.3;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.3
+date	2013.05.24.00.32.41;	author dmf;	state -;
+branches;
+next	1.2;
 
 1.2
 date	2013.05.18.00.33.56;	author dmfrank;	state -;
@@ -20,7 +25,7 @@ desc
 @@
 
 
-1.2
+1.3
 log
 @-
 @
@@ -28,7 +33,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: portfolio.html,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
+ * $Id: portfolio.html,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
  * Derek Frank (derekmfrank@@gmail.com)
  *
  * NAME
@@ -385,12 +390,28 @@ text
         <div class="box">
             <h3>More Sources</h3>
             <ul>
-                <li><a href="{{ GITHUB_URL }}" title="Visit GitHub repository">GitHub repository</a></li>
+                <li><a href="{{ GITHUB_URL }}" title="Visit GitHub repository">GitHub Repository</a></li>
                 <li><a href="{{ BITBUCKET_URL }}" title="Visit BitBucket repository">BitBucket Repository</a></li>
+                <li><a href="{{ STACKEXCHANGE_URL }}" title="Visit StackExchange profile">StackExchange Profile</a></li>
             </ul>
         </div>
     </div>
 {% endblock %}
+@
+
+
+1.2
+log
+@-
+@
+text
+@d4 1
+a4 1
+ * $Id: portfolio.html,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
+d361 1
+a361 1
+                <li><a href="{{ GITHUB_URL }}" title="Visit GitHub repository">GitHub repository</a></li>
+d363 1
 @
 
 

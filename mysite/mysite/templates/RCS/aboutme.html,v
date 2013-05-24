@@ -1,9 +1,14 @@
-head	1.2;
+head	1.3;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.3
+date	2013.05.24.00.32.41;	author dmf;	state -;
+branches;
+next	1.2;
 
 1.2
 date	2013.05.18.00.33.56;	author dmfrank;	state -;
@@ -20,7 +25,7 @@ desc
 @@
 
 
-1.2
+1.3
 log
 @-
 @
@@ -28,7 +33,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: aboutme.html,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
+ * $Id: aboutme.html,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
  * Derek Frank (derekmfrank@@gmail.com)
  *
  * NAME
@@ -88,21 +93,51 @@ text
             <ul>
                 Derek M. Frank<br />
                 Software Engineer<br />
-                <a href="mailto:derekmfrank@@gmail.com" title="Email Derek Frank: derekmfrank@@gmail.com">
-                    Gmail</a><br />
+                <a href="mailto:{{ GMAIL }}" title="Email Derek Frank: {{ GMAIL }}">
+                    GMail</a> | 
+                <a href="mailto:{{ GMX }}" title="Email Derek Frank: {{ GMX }}">
+                    GMX</a><br />
                 <a href="{{ LINKEDIN_URL }}" title="Derek's LinkedIn profile">
                     LinkedIn</a> | 
                 <a href="{{ FLAVORSME_URL }}" title="Derek's Flavors.me profile">
                     Flavors.me</a><br />
+                <a href="{{ STACKEXCHANGE_URL }}" title="Derek's StackExchange profile">
+                    LinkedIn</a><br />
+                <a href="{{ GITHUB_URL }}" title="Derek's GitHub repository">
+                    GitHub</a> | 
+                <a href="{{ BITBUCKET_URL }}" title="Derek's BitBucket repository">
+                    BitBucket</a><br />
             </ul>
             <h3>Documents</h3>
             <ul>
-                <a href="{{ RESUME_LINK }}" title="Derek's resume">
-                    My resume</a>
+                My resume: 
+                    <a href="{{ RESUME_LINK_PDF }}" title="Derek's resume">PDF</a>
+                    <a href="{{ RESUME_LINK_DOCX }}" title="Derek's resume">DOCX</a>
+                        
             </ul>
         </div>
     </div>
 {% endblock %}
+@
+
+
+1.2
+log
+@-
+@
+text
+@d4 1
+a4 1
+ * $Id: aboutme.html,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
+d64 4
+a67 2
+                <a href="mailto:derekmfrank@@gmail.com" title="Email Derek Frank: derekmfrank@@gmail.com">
+                    Gmail</a><br />
+d72 6
+d81 4
+a84 2
+                <a href="{{ RESUME_LINK }}" title="Derek's resume">
+                    My resume</a>
 @
 
 

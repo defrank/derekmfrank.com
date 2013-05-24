@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: context_processors.py,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
+# $Id: context_processors.py,v 1.3 2013-05-23 17:32:41-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -25,10 +25,17 @@ def site(request):
         'SITE_URL': 'derekmfrank.com',
         'SITE_YEARS': site_years,
         # Me sspecific
-        'RESUME_LINK': '/static/doc/dmfrank-resume.pdf',
+        'GMAIL': 'derekmfrank@gmail.com',
+        'GMX': 'dmfrank@gmx.com',
+        #'RESUME_LINK': '/static/doc/dmfrank-resume.pdf',
+        'RESUME_LINK_PDF': 'https://docs.google.com/file/d/0B0oohzBQeJoFeGgzYnRoMkZGSW8/edit?usp=sharing',
+        'RESUME_LINK_DOCX': 'https://docs.google.com/file/d/0B0oohzBQeJoFMFRBSUxmbUZfdlk/edit?usp=sharing',
         'GITHUB_URL': 'https://github.com/dmfrank/',
         'BITBUCKET_URL': 'https://bitbucket.org/dmfrank/',
-        'LINKEDIN_URL': 'https://www.linkedin.com/pub/derek-frank/40/868/328',
+        #'STACKEXCHANGE_URL': 'https://stackexchange.com/users/1076669/dmfrank',
+        'STACKEXCHANGE_URL': 'https://stackexchange.com/users/1076669',
+        #'LINKEDIN_URL': 'https://www.linkedin.com/pub/derek-frank/40/868/328',
+        'LINKEDIN_URL': 'https://www.linkedin.com/in/derekmfrank',
         'FLAVORSME_URL': 'http://flavors.me/derekmfrank/',
         # Static content urls
         'JS_URL': '/static/js/',
