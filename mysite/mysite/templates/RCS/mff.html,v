@@ -1,9 +1,14 @@
-head	1.2;
+head	1.3;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.3
+date	2013.05.24.03.05.51;	author dmf;	state -;
+branches;
+next	1.2;
 
 1.2
 date	2013.05.18.00.33.56;	author dmfrank;	state -;
@@ -20,7 +25,7 @@ desc
 @@
 
 
-1.2
+1.3
 log
 @-
 @
@@ -28,7 +33,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: mff.html,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
+ * $Id: mff.html,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
  * Derek Frank (derekmfrank@@gmail.com)
  *
  * NAME
@@ -47,7 +52,7 @@ text
 {% block body_inner_content %}
     <div id="content-left">
         <div class="box" style="min-height: 340px;">
-            <h2>Michael F. Frank, Attorney at Law</h2>
+            <h2>Michael F. Frank | Attorney at Law</h2>
             <div class="center" >
                 <a href="http://www.greenghoti.com/mff/" title="">
                     <img src="{% static "img/mff/flyer-1.jpg" %}" alt="Employee" width="200" height="300" align="middle" />
@@ -80,13 +85,30 @@ text
                 (310) 279 - 2860 fax<br />
                 (310) 497 - 0120 direct<br />
             </ul>
-            <h3>More Information</h3>
+            <h3>Other Sources</h3>
             <ul>
                 <a href="http://www.ashouri.com/FrankBio.htm">Michael F. Frank</a>
             </ul>
         </div>
     </div>
 {% endblock %}
+@
+
+
+1.2
+log
+@-
+@
+text
+@d4 1
+a4 1
+ * $Id: mff.html,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
+d23 1
+a23 1
+            <h2>Michael F. Frank, Attorney at Law</h2>
+d56 1
+a56 1
+            <h3>More Information</h3>
 @
 
 
