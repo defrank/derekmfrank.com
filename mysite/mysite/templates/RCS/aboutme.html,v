@@ -1,9 +1,14 @@
-head	1.5;
+head	1.6;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.6
+date	2013.05.24.01.27.44;	author dmf;	state -;
+branches;
+next	1.5;
 
 1.5
 date	2013.05.24.01.20.37;	author dmf;	state -;
@@ -35,7 +40,7 @@ desc
 @@
 
 
-1.5
+1.6
 log
 @-
 @
@@ -43,7 +48,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: aboutme.html,v 1.4 2013-05-23 18:19:48-07 dmf - $
+ * $Id: aboutme.html,v 1.5 2013-05-23 18:20:37-07 dmf - $
  * Derek Frank (derekmfrank@@gmail.com)
  *
  * NAME
@@ -100,7 +105,7 @@ text
                 {% comment %}
                     <img class="center" src="{% static "img/personal-1.jpg" %}" alt="Me" width="200" height="300" />
                 {% endcomment %}
-                <img class="center" src="{% static "img/personal-2.jpg" %}" alt="Me" width="406" height="406" />
+                <img class="center" src="{% static "img/personal-2.jpg" %}" alt="Me" width="200" height="200" />
             </div>
             <h3>Contact</h3>
             <ul>
@@ -131,6 +136,20 @@ text
         </div>
     </div>
 {% endblock %}
+@
+
+
+1.5
+log
+@-
+@
+text
+@d4 1
+a4 1
+ * $Id: aboutme.html,v 1.4 2013-05-23 18:19:48-07 dmf - $
+d61 1
+a61 1
+                <img class="center" src="{% static "img/personal-2.jpg" %}" alt="Me" width="406" height="406" />
 @
 
 
