@@ -1,0 +1,584 @@
+/*******************************************************************************
+ * $Id: style.css,v 1.2 2013-05-17 17:33:56-07 dmfrank - $                                                                       
+ * Derek Frank (derekmfrank@gmail.com)                                          
+ *                                                                              
+ * Theme Name: dmf
+ *                                                                              
+ * Original CSS code written by archlinux.org.
+ * Taken and altered by Derek Frank.
+ *                                                                              
+ * NAME
+ *   style.css - Web Style
+ *
+ * DESCRIPTION
+ *   CSS stylesheet for derekmfrank.com.
+ *
+ ******************************************************************************/
+
+/* import the global navbar stylesheet */
+/* @import url('{{ CSS_URL }}navbar/navbar.css'); */
+@import url("navbar/navbar.css?v=132");
+
+/* simple reset */
+* {
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+}
+
+/* webtoolkit.clearfix.css */
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.clearfix {
+    display: inline-block;
+}
+html[xmlns] .clearfix {
+    display: block;
+}
+* html .clearfix {
+    height:  1%;
+}
+
+/* general styling */
+body {
+    min-width: 650px; /*1024px;*/
+    min-height: 550px;
+    background: #f6f9fc;
+    color: #001f00;
+    font: normal 100% sans-serif;
+    text-align: center;
+    margin: 0;
+}
+
+p {
+    margin: .33em 0 1em;
+}
+
+ol,
+ul {
+    margin-bottom: 1em;
+    padding-left: 2em;
+}
+
+    ul {
+        list-style: circle;
+    }
+
+code {
+    font: 1.2em monospace;
+    background: #ffd;
+    padding: 0.15em 0.25em;
+}
+
+pre {
+    font: 1.2em monospace;
+    border: 1px soled #bdb;
+    background: #dfd;
+    padding: 0.5em;
+    margin: 1em;
+}
+
+    pre code {
+        display: block;
+        background: none;
+    }
+
+blockquote {
+    margin: 1.5em 2em;
+}
+
+input {
+    vertical-align: middle;
+}
+
+select[multiple] {
+    padding: 1px 0;
+}
+
+select 
+
+    select[multiple] option {
+        padding: 0 0.5em 0 0.3em;
+    }
+
+input[type=submit] {
+    padding: 0 0.6em;
+}
+
+.clear {
+    clear: both;
+}
+
+.hide {
+    display: none;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #888;
+}
+
+img {
+    border: 0;
+}
+
+/* scale fonts down to a sane default (16 * .812 = 13px) */
+#content {
+    font-size: 0.812em;
+}
+
+/* link style */
+a {
+    text-decoration: none;
+}
+
+    a:link,
+    th a:visited {
+        color: #07b;
+    }
+
+    a:visited {
+        color: #666;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: #0000ff;
+    }
+
+    a:active {
+        color: #e90; /* e90 */
+    }
+
+/* special anchor elements */
+a.headerlink {
+    visibility: hidden;
+    padding-left: 0.5em;
+}
+
+h3:hover > a.headerlink {
+    visibility: visible;
+}
+
+/* headings */
+h1 {
+    font-size: 1.4em;
+    font-style: bold;
+    color: #000011;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #000000;
+    margin-bottom: 0.5em;
+    border-bottom: 1px dashed #33cc33;
+}
+
+h3 {
+    font-size: 1.2em;
+    /* margin-top: .5em; */
+}
+
+h4 {
+    font-size: 1.15em;
+    margin-top: 1em;
+}
+
+h5 {
+    font-size: 1em;
+    margin-top: 1em;
+}
+
+/* general layout */
+div#miscinfo {
+    margin: 0 auto;
+    float: left;
+    text-align: left;
+}
+
+div#container {
+    width: 1024px;
+    margin: auto;
+}
+
+div#content-wrapper {
+    width: 100%;
+    height: 100%;
+    /* min-height: 768px; */
+    /* margin-top: 20px;
+    padding-left seems to cause issues
+    padding-top: 14px;
+    padding-bottom: 14px;
+    */
+    text-align: left;
+}
+
+div#content-left-wrapper {
+    float: left;
+    width: 100%; /* req to keep content above sidebar in source code */
+}
+
+div#content {
+    width: 95%;
+    margin: 12px auto;
+    text_align: left;
+}
+
+div#content-left {
+    margin: 12px 340px 0 12px;
+    float: left;
+    width: 672px;
+}
+
+div#content-right {
+    float: left;
+    width: 300px;
+    margin-left: -312px;
+    margin-top: 12px;
+    margin-right: 12px;
+}
+
+div.box {
+    margin-bottom: 1.5em;
+    padding: 1em;  /* 0.65em; */
+    background: #ccffcc; /* ecf2f5; */
+    border: 1px solid #00ff00; /* #33cc33 */
+}
+
+footer, div#footer {
+    clear: both;
+    margin: 2em 0 1em;
+}
+
+    footer p, div#footer p {
+        margin: 0;
+        text-align: center !important;
+        font-size: 0.85em;
+    }
+
+/* alignment */
+div#center {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    width: auto !important;
+    text-align: center !important;
+}
+
+div.center,
+table.center,
+img.center {
+    width: auto;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+div.right,
+table.right,
+img.right {
+    width: auto;
+    text-align: right;
+    float: right;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p.center,
+td.center,
+th.center {
+    text-align: center;
+}
+
+/* table generics */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+    table .wrap {
+        white-space: normal;
+    }
+
+th,
+td {
+    white-space: nowrap;
+    text-align: left;
+}
+
+    th {
+        vertical-align: middle;
+        font-weight: bold;
+    }
+
+    td {
+        vertical-align: top;
+    }
+
+/* table pretty styles */
+table.pretty1 {
+    width: auto;
+    margin-top: 0.25em;
+    margin-bottom: 0.5em;
+    border-collapse: collapse;
+    border: 1px solid #33cc33;
+}
+
+    table.pretty1 th {
+        padding: 0.35em;
+        background: #e4eeff;
+        border: 1px solid #33cc33;
+    }
+
+    table.pretty1 td {
+        padding: 0.35em;
+        border: 1px dotted #33cc33;
+    }
+
+table.pretty2 {
+    width: auto;
+    margin-top: 0.25em;
+    margin-bottom: 0.5em;
+    border-collapse: collapse;
+    border: 1px solid #bbb;
+}
+
+    table.pretty2 th {
+        padding: 0.35em;
+        background: #eee;
+        border: 1px solid #bbb;
+    }
+
+        /* additional styles for JS sorting */
+        table.pretty2 th.tablesorter-header {
+            padding-right: 20px;
+            background-image: url(nosort.gif);
+            background-repeat: no-repeat;
+            background-position: center right;
+            cursor: pointer;
+        }
+
+        table.pretty2 th.tablesorter-headerSortDown {
+            background-image: url(desc.gif);
+        }
+
+        table.pretty2 th.tablesorter-headerSortUp {
+            background-image: url(asc.gif);
+        }
+
+    table.pretty2 td {
+        padding: 0.35em;
+        border: 1px dotted #bbb;
+    }
+
+/* definition lists */
+dl {
+    clear: both;
+}
+
+    dl dt,
+    dl dd {
+        margin-bottom: 4px;
+        padding: 8px 0px 4px;
+        font-weight: bold;
+        border-top: 1px dotted #bbb;
+    }
+
+    dl dt {
+        color: #333;
+        float:left;
+        padding-right:15px;
+    }
+
+/* forms and input styling */
+form p {
+    margin: 0.5em 0;
+}
+
+fieldset {
+    border: 0;
+}
+
+label {
+    width: 12em;
+    vertical-align: top;
+    display: inline-block;
+    font-weight: bold;
+}
+
+input[type=text],
+input[type=password],
+textarea {
+    padding: 0.10em;
+}
+
+form.general-form label,
+form.general-form .form-help {
+    width: 10em;
+    vertical-align: top;
+    display: inline-block;
+}
+
+form.general-form input[type=text],
+form.general-form textarea {
+    width: 45%;
+}
+
+/* dev navbar */
+div#dev-navbar {
+    margin: 1.5em 0;
+}
+
+    div#dev-navbar ul {
+        list-style: none;
+        margin: -0.5em 0;
+        padding: 0;
+    }
+
+    div#dev-navbar li {
+        display: inline;
+        margin: 0;
+        padding: 0;
+        font-size: 0.9em;
+    }
+
+        div#dev-navbar li a {
+            padding: 0 0.5em;
+            color: #07b;
+        }
+
+/* home: sidebar navigation */
+div#nav-sidebar ul {
+    list-style: none;
+    margin: 0.5em 0 0.5em 1em;
+    padding: 0;
+}
+
+/* home: sponsor banners */
+div#sponsors img {
+    padding: 0.3em 0;
+}
+
+/* home: sidebar components (navlist, sponsors, pkgsearch, etc) */
+div.widget {
+    margin-bottom: 1.5em;
+}
+
+/* artwork: logo images */
+#artwork img.inverted {
+    background: #333;
+    padding: 0;
+}
+
+#artwork div.imagelist img {
+    display: inline;
+    margin: 0.75em;
+}
+
+/* dev/TU biographies */
+div#bio-toc {
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+    div#bio-toc a {
+        white-space: nowrap;
+    }
+
+table.bio-entry {
+    width: 75%;
+    min-width: 640px;
+    margin: 0 auto;
+}
+
+    table.bio-entry td.pic {
+        vertical-align: top;
+        padding-right: 15px;
+        padding-top: 2.25em;
+    }
+
+        table.bio-entry td.pic img {
+            padding: 4px;
+            border: 1px solid #ccc;
+        }
+
+    table.bio-entry td h3 {
+        border-bottom: 1px dotted #ccc;
+        margin-bottom: 0.5em;
+    }
+
+    table.bio-entry table.bio {
+        margin-bottom: 2em;
+    }
+
+        table.bio-entry table.bio th {
+            color: #666;
+            font-weight: normal;
+            text-align: right;
+            padding-right: 0.5em;
+            vertical-align: top;
+            white-space: nowrap;
+        }
+
+        table.bio-entry table.bio td {
+            width: 100%;
+            padding-bottom: 0.25em;
+        }
+
+#navbar span.nb-separator,
+#navbar.nb-separator ul li.nb-separator {
+    color: #33cc33 !important;
+    font-weight: bold !important;
+}
+/* highlight current website in the navbar */
+#navbar.nb-home ul li#nb-home a,
+#navbar.nb-blog ul li#nb-blog a,
+#navbar.nb-portfolio ul li#nb-portfolio a,
+#navbar.nb-aboutme ul li#nb-aboutme a,
+#navbar.nb-mff ul li#nb-mff a,
+    color: #aaaaaa !important;
+    font-weight: bold !important;
+}
+
+/* visualizations page */
+.visualize-buttons {
+    margin: 0.5em 0.33em;
+}
+
+    .visualize-buttons button.active {
+        depressed: true;
+    }
+
+.visualize-chart {
+    position: relative;
+    height: 500px;
+    margin: 0.33em;
+}
+
+#visualize-repo .treemap-cell {
+    border: solid 1px white;
+    overflow: hidden;
+    position: absolute;
+}
+
+    #visualize-repo .treemap-cell span {
+        padding: 3px;
+        font-size: 0.85em;
+        line-height: 1em;
+    }
+
+#visualize-keys svg {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* specific content */
+img#mypic {
+    border: solid 5px #00ff00;
+}
