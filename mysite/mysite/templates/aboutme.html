@@ -60,31 +60,31 @@
                 {% endcomment %}
                 <img class="center" src="{% static "img/personal-2.jpg" %}" alt="Me" width="406" height="406" />
             </div>
-            <h3>Contact & Other Information</h3>
+            <h3>Contact</h3>
             <ul>
                 Derek M. Frank<br />
                 Software Engineer<br />
-                <a href="mailto:{{ GMAIL }}" title="Email Derek Frank: {{ GMAIL }}">
-                    GMail</a> | 
-                <a href="mailto:{{ GMX }}" title="Email Derek Frank: {{ GMX }}">
-                    GMX</a><br />
-                <a href="{{ LINKEDIN_URL }}" title="Derek's LinkedIn profile">
-                    LinkedIn</a> | 
-                <a href="{{ FLAVORSME_URL }}" title="Derek's Flavors.me profile">
-                    Flavors.me</a><br />
-                <a href="{{ STACKEXCHANGE_URL }}" title="Derek's StackExchange profile">
-                    LinkedIn</a><br />
-                <a href="{{ GITHUB_URL }}" title="Derek's GitHub repository">
-                    GitHub</a> | 
-                <a href="{{ BITBUCKET_URL }}" title="Derek's BitBucket repository">
-                    BitBucket</a><br />
+                <a href="mailto:{{ GMAIL }}" title="Email Derek Frank: {{ GMAIL }}">Gmail</a> | 
+                <a href="mailto:{{ GMX }}" title="Email Derek Frank: {{ GMX }}">GMX</a><br />
+            </ul>
+            <h3>Repositories</h3>
+            <ul>
+                <a href="{{ GITHUB_URL }}" title="Derek's GitHub repository">GitHub</a><br />
+                <a href="{{ BITBUCKET_URL }}" title="Derek's BitBucket repository">BitBucket</a><br />
             </ul>
             <h3>Documents</h3>
             <ul>
-                My resume: 
-                    <a href="{{ RESUME_LINK_PDF }}" title="Derek's resume">PDF</a>
-                    <a href="{{ RESUME_LINK_DOCX }}" title="Derek's resume">DOCX</a>
-                        
+                My resume:
+                <ul>
+                    <li><a href="{{ RESUME_LINK_PDF }}" title="Derek's resume">PDF</a></li>
+                    <li><a href="{{ RESUME_LINK_DOCX }}" title="Derek's resume">DOCX</a></li>
+                </ul>
+            </ul>
+            <h3>Other Sources</h3>
+            <ul>
+                <a href="{{ STACKEXCHANGE_URL }}" title="Derek's StackExchange profile">StackExchange</a><br />
+                <a href="{{ LINKEDIN_URL }}" title="Derek's LinkedIn profile">LinkedIn</a><br />
+                <a href="{{ FLAVORSME_URL }}" title="Derek's Flavors.me profile">Flavors.me</a><br />
             </ul>
         </div>
     </div>
