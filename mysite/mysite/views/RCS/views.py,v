@@ -1,9 +1,14 @@
-head	1.2;
+head	1.3;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.3
+date	2013.05.24.22.40.36;	author dmf;	state -;
+branches;
+next	1.2;
 
 1.2
 date	2013.05.18.00.33.56;	author dmfrank;	state -;
@@ -20,12 +25,12 @@ desc
 @@
 
 
-1.2
+1.3
 log
 @-
 @
 text
-@# $Id: $
+@# $Id: views.py,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -54,20 +59,6 @@ def home(request):
   message = ''
   dt = datetime.datetime.now()
   template = 'home.html'
-  context = {
-    'errors': errors,
-    'message': message,
-    'current_datetime': dt
-  }
-  return response(request, template, context)
-
-
-# Blog page view
-def blog(request):
-  errors = []
-  message = ''
-  dt = datetime.datetime.now()
-  template = 'blog.html'
   context = {
     'errors': errors,
     'message': message,
@@ -116,6 +107,32 @@ def mff(request):
     'current_datetime': dt
   }
   return response(request, template, context)
+@
+
+
+1.2
+log
+@-
+@
+text
+@d1 1
+a1 1
+# $Id: $
+a29 14
+  context = {
+    'errors': errors,
+    'message': message,
+    'current_datetime': dt
+  }
+  return response(request, template, context)
+
+
+# Blog page view
+def blog(request):
+  errors = []
+  message = ''
+  dt = datetime.datetime.now()
+  template = 'blog.html'
 @
 
 

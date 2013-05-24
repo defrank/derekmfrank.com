@@ -1,9 +1,14 @@
-head	1.2;
+head	1.3;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.3
+date	2013.05.24.22.40.36;	author dmf;	state -;
+branches;
+next	1.2;
 
 1.2
 date	2013.05.18.00.33.56;	author dmfrank;	state -;
@@ -20,12 +25,12 @@ desc
 @@
 
 
-1.2
+1.3
 log
 @-
 @
 text
-@# $Id: $
+@# $Id: settings.py,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -111,7 +116,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    STATIC_ROOT,
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'staticfiles').replace('\\','/')),
 )
 
 # List of finder classes that know how to find static files in
@@ -170,7 +175,11 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.abspath(os.path.join(PACKAGE_ROOT, 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'webmaster', 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'blog/templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'portfolio/templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'aboutme/templates').replace('\\','/')),
 )
 
 INSTALLED_APPS = (
@@ -182,14 +191,20 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # Uncomment the next line to enable the admin:
-    #'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
-    #'django.contrib.admindocs',
+    'django.contrib.admindocs',
 
     # external
+    'django_evolution',
 
     # project
+    'blog',
+    'portfolio',
+    'aboutme',
     'webmaster',
+    'staticfiles',
+    'templates',
     'mysite',
 )
 
@@ -228,6 +243,32 @@ LOGGING = {
 #)
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+@
+
+
+1.2
+log
+@-
+@
+text
+@d1 1
+a1 1
+# $Id: $
+d87 1
+a87 1
+    STATIC_ROOT,
+d146 5
+a150 1
+    os.path.abspath(os.path.join(PACKAGE_ROOT, 'templates').replace('\\','/')),
+d162 1
+a162 1
+    #'django.contrib.admin',
+d164 1
+a164 1
+    #'django.contrib.admindocs',
+d167 1
+d170 3
+d174 2
 @
 
 

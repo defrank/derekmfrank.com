@@ -2,7 +2,7 @@
 {% comment %}
  *
  * $Id: blog.html,v 1.3 2013-05-23 19:47:36-07 dmf - $
- * Derek Frank (derekmfrank@gmail.com)
+ * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
  *     blog.html
@@ -20,20 +20,23 @@
 {% block body_inner_content %}
     <div id="content-left">
         <div class="box" >
-            <h2>Blog</h2>
-            {% for post in posts %}
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.timestamp }}</p>
-                {% if post.image_url %}
-                    <div class="center">
-                        <img src="{{ post.image_url }}" alt="Blog Post {{ post.id }} Image" />
-                    </div>
-                {% endif %}
-                <ul>
-                    <p>{{ post.body }}</p>
-                </ul>
-                {% if not forloop.last %}{% endif %}
-            {% endfor %}
+            {% block blog_content %}
+                <h2>Blog</h2>
+                {% for post in posts %}
+                    {% include blogpost.html %}
+                    <h3>{{ post.title }}</h3>
+                    <p>{{ post.timestamp }}</p>
+                    {% if post.image_url %}
+                        <div class="center">
+                            <img src="{{ post.image_url }}" alt="Blog Post {{ post.id }} Image" />
+                        </div>
+                    {% endif %}
+                    <ul>
+                        <p>{{ post.body }}</p>
+                    </ul>
+                    {% if not forloop.last %}{% endif %}
+                {% endfor %}
+            {% endblock %}
         </div>
     </div>
 

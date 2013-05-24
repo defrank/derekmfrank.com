@@ -1,5 +1,27 @@
-# $Id: views.py,v 1.1 2013-05-24 15:40:36-07 dmf - $
-# Derek Frank (dmfrank@gmx.com)
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.05.24.22.40.36;	author dmf;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@# $Id: $
+# Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
 #   views.py - webmaster
@@ -24,3 +46,4 @@ def bing(request):
     template = 'BingSiteAuth.xml'
     context = {}
     return render_to_response(template, context)
+@
