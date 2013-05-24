@@ -23,17 +23,7 @@
             {% block blog_content %}
                 <h2>Blog</h2>
                 {% for post in posts %}
-                    {% include blogpost.html %}
-                    <h3>{{ post.title }}</h3>
-                    <p>{{ post.timestamp }}</p>
-                    {% if post.image_url %}
-                        <div class="center">
-                            <img src="{{ post.image_url }}" alt="Blog Post {{ post.id }} Image" />
-                        </div>
-                    {% endif %}
-                    <ul>
-                        <p>{{ post.body }}</p>
-                    </ul>
+                    {% include "blogpost.html" %}
                     {% if not forloop.last %}{% endif %}
                 {% endfor %}
             {% endblock %}
