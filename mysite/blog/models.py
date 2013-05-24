@@ -15,10 +15,11 @@ from django.contrib import admin
 ## BLOG
 
 CATEGORY_CHOICES = (
-    ('CO', 'Cosmos'),
-    ('TC', 'Technology'),
-    ('CS', 'Computer Science'),
-    ('PO', 'Politics'),
+    (u'OT', u'Other'),
+    (u'CO', u'Cosmos'),
+    (u'TC', u'Technology'),
+    (u'CS', u'Computer Science'),
+    (u'PO', u'Politics'),
 )
 
 # Post
@@ -36,7 +37,7 @@ class Post(models.Model):
 class Link(models.Model):
     title = models.CharField(max_length=100)
     url = models.URLField(verify_exists=True)
-    category = models.CharField(max_length=2, choices=CATEGORY_CHOICES)
+    category = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=u'OT')
     timestamp = models.DateTimeField()
 
     def __unicode__(self):
