@@ -1,9 +1,14 @@
-head	1.6;
+head	1.7;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.7
+date	2013.05.24.02.21.46;	author dmf;	state -;
+branches;
+next	1.6;
 
 1.6
 date	2013.05.24.01.27.44;	author dmf;	state -;
@@ -40,7 +45,7 @@ desc
 @@
 
 
-1.6
+1.7
 log
 @-
 @
@@ -48,7 +53,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: aboutme.html,v 1.5 2013-05-23 18:20:37-07 dmf - $
+ * $Id: aboutme.html,v 1.6 2013-05-23 18:27:44-07 dmf - $
  * Derek Frank (derekmfrank@@gmail.com)
  *
  * NAME
@@ -130,12 +135,25 @@ text
             <h3>Other Sources</h3>
             <ul>
                 <a href="{{ STACKEXCHANGE_URL }}" title="Derek's StackExchange profile">StackExchange</a><br />
+                <a href="{{ BEYOND_URL }}" title="Derek's Beyond profile">Beyond</a><br />
                 <a href="{{ LINKEDIN_URL }}" title="Derek's LinkedIn profile">LinkedIn</a><br />
                 <a href="{{ FLAVORSME_URL }}" title="Derek's Flavors.me profile">Flavors.me</a><br />
             </ul>
         </div>
     </div>
 {% endblock %}
+@
+
+
+1.6
+log
+@-
+@
+text
+@d4 1
+a4 1
+ * $Id: aboutme.html,v 1.5 2013-05-23 18:20:37-07 dmf - $
+d86 1
 @
 
 

@@ -1,9 +1,14 @@
-head	1.3;
+head	1.4;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.4
+date	2013.05.24.02.21.46;	author dmf;	state -;
+branches;
+next	1.3;
 
 1.3
 date	2013.05.24.00.32.41;	author dmf;	state -;
@@ -25,13 +30,13 @@ desc
 @@
 
 
-1.3
+1.4
 log
 @-
 @
 text
 @# -*- coding: utf-8 -*-
-# $Id: context_processors.py,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
+# $Id: context_processors.py,v 1.3 2013-05-23 17:32:41-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -66,6 +71,7 @@ def site(request):
         'BITBUCKET_URL': 'https://bitbucket.org/dmfrank/',
         #'STACKEXCHANGE_URL': 'https://stackexchange.com/users/1076669/dmfrank',
         'STACKEXCHANGE_URL': 'https://stackexchange.com/users/1076669',
+        'BEYOND_URL': 'http://www.beyond.com/_dmf_',
         #'LINKEDIN_URL': 'https://www.linkedin.com/pub/derek-frank/40/868/328',
         'LINKEDIN_URL': 'https://www.linkedin.com/in/derekmfrank',
         'FLAVORSME_URL': 'http://flavors.me/derekmfrank/',
@@ -82,6 +88,18 @@ def site(request):
         'MFF_URL': '/mff/',
     }
     return context
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: context_processors.py,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
+d37 1
 @
 
 
