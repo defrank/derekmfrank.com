@@ -233,6 +233,7 @@ div#content {
 div#content-left {
     margin: 12px 340px 0 12px;
     float: left;
+    width: 672px;
 }
 
 div#content-right {
