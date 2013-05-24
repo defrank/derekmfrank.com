@@ -1,9 +1,14 @@
-head	1.4;
+head	1.5;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.5
+date	2013.05.24.01.20.37;	author dmf;	state -;
+branches;
+next	1.4;
 
 1.4
 date	2013.05.24.01.19.48;	author dmf;	state -;
@@ -30,7 +35,7 @@ desc
 @@
 
 
-1.4
+1.5
 log
 @-
 @
@@ -38,7 +43,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: aboutme.html,v 1.3 2013-05-23 17:32:41-07 dmf - $
+ * $Id: aboutme.html,v 1.4 2013-05-23 18:19:48-07 dmf - $
  * Derek Frank (derekmfrank@@gmail.com)
  *
  * NAME
@@ -97,10 +102,51 @@ text
                 {% endcomment %}
                 <img class="center" src="{% static "img/personal-2.jpg" %}" alt="Me" width="406" height="406" />
             </div>
-            <h3>Contact & Other Information</h3>
+            <h3>Contact</h3>
             <ul>
                 Derek M. Frank<br />
                 Software Engineer<br />
+                <a href="mailto:{{ GMAIL }}" title="Email Derek Frank: {{ GMAIL }}">Gmail</a> | 
+                <a href="mailto:{{ GMX }}" title="Email Derek Frank: {{ GMX }}">GMX</a><br />
+            </ul>
+            <h3>Repositories</h3>
+            <ul>
+                <a href="{{ GITHUB_URL }}" title="Derek's GitHub repository">GitHub</a><br />
+                <a href="{{ BITBUCKET_URL }}" title="Derek's BitBucket repository">BitBucket</a><br />
+            </ul>
+            <h3>Documents</h3>
+            <ul>
+                My resume:
+                <ul>
+                    <li><a href="{{ RESUME_LINK_PDF }}" title="Derek's resume">PDF</a></li>
+                    <li><a href="{{ RESUME_LINK_DOCX }}" title="Derek's resume">DOCX</a></li>
+                </ul>
+            </ul>
+            <h3>Other Sources</h3>
+            <ul>
+                <a href="{{ STACKEXCHANGE_URL }}" title="Derek's StackExchange profile">StackExchange</a><br />
+                <a href="{{ LINKEDIN_URL }}" title="Derek's LinkedIn profile">LinkedIn</a><br />
+                <a href="{{ FLAVORSME_URL }}" title="Derek's Flavors.me profile">Flavors.me</a><br />
+            </ul>
+        </div>
+    </div>
+{% endblock %}
+@
+
+
+1.4
+log
+@-
+@
+text
+@d4 1
+a4 1
+ * $Id: aboutme.html,v 1.3 2013-05-23 17:32:41-07 dmf - $
+d63 1
+a63 1
+            <h3>Contact & Other Information</h3>
+d67 7
+a73 14
                 <a href="mailto:{{ GMAIL }}" title="Email Derek Frank: {{ GMAIL }}">
                     GMail</a> | 
                 <a href="mailto:{{ GMX }}" title="Email Derek Frank: {{ GMX }}">
@@ -115,17 +161,12 @@ text
                     GitHub</a> | 
                 <a href="{{ BITBUCKET_URL }}" title="Derek's BitBucket repository">
                     BitBucket</a><br />
-            </ul>
-            <h3>Documents</h3>
-            <ul>
+d77 11
+a87 4
                 My resume: 
                     <a href="{{ RESUME_LINK_PDF }}" title="Derek's resume">PDF</a>
                     <a href="{{ RESUME_LINK_DOCX }}" title="Derek's resume">DOCX</a>
                         
-            </ul>
-        </div>
-    </div>
-{% endblock %}
 @
 
 
