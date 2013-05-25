@@ -34,18 +34,6 @@ def home(request):
   return response(request, template, context)
 
 
-# Portfolio page view
-def portfolio(request):
-  errors = []
-  dt = datetime.datetime.now()
-  template = 'portfolio.html'
-  context = {
-    'errors': errors,
-    'current_datetime': dt
-  }
-  return response(request, template, context)
-
-
 # About Me page view
 def aboutme(request):
   errors = []
