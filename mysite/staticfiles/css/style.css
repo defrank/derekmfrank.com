@@ -177,7 +177,7 @@ h2 {
     font-size: 1.5em;
     color: #000000;
     margin-bottom: 0.5em;
-    border-bottom: 1px solid #33cc33;
+    border-bottom: 1px solid #00ff00; /* 33cc33 */
 }
 
 h3 {
@@ -580,11 +580,16 @@ table.bio-entry {
 
 
 /* specific content */
+span.timestamp {
+    font-size: .8em;
+}
+
 img#mypic {
     border: solid 5px #00ff00;
 }
 
 .blogpostborder {
-    border-bottom: 1px dashed white;
-    width: 95%;
+    border-top: 1px dashed #00ff00;
+    max-width: 95%;
+    margin-bottom: 10px;
 }

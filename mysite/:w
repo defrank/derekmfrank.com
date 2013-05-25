@@ -18,7 +18,8 @@
     <div id="content">
         <div class="box" >
             <h2>Derek M. Frank's Personal Website</h2>
-            {% for message in content_messages %}
+            {% if messages %}{{ messages }}{% endif %}
+            {% for message in messages %}
                 <h4>{{ message.title }}:</h4>
                 {% autoescape off %}<ul>{{ message.body }}</ul>{% endautoescape %}
                 <span class="timestamp">{{ message.timestamp }}</span>

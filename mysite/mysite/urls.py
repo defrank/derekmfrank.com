@@ -22,15 +22,12 @@ urlpatterns = patterns('',
     # Base Views
     url(r'^$', views.home, name='home'),
     url(r'^blog/', include('blog.urls')),
-    url(r'^portfolio/$', views.portfolio, name='portfolio'),
+    url(r'^portfolio/', include('portfolio.urls')),
     url(r'^aboutme/$', views.aboutme, name='aboutme'),
     url(r'^mff/$', views.mff, name='mff'),
 
     # Media
     url(r'^static/(?P<path>.*)$', views_static_serve, { 'document_root': settings.STATIC_ROOT, }),
-
-    # Example:
-    # (r'^mysite/', include('mysite.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

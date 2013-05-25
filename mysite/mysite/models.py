@@ -9,18 +9,22 @@
 #
 
 from django.db import models
+from django.contrib import admin
 
-## BLOG
-class BlogPost(models.Model):
+
+## HOME CONTENT
+
+class Message(models.Model):
     title = models.CharField(max_length=150)
     body = models.TextField()
     timestamp = models.DateTimeField()
 
+    def __unicode__(self):
+        return self.title
 
-## PORTFOLIO
-class Portfolio(models.Model):
-    title = models.CharField(max_length=150)
+class MessageAdmin(admin.ModelAdmin):
+    list_display = ('title', 'timestamp')
 
-class PortfolioEntry(models.Model):
-    title = models.CharField(max_length=150)
-    body = models.TextField()
+
+## REGISTER
+admin.site.register(Message, MessageAdmin)

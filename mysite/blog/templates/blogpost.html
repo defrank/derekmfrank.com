@@ -13,7 +13,7 @@
 {% load static from staticfiles %}
 
 <h3>{{ post.title }}</h3>
-<p>{{ post.timestamp }}</p>
+<span class="timestamp">{{ post.timestamp }}</span>
 {% if post.image_url %}
     <div class="center">
         <img src="{{ post.image_url }}" alt="Blog Post {{ post.id }} Image" />

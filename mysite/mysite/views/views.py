@@ -20,17 +20,16 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.sites.models import get_current_site
 import datetime
 
+from mysite.models import Message
 
 # Home page view
 def home(request):
   errors = []
-  message = ''
-  dt = datetime.datetime.now()
+  messages = Message.objects.order_by('timestamp').reverse()
   template = 'home.html'
   context = {
     'errors': errors,
-    'message': message,
-    'current_datetime': dt
+    'content_messages': messages,
   }
   return response(request, template, context)
 
@@ -38,12 +37,10 @@ def home(request):
 # Portfolio page view
 def portfolio(request):
   errors = []
-  message = ''
   dt = datetime.datetime.now()
   template = 'portfolio.html'
   context = {
     'errors': errors,
-    'message': message,
     'current_datetime': dt
   }
   return response(request, template, context)
@@ -52,12 +49,10 @@ def portfolio(request):
 # About Me page view
 def aboutme(request):
   errors = []
-  message = ''
   dt = datetime.datetime.now()
   template = 'aboutme.html'
   context = {
     'errors': errors,
-    'message': message,
     'current_datetime': dt
   }
   return response(request, template, context)
@@ -66,12 +61,10 @@ def aboutme(request):
 # MFF page view
 def mff(request):
   errors = []
-  message = ''
   dt = datetime.datetime.now()
   template = 'mff.html'
   context = {
     'errors': errors,
-    'message': message,
     'current_datetime': dt
   }
   return response(request, template, context)

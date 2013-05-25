@@ -53,6 +53,5 @@ class LinkAdmin(admin.ModelAdmin):
 
 
 ## ADMIN REGISTER
-
 admin.site.register(Post, PostAdmin)
 admin.site.register(Link, LinkAdmin)
