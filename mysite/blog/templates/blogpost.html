@@ -20,5 +20,7 @@
     </div>
 {% endif %}
 <ul>
-    <p>{{ post.body }}</p>
+    {% autoescape off %}
+    <p>{{ post.body|linebreaks }}</p>
+    {% endautoescape %}
 </ul>

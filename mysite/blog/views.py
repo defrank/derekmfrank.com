@@ -3,22 +3,20 @@ from django.conf import settings
 from django.contrib.sites.models import get_current_site
 import datetime
 
-from blog.models import Post, Link
+from blog.models import CATEGORY_CHOICES, Post, Link
 
 
 # Blog page view
 def blog(request):
     errors = []
-    posts = Post.objects.all()
-    links = []
-    choices = Link.objects.values_list('category', flat=True).distinct()
-    for choice in choices:
-        for link in Link.objects.filter(category=choice)
-            links.append(link)
+    posts = Post.objects.order_by('timestamp').reverse()
+    links = Link.objects.order_by('timestamp').reverse()
+    #choices = Link.objects.values_list('category', flat=True).distinct()
     template = 'blog.html'
     context = {
         'errors': errors,
-        'choices': choices,
+        #'choices': choices,
+        'categories': CATEGORY_CHOICES,
         'posts': posts,
         'links': links,
     }
@@ -28,10 +26,11 @@ def blog(request):
 def post_detail(request, post_id):
     errors = []
     post = Post.objects.get(id=post_id)
-    links = Link.objects.all()
+    links = Link.objects.order_by('timestamp').reverse()
     template = 'post_detail.html'
     context = {
         'errors': errors,
+        'categories': CATEGORY_CHOICES,
         'post': post,
         'links': links,
     }

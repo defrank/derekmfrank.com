@@ -177,7 +177,7 @@ h2 {
     font-size: 1.5em;
     color: #000000;
     margin-bottom: 0.5em;
-    border-bottom: 1px dashed #33cc33;
+    border-bottom: 1px solid #33cc33;
 }
 
 h3 {
@@ -249,6 +249,7 @@ div.box {
     padding: 1em;  /* 0.65em; */
     background: #ccffcc; /* ecf2f5; */
     border: 1px solid #00ff00; /* #33cc33 */
+    overflow: hidden;
 }
 
 footer, div#footer {
@@ -581,4 +582,9 @@ table.bio-entry {
 /* specific content */
 img#mypic {
     border: solid 5px #00ff00;
+}
+
+.blogpostborder {
+    border-bottom: 1px dashed white;
+    width: 95%;
 }

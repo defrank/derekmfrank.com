@@ -24,7 +24,7 @@
                 <h2>Blog</h2>
                 {% for post in posts %}
                     {% include "blogpost.html" %}
-                    {% if not forloop.last %}{% endif %}
+                    {% if not forloop.last %}<div class="blogpostborder"></div>{% endif %}
                 {% endfor %}
             {% endblock %}
         </div>

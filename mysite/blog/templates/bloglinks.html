@@ -11,11 +11,11 @@
  *
 {% endcomment %}
 
-{% for choice in choices %}
-    <h5>{{ choice }}</h5>
+{% for c, k in categories %}
+    <h5>{{ k }}</h5>
     <ul>
         {% for link in links %}
-            {% if link.category == choice %}
+            {% if link.category == c %}
                 <li><a href="{{ link.url }}" title="">{{ link.title }}</a></li>
             {% endif %}
         {% endfor %}

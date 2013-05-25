@@ -15,18 +15,17 @@ from django.contrib import admin
 ## BLOG
 
 CATEGORY_CHOICES = (
-    (u'OT', u'Other'),
     (u'CO', u'Cosmos'),
     (u'TC', u'Technology'),
-    (u'CS', u'Computer Science'),
+    (u'LH', u'Life Hacks'),
     (u'PO', u'Politics'),
+    (u'OT', u'Other'),
 )
 
 # Post
-
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    image_url = models.URLField(verify_exists=True, null=True)
+    image_url = models.URLField(blank=True, verify_exists=True, null=True)
     body = models.TextField()
     timestamp = models.DateTimeField()
     
@@ -50,7 +49,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'timestamp')
 
 class LinkAdmin(admin.ModelAdmin):
-    list_display = ('title', 'timestamp')
+    list_display = ('title', 'category', 'timestamp')
 
 
 ## ADMIN REGISTER
