@@ -48,11 +48,11 @@
 }
 /* IE6 doesn't support alpha PNGs so we serve it a GIF */
 #navbarlogo { 
-    background:                 url('logo.gif') no-repeat !important; 
+    background:                 url('/static/img/logo/logo.gif') no-repeat !important; 
 }
 /* and use a proper PNG for all other modern browsers */
 html > body #navbarlogo { 
-    background:                 url('logo.png') no-repeat !important; 
+    background:                 url('/static/img/logo/logo.png') no-repeat !important; 
 }
 
 /* move the heading/paragraph text offscreen */
@@ -81,7 +81,15 @@ html > body #navbarlogo {
     margin:                     auto !important; 
     padding:                    0 !important; 
 }
-#navbarmenu ul li { 
+#navbarwidget ul { 
+    display:                    inline !important; 
+    float:                      right !important; 
+    list-style:                 none !important; 
+    margin:                     auto !important; 
+    padding:                    0 !important; 
+}
+#navbarmenu ul li,
+#navbarwidget ul li { 
     color:                      #ffffff; 
     float:                      left !important; 
     font-size:                  1em /*12px*/ !important; 
@@ -92,11 +100,13 @@ html > body #navbarlogo {
 }
 
 /* style the links */
-#navbarmenu ul#navbarlist li a { 
+#navbarmenu ul#navbarlist li a,
+#navbarwidget ul#navbaritems li a { 
     color:                      #ffffff; 
     font-weight:                bold !important; 
     text-decoration:            none; 
 }
-#navbarmenu ul li a:hover { 
+#navbarmenu ul li a:hover,
+#navbarwidget ul li a:hover { 
     color:                      #aaaaaa !important; 
 }

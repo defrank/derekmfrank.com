@@ -21,19 +21,19 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Base Views
     url(r'^$', views.home, name='home'),
-    url(r'^blog/', include('blog.urls')),
-    url(r'^portfolio/', include('portfolio.urls')),
-    url(r'^aboutme/$', views.aboutme, name='aboutme'),
-    url(r'^mff/$', views.mff, name='mff'),
+    url(r'^blog/?', include('blog.urls')),
+    url(r'^portfolio/?', include('portfolio.urls')),
+    url(r'^aboutme/?$', views.aboutme, name='aboutme'),
+    url(r'^mff/?$', views.mff, name='mff'),
 
     # Media
     url(r'^static/(?P<path>.*)$', views_static_serve, { 'document_root': settings.STATIC_ROOT, }),
 
     # Uncomment the admin/doc line below to enable admin documentation:
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^admin/doc/?', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/?', include(admin.site.urls)),
 )
 
 # Media files serve only with DEBUG mode set

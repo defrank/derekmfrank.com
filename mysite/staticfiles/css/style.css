@@ -17,7 +17,7 @@
 
 /* import the global navbar stylesheet */
 /* @import url('{{ CSS_URL }}navbar/navbar.css'); */
-@import url("navbar/navbar.css?v=132");
+@import url("navbar.css?v=132");
 
 /* simple reset */
 * {
@@ -162,10 +162,6 @@ a.headerlink {
     padding-left: 0.5em;
 }
 
-h3:hover > a.headerlink {
-    visibility: visible;
-}
-
 /* headings */
 h1 {
     font-size: 1.4em;
@@ -180,9 +176,18 @@ h2 {
     border-bottom: 1px solid #00ff00; /* 33cc33 */
 }
 
+h2.sub {
+    border-bottom: 1px dashed #00ff00;
+    font-size: 1.3em;
+}
+
 h3 {
     font-size: 1.2em;
     /* margin-top: .5em; */
+}
+
+h3:hover > a.headerlink {
+    visibility: visible;
 }
 
 h4 {

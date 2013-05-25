@@ -1,33 +1,6 @@
-head	1.2;
-access;
-symbols;
-locks;
-comment	@# @;
-
-
-1.2
-date	2013.05.18.00.33.56;	author dmfrank;	state -;
-branches;
-next	1.1;
-
-1.1
-date	2013.04.19.21.12.27;	author dmfrank;	state -;
-branches;
-next	;
-
-
-desc
-@@
-
-
-1.2
-log
-@-
-@
-text
-@/*******************************************************************************
- * $Id: navbar.css,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
- * Derek Frank (derekmfrank@@gmail.com)
+/*******************************************************************************
+ * $Id: navbar.css,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
+ * Derek Frank (derekmfrank@gmail.com)
  *
  * Theme Name: derekmfrank
  *
@@ -75,11 +48,11 @@ text
 }
 /* IE6 doesn't support alpha PNGs so we serve it a GIF */
 #navbarlogo { 
-    background:                 url('logo.gif') no-repeat !important; 
+    background:                 url('/static/img/logo/logo.gif') no-repeat !important; 
 }
 /* and use a proper PNG for all other modern browsers */
 html > body #navbarlogo { 
-    background:                 url('logo.png') no-repeat !important; 
+    background:                 url('/static/img/logo/logo.png') no-repeat !important; 
 }
 
 /* move the heading/paragraph text offscreen */
@@ -108,7 +81,15 @@ html > body #navbarlogo {
     margin:                     auto !important; 
     padding:                    0 !important; 
 }
-#navbarmenu ul li { 
+#navbarwidget ul { 
+    display:                    inline !important; 
+    float:                      right !important; 
+    list-style:                 none !important; 
+    margin:                     auto !important; 
+    padding:                    0 !important; 
+}
+#navbarmenu ul li,
+#navbarwidget ul li { 
     color:                      #ffffff; 
     float:                      left !important; 
     font-size:                  1em /*12px*/ !important; 
@@ -119,53 +100,13 @@ html > body #navbarlogo {
 }
 
 /* style the links */
-#navbarmenu ul#navbarlist li a { 
+#navbarmenu ul#navbarlist li a,
+#navbarwidget ul#navbaritems li a { 
     color:                      #ffffff; 
     font-weight:                bold !important; 
     text-decoration:            none; 
 }
-#navbarmenu ul li a:hover { 
+#navbarmenu ul li a:hover,
+#navbarwidget ul li a:hover { 
     color:                      #aaaaaa !important; 
 }
-@
-
-
-1.1
-log
-@-
-@
-text
-@d2 1
-a2 1
- * $Id: navbar.css,v 1.63 2013-04-11 18:39:02-07 dmfrank - $
-d24 9
-a32 1
-#navbar { height: 30px !important; width: 100% !important; margin 0 !important; padding: 6px 0 !important; background: #00aa00 !important; border-bottom: 5px #00ff00 solid !important; }
-d35 5
-a39 1
-#navbarcontainer { width: 1000px !important; margin 0 auto !important; padding: 0 14px !important;}
-d42 7
-a48 1
-#navbarlogo { float: left !important; margin: 0 10px !important; padding: 0 !important; height: 24px !important; width: 39px !important; }
-d50 3
-a52 1
-#navbarlogo { backround: url('logo.gif') no-repeat !important; }
-d54 3
-a56 1
-html > body #navbarlogo { background: url('logo.png') no-repeat !important; }
-d59 9
-a67 2
-#navbarlogo p { margin: 0 !important; padding: 0 !important; text-indent: -9999px !important; }
-#navbarlogo h1 { margin: 0 !important; padding: 0 !important; text-indent: -9999px !important; }
-d70 5
-a74 1
-#navbarlogo a { display: block !important; height: 24px !important; width: 39px !important; }
-d77 16
-a92 2
-#navbarmenu ul { display: inline !important; float: left !important; list-style: none !important; margin: auto !important; padding: 0 !important; }
-#navbarmenu ul li { color: #ffffff; float: left !important; font-size: 1em /*12px*/ !important; font-family: sans-serif !important; line-height: 35px !important; padding-right: 8px !important; padding-left: 8px !important; }
-d95 8
-a102 2
-#navbarmenu  ul#navbarlist li a { color: #ffffff; font-weight: bold !important; text-decoration: none; }
-#navbarmenu  ul li a:hover { color: #aaaaaa !important; }
-@
