@@ -44,8 +44,8 @@ DIR_IMG         = ${DIR_STATIC}img/
 DIR_DOC         = ${DIR_STATIC}doc/
 DIR_JS          = ${DIR_STATIC}js/
 DIR_ICO         = ${DIR_STATIC}ico/
-DIR_LOGO        = ${DIR_STATIC}css/navbar/
 DIR_CSS         = ${DIR_STATIC}css/
+DIR_LOGO        = ${DIR_IMG}logo/
 DIR_WEBMASTER   = ${DIR_APPS}webmaster/
 
 ## DJANGO
@@ -66,7 +66,7 @@ DOCFILES        =
 JSFILES         = 
 ICOFILES        = ${DIR_ICO}favicon.ico         ${DIR_ICO}favicon.gif
 LOGOFILES       = 
-CSSFILES        = ${DIR_CSS}style.css           ${DIR_CSS}navbar/navbar.css
+CSSFILES        = ${DIR_CSS}style.css           ${DIR_CSS}navbar.css
 STATICFILES     = 
 APP_STATIC      = ${DIR_STATIC}__init__.py      ${DIR_STATIC}urls.py           \
                   ${DIR_STATIC}models.py        ${DIR_STATIC}views.py          \
