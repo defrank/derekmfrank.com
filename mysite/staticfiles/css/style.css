@@ -588,6 +588,7 @@ table.bio-entry {
 /* specific content */
 span.timestamp {
     font-size: .8em;
+    font-style: italic;
 }
 
 img#mypic {

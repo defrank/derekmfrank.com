@@ -14,6 +14,16 @@ from django.contrib import admin
 
 ## PORTFOLIO
 
+PROFILE_CHOICES = (
+    ('SE', 'StackExchange'),
+    ('LI', 'LinkedIn'),
+    ('FM', 'Flavors.me'),
+    ('BY', 'Beyond'),
+    ('FB', 'Facebook'),
+    ('PR', 'Profile'),
+)
+
+
 REPO_CHOICES = (
     ('GH', 'GitHub'),
     ('BB', 'BitBucket'),
@@ -59,11 +69,26 @@ DEPARTMENT_CHOICES = (
 )
 
 
+# Source
+class Source(models.Model):
+    priority = models.IntegerField()
+    title = models.CharField(max_length=127)
+    repository_name = models.CharField(max_length=4, choices=REPO_CHOICES, blank=True, null=True)
+    profile_name = models.CharField(max_length=4, choices=PROFILE_CHOICES, blank=True, null=True)
+    url = models.URLField(verify_exists=True)
+
+    def __unicode__(self):
+        return self.title
+
 # Project
 class Project(models.Model):
     title = models.CharField(max_length=127)
     description = models.TextField()
     date = models.DateField()
+    url = models.URLField(blank=True, null=True, verify_exists=True)
+    programming_language = models.CharField(max_length=8, blank=True, null=True, choices=LANGUAGE_CHOICES)
+    repository_url = models.URLField(blank=True, null=True, verify_exists=True)
+    repository_name = models.CharField(blank=True, null=True, max_length=2, choices=REPO_CHOICES)
 
     def __unicode__(self):
         return self.title
@@ -130,8 +155,11 @@ class Assignment(models.Model):
 
 ## PORTFOLIO ADMIN
 
+class SourceAdmin(admin.ModelAdmin):
+    list_display = ('title', 'repository_name', 'profile_name')
+
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'date')
+    list_display = ('title', 'programming_language', 'repository_name', 'date')
 
 class EducationAdmin(admin.ModelAdmin):
     list_display = ('name', 'acronym', 'degree', 'major', 'graduation_date')
@@ -143,6 +171,8 @@ class AssignmentAdmin(admin.ModelAdmin):
     list_display = ('name', 'identification', 'programming_language', 'course')
 
 ## REGISTER
+admin.site.register(Source, SourceAdmin)
+admin.site.register(Project, ProjectAdmin)
 admin.site.register(Education, EducationAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Assignment, AssignmentAdmin)

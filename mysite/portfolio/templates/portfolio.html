@@ -20,84 +20,122 @@
     <div id="content-left">
         <div class="box" >
             <h2>Portfolio</h2>
-            <p>
                 <h3>Projects:</h3>
                 <ul>
-                    <i>Currently building...</i>
+                    {% for project in projects %}
+                        {% if project.url %}
+                            <h4 class="project">
+                                <a href="{{ project.url }}"
+                                   title="Visit the website for {{ project.title }}">
+                                    {{ project.title }}
+                                </a>
+                            </h4>
+                        {% else %}
+                            <h4 class="project">{{ project.title }}</h4>
+                        {% endif %}
+                        <span class="timestamp">{{ project.date }}</span>
+                        <ul><p>{{ project.description }}</p></ul>
+                        <ul>
+                            {% if project.programming_language %}
+                                <li class="projectdetail"><strong>Programming language:</strong> {{ project.get_programming_language_display }}</li>
+                            {% endif %}
+                            {% if project.repository_url %}
+                                <li class="projectdetail">
+                                    <strong>Repository:</strong>
+                                    <a href="{{ project.repository_url }}"
+                                       title="Visit {{ project }} repository on {{ project.repository_name }}">
+                                        {{ project.get_repository_name_display }}
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    {% endfor %}
                 </ul>
-            </p>
-            <p>
-                <h3>Education:</h3>
-                <ul>
-                    {% for edu in education %}
-                        {% if edu|first %}{% with edu|first as school %}
-                            <h4>{{ school.name }}</h4>
-                            <ul>
-                                {% if school.degree %}
-                                    <h5>Degree:</h5>
-                                    <ul>
-                                        {{ school.get_degree_display }}{% if school.major %} in {{ school.get_major_display }}{% if school.minor %} with minor in {{ school.get_minor_display }}{% endif %}{% endif %}
-                                    </ul>
-                                {% endif %}
-                                {% if edu|last %}{% with edu|last as courses_asgs %}
-                                    <h5>Classes and coursework: 
+            <h3>Education:</h3>
+            <ul>
+                {% for edu in education %}
+                    {% if edu|first %}{% with edu|first as school %}
+                        <h4>{{ school.name }}</h4>
+                        <span class="timestamp">{{ school.graduation_date }}</span>
+                        <ul>
+                            {% if school.degree %}
+                                <h5>Degree:</h5>
+                                <ul>
+                                    <li class="edudegree">{{ school.get_degree_display }}{% if school.major %} with a major in {{ school.get_major_display }}{% if school.minor %} and a minor in {{ school.get_minor_display }}{% endif %}{% endif %}</li>
+                                </ul>
+                            {% endif %}
+                            {% if edu|last %}{% with edu|last as courses_asgs %}
+                                <h5>Classes and coursework: 
                                     {% if school.coursework_repository_url %}
-                                        <a href="{{ school.coursework_repository_url }}" title="Visit coursework repository on {{ school.get_coursework_repository_name_display }}">[{{ school.get_coursework_repository_name_display }}]</a>
-                                    {% endif %}</h5>
-                                    <ul>
-                                        {% for department in departments %}
-                                            {{ department|last }}:<br />
-                                            <ul>
-                                                {% for course_asgs in courses_asgs %}
-                                                {% with course_asgs|first as course %}
-                                                {% with course_asgs|last as asgs %}
-                                                    {% if course.department == department|first %}
-                                                        <li>
-                                                            {% if course.course_url %}
-                                                                <a href="{{ course.course_url }}" 
-                                                                   title="{{ course.description }}">
-                                                                    {{ course }}
+                                        <a href="{{ school.coursework_repository_url }}" 
+                                           title="Visit coursework repository on {{ school.get_coursework_repository_name_display }}">
+                                            [{{ school.get_coursework_repository_name_display }}]
+                                        </a>
+                                    {% endif %}
+                                </h5>
+                                <ul>
+                                    {% for department in departments %}
+                                        <li class="edudept">{{ department|last }}:</li>
+                                        <ul>
+                                        {% for course_asgs in courses_asgs %}
+                                        {% with course_asgs|first as course %}
+                                        {% with course_asgs|last as asgs %}
+                                            {% if course.department == department|first %}
+                                                <li class="educourse">
+                                                    {% if course.course_url %}
+                                                        <a href="{{ course.course_url }}" 
+                                                           title="{{ course.description }}">
+                                                            {{ course }}
+                                                        </a>
+                                                    {% else %}
+                                                        {{ course }}
+                                                    {% endif %}
+                                                    {% if course.repository_url %}
+                                                        <a href="{{ course.repository_url }}" 
+                                                           title="Visit course repository on {{ course.get_repository_name_display }}">
+                                                            [{{ course.get_repository_name_display }}]</a>
+                                                    {% endif %}
+                                                    {% if course.lab_letter %}
+                                                        <a href="{{ course.lab_url }}"
+                                                           title="Visit course lab website">
+                                                            with Lab {{ course.lab_letter|title }}
+                                                        </a>
+                                                    {% endif %}
+                                                </li>
+                                                {% if asgs|first %}
+                                                    <ul>
+                                                    {% for asg in asgs %}
+                                                        <li class="eduasg">
+                                                            {% if asg.assignment_url %}
+                                                                <a href="{{ asg.assignment_url }}"
+                                                                   title="Visit '{{ asg }}' specifications">
+                                                                    {{ asg.identification|title }} - {{ asg.get_programming_language_display }} - {{ asg.name }}
                                                                 </a>
                                                             {% else %}
-                                                                {{ course }}
+                                                                {{ asg.identification|title }} - {{ asg.get_programming_language_display }} - {{ asg.name }}
                                                             {% endif %}
-                                                            {% if course.repository_url %}
-                                                                <a href="{{ course.repository_url }}" 
-                                                                   title="Visit course repository on {{ course.get_repository_name_display }}">
-                                                                    [{{ course.get_repository_name_display }}]</a>
-                                                            {% endif %}
-                                                            {% if course.lab_letter %}
-                                                                <a href="{{ course.lab_url }}"
-                                                                   title="Visit course lab website">
-                                                                    with Lab {{ course.lab_letter|title }}
+                                                            {% if asg.repository_url %}
+                                                                <a href="{{ asg.repository_url }}"
+                                                                   title="Visit '{{ asg }}' repository on {{ asg.get_repository_name_display }}">
+                                                                    [{{ asg.get_repository_name_display }}]
                                                                 </a>
                                                             {% endif %}
                                                         </li>
-                                                        {% if asgs|first %}
-                                                            <ul>
-                                                            {% for asg in asgs %}
-                                                                <li>
-                                                                    <a href="{{ asg.repository_url }}""
-                                                                       title="Visit {{ asg.identification }} repository on {{ asg.get_repository_name_display }}">
-                                                                        {{ asg.identification|title }} - {{ asg.get_programming_language_display }} - {{ asg.name }}
-                                                                    </a>
-                                                                </li>
-                                                            {% endfor %}
-                                                            </ul>
-                                                        {% endif %}
-                                                    {% endif %}
-                                                {% endwith %}
-                                                {% endwith %}
-                                                {% endfor %}
-                                            </ul>
+                                                    {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endwith %}
+                                        {% endwith %}
                                         {% endfor %}
-                                    </ul>
-                                {% endwith %}{% endif %}
-                            </ul>
-                        {% endwith %}{% endif %}
-                    {% endfor %}
-                </ul>
-            </p>
+                                        </ul>
+                                    {% endfor %}
+                                </ul>
+                            {% endwith %}{% endif %}
+                        </ul>
+                    {% endwith %}{% endif %}
+                {% endfor %}
+            </ul>
         </div>
     </div>
 
@@ -105,9 +143,9 @@
         <div class="box">
             <h2 class="sub">More Sources</h2>
             <ul>
-                <li><a href="{{ GITHUB_URL }}" title="Visit GitHub repository">GitHub Repository</a></li>
-                <li><a href="{{ BITBUCKET_URL }}" title="Visit BitBucket repository">BitBucket Repository</a></li>
-                <li><a href="{{ STACKEXCHANGE_URL }}" title="Visit StackExchange profile">StackExchange Profile</a></li>
+                {% for source in sources %}
+                    <li><a href="{{ source.url }}" title="Visit {{ source.title }}">{{ source.title }}</a></li>
+                {% endfor %}
             </ul>
         </div>
     </div>

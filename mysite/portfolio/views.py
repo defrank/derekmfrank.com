@@ -3,16 +3,18 @@ from django.conf import settings
 from django.contrib.sites.models import get_current_site
 import datetime
 
-from portfolio.models import DEPARTMENT_CHOICES, Education, Course, Assignment
+from portfolio.models import DEPARTMENT_CHOICES, Source, Project, Education, Course, Assignment
 
 
 # Portfolio page view
 def portfolio(request):
     errors = []
+    sources = Source.objects.order_by('priority', 'repository_name', 'profile_name')
+    projects = Project.objects.order_by('date').reverse()
     education = []
     institution = Education.objects.order_by('graduation_date').reverse()
     for i in institution:
-        courses = Course.objects.order_by('department', 'number')
+        courses = Course.objects.order_by('department', 'number').reverse()
         course_asg = []
         for c in courses:
             asgs = Assignment.objects.filter(course=c).order_by('identification')
@@ -29,6 +31,8 @@ def portfolio(request):
     template = 'portfolio.html'
     context = {
         'errors': errors,
+        'sources': sources,
+        'projects': projects,
         'education': education,
         'departments': DEPARTMENT_CHOICES,
         #'departments': departments,
