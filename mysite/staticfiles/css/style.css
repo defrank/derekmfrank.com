@@ -547,6 +547,7 @@ table.bio-entry {
 #navbar.nb-portfolio ul li#nb-portfolio a,
 #navbar.nb-aboutme ul li#nb-aboutme a,
 #navbar.nb-mff ul li#nb-mff a,
+#navbar.nb-admin ul li#nb-admin a {
     color: #aaaaaa !important;
     font-weight: bold !important;
 }

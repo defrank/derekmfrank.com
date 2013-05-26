@@ -71,13 +71,15 @@ class Project(models.Model):
 
 # Education
 class Education(models.Model):
-    school_name = models.CharField(null=True, max_length=127)
+    name = models.CharField(null=True, max_length=127)
     acronym = models.CharField(blank=True, null=True, max_length=8)
     DEGREE_CHOICES = (
         (u'BS', u'Bachelor of Science'),
         (u'BA', u'Bachelor of Arts'),
         (u'MS', u'Master of Science'),
         (u'MA', u'Master of Arts'),
+        (u'HD', u'High School Diploma'),
+        (u'GED', u'G.E.D.'),
     )
     degree = models.CharField(max_length=3, choices=DEGREE_CHOICES)
     major = models.CharField(max_length=4, choices=DEPARTMENT_CHOICES, blank=True, null=True)
@@ -87,43 +89,43 @@ class Education(models.Model):
     coursework_repository_name = models.CharField(blank=True, null=True, max_length=2, choices=REPO_CHOICES) 
 
     def __unicode__(self):
-        return self.acronym or self.school_name
+        return self.acronym or self.name
 
 
 # Course
 class Course(models.Model):
     education_institution = models.ForeignKey(Education)
     department = models.CharField(max_length=4, choices=DEPARTMENT_CHOICES, default=u'MC')
-    course_name = models.CharField(max_length=127)
-    course_number = models.CharField(max_length=8, null=True)
-    course_lab_letter = models.CharField(max_length=4, blank=True, null=True)
+    name = models.CharField(max_length=127)
+    number = models.CharField(max_length=8, null=True)
+    lab_letter = models.CharField(max_length=4, blank=True, null=True)
     course_url = models.URLField(blank=True, null=True, verify_exists=True)
-    course_lab_url = models.URLField(blank=True, null=True, verify_exists=True)
-    course_repository_url = models.URLField(blank=True, null=True, verify_exists=True)
-    course_repository_name = models.CharField(blank=True, null=True, max_length=2, choices=REPO_CHOICES)
+    lab_url = models.URLField(blank=True, null=True, verify_exists=True)
+    repository_url = models.URLField(blank=True, null=True, verify_exists=True)
+    repository_name = models.CharField(blank=True, null=True, max_length=2, choices=REPO_CHOICES)
     description = models.TextField()
 
     def __unicode__(self):
-        if self.course_lab_letter:
-            return  self.course_name + ' (' + self.department + ' ' + self.course_number + '/' + self.course_lab_letter + ')' 
-        return  self.course_name + ' (' + self.department + ' ' + self.course_number + ')' 
-        #return self.course_name + ' (' + self.department + ')'
+        if self.lab_letter:
+            return  self.name + ' (' + self.department + ' ' + self.number + '/' + self.lab_letter + ')' 
+        return  self.name + ' (' + self.department + ' ' + self.number + ')' 
 
 
 # Assignment
 class Assignment(models.Model):
     course = models.ForeignKey(Course)
-    assignment_name = models.CharField(max_length=127)
-    assignment_number = models.IntegerField()
-    assignment_id = models.CharField(max_length=16)
+    name = models.CharField(max_length=127)
+    identification = models.CharField(max_length=16)
     programming_language = models.CharField(max_length=8, blank=True, null=True, choices=LANGUAGE_CHOICES)
     assignment_url = models.URLField(blank=True, null=True, verify_exists=True)
-    assignment_repository_url = models.URLField(blank=True, null=True, verify_exists=True)
-    assignment_repository_name = models.CharField(blank=True, null=True, max_length=2, choices=REPO_CHOICES)
+    repository_url = models.URLField(blank=True, null=True, verify_exists=True)
+    repository_name = models.CharField(blank=True, null=True, max_length=2, choices=REPO_CHOICES)
     description = models.TextField(blank=True, null=True)
 
     def __unicode__(self):
-        return self.course.course_id + ' - ' + self.assignment_id + ' - ' +  self.assignment_name
+        if self.course.lab_letter:
+            return self.course.department + self.course.number + '/' + self.course.lab_letter + ' - ' + self.identification + ' - ' +  self.name
+        return self.course.department + self.course.number + ' - ' + self.identification + ' - ' +  self.name
 
 
 ## PORTFOLIO ADMIN
@@ -132,13 +134,13 @@ class ProjectAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'date')
 
 class EducationAdmin(admin.ModelAdmin):
-    list_display = ('school_name', 'acronym', 'degree', 'major', 'graduation_date')
+    list_display = ('name', 'acronym', 'degree', 'major', 'graduation_date')
 
 class CourseAdmin(admin.ModelAdmin):
-    list_display = ('course_name', 'department', 'course_number', 'course_lab_letter', 'education_institution')
+    list_display = ('name', 'department', 'number', 'lab_letter', 'education_institution')
 
 class AssignmentAdmin(admin.ModelAdmin):
-    list_display = ('assignment_name', 'assignment_id', 'programming_language', 'course')
+    list_display = ('name', 'identification', 'programming_language', 'course')
 
 ## REGISTER
 admin.site.register(Education, EducationAdmin)
