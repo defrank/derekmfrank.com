@@ -34,7 +34,7 @@
                             <h4 class="project">{{ project.title }}</h4>
                         {% endif %}
                         <span class="timestamp">{{ project.date }}</span>
-                        <ul><p>{{ project.description }}</p></ul>
+                        <ul><p>{{ project.description|linebreaks }}</p></ul>
                         <ul>
                             {% if project.programming_language %}
                                 <li class="projectdetail"><strong>Programming language:</strong> {{ project.get_programming_language_display }}</li>
