@@ -33,8 +33,12 @@ REPO_CHOICES = (
 LANGUAGE_CHOICES = (
     ('c', 'C'),
     ('cpp', 'C++'),
+    ('css', 'CSS'),
     ('java', 'Java'),
+    ('js', 'Javascript'),
     ('clisp', 'Common Lisp'),
+    ('html', 'HTML'),
+    ('htmlcss', 'HTML/CSS'),
     ('lua', 'Lua'),
     ('m', 'Matlab'),
     ('oc', 'OCaml'),
@@ -42,6 +46,7 @@ LANGUAGE_CHOICES = (
     ('pl', 'Perl'),
     ('prolog', 'Prolog'),
     ('py', 'Python'),
+    ('pydj', 'Python/Django'),
     ('scm', 'Scheme'),
     ('st', 'Smalltalk'),
 )

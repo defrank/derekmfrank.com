@@ -1,9 +1,14 @@
-head	1.3;
+head	1.4;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.4
+date	2013.05.27.19.40.43;	author dmf;	state -;
+branches;
+next	1.3;
 
 1.3
 date	2013.05.24.22.40.36;	author dmf;	state -;
@@ -25,12 +30,12 @@ desc
 @@
 
 
-1.3
+1.4
 log
 @-
 @
 text
-@# $Id: views.py,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
+@# $Id: views.py,v 1.3 2013-05-24 15:40:36-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -52,15 +57,60 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.sites.models import get_current_site
 import datetime
 
+from mysite.models import Message
 
 # Home page view
 def home(request):
   errors = []
-  message = ''
-  dt = datetime.datetime.now()
+  messages = Message.objects.order_by('timestamp').reverse()
   template = 'home.html'
   context = {
     'errors': errors,
+    'content_messages': messages,
+  }
+  return response(request, template, context)
+
+
+# About Me page view
+def aboutme(request):
+  errors = []
+  dt = datetime.datetime.now()
+  template = 'aboutme.html'
+  context = {
+    'errors': errors,
+    'current_datetime': dt
+  }
+  return response(request, template, context)
+
+
+# MFF page view
+def mff(request):
+  errors = []
+  dt = datetime.datetime.now()
+  template = 'mff.html'
+  context = {
+    'errors': errors,
+    'current_datetime': dt
+  }
+  return response(request, template, context)
+@
+
+
+1.3
+log
+@-
+@
+text
+@d1 1
+a1 1
+# $Id: views.py,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
+d23 1
+d28 1
+a28 2
+  message = ''
+  dt = datetime.datetime.now()
+d32 1
+a32 16
     'message': message,
     'current_datetime': dt
   }
@@ -77,36 +127,14 @@ def portfolio(request):
     'errors': errors,
     'message': message,
     'current_datetime': dt
-  }
-  return response(request, template, context)
-
-
-# About Me page view
-def aboutme(request):
-  errors = []
+a39 1
   message = ''
-  dt = datetime.datetime.now()
-  template = 'aboutme.html'
-  context = {
-    'errors': errors,
+a43 1
     'message': message,
-    'current_datetime': dt
-  }
-  return response(request, template, context)
-
-
-# MFF page view
-def mff(request):
-  errors = []
+a51 1
   message = ''
-  dt = datetime.datetime.now()
-  template = 'mff.html'
-  context = {
-    'errors': errors,
+a55 1
     'message': message,
-    'current_datetime': dt
-  }
-  return response(request, template, context)
 @
 
 
