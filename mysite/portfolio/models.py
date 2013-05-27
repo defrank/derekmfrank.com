@@ -30,6 +30,13 @@ REPO_CHOICES = (
     ('RE', 'Repo'),
 )
 
+
+LANGUAGE_TYPES = (
+    ('scr', 'Scripting'),
+    ('prgm', 'Programming'),
+)
+
+
 LANGUAGE_CHOICES = (
     ('c', 'C'),
     ('cpp', 'C++'),
@@ -49,6 +56,20 @@ LANGUAGE_CHOICES = (
     ('pydj', 'Python/Django'),
     ('scm', 'Scheme'),
     ('st', 'Smalltalk'),
+)
+
+
+FRAMEWORK_CHOICES = (
+    ('dj', 'Django'),
+)
+
+
+DB_CHOICES = (
+    ('sql', 'MySQL'),
+    ('pgs', 'PostgreSQL'),
+    ('pgsp', 'PostgreSQL Psycopg2'),
+    ('lite', 'SQLite'),
+    ('orac', 'Oracle'),
 )
 
 
@@ -85,13 +106,33 @@ class Source(models.Model):
     def __unicode__(self):
         return self.title
 
+
+# Language Choice
+class LanguageChoice(models.Model):
+    language = models.CharField(max_length=8, blank=True, null=True, choices=LANGUAGE_CHOICES)
+    type = models.CharField(max_length=4, blank=True, null=True, choices=LANGUAGE_TYPES)
+    language_version = models.CharField(max_length=16, blank=True, null=True)
+    framework = models.CharField(max_length=8, blank=True, null=True, choices=FRAMEWORK_CHOICES)
+    framework_version = models.CharField(max_length=16, blank=True, null=True)
+    database = models.CharField(max_length=4, blank=True, null=True, choices=DB_CHOICES)
+    database_version = models.CharField(max_length=16, blank=True, null=True)
+    description = models.TextField(null=True, blank=True)
+
+    def __unicode__(self):
+        if self.framework:
+            if self.database:
+                return self.get_language_display() + self.language_version + '/' + self.get_framework_display() + self.framework_version + '/' + self.get_database_display() + self.database_version
+            return self.get_language_display() + self.language_version + '/' + self.get_framework_display() + self.framework_version
+        return self.get_language_display() + self.language_version
+
+
 # Project
 class Project(models.Model):
     title = models.CharField(max_length=127)
     description = models.TextField()
     date = models.DateField()
     url = models.URLField(blank=True, null=True, verify_exists=True)
-    programming_language = models.CharField(max_length=8, blank=True, null=True, choices=LANGUAGE_CHOICES)
+    language = models.ManyToManyField(LanguageChoice, blank=True, null=True)
     repository_url = models.URLField(blank=True, null=True, verify_exists=True)
     repository_name = models.CharField(blank=True, null=True, max_length=2, choices=REPO_CHOICES)
 
@@ -164,7 +205,10 @@ class SourceAdmin(admin.ModelAdmin):
     list_display = ('title', 'repository_name', 'profile_name')
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'programming_language', 'repository_name', 'date')
+    list_display = ('title', 'repository_name', 'date')
+
+class LanguageChoiceAdmin(admin.ModelAdmin):
+    list_display = ('language', 'language_version', 'type', 'framework', 'framework_version', 'database', 'database_version')
 
 class EducationAdmin(admin.ModelAdmin):
     list_display = ('name', 'acronym', 'degree', 'major', 'graduation_date')
@@ -178,6 +222,7 @@ class AssignmentAdmin(admin.ModelAdmin):
 ## REGISTER
 admin.site.register(Source, SourceAdmin)
 admin.site.register(Project, ProjectAdmin)
+admin.site.register(LanguageChoice, LanguageChoiceAdmin)
 admin.site.register(Education, EducationAdmin)
 admin.site.register(Course, CourseAdmin)
 admin.site.register(Assignment, AssignmentAdmin)

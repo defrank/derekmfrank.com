@@ -36,18 +36,23 @@
                         <span class="timestamp">{{ project.date }}</span>
                         <ul><p>{{ project.description|linebreaks }}</p></ul>
                         <ul>
-                            {% if project.programming_language %}
-                                <li class="projectdetail"><strong>Programming language:</strong> {{ project.get_programming_language_display }}</li>
-                            {% endif %}
-                            {% if project.repository_url %}
-                                <li class="projectdetail">
-                                    <strong>Repository:</strong>
-                                    <a href="{{ project.repository_url }}"
-                                       title="Visit {{ project }} repository on {{ project.get_repository_name_display }}">
-                                        {{ project.get_repository_name_display }}
-                                    </a>
-                                </li>
-                            {% endif %}
+                        {% if project.language %}
+                            <h5>Language(s):</h5>
+                            <ul>
+                                {% for lang in project.language.all  %}
+                                    <li class="projectdetail"><strong>{{ lang.get_type_display }} language:</strong> {{ lang }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        {% if project.repository_url %}
+                            <li class="projectdetail">
+                                <strong>Repository:</strong>
+                                <a href="{{ project.repository_url }}"
+                                   title="Visit {{ project }} repository on {{ project.get_repository_name_display }}">
+                                    {{ project.get_repository_name_display }}
+                                </a>
+                            </li>
+                        {% endif %}
                         </ul>
                     {% endfor %}
                 </ul>

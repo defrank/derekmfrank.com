@@ -1,6 +1,28 @@
-/*******************************************************************************
- * $Id: navbar.css,v 1.1 2013-05-27 12:40:43-07 dmf - $
- * Derek Frank (derekmfrank@gmail.com)
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.05.27.19.40.43;	author dmf;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@/*******************************************************************************
+ * $Id: navbar.css,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
+ * Derek Frank (derekmfrank@@gmail.com)
  *
  * Theme Name: derekmfrank
  *
@@ -110,3 +132,4 @@ html > body #navbarlogo {
 #navbarwidget ul li a:hover { 
     color:                      #aaaaaa !important; 
 }
+@

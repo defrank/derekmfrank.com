@@ -1,9 +1,14 @@
-head	1.3;
+head	1.4;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.4
+date	2013.05.27.19.40.43;	author dmf;	state -;
+branches;
+next	1.3;
 
 1.3
 date	2013.05.24.22.40.36;	author dmf;	state -;
@@ -25,13 +30,13 @@ desc
 @@
 
 
-1.3
+1.4
 log
 @-
 @
 text
 @/*******************************************************************************
- * $Id: style.css,v 1.2 2013-05-17 17:33:56-07 dmfrank - $                                                                       
+ * $Id: style.css,v 1.3 2013-05-24 15:40:36-07 dmf - $                                                                       
  * Derek Frank (derekmfrank@@gmail.com)                                          
  *                                                                              
  * Theme Name: dmf
@@ -49,7 +54,7 @@ text
 
 /* import the global navbar stylesheet */
 /* @@import url('{{ CSS_URL }}navbar/navbar.css'); */
-@@import url("navbar/navbar.css?v=132");
+@@import url("navbar.css?v=132");
 
 /* simple reset */
 * {
@@ -194,10 +199,6 @@ a.headerlink {
     padding-left: 0.5em;
 }
 
-h3:hover > a.headerlink {
-    visibility: visible;
-}
-
 /* headings */
 h1 {
     font-size: 1.4em;
@@ -209,12 +210,21 @@ h2 {
     font-size: 1.5em;
     color: #000000;
     margin-bottom: 0.5em;
-    border-bottom: 1px dashed #33cc33;
+    border-bottom: 1px solid #00ff00; /* 33cc33 */
+}
+
+h2.sub {
+    border-bottom: 1px dashed #00ff00;
+    font-size: 1.3em;
 }
 
 h3 {
     font-size: 1.2em;
     /* margin-top: .5em; */
+}
+
+h3:hover > a.headerlink {
+    visibility: visible;
 }
 
 h4 {
@@ -281,6 +291,7 @@ div.box {
     padding: 1em;  /* 0.65em; */
     background: #ccffcc; /* ecf2f5; */
     border: 1px solid #00ff00; /* #33cc33 */
+    overflow: hidden;
 }
 
 footer, div#footer {
@@ -573,6 +584,7 @@ table.bio-entry {
 #navbar.nb-portfolio ul li#nb-portfolio a,
 #navbar.nb-aboutme ul li#nb-aboutme a,
 #navbar.nb-mff ul li#nb-mff a,
+#navbar.nb-admin ul li#nb-admin a {
     color: #aaaaaa !important;
     font-weight: bold !important;
 }
@@ -611,9 +623,47 @@ table.bio-entry {
 
 
 /* specific content */
+span.timestamp {
+    font-size: .8em;
+    font-style: italic;
+}
+
 img#mypic {
     border: solid 5px #00ff00;
 }
+
+.blogpostborder {
+    border-top: 1px dashed #00ff00;
+    max-width: 95%;
+    margin-bottom: 10px;
+}
+@
+
+
+1.3
+log
+@-
+@
+text
+@d2 1
+a2 1
+ * $Id: style.css,v 1.2 2013-05-17 17:33:56-07 dmfrank - $                                                                       
+d20 1
+a20 1
+@@import url("navbar/navbar.css?v=132");
+a164 4
+h3:hover > a.headerlink {
+    visibility: visible;
+}
+
+d176 6
+a181 1
+    border-bottom: 1px dashed #33cc33;
+d189 4
+d257 1
+d550 1
+d589 5
+d596 6
 @
 
 
