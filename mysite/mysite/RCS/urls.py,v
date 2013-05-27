@@ -1,9 +1,14 @@
-head	1.4;
+head	1.5;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.5
+date	2013.05.27.20.29.17;	author dmf;	state -;
+branches;
+next	1.4;
 
 1.4
 date	2013.05.27.19.40.43;	author dmf;	state -;
@@ -30,12 +35,12 @@ desc
 @@
 
 
-1.4
+1.5
 log
 @-
 @
 text
-@# $Id: urls.py,v 1.3 2013-05-24 15:40:36-07 dmf - $
+@# $Id: urls.py,v 1.4 2013-05-27 12:40:43-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -58,19 +63,19 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Base Views
     url(r'^$', views.home, name='home'),
-    url(r'^blog/?', include('blog.urls')),
-    url(r'^portfolio/?', include('portfolio.urls')),
-    url(r'^aboutme/?$', views.aboutme, name='aboutme'),
-    url(r'^mff/?$', views.mff, name='mff'),
+    url(r'^blog/', include('blog.urls')),
+    url(r'^portfolio/', include('portfolio.urls')),
+    url(r'^aboutme/$', views.aboutme, name='aboutme'),
+    url(r'^mff/$', views.mff, name='mff'),
 
     # Media
     url(r'^static/(?P<path>.*)$', views_static_serve, { 'document_root': settings.STATIC_ROOT, }),
 
     # Uncomment the admin/doc line below to enable admin documentation:
-    url(r'^admin/doc/?', include('django.contrib.admindocs.urls')),
+    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^admin/?', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )
 
 # Media files serve only with DEBUG mode set
@@ -92,6 +97,29 @@ urlpatterns += patterns('',
 urlpatterns += patterns('',
     url(r'^.+$', view_functions.redirect_to_home, name='redirect'),
 )
+@
+
+
+1.4
+log
+@-
+@
+text
+@d1 1
+a1 1
+# $Id: urls.py,v 1.3 2013-05-24 15:40:36-07 dmf - $
+d24 4
+a27 4
+    url(r'^blog/?', include('blog.urls')),
+    url(r'^portfolio/?', include('portfolio.urls')),
+    url(r'^aboutme/?$', views.aboutme, name='aboutme'),
+    url(r'^mff/?$', views.mff, name='mff'),
+d33 1
+a33 1
+    url(r'^admin/doc/?', include('django.contrib.admindocs.urls')),
+d36 1
+a36 1
+    url(r'^admin/?', include(admin.site.urls)),
 @
 
 
