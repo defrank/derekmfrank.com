@@ -14,9 +14,13 @@
 
 <h3>{{ post.title }}</h3>
 <span class="timestamp">{{ post.timestamp }}</span>
-{% if post.image_url %}
+{% if post.image or post.image_url %}
     <div class="center">
-        <img src="{{ post.image_url }}" alt="Blog Post {{ post.id }} Image" />
+        {% if post.image %}
+            <img src="/media/{{ post.image }}" alt="Blog Post {{ post.id }} Image" />
+        {% else %}
+            <img src="{{ post.image_url }}" alt="Blog Post {{ post.id }} Image" />
+        {% endif %}
     </div>
 {% endif %}
 <ul>
