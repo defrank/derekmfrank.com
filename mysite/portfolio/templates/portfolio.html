@@ -149,7 +149,9 @@
             <h2 class="sub">More Sources</h2>
             <ul>
                 {% for source in sources %}
-                    <li><a href="{{ source.url }}" title="Visit {{ source.title }}">{{ source.title }}</a></li>
+                    {% if source.priority < 6 %}
+                        <li><a href="{{ source.url }}" title="Visit {{ source.title }}">{{ source.title }}</a></li>
+                    {% endif %}
                 {% endfor %}
             </ul>
         </div>

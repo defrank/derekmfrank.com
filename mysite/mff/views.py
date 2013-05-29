@@ -2,21 +2,20 @@
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
-#   views.py - aboutme
+#   views.py - mff
 #
 # DESCRIPTION
-#   A template views definition for mysite about me.
+#   A template views definition for MFF.
 #
 
 from mysite.views.view_functions import response
 from django.conf import settings
 from django.contrib.sites.models import get_current_site
 
-
-# About Me page view
-def aboutme(request):
+# MFF page view
+def mff(request):
   errors = []
-  template = 'aboutme.html'
+  template = 'mff.html'
   context = {
     'errors': errors,
   }

@@ -3,13 +3,15 @@ from django.conf import settings
 from django.contrib.sites.models import get_current_site
 import datetime
 
-from portfolio.models import DEPARTMENT_CHOICES, Source, Project, Education, Course, Assignment
+from mysite.models import DEPARTMENT_CHOICES
+from aboutme.models import Source
+from portfolio.models import Project, Education, Course, Assignment
 
 
 # Portfolio page view
 def portfolio(request):
     errors = []
-    sources = Source.objects.order_by('priority', 'repository_name', 'profile_name')
+    sources = Source.objects.order_by('priority', 'type', 'title' )
     projects = Project.objects.order_by('date').reverse()
     education = []
     institution = Education.objects.order_by('graduation_date').reverse()

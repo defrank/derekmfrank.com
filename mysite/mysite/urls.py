@@ -23,8 +23,8 @@ urlpatterns = patterns('',
     url(r'^$', views.home, name='home'),
     url(r'^blog/', include('blog.urls')),
     url(r'^portfolio/', include('portfolio.urls')),
-    url(r'^aboutme/$', views.aboutme, name='aboutme'),
-    url(r'^mff/$', views.mff, name='mff'),
+    url(r'^aboutme/', include('aboutme.urls')),
+    url(r'^mff/', include('mff.urls')),
 
     # Media
     url(r'^static/(?P<path>.*)$', views_static_serve, { 'document_root': settings.STATIC_ROOT, }),

@@ -10,102 +10,10 @@
 
 from django.db import models
 from django.contrib import admin
+from mysite.models import PROFILE_CHOICES, REPO_CHOICES, LANGUAGE_TYPES, LANGUAGE_CHOICES, FRAMEWORK_CHOICES, DB_CHOICES, DEPARTMENT_CHOICES
 
 
 ## PORTFOLIO
-
-PROFILE_CHOICES = (
-    ('SE', 'StackExchange'),
-    ('LI', 'LinkedIn'),
-    ('FM', 'Flavors.me'),
-    ('BY', 'Beyond'),
-    ('FB', 'Facebook'),
-    ('PR', 'Profile'),
-)
-
-
-REPO_CHOICES = (
-    ('GH', 'GitHub'),
-    ('BB', 'BitBucket'),
-    ('RE', 'Repo'),
-)
-
-
-LANGUAGE_TYPES = (
-    ('scr', 'Scripting'),
-    ('prgm', 'Programming'),
-)
-
-
-LANGUAGE_CHOICES = (
-    ('c', 'C'),
-    ('cpp', 'C++'),
-    ('css', 'CSS'),
-    ('java', 'Java'),
-    ('js', 'Javascript'),
-    ('clisp', 'Common Lisp'),
-    ('html', 'HTML'),
-    ('htmlcss', 'HTML/CSS'),
-    ('lua', 'Lua'),
-    ('m', 'Matlab'),
-    ('oc', 'OCaml'),
-    ('oct', 'Octave'),
-    ('pl', 'Perl'),
-    ('prolog', 'Prolog'),
-    ('py', 'Python'),
-    ('pydj', 'Python/Django'),
-    ('scm', 'Scheme'),
-    ('st', 'Smalltalk'),
-)
-
-
-FRAMEWORK_CHOICES = (
-    ('dj', 'Django'),
-)
-
-
-DB_CHOICES = (
-    ('sql', 'MySQL'),
-    ('pgs', 'PostgreSQL'),
-    ('pgsp', 'PostgreSQL Psycopg2'),
-    ('lite', 'SQLite'),
-    ('orac', 'Oracle'),
-)
-
-
-DEPARTMENT_CHOICES = (
-    (u'CS', u'Computer Science'),
-    (u'CE', u'Computer Engineering'),
-    (u'CGD', u'Computer Game Design'),
-    (u'EE', u'Electrical Engineering'),
-    (u'RE', u'Robotics Engineering'),
-    (u'TIM', u'Technology and Information Management'),
-    (u'AMS', u'Applied Mathematics and Statistics'),
-    (u'Math', u'Mathematics'),
-    (u'AM', u'Applied Mathematics'),
-    (u'Stat', u'Statistics'),
-    (u'Phys', u'Physics'),
-    (u'Econ', u'Economics'),
-    (u'Psyc', u'Psychology'),
-    (u'Musc', u'Music'),
-    (u'Lit', u'Literature'),
-    (u'Writ', u'Writing'),
-    (u'Stev', u'Stevenson'),
-    (u'MC', u'Miscellaneous'),
-)
-
-
-# Source
-class Source(models.Model):
-    priority = models.IntegerField()
-    title = models.CharField(max_length=127)
-    repository_name = models.CharField(max_length=4, choices=REPO_CHOICES, blank=True, null=True)
-    profile_name = models.CharField(max_length=4, choices=PROFILE_CHOICES, blank=True, null=True)
-    url = models.URLField(verify_exists=True)
-
-    def __unicode__(self):
-        return self.title
-
 
 # Language Choice
 class LanguageChoice(models.Model):
@@ -201,9 +109,6 @@ class Assignment(models.Model):
 
 ## PORTFOLIO ADMIN
 
-class SourceAdmin(admin.ModelAdmin):
-    list_display = ('title', 'repository_name', 'profile_name')
-
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('title', 'repository_name', 'date')
 
@@ -220,7 +125,6 @@ class AssignmentAdmin(admin.ModelAdmin):
     list_display = ('name', 'identification', 'programming_language', 'course')
 
 ## REGISTER
-admin.site.register(Source, SourceAdmin)
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(LanguageChoice, LanguageChoiceAdmin)
 admin.site.register(Education, EducationAdmin)

@@ -34,7 +34,7 @@ CHK80           = checksource -l 80
 
 ## DIRECTORIES
 DIR_DJANGO      = mysite/mysite/
-DIR_MEDIA       = public/media/
+DIR_MEDIA       = ${DIR_DJANGO}media/
 DIR_VIEWS       = ${DIR_DJANGO}views/
 # Apps
 DIR_APPS        = mysite/
