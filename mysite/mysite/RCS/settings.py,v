@@ -1,9 +1,14 @@
-head	1.3;
+head	1.4;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.4
+date	2013.05.29.05.00.02;	author dmf;	state -;
+branches;
+next	1.3;
 
 1.3
 date	2013.05.24.22.40.36;	author dmf;	state -;
@@ -25,12 +30,12 @@ desc
 @@
 
 
-1.3
+1.4
 log
 @-
 @
 text
-@# $Id: settings.py,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
+@# $Id: settings.py,v 1.3 2013-05-24 15:40:36-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -94,7 +99,7 @@ USE_L10N = True
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.abspath(os.path.join(DOMAIN_ROOT, 'public/media').replace('\\','/'))
+MEDIA_ROOT = os.path.abspath(os.path.join(PACKAGE_ROOT, 'media').replace('\\','/'))
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -177,9 +182,10 @@ TEMPLATE_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.abspath(os.path.join(PROJECT_ROOT, 'templates').replace('\\','/')),
     os.path.abspath(os.path.join(PROJECT_ROOT, 'webmaster', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'blog/templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'portfolio/templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'aboutme/templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'blog', 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'portfolio', 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'aboutme', 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'mff', 'templates').replace('\\','/')),
 )
 
 INSTALLED_APPS = (
@@ -199,12 +205,14 @@ INSTALLED_APPS = (
     'django_evolution',
 
     # project
-    'blog',
-    'portfolio',
-    'aboutme',
-    'webmaster',
+    'utils',
     'staticfiles',
     'templates',
+    'webmaster',
+    'aboutme',
+    'portfolio',
+    'blog',
+    'mff',
     'mysite',
 )
 
@@ -243,6 +251,32 @@ LOGGING = {
 #)
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+@
+
+
+1.3
+log
+@-
+@
+text
+@d1 1
+a1 1
+# $Id: settings.py,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
+d65 1
+a65 1
+MEDIA_ROOT = os.path.abspath(os.path.join(DOMAIN_ROOT, 'public/media').replace('\\','/'))
+d148 4
+a151 3
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'blog/templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'portfolio/templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'aboutme/templates').replace('\\','/')),
+d171 1
+a171 4
+    'blog',
+    'portfolio',
+    'aboutme',
+    'webmaster',
+d174 5
 @
 
 

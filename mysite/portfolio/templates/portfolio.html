@@ -149,7 +149,7 @@
             <h2 class="sub">More Sources</h2>
             <ul>
                 {% for source in sources %}
-                    {% if source.priority < 6 %}
+                    {% if source.type == 'RP' or source.type == 'PF' %}
                         <li><a href="{{ source.url }}" title="Visit {{ source.title }}">{{ source.title }}</a></li>
                     {% endif %}
                 {% endfor %}

@@ -1,9 +1,14 @@
-head	1.5;
+head	1.6;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.6
+date	2013.05.29.05.00.02;	author dmf;	state -;
+branches;
+next	1.5;
 
 1.5
 date	2013.05.27.20.29.17;	author dmf;	state -;
@@ -35,12 +40,12 @@ desc
 @@
 
 
-1.5
+1.6
 log
 @-
 @
 text
-@# $Id: urls.py,v 1.4 2013-05-27 12:40:43-07 dmf - $
+@# $Id: urls.py,v 1.5 2013-05-27 13:29:17-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -54,7 +59,9 @@ from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
 from django.conf.urls.static import static
 from django.views.static import serve as views_static_serve
-from mysite.views import view_functions, views
+
+import views
+from utils import functions
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -65,8 +72,8 @@ urlpatterns = patterns('',
     url(r'^$', views.home, name='home'),
     url(r'^blog/', include('blog.urls')),
     url(r'^portfolio/', include('portfolio.urls')),
-    url(r'^aboutme/$', views.aboutme, name='aboutme'),
-    url(r'^mff/$', views.mff, name='mff'),
+    url(r'^aboutme/', include('aboutme.urls')),
+    url(r'^mff/', include('mff.urls')),
 
     # Media
     url(r'^static/(?P<path>.*)$', views_static_serve, { 'document_root': settings.STATIC_ROOT, }),
@@ -84,8 +91,8 @@ if settings.DEBUG:
 
 # PHP MySQL Database
 urlpatterns += patterns('',
-    url(r'^dh_phpmyadmin.*$', view_functions.redirect_to_mysql, name='mysql'),
-    url(r'^mysql.*$', view_functions.redirect_to_mysql, name='mysql'),
+    url(r'^dh_phpmyadmin.*$', functions.redirect_to_mysql, name='mysql'),
+    url(r'^mysql.*$', functions.redirect_to_mysql, name='mysql'),
 )
 
 # Webmasters and other 3rd party apps
@@ -95,8 +102,33 @@ urlpatterns += patterns('',
 
 # Necessary redirection for unavailable pages
 urlpatterns += patterns('',
-    url(r'^.+$', view_functions.redirect_to_home, name='redirect'),
+    url(r'^.+$', functions.redirect_to_home, name='redirect'),
 )
+@
+
+
+1.5
+log
+@-
+@
+text
+@d1 1
+a1 1
+# $Id: urls.py,v 1.4 2013-05-27 12:40:43-07 dmf - $
+d15 3
+a17 1
+from mysite.views import view_functions, views
+d28 2
+a29 2
+    url(r'^aboutme/$', views.aboutme, name='aboutme'),
+    url(r'^mff/$', views.mff, name='mff'),
+d47 2
+a48 2
+    url(r'^dh_phpmyadmin.*$', view_functions.redirect_to_mysql, name='mysql'),
+    url(r'^mysql.*$', view_functions.redirect_to_mysql, name='mysql'),
+d58 1
+a58 1
+    url(r'^.+$', view_functions.redirect_to_home, name='redirect'),
 @
 
 
