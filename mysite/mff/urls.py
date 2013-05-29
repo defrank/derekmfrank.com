@@ -9,7 +9,7 @@
 #
 
 from django.conf.urls import patterns, url
-from mff import views
+import views
 
 urlpatterns = patterns('',
     # MFF

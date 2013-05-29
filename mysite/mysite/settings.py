@@ -168,13 +168,14 @@ INSTALLED_APPS = (
     'django_evolution',
 
     # project
-    'mff',
-    'blog',
-    'portfolio',
-    'aboutme',
-    'webmaster',
+    'utils',
     'staticfiles',
     'templates',
+    'webmaster',
+    'aboutme',
+    'portfolio',
+    'blog',
+    'mff',
     'mysite',
 )
 

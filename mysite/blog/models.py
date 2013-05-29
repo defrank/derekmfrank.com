@@ -25,7 +25,7 @@ CATEGORY_CHOICES = (
 # Post
 class Post(models.Model):
     title = models.CharField(max_length=100)
-    image = models.ImageField(blank=True, null=True, upload_to="img/blog/")
+    image = models.ImageField(blank=True, null=True, upload_to="blog/img/")
     image_url = models.URLField(blank=True, verify_exists=True, null=True)
     body = models.TextField()
     timestamp = models.DateTimeField()

@@ -10,7 +10,7 @@
 
 from django.db import models
 from django.contrib import admin
-from mysite.models import SOURCE_TYPE
+from mysite.models import SOURCE_TYPE, DOC_TYPE
 
 
 # ABOUT ME
@@ -19,9 +19,12 @@ from mysite.models import SOURCE_TYPE
 class Document(models.Model):
     title = models.CharField(max_length=32)
     description = models.TextField()
-    document = models.FileField(upload_to="doc/aboutme/")
+    document = models.FileField(upload_to="aboutme/doc/")
+    type = models.CharField(max_length=4, null=True, choices=DOC_TYPE)
 
     def __unicode__(self):
+        if self.type:
+            return self.title + ' (' + self.type + ')'
         return self.title
 
 
@@ -42,15 +45,17 @@ class Person(models.Model):
     middle_name = models.CharField(max_length=32)
     last_name = models.CharField(max_length=32)
     title = models.CharField(max_length=64, blank=True, null=True)
-    image = models.ImageField(blank=True, null=True, upload_to="img/aboutme/")
+    image = models.ImageField(blank=True, null=True, upload_to="aboutme/img/")
     email = models.EmailField()
+    email_name = models.CharField(null=True, max_length=32)
     alternative_email = models.EmailField()
+    alternative_email_name = models.CharField(null=True, max_length=32)
     documents = models.ManyToManyField(Document)
     sources = models.ManyToManyField(Source, blank=True, null=True)
     description = models.TextField()
     
     def __unicode__(self):
-        return self.first_name + ' ' +  self.last_name
+        return self.first_name + ' ' + self.middle_name[0] + '. ' +  self.last_name
 
 
 ## ADMIN

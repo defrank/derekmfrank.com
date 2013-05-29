@@ -1,11 +1,11 @@
-from mysite.views.view_functions import response
 from django.conf import settings
 from django.contrib.sites.models import get_current_site
 import datetime
 
+from utils.functions import response
 from mysite.models import DEPARTMENT_CHOICES
 from aboutme.models import Source
-from portfolio.models import Project, Education, Course, Assignment
+from models import Project, Education, Course, Assignment
 
 
 # Portfolio page view

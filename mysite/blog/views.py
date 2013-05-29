@@ -1,9 +1,9 @@
-from mysite.views.view_functions import response
 from django.conf import settings
 from django.contrib.sites.models import get_current_site
 import datetime
 
-from blog.models import CATEGORY_CHOICES, Post, Link
+from utils.functions import response
+from models import CATEGORY_CHOICES, Post, Link
 
 
 # Blog page view

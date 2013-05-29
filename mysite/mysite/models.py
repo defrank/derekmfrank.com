@@ -14,6 +14,12 @@ from django.contrib import admin
 
 ## CHOICES
 
+DOC_TYPE = (
+    ('pdf', 'PDF'),
+    ('docx', 'DOCX'),
+    ('txt', 'Text'),
+)
+
 SOURCE_TYPE = (
     ('RP', 'Repository'),
     ('PF', 'Profile'),

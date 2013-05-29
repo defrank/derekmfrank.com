@@ -8,7 +8,6 @@
 #   A template views definition for mysite derekmfrank.com.
 #
 
-from mysite.views.view_functions import response
 from django.conf import settings
 from django.shortcuts import render_to_response
 from django.shortcuts import redirect
@@ -20,6 +19,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.sites.models import get_current_site
 #import datetime
 
+from utils.functions import response
 from mysite.models import Message
 
 # Home page view

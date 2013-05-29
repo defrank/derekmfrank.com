@@ -12,7 +12,9 @@ from django.conf import settings
 from django.conf.urls.defaults import patterns, include, url
 from django.conf.urls.static import static
 from django.views.static import serve as views_static_serve
-from mysite.views import view_functions, views
+
+import views
+from utils import functions
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -42,8 +44,8 @@ if settings.DEBUG:
 
 # PHP MySQL Database
 urlpatterns += patterns('',
-    url(r'^dh_phpmyadmin.*$', view_functions.redirect_to_mysql, name='mysql'),
-    url(r'^mysql.*$', view_functions.redirect_to_mysql, name='mysql'),
+    url(r'^dh_phpmyadmin.*$', functions.redirect_to_mysql, name='mysql'),
+    url(r'^mysql.*$', functions.redirect_to_mysql, name='mysql'),
 )
 
 # Webmasters and other 3rd party apps
@@ -53,5 +55,5 @@ urlpatterns += patterns('',
 
 # Necessary redirection for unavailable pages
 urlpatterns += patterns('',
-    url(r'^.+$', view_functions.redirect_to_home, name='redirect'),
+    url(r'^.+$', functions.redirect_to_home, name='redirect'),
 )

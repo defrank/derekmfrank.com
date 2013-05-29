@@ -9,7 +9,8 @@
 #
 
 from django.conf.urls import patterns, url
-from blog import views
+
+import views
 
 urlpatterns = patterns('',
     # Blog

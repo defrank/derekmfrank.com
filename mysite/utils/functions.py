@@ -2,10 +2,10 @@
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
-#   view_functions.py - mysite
+#   functions.py - mysite
 #
 # DESCRIPTION
-#   Functions for template views.
+#   Functions.
 #
 
 from django.shortcuts import render_to_response

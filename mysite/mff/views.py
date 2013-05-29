@@ -8,9 +8,11 @@
 #   A template views definition for MFF.
 #
 
-from mysite.views.view_functions import response
 from django.conf import settings
 from django.contrib.sites.models import get_current_site
+
+from utils.functions import response
+#from models import 
 
 # MFF page view
 def mff(request):

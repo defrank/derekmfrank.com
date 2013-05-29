@@ -9,7 +9,8 @@
 #
 
 from django.conf.urls import patterns, url
-from aboutme import views
+
+import views
 
 urlpatterns = patterns('',
     # About me

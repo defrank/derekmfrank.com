@@ -17,7 +17,7 @@
 {% if post.image or post.image_url %}
     <div class="center">
         {% if post.image %}
-            <img src="/media/{{ post.image }}" alt="Blog Post {{ post.id }} Image" />
+            <img src="{% static post.image %}" alt="Blog Post {{ post.id }} Image" />
         {% else %}
             <img src="{{ post.image_url }}" alt="Blog Post {{ post.id }} Image" />
         {% endif %}
@@ -25,6 +25,6 @@
 {% endif %}
 <ul>
     {% autoescape off %}
-    <p>{{ post.body|linebreaks }}</p>
+        {{ post.body|linebreaks }}
     {% endautoescape %}
 </ul>

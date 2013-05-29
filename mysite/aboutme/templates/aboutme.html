@@ -23,71 +23,47 @@
     <div id="content-left">
         <div class="box" >
             <h2>About me</h2>
-            <p>
-                My name is Derek.  
-                I recently graduated from the University of California, 
-                Santa Cruz with a Bachelor of Science degree in Computer Science.
-                I went to Venice High School and currently live in Marina del Rey.
-            </p>
-            <p>
-                My interests and hobbies include:
-                <ul>
-                    <li>Space and the cosmos</li>
-                    <li>Reading science fiction and fantasy novels (<a href="http://www.goodreads.com/dmfrank" title="Check out my reading list">Goodreads</a>)</li>
-                    <li>Music, music, and more music (<a href="http://www.last.fm/user/derekmfrank" title="Check out what kind of music I like">Last.fm</a>)</li>
-                    <li>Playing the guitar</li>
-                    <li>Snowboarding</li>
-                    <li>Longboarding</li>
-                    <li>Swimming</li>
-                    <li>Biking</li>
-                    <li>And being a geek, of course (<a href="http://www.archlinux.org" title="Source of geekiness">Arch Linux</a>, <a href="http://crux.nu" title="Another source of geekiness">Crux Linux</a>)</li>
-                </ul>
-            </p>
-            <p>
-                I love to think about the universe and all of it's endless possibilities.
-                I am a strong advocater for Linux and other free software.
-                Very passionate about freedom of expression and the Internet.
-            </p>
-            <p>You can check out more about me at 
-                <a href="{{ LINKEDIN_URL }}" >LinkedIn</a>.
-            </p>
+            {% autoescape off %}
+                {{ me.description }}
+            {% endautoescape %}
         </div>
     </div>
 
     <div id="content-right" >
         <div class="box">
-            <div class="center">
-                {% comment %}
-                    <img class="center" src="{% static "img/personal-1.jpg" %}" alt="Me" width="200" height="300" />
-                {% endcomment %}
-                <img id="mypic" class="center" src="{% static "img/personal-2.jpg" %}" alt="Me" width="260" height="260" />
-            </div>
+            {% if me.image %}
+                <div class="center">
+                    <img id="mypic" class="center" src="{% static me.image %}" alt="Me" width="260" height="260" />
+                </div>
+            {% endif %}
             <h3>Contact</h3>
             <ul>
-                Derek M. Frank<br />
-                Software Engineer<br />
-                <a href="mailto:{{ GMAIL }}" title="Email Derek Frank: {{ GMAIL }}">Gmail</a> | 
-                <a href="mailto:{{ GMX }}" title="Email Derek Frank: {{ GMX }}">GMX</a><br />
+                {{ me }}<br />
+                {{ me.title }}<br />
+                <a href="mailto:{{ me.email }}" title="Email Derek Frank: {{ me.email }}">{{ me.email_name }}</a> | 
+                <a href="mailto:{{ me.alternative_email }}" title="Email Derek Frank: {{ me.alternative_email }}">{{ me.alternative_email_name }}</a><br />
             </ul>
             <h3>Repositories</h3>
             <ul>
-                <a href="{{ GITHUB_URL }}" title="Derek's GitHub repository">GitHub</a><br />
-                <a href="{{ BITBUCKET_URL }}" title="Derek's BitBucket repository">BitBucket</a><br />
+                {% for repo in me.sources.all %}
+                    {% if repo.type == 'RP' %}
+                        <a href="{{ repo.url }}" title="Derek's {{ repo.title }} repository">{{ repo.title }}</a><br />
+                    {% endif %}
+                {% endfor %}
             </ul>
             <h3>Documents</h3>
             <ul>
-                My resume:
-                <ul>
-                    <li><a href="{{ RESUME_LINK_PDF }}" title="Derek's resume">PDF</a></li>
-                    <li><a href="{{ RESUME_LINK_DOCX }}" title="Derek's resume">DOCX</a></li>
-                </ul>
+                {% for doc in me.documents.all %}
+                    <a href="{% static doc.document %}" title="Derek's {{ doc }}">{{ doc }}</a><br />
+                {% endfor %}
             </ul>
             <h3>Other Sources</h3>
             <ul>
-                <a href="{{ STACKEXCHANGE_URL }}" title="Derek's StackExchange profile">StackExchange</a><br />
-                <a href="{{ BEYOND_URL }}" title="Derek's Beyond profile">Beyond</a><br />
-                <a href="{{ LINKEDIN_URL }}" title="Derek's LinkedIn profile">LinkedIn</a><br />
-                <a href="{{ FLAVORSME_URL }}" title="Derek's Flavors.me profile">Flavors.me</a><br />
+                {% for src in me.sources.all %}
+                    {% if src.type != 'RP' %}
+                        <a href="{{ src.url }}" title="Derek's {{ src.title }} {{ src.get_type_display }}">{{ src.title }}</a><br />
+                    {% endif %}
+                {% endfor %}
             </ul>
         </div>
     </div>

@@ -9,7 +9,7 @@
 #
 
 from django.conf.urls import patterns, url
-from portfolio import views
+import views
 
 urlpatterns = patterns('',
     # Portfolio

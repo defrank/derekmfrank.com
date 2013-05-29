@@ -9,7 +9,7 @@
 #
 
 from django.conf.urls import patterns, url
-from webmaster import views
+import views
 
 
 # Webmasters and other 3rd party site apps

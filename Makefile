@@ -38,6 +38,7 @@ DIR_MEDIA       = ${DIR_DJANGO}media/
 DIR_VIEWS       = ${DIR_DJANGO}views/
 # Apps
 DIR_APPS        = mysite/
+DIR_UTILS       = ${DIR_APPS}utils/
 DIR_TEMPLATES   = ${DIR_APPS}templates/
 DIR_STATIC      = ${DIR_APPS}staticfiles/
 DIR_IMG         = ${DIR_STATIC}img/
@@ -49,12 +50,15 @@ DIR_LOGO        = ${DIR_IMG}logo/
 DIR_WEBMASTER   = ${DIR_APPS}webmaster/
 
 ## DJANGO
-VIEWFILES       = ${DIR_VIEWS}view_functions.py ${DIR_VIEWS}views.py
+VIEWFILES       = ${DIR_VIEWS}views.py
 DJANGOFILES     = ${DIR_APPS}manage.py          ${DIR_DJANGO}settings.py       \
                   ${DIR_DJANGO}urls.py     ${DIR_DJANGO}context_processors.py  \
 				  ${DIR_DJANGO}mysite.db        ${VIEWFILES} ${TEMPLATESFILES}
 
 ## APPS
+APP_UTILS       = ${DIR_UTILS}__init__.py       ${DIR_UTILS}urls.py            \
+                  ${DIR_UTILS}models.py         ${DIR_UTILS}views.py           \
+                  ${DIR_UTILS}functions.py 
 APP_TEMPLATES   = ${DIR_TEMPLATES}__init__.py   ${DIR_TEMPLATES}urls.py        \
                   ${DIR_TEMPLATES}models.py     ${DIR_TEMPLATES}views.py       \
                   ${DIR_TEMPLATES}base.html     ${DIR_TEMPLATES}home.html      \
@@ -76,7 +80,7 @@ APP_WEBMASTER   = ${DIR_WEBMASTER}__init__.py   ${DIR_WEBMASTER}urls.py        \
 				  ${DIR_WEBMASTER}views.py                                     \
 				  ${DIR_WEBMASTER}templates/google0a2e75908547fa0e.html        \
 				  ${DIR_WEBMASTER}templates/BingSiteAuth.xml
-APPSFILES       = ${APP_TEMPLATES} ${APP_STATIC} ${APP_WEBMASTER}
+APPSFILES       = ${APP_UTILS} ${APP_TEMPLATES} ${APP_STATIC} ${APP_WEBMASTER}
 
 ## MISC
 SERVFILES       = .htaccess
