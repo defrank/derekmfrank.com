@@ -23,6 +23,7 @@ DOC_TYPE = (
 SOURCE_TYPE = (
     ('RP', 'Repository'),
     ('PF', 'Profile'),
+    ('HP', 'Hobby Profile'),
     ('EX', 'Extra'),
 )
 
