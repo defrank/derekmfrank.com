@@ -54,7 +54,7 @@
             <h3>Documents</h3>
             <ul>
                 {% for doc in me.documents.all %}
-                    <a href="{% static doc.document %}" title="Derek's {{ doc }}">{{ doc }}</a><br />
+                    <a href="{% if doc.document %}{% static doc.document %}{% else %}{{ doc.url }}{% endif %}" title="Derek's {{ doc }}">{{ doc }}</a><br />
                 {% endfor %}
             </ul>
             <h3>Other Sources</h3>

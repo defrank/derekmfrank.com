@@ -81,7 +81,7 @@
             <div id="navbarcontainer" class="center">
                 {% comment %}
                     <div id="navbarlogo">
-                        <h1><a href="/" title="Return to the home page"><span>{{ request.get_host|title }}</span></a></h1>
+                        <h1><a href="/" title="Return to the home page">{{ request.get_host|title }}</a></h1>
                     </div>
                 {% endcomment %}
                 {% block navbar_menu %}
@@ -115,7 +115,11 @@
 
     {% block footer %}
         <footer>
-        <p><a href="mailto:dmfrank@{{ request.get_host|cut:"www." }}" title="Contact {{ SITENAME_ }}">{{ SITENAME_ }}</a> {{ SITE_YEARS }}</p>
+            <p>
+                <a href="mailto:dmfrank@{{ request.get_host|cut:"www." }}" 
+                   title="Contact {{ SITENAME_ }}">{{ SITENAME_ }}</a>
+                  <span>{{ SITE_YEARS }}</span>
+            </p>
             <p>{{ request.get_host }}</p>
         </footer>
     {% endblock %}

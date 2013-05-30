@@ -14,29 +14,26 @@ def portfolio(request):
     sources = Source.objects.order_by('priority', 'type', 'title' )
     projects = Project.objects.order_by('date').reverse()
     education = []
+    departments = DEPARTMENT_CHOICES
     institution = Education.objects.order_by('graduation_date').reverse()
     for i in institution:
-        courses = Course.objects.order_by('department', 'number').reverse()
-        course_asg = []
-        for c in courses:
-            asgs = Assignment.objects.filter(course=c).order_by('identification')
-            course_asg.append([c, asgs])
-        education.append([i, course_asg])
-    department_list = Course.objects.values_list('department').distinct()
-    departments = []
-    for d in department_list:
-        #departments.append(d)
-        for c in DEPARTMENT_CHOICES:
-            if d == c[0]:
-                departments.append(c)
-            
+        dept_courses = []
+        for d in departments:
+            courses = Course.objects.filter(department=d[0]).order_by('number').reverse()
+            course_asgs = []
+            if courses:
+                for c in courses:
+                    asgs = Assignment.objects.filter(course=c).order_by('identification')
+                    course_asgs.append((c, asgs))
+            if course_asgs:
+                dept_courses.append((d[-1], course_asgs))
+        education.append((i, dept_courses))
+
     template = 'portfolio.html'
     context = {
         'errors': errors,
         'sources': sources,
         'projects': projects,
         'education': education,
-        'departments': DEPARTMENT_CHOICES,
-        #'departments': departments,
     }
     return response(request, template, context)

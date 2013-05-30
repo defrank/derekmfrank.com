@@ -23,32 +23,33 @@
         <div class="box" style="min-height: 340px;">
             <h2>{{ info }} | {{ info.title }}</h2>
             <div class="center" >
-                <a href="{% url "mff" %}" title="">
-                    {# <img src="{% static info.image %}" alt="Image for {{ info }}" width="200" height="300" align="middle" /> #}
-                    <img src="{% static info.image %}" alt="Image for {{ info }}" />
+                <a class="block" href="{% url "mff" %}" title="{{ info.image_text }}">
+                    <img  src="{% static info.image %}" alt="Image for {{ info }}" />
                 </a>
-                <br /><i>{{ info.image_text }}</i>
+                <span class="italic">{{ info.image_text }}</span>
             </div>
-            {% for topic_bits in topics %}
-            {% with topic_bits|first as topic %}
-            {% with topic_bits|last as bits %}
-                <div class="topic">
-                    <h3>{{ topic }}</h3>
-                    {% if topic.pretopic_list %}
-                        {{ topic.pretopic_list|linebreaks }}
-                    {% endif %}
-                    <ul>
-                        {% for bit in bits %}
-                            <li>{{ bit }}</li>
-                        {% endfor %}
-                    </ul>
-                    {% if topic.body %}
-                        {{ topic.body|linebreaks }}
-                    {% endif %}
+            <div class="">
+                {% for topic_bits in topics %}
+                {% with topic_bits|first as topic %}
+                {% with topic_bits|last as bits %}
+                    <div class="topic clearfix">
+                        <h3>{{ topic }}</h3>
+                        {% if topic.pretopic_list %}
+                            <span>{{ topic.pretopic_list|linebreaks }}</span>
+                        {% endif %}
+                        <ul>
+                            {% for bit in bits %}
+                                <li>{{ bit }}</li>
+                            {% endfor %}
+                        </ul>
+                        {% if topic.body %}
+                            <span>{{ topic.body|linebreaks }}</span>
+                        {% endif %}
+                    </div>
+                {% endwith %}
+                {% endwith %}
+                {% endfor %}
                 </div>
-            {% endwith %}
-            {% endwith %}
-            {% endfor %}
         </div>
     </div>
   
@@ -56,15 +57,16 @@
         <div class="box">
             <h3>Contact Information</h3>
             <ul>
-                {{ info }}<br />
-                {{ info.title }}<br />
-                <a href="mailto:{{ info.email }}" title="Contact Michael Frank">{{ info.email_name }}</a><br />
-                {{ info.contact|linebreaks }}
+                <span class="block">{{ info }}</span>
+                <span class="block">{{ info.title }}</span>
+                <a class="block" href="mailto:{{ info.email }}" 
+                   title="Contact {{ info }} via {{ info.email }}">{{ info.email_name }}</a>
+                <span class="block">{{ info.contact|linebreaks }}</span>
             </ul>
             <h3>Other Sources</h3>
             <ul>
                 {% for src in info.sources.all %}
-                    <a href="{{ src.url }}">{{ src.title }}</a>
+                    <a class="block" href="{{ src.url }}">{{ src.title }}</a>
                 {% endfor %}
             </ul>
         </div>

@@ -17,7 +17,7 @@
 
 /* import the global navbar stylesheet */
 /* @import url('{{ CSS_URL }}navbar/navbar.css'); */
-@import url("navbar.css?v=134);
+@import url("navbar.css?v=134");
 
 /* simple reset */
 * {
@@ -119,6 +119,18 @@ input[type=submit] {
     display: none;
 }
 
+.inline {
+    display: inline;
+}
+
+.block {
+    display: block;
+}
+
+.italic {
+    font-style: italic;
+}
+
 hr {
     border: none;
     border-top: 1px solid #888;
@@ -192,12 +204,12 @@ h3:hover > a.headerlink {
 
 h4 {
     font-size: 1.15em;
-    margin-top: 1em;
+    margin-top: .2em;
 }
 
 h5 {
     font-size: 1em;
-    margin-top: 1em;
+    margin-top: .2em;
 }
 
 /* general layout */
@@ -284,6 +296,14 @@ img.center {
     margin-left: auto;
     margin-right: auto;
 }
+
+.left {
+    width:  auto;
+    text-align: left;
+    margin-left:    auto;
+    margin-right:   auto;
+}
+
 div.right,
 table.right,
 img.right {
@@ -325,81 +345,6 @@ td {
         vertical-align: top;
     }
 
-/* table pretty styles */
-table.pretty1 {
-    width: auto;
-    margin-top: 0.25em;
-    margin-bottom: 0.5em;
-    border-collapse: collapse;
-    border: 1px solid #33cc33;
-}
-
-    table.pretty1 th {
-        padding: 0.35em;
-        background: #e4eeff;
-        border: 1px solid #33cc33;
-    }
-
-    table.pretty1 td {
-        padding: 0.35em;
-        border: 1px dotted #33cc33;
-    }
-
-table.pretty2 {
-    width: auto;
-    margin-top: 0.25em;
-    margin-bottom: 0.5em;
-    border-collapse: collapse;
-    border: 1px solid #bbb;
-}
-
-    table.pretty2 th {
-        padding: 0.35em;
-        background: #eee;
-        border: 1px solid #bbb;
-    }
-
-        /* additional styles for JS sorting */
-        table.pretty2 th.tablesorter-header {
-            padding-right: 20px;
-            background-image: url(nosort.gif);
-            background-repeat: no-repeat;
-            background-position: center right;
-            cursor: pointer;
-        }
-
-        table.pretty2 th.tablesorter-headerSortDown {
-            background-image: url(desc.gif);
-        }
-
-        table.pretty2 th.tablesorter-headerSortUp {
-            background-image: url(asc.gif);
-        }
-
-    table.pretty2 td {
-        padding: 0.35em;
-        border: 1px dotted #bbb;
-    }
-
-/* definition lists */
-dl {
-    clear: both;
-}
-
-    dl dt,
-    dl dd {
-        margin-bottom: 4px;
-        padding: 8px 0px 4px;
-        font-weight: bold;
-        border-top: 1px dotted #bbb;
-    }
-
-    dl dt {
-        color: #333;
-        float:left;
-        padding-right:15px;
-    }
-
 /* forms and input styling */
 form p {
     margin: 0.5em 0;
@@ -422,120 +367,7 @@ textarea {
     padding: 0.10em;
 }
 
-form.general-form label,
-form.general-form .form-help {
-    width: 10em;
-    vertical-align: top;
-    display: inline-block;
-}
-
-form.general-form input[type=text],
-form.general-form textarea {
-    width: 45%;
-}
-
-/* dev navbar */
-div#dev-navbar {
-    margin: 1.5em 0;
-}
-
-    div#dev-navbar ul {
-        list-style: none;
-        margin: -0.5em 0;
-        padding: 0;
-    }
-
-    div#dev-navbar li {
-        display: inline;
-        margin: 0;
-        padding: 0;
-        font-size: 0.9em;
-    }
-
-        div#dev-navbar li a {
-            padding: 0 0.5em;
-            color: #07b;
-        }
-
-/* home: sidebar navigation */
-div#nav-sidebar ul {
-    list-style: none;
-    margin: 0.5em 0 0.5em 1em;
-    padding: 0;
-}
-
-/* home: sponsor banners */
-div#sponsors img {
-    padding: 0.3em 0;
-}
-
-/* home: sidebar components (navlist, sponsors, pkgsearch, etc) */
-div.widget {
-    margin-bottom: 1.5em;
-}
-
-/* artwork: logo images */
-#artwork img.inverted {
-    background: #333;
-    padding: 0;
-}
-
-#artwork div.imagelist img {
-    display: inline;
-    margin: 0.75em;
-}
-
-/* dev/TU biographies */
-div#bio-toc {
-    width: 75%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-    div#bio-toc a {
-        white-space: nowrap;
-    }
-
-table.bio-entry {
-    width: 75%;
-    min-width: 640px;
-    margin: 0 auto;
-}
-
-    table.bio-entry td.pic {
-        vertical-align: top;
-        padding-right: 15px;
-        padding-top: 2.25em;
-    }
-
-        table.bio-entry td.pic img {
-            padding: 4px;
-            border: 1px solid #ccc;
-        }
-
-    table.bio-entry td h3 {
-        border-bottom: 1px dotted #ccc;
-        margin-bottom: 0.5em;
-    }
-
-    table.bio-entry table.bio {
-        margin-bottom: 2em;
-    }
-
-        table.bio-entry table.bio th {
-            color: #666;
-            font-weight: normal;
-            text-align: right;
-            padding-right: 0.5em;
-            vertical-align: top;
-            white-space: nowrap;
-        }
-
-        table.bio-entry table.bio td {
-            width: 100%;
-            padding-bottom: 0.25em;
-        }
-
+/* navbar list */
 #navbar span.nb-separator,
 #navbar.nb-separator ul li.nb-separator {
     color: #00ff00 !important;
@@ -550,38 +382,6 @@ table.bio-entry {
 #navbar.nb-admin ul li#nb-admin a {
     color: #00ff00 !important;
     font-weight: bold !important;
-}
-
-/* visualizations page */
-.visualize-buttons {
-    margin: 0.5em 0.33em;
-}
-
-    .visualize-buttons button.active {
-        depressed: true;
-    }
-
-.visualize-chart {
-    position: relative;
-    height: 500px;
-    margin: 0.33em;
-}
-
-#visualize-repo .treemap-cell {
-    border: solid 1px white;
-    overflow: hidden;
-    position: absolute;
-}
-
-    #visualize-repo .treemap-cell span {
-        padding: 3px;
-        font-size: 0.85em;
-        line-height: 1em;
-    }
-
-#visualize-keys svg {
-    width: 100%;
-    height: 100%;
 }
 
 
@@ -599,4 +399,9 @@ img#mypic {
     border-top: 1px dashed #00ff00;
     max-width: 95%;
     margin-bottom: 10px;
+}
+
+.topic {
+    margin:     10px;
+    padding:    5px;
 }

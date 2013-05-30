@@ -25,6 +25,6 @@
 {% endif %}
 <ul>
     {% autoescape off %}
-        {{ post.body|linebreaks }}
+        <span>{{ post.body|linebreaks }}</span>
     {% endautoescape %}
 </ul>

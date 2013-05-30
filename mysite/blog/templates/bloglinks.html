@@ -11,13 +11,11 @@
  *
 {% endcomment %}
 
-{% for c, k in categories %}
-    <h5>{{ k }}</h5>
+{% for cat, links in sources %}
+    <h5>{{ cat }}</h5>
     <ul>
         {% for link in links %}
-            {% if link.category == c %}
-                <li><a href="{{ link.url }}" title="">{{ link.title }}</a></li>
-            {% endif %}
+            <li><a href="{{ link.url }}" title="">{{ link.title }}</a></li>
         {% endfor %}
     </ul>
 {% endfor %}

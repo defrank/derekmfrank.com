@@ -19,8 +19,9 @@ from mysite.models import SOURCE_TYPE, DOC_TYPE
 class Document(models.Model):
     title = models.CharField(max_length=32)
     description = models.TextField()
-    document = models.FileField(upload_to="aboutme/doc/")
     type = models.CharField(max_length=4, null=True, choices=DOC_TYPE)
+    document = models.FileField(blank=True, null=True, upload_to="aboutme/doc/")
+    url = models.URLField(blank=True, null=True, verify_exists=True)
 
     def __unicode__(self):
         if self.type:
