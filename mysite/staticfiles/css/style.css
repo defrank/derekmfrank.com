@@ -17,7 +17,7 @@
 
 /* import the global navbar stylesheet */
 /* @import url('{{ CSS_URL }}navbar/navbar.css'); */
-@import url("navbar.css?v=133");
+@import url("navbar.css?v=134);
 
 /* simple reset */
 * {
@@ -538,7 +538,7 @@ table.bio-entry {
 
 #navbar span.nb-separator,
 #navbar.nb-separator ul li.nb-separator {
-    color: #33cc33 !important;
+    color: #00ff00 !important;
     font-weight: bold !important;
 }
 /* highlight current website in the navbar */
@@ -548,7 +548,7 @@ table.bio-entry {
 #navbar.nb-aboutme ul li#nb-aboutme a,
 #navbar.nb-mff ul li#nb-mff a,
 #navbar.nb-admin ul li#nb-admin a {
-    color: #aaaaaa !important;
+    color: #00ff00 !important;
     font-weight: bold !important;
 }
 
