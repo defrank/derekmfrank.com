@@ -17,12 +17,16 @@ from models import Source, Information, Topic, TopicListBit
 # MFF page view
 def mff(request):
     errors = []
-    content = Topic.objects.all()
-    info = Information.objects.all()
+    topics = []
+    alltopics = Topic.objects.all()
+    for topic in alltopics:
+        bits = TopicListBit.objects.filter(topic=topic)
+        topics.append([topic, bits])
+    info = Information.objects.get(id=1)
     template = 'mff.html'
     context = {
         'errors': errors,
-        'content', content,
-        'info', info,
+        'topics': topics,
+        'info': info,
     }
     return response(request, template, context)

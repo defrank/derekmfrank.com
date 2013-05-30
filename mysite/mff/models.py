@@ -32,14 +32,15 @@ class Information(models.Model):
     contact = models.TextField()
     image = models.ImageField(upload_to="mff/img/")
     image_text = models.TextField()
-    sources = models.ManyToMany(Source)
+    sources = models.ManyToManyField(Source)
 
     def __unicode__(self):
         return self.first_name + ' ' + self.middle_name[0] + '. ' + self.last_name
 
 class Topic(models.Model):
     title = models.CharField(max_length=128)
-    body = models.TextField()
+    pretopic_list = models.TextField(blank=True, null=True)
+    body = models.TextField(blank=True, null=True)
 
     def __unicode__(self):
         return self.title
@@ -65,7 +66,7 @@ class TopicAdmin(admin.ModelAdmin):
     list_display = ('title', 'body')
 
 class TopicListBitAdmin(admin.ModelAdmin):
-    list_display = ('topic', 'body')
+    list_display = ('body', 'topic')
 
 
 ## ADMIN REGISTER
