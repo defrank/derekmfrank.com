@@ -12,13 +12,17 @@ from django.conf import settings
 from django.contrib.sites.models import get_current_site
 
 from utils.functions import response
-#from models import 
+from models import Source, Information, Topic, TopicListBit
 
 # MFF page view
 def mff(request):
-  errors = []
-  template = 'mff.html'
-  context = {
-    'errors': errors,
-  }
-  return response(request, template, context)
+    errors = []
+    content = Topic.objects.all()
+    info = Information.objects.all()
+    template = 'mff.html'
+    context = {
+        'errors': errors,
+        'content', content,
+        'info', info,
+    }
+    return response(request, template, context)
