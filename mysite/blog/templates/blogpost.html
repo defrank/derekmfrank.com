@@ -17,8 +17,10 @@
     <a class="header" href="{% url "blog" %}{{ post.id }}/" 
        title="View blog post {{ post.id }}"><h3>{{ post.title }}</h3>
     </a>
-    <span class="timestamp">Posted on {{ post.timestamp }} by</span>
-    <a href="{% url "aboutme" %}" title="{{ me }} | {{ me.title }}">{{ me }}</a>
+    <span class="postinfo">
+        <span>Posted on <span class="timestamp">{{ post.timestamp }}</span> by</span>
+        <a href="{% url "aboutme" %}" title="{{ post.owner }} | {{ post.owner.title }}">{{ post.owner }}</a>
+    </span>
 </div>
 {% if post.image or post.image_url %}
     <div class="center">

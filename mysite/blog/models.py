@@ -11,6 +11,9 @@
 from django.db import models
 from django.contrib import admin
 
+from aboutme.models import Person
+from aboutme.views import get_me
+
 
 ## BLOG
 
@@ -24,6 +27,7 @@ CATEGORY_CHOICES = (
 
 # Post
 class Post(models.Model):
+    owner = models.ForeignKey(Person, null=True, default=get_me())
     title = models.CharField(max_length=100)
     image = models.ImageField(blank=True, null=True, upload_to="blog/img/")
     image_url = models.URLField(blank=True, verify_exists=True, null=True)
@@ -47,7 +51,7 @@ class Link(models.Model):
 ## BLOG ADMIN
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'timestamp')
+    list_display = ('title', 'owner', 'timestamp')
 
 class LinkAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'timestamp')

@@ -401,6 +401,13 @@ textarea {
 
 
 /* specific content */
+span.postinfo {
+    font-size: .8em;
+}
+span.postinfo span.timestamp {
+    font-style: italic;
+    font-size: 1em;
+}
 span.timestamp {
     font-size: .8em;
     font-style: italic;
