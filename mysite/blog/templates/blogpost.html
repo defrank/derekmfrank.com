@@ -13,10 +13,13 @@
 {% load static from staticfiles %}
 {% load url from future %}
 
-<a class="header" href="{% url "blog" %}{{ post.id }}/" 
-   title="View blog post {{ post.id }}"><h3>{{ post.title }}</h3>
-</a>
-<span class="timestamp">{{ post.timestamp }}</span>
+<div class="block">
+    <a class="header" href="{% url "blog" %}{{ post.id }}/" 
+       title="View blog post {{ post.id }}"><h3>{{ post.title }}</h3>
+    </a>
+    <span class="timestamp">Posted on {{ post.timestamp }} by</span>
+    <a href="{% url "aboutme" %}" title="{{ me }} | {{ me.title }}">{{ me }}</a>
+</div>
 {% if post.image or post.image_url %}
     <div class="center">
         {% if post.image %}
