@@ -12,6 +12,7 @@
  *
 {% endcomment %}
 
+{% block head_title %}{{ post.id }} | Blog | {{ me }}{% endblock %}
 {% block blog_content %}
     <h2>Blog Post {{ post.id }}</h2>
     {% include "blogpost.html" %}

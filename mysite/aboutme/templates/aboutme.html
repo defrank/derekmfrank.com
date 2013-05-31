@@ -50,7 +50,7 @@
             </ul>
             <h3>Repositories</h3>
             <ul>
-                {% for repo in me.sources.all %}
+                {% for repo in sources %}
                     {% if repo.type == 'RP' %}
                         <div class="block">
                             <a href="{{ repo.url }}" title="Derek's {{ repo.title }} repository">{{ repo.title }}</a>
@@ -60,7 +60,7 @@
             </ul>
             <h3>Documents</h3>
             <ul>
-                {% for doc in me.documents.all %}
+                {% for doc in documents %}
                     <div class="block">
                         <a href="{% if doc.document %}{% static doc.document %}{% else %}{{ doc.url }}{% endif %}" 
                            title="Derek's {{ doc }}">{{ doc }}</a>
@@ -69,7 +69,7 @@
             </ul>
             <h3>Other Sources</h3>
             <ul>
-                {% for src in me.sources.all %}
+                {% for src in sources %}
                     {% if src.type != 'RP' %}
                         <div class="block">
                             <a href="{{ src.url }}" 

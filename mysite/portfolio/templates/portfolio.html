@@ -36,6 +36,13 @@
                         <span class="timestamp">{{ project.date }}</span>
                         <ul><span>{{ project.description|linebreaks }}</span></ul>
                         <ul>
+                        {% if project.repository_url %}
+                            <h5 class="inline">Repository:</h5>
+                            <a href="{{ project.repository_url }}"
+                               title="Visit {{ project }} repository on {{ project.get_repository_name_display }}">
+                                <span>{{ project.get_repository_name_display }}</span>
+                            </a>
+                        {% endif %}
                         {% if project.language %}
                             <h5>Language(s):</h5>
                             <ul>
@@ -44,13 +51,6 @@
                                     <span>{{ lang }}</span>
                                 {% endfor %}
                             </ul>
-                        {% endif %}
-                        {% if project.repository_url %}
-                            <h5 class="inline">Repository:</h5>
-                            <a href="{{ project.repository_url }}"
-                               title="Visit {{ project }} repository on {{ project.get_repository_name_display }}">
-                                <span>{{ project.get_repository_name_display }}</span>
-                            </a>
                         {% endif %}
                         </ul>
                     {% endfor %}

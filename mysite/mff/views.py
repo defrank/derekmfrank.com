@@ -21,12 +21,12 @@ def mff(request):
     alltopics = Topic.objects.all()
     for topic in alltopics:
         bits = TopicListBit.objects.filter(topic=topic)
-        topics.append([topic, bits])
-    info = Information.objects.get(id=1)
+        topics.append((topic, bits))
+    mff = Information.objects.get(id=1)
     template = 'mff.html'
     context = {
         'errors': errors,
         'topics': topics,
-        'info': info,
+        'mff': mff,
     }
     return response(request, template, context)

@@ -35,6 +35,8 @@ def blog(request):
 def post_detail(request, post_id):
     errors = []
     post = Post.objects.get(id=post_id)
+    if not post:
+        return blog(request)
     sources = get_sources()
     template = 'post_detail.html'
     context = {

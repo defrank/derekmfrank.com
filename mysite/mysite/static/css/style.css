@@ -1,5 +1,5 @@
 /*******************************************************************************
- * $Id: style.css,v 1.5 2013-05-28 22:00:02-07 dmf - $                                                                       
+ * $Id: style.css,v 1.6 2013-05-30 17:07:05-07 dmf - $                                                                       
  * Derek Frank (derekmfrank@gmail.com)                                          
  *                                                                              
  * Theme Name: dmf
@@ -146,6 +146,15 @@ img {
 }
 
 /* link style */
+a.header,
+a.header:visited {
+    text-decoration: none;
+    color: #000
+}
+a.header:hover {
+    text-decoration: none;
+}
+
 a {
     text-decoration: none;
 }

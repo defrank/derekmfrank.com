@@ -18,13 +18,19 @@ from models import Person, Source, Document
 # Helper function to get me
 def get_me():
     me = Person.objects.get(id=1)
+    return me
 
 
 # About Me page view
 def aboutme(request):
     errors = []
+    me = get_me()
+    sources = Source.objects.filter(person=me).order_by('priority', 'type')
+    documents = Document.objects.filter(person=me).order_by('type', 'title')
     template = 'aboutme.html'
     context = {
         'errors': errors,
+        'sources': sources,
+        'documents': documents,
     }
     return response(request, template, context)

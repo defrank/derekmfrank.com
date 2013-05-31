@@ -15,7 +15,7 @@ import views
 urlpatterns = patterns('',
     # Blog
     url(r'^$', views.blog, name='blog'),
-    url(r'^(\d)$', views.post_detail),
+    url(r'^(\d)/$', views.post_detail),
 )
 
 # Necessary redirection for unavailable pages

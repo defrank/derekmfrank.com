@@ -14,19 +14,19 @@
 {% load static from staticfiles %}
 {% load url from future %}
 
-{% block head_title %}Michael F. Frank | Attorney at Law{% endblock %}
+{% block head_title %}{{ mff }} | {{ mff.title }}{% endblock %}
 
 {% block navbar_class %}nb-mff{% endblock %}
 
 {% block body_inner_content %}
     <div id="content-left">
         <div class="box" style="min-height: 340px;">
-            <h2>{{ info }} | {{ info.title }}</h2>
+            <h2>{{ mff }} | {{ mff.title }}</h2>
             <div class="center" >
-                <a class="block" href="{% url "mff" %}" title="{{ info.image_text }}">
-                    <img  src="{% static info.image %}" alt="Image for {{ info }}" />
+                <a class="block" href="{% url "mff" %}" title="{{ mff.image_text }}">
+                    <img  src="{% static mff.image %}" alt="Image for {{ mff }}" />
                 </a>
-                <span class="italic">{{ info.image_text }}</span>
+                <span class="italic">{{ mff.image_text }}</span>
             </div>
             <div class="">
                 {% for topic_bits in topics %}
@@ -57,15 +57,15 @@
         <div class="box">
             <h3>Contact Information</h3>
             <ul>
-                <span class="block">{{ info }}</span>
-                <span class="block">{{ info.title }}</span>
-                <a class="block" href="mailto:{{ info.email }}" 
-                   title="Contact {{ info }} via {{ info.email }}">{{ info.email_name }}</a>
-                <span class="block">{{ info.contact|linebreaks }}</span>
+                <span class="block">{{ mff }}</span>
+                <span class="block">{{ mff.title }}</span>
+                <a class="block" href="mailto:{{ mff.email }}" 
+                   title="Contact {{ mff }} via {{ mff.email }}">{{ mff.email_name }}</a>
+                <span class="block">{{ mff.contact|linebreaks }}</span>
             </ul>
             <h3>Other Sources</h3>
             <ul>
-                {% for src in info.sources.all %}
+                {% for src in mff.sources.all %}
                     <a class="block" href="{{ src.url }}">{{ src.title }}</a>
                 {% endfor %}
             </ul>

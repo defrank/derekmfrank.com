@@ -15,8 +15,38 @@ from mysite.models import SOURCE_TYPE, DOC_TYPE
 
 # ABOUT ME
 
+# Person
+class Person(models.Model):
+    first_name = models.CharField(max_length=32)
+    middle_name = models.CharField(max_length=32)
+    last_name = models.CharField(max_length=32)
+    title = models.CharField(max_length=64, blank=True, null=True)
+    image = models.ImageField(blank=True, null=True, upload_to="aboutme/img/")
+    email = models.EmailField()
+    email_name = models.CharField(null=True, max_length=32)
+    alternative_email = models.EmailField()
+    alternative_email_name = models.CharField(null=True, max_length=32)
+    description = models.TextField()
+    
+    def __unicode__(self):
+        return self.first_name + ' ' + self.middle_name[0] + '. ' +  self.last_name
+
+
+# Source
+class Source(models.Model):
+    person = models.ForeignKey(Person, null=True)
+    priority = models.IntegerField()
+    title = models.CharField(max_length=127)
+    type = models.CharField(max_length=4, choices=SOURCE_TYPE, blank=True, null=True)
+    url = models.URLField(verify_exists=True)
+
+    def __unicode__(self):
+        return self.title
+
+
 # Document
 class Document(models.Model):
+    person = models.ForeignKey(Person, null=True)
     title = models.CharField(max_length=32)
     description = models.TextField()
     type = models.CharField(max_length=4, null=True, choices=DOC_TYPE)
@@ -29,46 +59,16 @@ class Document(models.Model):
         return self.title
 
 
-# Source
-class Source(models.Model):
-    priority = models.IntegerField()
-    title = models.CharField(max_length=127)
-    type = models.CharField(max_length=4, choices=SOURCE_TYPE, blank=True, null=True)
-    url = models.URLField(verify_exists=True)
-
-    def __unicode__(self):
-        return self.title
-
-
-# Person
-class Person(models.Model):
-    first_name = models.CharField(max_length=32)
-    middle_name = models.CharField(max_length=32)
-    last_name = models.CharField(max_length=32)
-    title = models.CharField(max_length=64, blank=True, null=True)
-    image = models.ImageField(blank=True, null=True, upload_to="aboutme/img/")
-    email = models.EmailField()
-    email_name = models.CharField(null=True, max_length=32)
-    alternative_email = models.EmailField()
-    alternative_email_name = models.CharField(null=True, max_length=32)
-    documents = models.ManyToManyField(Document)
-    sources = models.ManyToManyField(Source, blank=True, null=True)
-    description = models.TextField()
-    
-    def __unicode__(self):
-        return self.first_name + ' ' + self.middle_name[0] + '. ' +  self.last_name
-
-
 ## ADMIN
 
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name', 'middle_name', 'email')
 
 class DocumentAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description')
+    list_display = ('title', 'description', 'person')
 
 class SourceAdmin(admin.ModelAdmin):
-    list_display = ('priority', 'title', 'type', 'url')
+    list_display = ('title', 'type', 'url', 'priority', 'person')
 
 
 ## ADMIN REGISTER

@@ -1,9 +1,14 @@
-head	1.5;
+head	1.6;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.6
+date	2013.05.31.00.07.05;	author dmf;	state -;
+branches;
+next	1.5;
 
 1.5
 date	2013.05.29.05.00.02;	author dmf;	state -;
@@ -35,13 +40,13 @@ desc
 @@
 
 
-1.5
+1.6
 log
 @-
 @
 text
 @/*******************************************************************************
- * $Id: style.css,v 1.4 2013-05-27 12:40:43-07 dmf - $                                                                       
+ * $Id: style.css,v 1.5 2013-05-28 22:00:02-07 dmf - $                                                                       
  * Derek Frank (derekmfrank@@gmail.com)                                          
  *                                                                              
  * Theme Name: dmf
@@ -59,7 +64,7 @@ text
 
 /* import the global navbar stylesheet */
 /* @@import url('{{ CSS_URL }}navbar/navbar.css'); */
-@@import url("navbar.css?v=133");
+@@import url("navbar.css?v=134");
 
 /* simple reset */
 * {
@@ -161,6 +166,18 @@ input[type=submit] {
     display: none;
 }
 
+.inline {
+    display: inline;
+}
+
+.block {
+    display: block;
+}
+
+.italic {
+    font-style: italic;
+}
+
 hr {
     border: none;
     border-top: 1px solid #888;
@@ -234,12 +251,12 @@ h3:hover > a.headerlink {
 
 h4 {
     font-size: 1.15em;
-    margin-top: 1em;
+    margin-top: .2em;
 }
 
 h5 {
     font-size: 1em;
-    margin-top: 1em;
+    margin-top: .2em;
 }
 
 /* general layout */
@@ -326,6 +343,14 @@ img.center {
     margin-left: auto;
     margin-right: auto;
 }
+
+.left {
+    width:  auto;
+    text-align: left;
+    margin-left:    auto;
+    margin-right:   auto;
+}
+
 div.right,
 table.right,
 img.right {
@@ -367,6 +392,89 @@ td {
         vertical-align: top;
     }
 
+/* forms and input styling */
+form p {
+    margin: 0.5em 0;
+}
+
+fieldset {
+    border: 0;
+}
+
+label {
+    width: 12em;
+    vertical-align: top;
+    display: inline-block;
+    font-weight: bold;
+}
+
+input[type=text],
+input[type=password],
+textarea {
+    padding: 0.10em;
+}
+
+/* navbar list */
+#navbar span.nb-separator,
+#navbar.nb-separator ul li.nb-separator {
+    color: #00ff00 !important;
+    font-weight: bold !important;
+}
+/* highlight current website in the navbar */
+#navbar.nb-home ul li#nb-home a,
+#navbar.nb-blog ul li#nb-blog a,
+#navbar.nb-portfolio ul li#nb-portfolio a,
+#navbar.nb-aboutme ul li#nb-aboutme a,
+#navbar.nb-mff ul li#nb-mff a,
+#navbar.nb-admin ul li#nb-admin a {
+    color: #00ff00 !important;
+    font-weight: bold !important;
+}
+
+
+/* specific content */
+span.timestamp {
+    font-size: .8em;
+    font-style: italic;
+}
+
+img#mypic {
+    border: solid 5px #00ff00;
+}
+
+.blogpostborder {
+    border-top: 1px dashed #00ff00;
+    max-width: 95%;
+    margin-bottom: 10px;
+}
+
+.topic {
+    margin:     10px;
+    padding:    5px;
+}
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+ * $Id: style.css,v 1.4 2013-05-27 12:40:43-07 dmf - $                                                                       
+d20 1
+a20 1
+@@import url("navbar.css?v=133");
+d122 12
+d207 1
+a207 1
+    margin-top: 1em;
+d212 1
+a212 1
+    margin-top: 1em;
+d299 8
+a347 75
 /* table pretty styles */
 table.pretty1 {
     width: auto;
@@ -442,28 +550,8 @@ dl {
         padding-right:15px;
     }
 
-/* forms and input styling */
-form p {
-    margin: 0.5em 0;
-}
-
-fieldset {
-    border: 0;
-}
-
-label {
-    width: 12em;
-    vertical-align: top;
-    display: inline-block;
-    font-weight: bold;
-}
-
-input[type=text],
-input[type=password],
-textarea {
-    padding: 0.10em;
-}
-
+d370 1
+a370 114
 form.general-form label,
 form.general-form .form-help {
     width: 10em;
@@ -578,22 +666,13 @@ table.bio-entry {
             padding-bottom: 0.25em;
         }
 
-#navbar span.nb-separator,
-#navbar.nb-separator ul li.nb-separator {
+d373 1
+a373 1
     color: #33cc33 !important;
-    font-weight: bold !important;
-}
-/* highlight current website in the navbar */
-#navbar.nb-home ul li#nb-home a,
-#navbar.nb-blog ul li#nb-blog a,
-#navbar.nb-portfolio ul li#nb-portfolio a,
-#navbar.nb-aboutme ul li#nb-aboutme a,
-#navbar.nb-mff ul li#nb-mff a,
-#navbar.nb-admin ul li#nb-admin a {
+d383 1
+a383 1
     color: #aaaaaa !important;
-    font-weight: bold !important;
-}
-
+a386 32
 /* visualizations page */
 .visualize-buttons {
     margin: 0.5em 0.33em;
@@ -626,22 +705,7 @@ table.bio-entry {
     height: 100%;
 }
 
-
-/* specific content */
-span.timestamp {
-    font-size: .8em;
-    font-style: italic;
-}
-
-img#mypic {
-    border: solid 5px #00ff00;
-}
-
-.blogpostborder {
-    border-top: 1px dashed #00ff00;
-    max-width: 95%;
-    margin-bottom: 10px;
-}
+d402 5
 @
 
 

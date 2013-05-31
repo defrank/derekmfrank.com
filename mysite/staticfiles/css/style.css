@@ -146,6 +146,7 @@ img {
 }
 
 /* link style */
+
 a {
     text-decoration: none;
 }
@@ -167,6 +168,15 @@ a {
     a:active {
         color: #e90; /* e90 */
     }
+
+a.header,
+a.header:visited {
+    text-decoration: none;
+    color: #000
+}
+a.header:hover {
+    text-decoration: none;
+}
 
 /* special anchor elements */
 a.headerlink {
