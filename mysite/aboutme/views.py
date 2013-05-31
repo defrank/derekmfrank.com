@@ -15,13 +15,16 @@ from utils.functions import response
 from models import Person, Source, Document
 
 
+# Helper function to get me
+def get_me():
+    me = Person.objects.get(id=1)
+
+
 # About Me page view
 def aboutme(request):
-  errors = []
-  me = Person.objects.get(id=1)
-  template = 'aboutme.html'
-  context = {
-    'errors': errors,
-    'me': me,
-  }
-  return response(request, template, context)
+    errors = []
+    template = 'aboutme.html'
+    context = {
+        'errors': errors,
+    }
+    return response(request, template, context)

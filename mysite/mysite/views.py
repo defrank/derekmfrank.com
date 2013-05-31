@@ -24,11 +24,11 @@ from mysite.models import Message
 
 # Home page view
 def home(request):
-  errors = []
-  messages = Message.objects.order_by('timestamp').reverse()
-  template = 'home.html'
-  context = {
-    'errors': errors,
-    'content_messages': messages,
-  }
-  return response(request, template, context)
+    errors = []
+    messages = Message.objects.order_by('timestamp').reverse()
+    template = 'home.html'
+    context = {
+        'errors': errors,
+        'content_messages': messages,
+    }
+    return response(request, template, context)

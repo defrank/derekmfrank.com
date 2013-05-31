@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: context_processors.py,v 1.4 2013-05-23 19:21:46-07 dmf - $
+# $Id: context_processors.py,v 1.5 2013-05-30 19:34:20-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -10,6 +10,7 @@
 #
 
 import datetime
+from aboutme.views import get_me
 
 def site(request):
     site_years = '2013'
@@ -18,6 +19,8 @@ def site(request):
         site_years = site_years + '-' + year
 
     context = {
+        # Me
+        'me': get_me(),
         # Site specific
         'SITENAME': 'derekmfrank',
         'SITENAME_': 'Derek M. Frank',

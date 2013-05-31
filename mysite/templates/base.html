@@ -1,6 +1,6 @@
 {% comment %}<!--
 /*
- * $Id: base.html,v 1.4 2013-05-30 17:07:05-07 dmf - $
+ * $Id: base.html,v 1.5 2013-05-30 19:34:20-07 dmf - $
  * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
@@ -27,7 +27,7 @@
     <meta name="author" content="Derek M. Frank" />
     <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
     <meta name="Description" content="Derek Michael Frank's personal website." />
-    <title>{% block head_title %}{{ SITENAME_ }}{% endblock %}</title>
+    <title>{% block head_title %}{{ me }}{% endblock %}</title>
     {% block viewport %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
@@ -116,8 +116,8 @@
     {% block footer %}
         <footer>
             <p>
-                <a href="mailto:dmfrank@{{ request.get_host|cut:"www." }}" 
-                   title="Contact {{ SITENAME_ }}">{{ SITENAME_ }}</a>
+                <a href="mailto:{{ me.email }}" 
+                   title="Contact {{ me }}">{{ me }}</a>
                   <span>{{ SITE_YEARS }}</span>
             </p>
             <p>{{ request.get_host }}</p>

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% comment %}
  *
- * $Id: home.html,v 1.3 2013-05-27 12:40:43-07 dmf - $
+ * $Id: home.html,v 1.4 2013-05-30 19:34:20-07 dmf - $
  * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
@@ -17,7 +17,7 @@
 {% block body_inner_content %}
     <div id="content">
         <div class="box" >
-            <h2>Derek M. Frank's Personal Website</h2>
+            <h2>{{ me }}'s Personal Website</h2>
             {% for message in content_messages %}
                 <h4>{{ message.title }}:</h4>
                 {% autoescape off %}<ul>{{ message.body }}</ul>{% endautoescape %}

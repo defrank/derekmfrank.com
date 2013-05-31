@@ -1,9 +1,14 @@
-head	1.4;
+head	1.5;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.5
+date	2013.05.31.02.34.20;	author dmf;	state -;
+branches;
+next	1.4;
 
 1.4
 date	2013.05.31.00.07.05;	author dmf;	state -;
@@ -30,14 +35,14 @@ desc
 @@
 
 
-1.4
+1.5
 log
 @-
 @
 text
 @{% comment %}<!--
 /*
- * $Id: base.html,v 1.3 2013-05-27 12:40:43-07 dmf - $
+ * $Id: base.html,v 1.4 2013-05-30 17:07:05-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -64,7 +69,7 @@ text
     <meta name="author" content="Derek M. Frank" />
     <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
     <meta name="Description" content="Derek Michael Frank's personal website." />
-    <title>{% block head_title %}{{ SITENAME_ }}{% endblock %}</title>
+    <title>{% block head_title %}{{ me }}{% endblock %}</title>
     {% block viewport %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
@@ -153,8 +158,8 @@ text
     {% block footer %}
         <footer>
             <p>
-                <a href="mailto:dmfrank@@{{ request.get_host|cut:"www." }}" 
-                   title="Contact {{ SITENAME_ }}">{{ SITENAME_ }}</a>
+                <a href="mailto:{{ me.email }}" 
+                   title="Contact {{ me }}">{{ me }}</a>
                   <span>{{ SITE_YEARS }}</span>
             </p>
             <p>{{ request.get_host }}</p>
@@ -164,6 +169,24 @@ text
     {% block body_script %}{% endblock %}
 </body>
 </html>
+@
+
+
+1.4
+log
+@-
+@
+text
+@d3 1
+a3 1
+ * $Id: base.html,v 1.3 2013-05-27 12:40:43-07 dmf - $
+d30 1
+a30 1
+    <title>{% block head_title %}{{ SITENAME_ }}{% endblock %}</title>
+d119 2
+a120 2
+                <a href="mailto:dmfrank@@{{ request.get_host|cut:"www." }}" 
+                   title="Contact {{ SITENAME_ }}">{{ SITENAME_ }}</a>
 @
 
 
