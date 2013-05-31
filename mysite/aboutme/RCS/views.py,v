@@ -1,5 +1,27 @@
-# $Id: views.py,v 1.1 2013-05-30 23:46:52-07 dmf - $
-# Derek Frank (dmfrank@gmx.com)
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.05.31.06.46.52;	author dmf;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@# $Id: views.py,v 1.4 2013-05-27 12:40:43-07 dmf - $
+# Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
 #   views.py - aboutme
@@ -34,3 +56,4 @@ def aboutme(request):
         'documents': documents,
     }
     return response(request, template, context)
+@

@@ -1,18 +1,18 @@
 {% extends "blog.html" %}
 {% comment %}
  *
- * $Id: blog.html,v 1.3 2013-05-23 19:47:36-07 dmf - $
+ * $Id: blogsingle.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
  * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
- *     post_detail.html
+ *     blogsingle.html
  *
  * DESCRIPTION
- *     Blog Post in detail HTML template.
+ *     Single Blog Post in detail HTML template.
  *
 {% endcomment %}
 
-{% block head_title %}{{ post.id }} | Blog | {{ me }}{% endblock %}
+{% block head_title %}{{ post }} | Blog | {{ me }}{% endblock %}
 {% block blog_content %}
     <h2>Blog Post {{ post.id }}</h2>
     {% include "blogpost.html" %}

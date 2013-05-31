@@ -1,9 +1,14 @@
-head	1.5;
+head	1.6;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.6
+date	2013.05.31.06.30.49;	author dmf;	state -;
+branches;
+next	1.5;
 
 1.5
 date	2013.05.31.02.34.20;	author dmf;	state -;
@@ -35,13 +40,13 @@ desc
 @@
 
 
-1.5
+1.6
 log
 @-
 @
 text
 @# -*- coding: utf-8 -*-
-# $Id: context_processors.py,v 1.4 2013-05-23 19:21:46-07 dmf - $
+# $Id: context_processors.py,v 1.5 2013-05-30 19:34:20-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -64,11 +69,32 @@ def site(request):
         # Me
         'me': get_me(),
         # Site specific
+        'SITE_YEARS': site_years,
+        # Base
+        'HOME_URL': '/home/',
+        'BLOG_URL': '/blog/',
+        'PORTFOLIO_URL': '/portfolio/',
+        'ABOUTME_URL': '/aboutme/',
+        'MFF_URL': '/mff/',
+    }
+    return context
+@
+
+
+1.5
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: context_processors.py,v 1.4 2013-05-23 19:21:46-07 dmf - $
+a24 4
         'SITENAME': 'derekmfrank',
         'SITENAME_': 'Derek M. Frank',
         'SITEURL': 'derekmfrank.com',
         'SITE_URL': 'derekmfrank.com',
-        'SITE_YEARS': site_years,
+a25 19
         # Me sspecific
         'GMAIL': 'derekmfrank@@gmail.com',
         'GMX': 'dmfrank@@gmx.com',
@@ -88,14 +114,6 @@ def site(request):
         'IMG_URL': '/static/img/',
         'CSS_URL': '/static/css/',
         'DOC_URL': '/static/doc/',
-        # Base
-        'HOME_URL': '/home/',
-        'BLOG_URL': '/blog/',
-        'PORTFOLIO_URL': '/portfolio/',
-        'ABOUTME_URL': '/aboutme/',
-        'MFF_URL': '/mff/',
-    }
-    return context
 @
 
 

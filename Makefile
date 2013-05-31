@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.5 2013-05-28 22:00:02-07 dmf - $
+# $Id: Makefile,v 1.6 2013-05-30 23:46:52-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -48,6 +48,10 @@ DIR_ICO         = ${DIR_STATIC}ico/
 DIR_CSS         = ${DIR_STATIC}css/
 DIR_LOGO        = ${DIR_IMG}logo/
 DIR_WEBMASTER   = ${DIR_APPS}webmaster/
+DIR_ABOUTME     = ${DIR_APPS}aboutme/
+DIR_BLOG        = ${DIR_APPS}blog/
+DIR_MFF         = ${DIR_APPS}mff/
+DIR_PORTFOLIO   = ${DIR_APPS}portfolio/
 
 ## DJANGO
 VIEWFILES       = ${DIR_VIEWS}views.py
@@ -61,9 +65,7 @@ APP_UTILS       = ${DIR_UTILS}__init__.py       ${DIR_UTILS}urls.py            \
                   ${DIR_UTILS}functions.py 
 APP_TEMPLATES   = ${DIR_TEMPLATES}__init__.py   ${DIR_TEMPLATES}urls.py        \
                   ${DIR_TEMPLATES}models.py     ${DIR_TEMPLATES}views.py       \
-                  ${DIR_TEMPLATES}base.html     ${DIR_TEMPLATES}home.html      \
-                  ${DIR_TEMPLATES}blog.html     ${DIR_TEMPLATES}portfolio.html \
-                  ${DIR_TEMPLATES}aboutme.html  ${DIR_TEMPLATES}mff.html
+                  ${DIR_TEMPLATES}base.html     ${DIR_TEMPLATES}home.html
 ## MEDIA/STATIC
 IMGFILES        = ${DIR_IMG}favicon.ico         ${DIR_IMG}favicon.gif
 DOCFILES        = 
@@ -80,7 +82,23 @@ APP_WEBMASTER   = ${DIR_WEBMASTER}__init__.py   ${DIR_WEBMASTER}urls.py        \
 				  ${DIR_WEBMASTER}views.py                                     \
 				  ${DIR_WEBMASTER}templates/google0a2e75908547fa0e.html        \
 				  ${DIR_WEBMASTER}templates/BingSiteAuth.xml
-APPSFILES       = ${APP_UTILS} ${APP_TEMPLATES} ${APP_STATIC} ${APP_WEBMASTER}
+APP_ABOUTME     = ${DIR_ABOUTME}__init__.py     ${DIR_ABOUTME}urls.py          \
+				  ${DIR_ABOUTME}views.py        ${DIR_ABOUTME}models.py        \
+				  ${DIR_ABOUTME}templates/aboutme.html
+APP_BLOG        = ${DIR_BLOG}__init__.py        ${DIR_BLOG}urls.py             \
+				  ${DIR_BLOG}views.py           ${DIR_BLOG}models.py           \
+				  ${DIR_BLOG}templates/blog.html                               \
+				  ${DIR_BLOG}templates/blogpost.html                           \
+				  ${DIR_BLOG}templates/bloglinks.html                          \
+				  ${DIR_BLOG}templates/blogsingle.html
+APP_MFF         = ${DIR_MFF}__init__.py         ${DIR_MFF}urls.py              \
+				  ${DIR_MFF}views.py            ${DIR_MFF}models.py            \
+				  ${DIR_MFF}templates/mff.html
+APP_PORTFOLIO   = ${DIR_PORTFOLIO}__init__.py   ${DIR_PORTFOLIO}urls.py        \
+				  ${DIR_PORTFOLIO}views.py      ${DIR_PORTFOLIO}models.py      \
+				  ${DIR_PORTFOLIO}templates/portfolio.html
+APPSFILES       = ${APP_UTILS} ${APP_TEMPLATES} ${APP_STATIC} ${APP_WEBMASTER} \
+				  ${APP_ABOUTME} ${APP_BLOG} ${APP_MFF} ${APP_PORTFOLIO}
 
 ## MISC
 SERVFILES       = .htaccess
