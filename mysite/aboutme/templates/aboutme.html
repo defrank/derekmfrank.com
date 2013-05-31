@@ -24,7 +24,7 @@
         <div class="box" >
             <h2>About me</h2>
             {% autoescape off %}
-                {{ me.description }}
+                <span>{{ me.description }}</span>
             {% endautoescape %}
         </div>
     </div>
@@ -38,30 +38,43 @@
             {% endif %}
             <h3>Contact</h3>
             <ul>
-                {{ me }}<br />
-                {{ me.title }}<br />
-                <a href="mailto:{{ me.email }}" title="Email Derek Frank: {{ me.email }}">{{ me.email_name }}</a> | 
-                <a href="mailto:{{ me.alternative_email }}" title="Email Derek Frank: {{ me.alternative_email }}">{{ me.alternative_email_name }}</a><br />
+                <div class="block">{{ me }}</div>
+                <div class="block">{{ me.title }}</div>
+                <div class="block">
+                    <a href="mailto:{{ me.email }}" 
+                       title="Email Derek Frank: {{ me.email }}">{{ me.email_name }}</a>
+                    <span>|</span>
+                    <a href="mailto:{{ me.alternative_email }}" 
+                       title="Email Derek Frank: {{ me.alternative_email }}">{{ me.alternative_email_name }}</a>
+                </div>
             </ul>
             <h3>Repositories</h3>
             <ul>
                 {% for repo in me.sources.all %}
                     {% if repo.type == 'RP' %}
-                        <a href="{{ repo.url }}" title="Derek's {{ repo.title }} repository">{{ repo.title }}</a><br />
+                        <div class="block">
+                            <a href="{{ repo.url }}" title="Derek's {{ repo.title }} repository">{{ repo.title }}</a>
+                        </div>
                     {% endif %}
                 {% endfor %}
             </ul>
             <h3>Documents</h3>
             <ul>
                 {% for doc in me.documents.all %}
-                    <a href="{% if doc.document %}{% static doc.document %}{% else %}{{ doc.url }}{% endif %}" title="Derek's {{ doc }}">{{ doc }}</a><br />
+                    <div class="block">
+                        <a href="{% if doc.document %}{% static doc.document %}{% else %}{{ doc.url }}{% endif %}" 
+                           title="Derek's {{ doc }}">{{ doc }}</a>
+                    </div>
                 {% endfor %}
             </ul>
             <h3>Other Sources</h3>
             <ul>
                 {% for src in me.sources.all %}
                     {% if src.type != 'RP' %}
-                        <a href="{{ src.url }}" title="Derek's {{ src.title }} {{ src.get_type_display }}">{{ src.title }}</a><br />
+                        <div class="block">
+                            <a href="{{ src.url }}" 
+                               title="Derek's {{ src.title }} {{ src.get_type_display }}">{{ src.title }}</a>
+                        </div>
                     {% endif %}
                 {% endfor %}
             </ul>
