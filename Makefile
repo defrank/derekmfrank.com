@@ -157,5 +157,7 @@ sync : ci
 #
 clean :
 	- rm blah
+    #for i in `find . -name "__pycache__"` ; do rm -r "$i" ; done
+    #for i in `find . -name "*.pyc"` ; do rm "$i" ; done
 
 spotless : clean
