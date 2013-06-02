@@ -1,9 +1,14 @@
-head	1.5;
+head	1.6;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.6
+date	2013.06.02.08.38.02;	author dmf;	state -;
+branches;
+next	1.5;
 
 1.5
 date	2013.05.31.06.30.49;	author dmf;	state -;
@@ -35,7 +40,7 @@ desc
 @@
 
 
-1.5
+1.6
 log
 @-
 @
@@ -43,7 +48,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: home.html,v 1.4 2013-05-30 19:34:20-07 dmf - $
+ * $Id: home.html,v 1.5 2013-05-30 23:30:49-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -63,11 +68,28 @@ text
             {% for message in content_messages %}
                 <h4>{{ message.title }}:</h4>
                 {% autoescape off %}<ul>{{ message.body }}</ul>{% endautoescape %}
-                <span class="timestamp">{{ message.timestamp }}</span>
+                <span class="postinfo">
+                    <span>Updated on</span>
+                    <span class="timestamp">{{ message.timestamp }}</span>
+                </span>
             {% endfor %}
         </div>
     </div>
 {% endblock %}
+@
+
+
+1.5
+log
+@-
+@
+text
+@d4 1
+a4 1
+ * $Id: home.html,v 1.4 2013-05-30 19:34:20-07 dmf - $
+d24 4
+a27 1
+                <span class="timestamp">{{ message.timestamp }}</span>
 @
 
 

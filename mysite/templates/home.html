@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% comment %}
  *
- * $Id: home.html,v 1.5 2013-05-30 23:30:49-07 dmf - $
+ * $Id: home.html,v 1.6 2013-06-02 01:38:02-07 dmf - $
  * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
@@ -21,7 +21,10 @@
             {% for message in content_messages %}
                 <h4>{{ message.title }}:</h4>
                 {% autoescape off %}<ul>{{ message.body }}</ul>{% endautoescape %}
-                <span class="timestamp">{{ message.timestamp }}</span>
+                <span class="postinfo">
+                    <span>Updated on</span>
+                    <span class="timestamp">{{ message.timestamp }}</span>
+                </span>
             {% endfor %}
         </div>
     </div>

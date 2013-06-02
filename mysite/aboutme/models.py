@@ -12,8 +12,14 @@ from django.db import models
 from django.contrib import admin
 from mysite.models import SOURCE_TYPE, DOC_TYPE
 
+from django.contrib.auth.models import User
+
 
 # ABOUT ME
+
+class MyUser(User):
+    alternative_email = models.EmailField(_('email address'))
+
 
 # Person
 class Person(models.Model):
@@ -61,6 +67,9 @@ class Document(models.Model):
 
 ## ADMIN
 
+class MyUserAdmin(admin.ModelAdmin):
+    list_display = ('last_name', 'first_name', 'middle_name', 'email')
+
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name', 'middle_name', 'email')
 
@@ -72,6 +81,7 @@ class SourceAdmin(admin.ModelAdmin):
 
 
 ## ADMIN REGISTER
+admin.site.register(MyUser, MyUserAdmin)
 admin.site.register(Person, PersonAdmin)
 admin.site.register(Document, DocumentAdmin)
 admin.site.register(Source, SourceAdmin)
