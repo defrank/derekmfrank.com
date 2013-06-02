@@ -1,9 +1,14 @@
-head	1.8;
+head	1.9;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.9
+date	2013.06.01.06.55.22;	author dmf;	state -;
+branches;
+next	1.8;
 
 1.8
 date	2013.05.31.21.13.26;	author dmf;	state -;
@@ -50,13 +55,13 @@ desc
 @@
 
 
-1.8
+1.9
 log
 @-
 @
 text
 @/*******************************************************************************
- * $Id: style.css,v 1.7 2013-05-30 23:30:49-07 dmf - $                                                                       
+ * $Id: style.css,v 1.8 2013-05-31 14:13:26-07 dmf - $                                                                       
  * Derek Frank (derekmfrank@@gmail.com)                                          
  *                                                                              
  * Theme Name: dmf
@@ -334,9 +339,11 @@ div.box {
     background:                     #ccffcc; /* ecf2f5; */
     border:                         1px solid #00ff00; /* #33cc33 */
     overflow:                       hidden;
+    /*
     -moz-border-radius:             8px;
     -webkit-border-radius:          8px;
     border-radius:                  8px;
+    */
 }
 
 footer, div#footer {
@@ -450,19 +457,29 @@ textarea {
 #navbar.nb-aboutme ul li#nb-aboutme a,
 #navbar.nb-mff ul li#nb-mff a,
 #navbar.nb-admin ul li#nb-admin a {
-    color: #00ff00 !important;
-    font-weight: bold !important;
+    color: #00ff00;
+    font-weight: bold;
 }
 
 
 /* specific content */
+span.postinfo {
+    font-size: .8em;
+}
+span.postinfo span.timestamp {
+    font-style: italic;
+    font-size: 1em;
+}
 span.timestamp {
     font-size: .8em;
     font-style: italic;
 }
 
 img#mypic {
-    border: solid 5px #00ff00;
+    border:                         solid 5px #00ff00;
+    -moz-border-radius:             12px;
+    -webkit-border-radius:          12px;
+    border-radius:                  12px;
 }
 
 .blogpostborder {
@@ -475,6 +492,27 @@ img#mypic {
     margin:     10px;
     padding:    5px;
 }
+@
+
+
+1.8
+log
+@-
+@
+text
+@d2 1
+a2 1
+ * $Id: style.css,v 1.7 2013-05-30 23:30:49-07 dmf - $                                                                       
+d280 1
+d284 1
+d398 2
+a399 2
+    color: #00ff00 !important;
+    font-weight: bold !important;
+d404 7
+d417 4
+a420 1
+    border: solid 5px #00ff00;
 @
 
 

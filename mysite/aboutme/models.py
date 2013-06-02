@@ -18,7 +18,7 @@ from django.contrib.auth.models import User
 # ABOUT ME
 
 class MyUser(User):
-    alternative_email = models.EmailField(_('email address'))
+    alternative_email = models.EmailField()
 
 
 # Person
@@ -68,7 +68,7 @@ class Document(models.Model):
 ## ADMIN
 
 class MyUserAdmin(admin.ModelAdmin):
-    list_display = ('last_name', 'first_name', 'middle_name', 'email')
+    list_display = ('last_name', 'first_name', 'email')
 
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('last_name', 'first_name', 'middle_name', 'email')
