@@ -39,9 +39,9 @@ class Project(models.Model):
     title = models.CharField(max_length=127)
     description = models.TextField()
     date = models.DateField()
-    url = models.URLField(blank=True, null=True, verify_exists=True)
+    url = models.URLField(blank=True, null=True)
     language = models.ManyToManyField(LanguageChoice, blank=True, null=True)
-    repository_url = models.URLField(blank=True, null=True, verify_exists=True)
+    repository_url = models.URLField(blank=True, null=True)
     repository_name = models.CharField(blank=True, null=True, max_length=2, choices=REPO_CHOICES)
 
     def __unicode__(self):
@@ -64,7 +64,7 @@ class Education(models.Model):
     major = models.CharField(max_length=4, choices=DEPARTMENT_CHOICES, blank=True, null=True)
     minor = models.CharField(max_length=4, choices=DEPARTMENT_CHOICES, blank=True, null=True)
     graduation_date = models.DateField()
-    coursework_repository_url = models.URLField(blank=True, null=True, verify_exists=True)
+    coursework_repository_url = models.URLField(blank=True, null=True)
     coursework_repository_name = models.CharField(blank=True, null=True, max_length=2, choices=REPO_CHOICES) 
 
     def __unicode__(self):
@@ -78,9 +78,9 @@ class Course(models.Model):
     name = models.CharField(max_length=127)
     number = models.CharField(max_length=8, null=True)
     lab_letter = models.CharField(max_length=4, blank=True, null=True)
-    course_url = models.URLField(blank=True, null=True, verify_exists=True)
-    lab_url = models.URLField(blank=True, null=True, verify_exists=True)
-    repository_url = models.URLField(blank=True, null=True, verify_exists=True)
+    course_url = models.URLField(blank=True, null=True)
+    lab_url = models.URLField(blank=True, null=True)
+    repository_url = models.URLField(blank=True, null=True)
     repository_name = models.CharField(blank=True, null=True, max_length=2, choices=REPO_CHOICES)
     description = models.TextField()
 
@@ -96,8 +96,8 @@ class Assignment(models.Model):
     name = models.CharField(max_length=127)
     identification = models.CharField(max_length=16)
     programming_language = models.CharField(max_length=8, blank=True, null=True, choices=LANGUAGE_CHOICES)
-    assignment_url = models.URLField(blank=True, null=True, verify_exists=True)
-    repository_url = models.URLField(blank=True, null=True, verify_exists=True)
+    assignment_url = models.URLField(blank=True, null=True)
+    repository_url = models.URLField(blank=True, null=True)
     repository_name = models.CharField(blank=True, null=True, max_length=2, choices=REPO_CHOICES)
     description = models.TextField(blank=True, null=True)
 

@@ -16,7 +16,7 @@ from django.contrib import admin
 
 class Source(models.Model):
     title = models.CharField(max_length=64)
-    url = models.URLField(verify_exists=True)
+    url = models.URLField()
 
     def __unicode__(self):
         return self.title

@@ -30,7 +30,7 @@ class Post(models.Model):
     owner = models.ForeignKey(Person, null=True, default=get_me())
     title = models.CharField(max_length=100)
     image = models.ImageField(blank=True, null=True, upload_to="blog/img/")
-    image_url = models.URLField(blank=True, verify_exists=True, null=True)
+    image_url = models.URLField(blank=True, null=True)
     body = models.TextField()
     timestamp = models.DateTimeField()
     
@@ -40,7 +40,7 @@ class Post(models.Model):
 # Link
 class Link(models.Model):
     title = models.CharField(max_length=100)
-    url = models.URLField(verify_exists=True)
+    url = models.URLField()
     category = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=u'OT')
     timestamp = models.DateTimeField()
 

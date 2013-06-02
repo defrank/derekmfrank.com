@@ -44,7 +44,7 @@ class Source(models.Model):
     priority = models.IntegerField()
     title = models.CharField(max_length=127)
     type = models.CharField(max_length=4, choices=SOURCE_TYPE, blank=True, null=True)
-    url = models.URLField(verify_exists=True)
+    url = models.URLField()
 
     def __unicode__(self):
         return self.title
@@ -57,7 +57,7 @@ class Document(models.Model):
     description = models.TextField()
     type = models.CharField(max_length=4, null=True, choices=DOC_TYPE)
     document = models.FileField(blank=True, null=True, upload_to="aboutme/doc/")
-    url = models.URLField(blank=True, null=True, verify_exists=True)
+    url = models.URLField(blank=True, null=True)
 
     def __unicode__(self):
         if self.type:
