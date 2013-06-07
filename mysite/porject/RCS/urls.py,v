@@ -1,0 +1,45 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.05.31.06.46.52;	author dmf;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@# $Id: $
+# Derek Frank (dmfrank@@gmx.com)
+#
+# NAME
+#   urls.py - portfolio
+#
+# DESCRIPTION
+#   A url patterns definition for my portfolio.
+#
+
+from django.conf.urls import patterns, url
+import views
+
+urlpatterns = patterns('',
+    # Portfolio
+    url(r'^$', views.portfolio, name='portfolio'),
+)
+
+# Necessary redirection for unavailable pages
+urlpatterns += patterns('',
+    url(r'^.+$', views.portfolio),
+)
+@

@@ -10,7 +10,7 @@
 
 from django.db import models
 from django.contrib import admin
-#from mysite.models import SOURCE_TYPE
+
 
 # MFF
 

@@ -27,7 +27,7 @@
     <meta name="author" content="Derek M. Frank" />
     <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
     <meta name="Description" content="Derek Michael Frank's personal website." />
-    <title>{% block head_title %}{{ me }}{% endblock %}</title>
+    <title>{% block title %}{{ me }}{% endblock %}</title>
     {% block viewport %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
@@ -90,7 +90,7 @@
                             <li id="nb-home"><a href="{{ home_url }}" title="Homepage">Home</a></li>
                             <li id="nb-blog"><a href="{% url "blog" %}" title="My blog">Blog</a></li>
                             <li id="nb-portfolio"><a href="{% url "portfolio" %}" title="My portfolio">Portfolio</a></li>
-                            <li id="nb-aboutme"><a href="{% url "aboutme" %}" title="My about me">About Me</a></li>
+                            <li id="nb-aboutme"><a href="{% url "about" %}" title="My about me">About me</a></li>
                             <li class="nb-separator"><span class="nb-separator">|</span></li>
                             <li id="nb-mff"><a href="{% url "mff" %}" title="Michael Frank">MFF</a></li>
                         </ul>

@@ -143,13 +143,17 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'webmaster', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'blog', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'portfolio', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'aboutme', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'mff', 'templates').replace('\\','/')),
+
+    #os.path.abspath(os.path.join(PACKAGE_ROOT, 'templates').replace('\\','/')),
+    #os.path.abspath(os.path.join(PROJECT_ROOT, 'webmaster', 'templates').replace('\\','/')),
+    #os.path.abspath(os.path.join(PROJECT_ROOT, 'limn', 'templates').replace('\\','/')),
+    #os.path.abspath(os.path.join(PROJECT_ROOT, 'blog', 'templates').replace('\\','/')),
+    #os.path.abspath(os.path.join(PROJECT_ROOT, 'porject', 'templates').replace('\\','/')),
+    #os.path.abspath(os.path.join(PROJECT_ROOT, 'aboutme', 'templates').replace('\\','/')),
+    #os.path.abspath(os.path.join(PROJECT_ROOT, 'mff', 'templates').replace('\\','/')),
 )
+
+AUTH_PROFILE_MODULE = 'limn.UserProfile'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -169,13 +173,10 @@ INSTALLED_APPS = (
 
     # project
     'utils',
-    'staticfiles',
-    'templates',
     'webmaster',
-    'aboutme',
-    'portfolio',
+    'limn',
+    'porject',
     'blog',
-    'mff',
     'mysite',
 )
 

@@ -9,33 +9,34 @@
 #
 
 from django.conf import settings
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
-from django.views.static import serve as views_static_serve
-
-import views
-from utils import functions
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
 
+
+urlpatterns = patterns('mysite',
+    url(r'^$', 'home', name='home'),
+)
+
 urlpatterns = patterns('',
-    # Base Views
-    url(r'^$', views.home, name='home'),
+    url(r'^about/', include('limn.urls')),
+    url(r'^portfolio/', include('porject.urls')),
     url(r'^blog/', include('blog.urls')),
-    url(r'^portfolio/', include('portfolio.urls')),
-    url(r'^aboutme/', include('aboutme.urls')),
-    url(r'^mff/', include('mff.urls')),
+    #url(r'^mff/', include('mff.urls')),
 
-    # Media
-    url(r'^static/(?P<path>.*)$', views_static_serve, { 'document_root': settings.STATIC_ROOT, }),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
+    # Enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
+    # Enable the admin:
     url(r'^admin/', include(admin.site.urls)),
+)
+
+# Serve static files
+urlpatterns += patterns('django.views.static',
+    # Media
+    url(r'^static/(?P<path>.*)$', 'serve', { 'document_root': settings.STATIC_ROOT, }),
 )
 
 # Media files serve only with DEBUG mode set
@@ -43,9 +44,9 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # PHP MySQL Database
-urlpatterns += patterns('',
-    url(r'^dh_phpmyadmin.*$', functions.redirect_to_mysql, name='mysql'),
-    url(r'^mysql.*$', functions.redirect_to_mysql, name='mysql'),
+urlpatterns += patterns('utils.functions',
+    url(r'^dh_phpmyadmin.*$', 'redirect_to_mysql', name='mysql'),
+    url(r'^mysql.*$', 'redirect_to_mysql'),
 )
 
 # Webmasters and other 3rd party apps
@@ -54,6 +55,6 @@ urlpatterns += patterns('',
 )
 
 # Necessary redirection for unavailable pages
-urlpatterns += patterns('',
-    url(r'^.+$', functions.redirect_to_home, name='redirect'),
-)
+#urlpatterns += patterns('',
+    #url(r'^.+$', functions.redirect_to_home, name='redirect'),
+#)

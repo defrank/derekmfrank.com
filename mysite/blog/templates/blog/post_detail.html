@@ -1,19 +1,20 @@
-{% extends "blog.html" %}
+{% extends "blog/posts.html" %}
 {% comment %}
  *
  * $Id: blogsingle.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
  * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
- *     blogsingle.html
+ *     post_detail.html
  *
  * DESCRIPTION
  *     Single Blog Post in detail HTML template.
  *
 {% endcomment %}
 
-{% block head_title %}{{ post }} | Blog | {{ me }}{% endblock %}
+{% with posts|first as post %}
+{% block title %}{{ posts }} | Blog | {{ me }}{% endblock %}
 {% block blog_content %}
-    <h2>Blog Post {{ post.id }}</h2>
-    {% include "blogpost.html" %}
+    <h2>Blog Post {{ posts.id }}</h2>
+    {% include "blog/entry.html" %}
 {% endblock %}

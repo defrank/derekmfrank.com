@@ -5,7 +5,7 @@
  * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
- *     blog.html
+ *     posts.html
  *
  * DESCRIPTION
  *     Blog HTML template.
@@ -13,7 +13,7 @@
 {% endcomment %}
 {% load static from staticfiles %}
 
-{% block head_title %}Blog | {{ me }}{% endblock %}
+{% block title %}Blog | {{ me }}{% endblock %}
 
 {% block navbar_class %}nb-blog{% endblock %}
 
@@ -23,7 +23,7 @@
             {% block blog_content %}
                 <h2>Blog</h2>
                 {% for post in posts %}
-                    {% include "blogpost.html" %}
+                    {% include "blog/entry.html" %}
                     {% if not forloop.last %}<div class="center blogpostborder"></div>{% endif %}
                 {% endfor %}
             {% endblock %}
@@ -33,7 +33,7 @@
     <div id="content-right">
         <div class="box">
             <h2 class="sub">Interersting reads</h2>
-            {% include "bloglinks.html" %}
+            {% include "blog/links.html" %}
         </div>
     </div>
 {% endblock %}

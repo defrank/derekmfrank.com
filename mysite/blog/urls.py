@@ -10,15 +10,25 @@
 
 from django.conf.urls import patterns, url
 
-import views
-
-urlpatterns = patterns('',
+urlpatterns = patterns('blog.views',
     # Blog
-    url(r'^$', views.blog, name='blog'),
-    url(r'^(\d)/$', views.blogsingle),
+    url(r'^$', 'recent', name='blog'),
+    # Index
+    url(r'^index/$', 'index'),
+    # Archives
+        # post user
+    url(r'^archive/user/(?<username>\w+)/$', 'archive_user'),
+        # post id
+    url(r'^archive/id/(?<post_id>\d+)/$', 'archive_id'),
+        # post date
+    url(r'^archive/date/(?<post_year>\d+)/$', 'archive_year'),
+    url(r'^archive/date/(?<post_year>\d+)/(?<post_month>\d+)/$', 
+        'archive_month'),
+    url(r'^archive/date/(?<post_year>\d+)/(?<post_month>\d+)/(?<post_day>\d+)$', 
+        'archive_day'),
 )
 
 # Necessary redirection for unavailable pages
-urlpatterns += patterns('',
-    url(r'^.+$', views.blog),
-)
+#urlpatterns += patterns('blog.views',
+    #url(r'^.+$', 'blog'),
+#)

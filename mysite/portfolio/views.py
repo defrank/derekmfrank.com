@@ -3,7 +3,8 @@ from django.contrib.sites.models import get_current_site
 import datetime
 
 from utils.functions import response
-from mysite.models import DEPARTMENT_CHOICES
+
+from porject.models import DEPARTMENT_CHOICES
 from aboutme.models import Source
 from models import Project, Education, Course, Assignment
 

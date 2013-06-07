@@ -36,69 +36,80 @@ CHK80           = checksource -l 80
 DIR_DJANGO      = mysite/mysite/
 DIR_MEDIA       = ${DIR_DJANGO}media/
 DIR_VIEWS       = ${DIR_DJANGO}views/
-# Apps
-DIR_APPS        = mysite/
-DIR_UTILS       = ${DIR_APPS}utils/
-DIR_TEMPLATES   = ${DIR_APPS}templates/
-DIR_STATIC      = ${DIR_APPS}staticfiles/
+DIR_TEMPLATES   = ${DIR_DJANGO}templates/
+DIR_STATIC      = ${DIR_DJANGO}staticfiles/
 DIR_IMG         = ${DIR_STATIC}img/
 DIR_DOC         = ${DIR_STATIC}doc/
 DIR_JS          = ${DIR_STATIC}js/
 DIR_ICO         = ${DIR_STATIC}ico/
 DIR_CSS         = ${DIR_STATIC}css/
 DIR_LOGO        = ${DIR_IMG}logo/
+# Apps
+DIR_APPS        = mysite/
+DIR_UTILS       = ${DIR_APPS}utils/
 DIR_WEBMASTER   = ${DIR_APPS}webmaster/
+DIR_LIMN        = ${DIR_APPS}limn/
+DIR_PORJECT     = ${DIR_APPS}porject/
 DIR_ABOUTME     = ${DIR_APPS}aboutme/
 DIR_BLOG        = ${DIR_APPS}blog/
 DIR_MFF         = ${DIR_APPS}mff/
-DIR_PORTFOLIO   = ${DIR_APPS}portfolio/
+
+## TEMPLATES
+TEMPLATEFILES   = ${DIR_TEMPLATES}base.html     ${DIR_TEMPLATES}home.html
+
+## MEDIA/STATIC
+IMGFILES        =
+LOGOFILES       = 
+ICOFILES        = ${DIR_ICO}favicon.ico         ${DIR_ICO}favicon.gif
+JSFILES         = 
+CSSFILES        = ${DIR_CSS}style.css           ${DIR_CSS}navbar.css
+STATICFILES     = ${IMGFILES} ${LOGOFILES} ${ICONFILES} ${JSFILES} ${CSSFILES} 
 
 ## DJANGO
-VIEWFILES       = ${DIR_VIEWS}views.py
 DJANGOFILES     = ${DIR_APPS}manage.py          ${DIR_DJANGO}settings.py       \
-                  ${DIR_DJANGO}urls.py     ${DIR_DJANGO}context_processors.py  \
-				  ${DIR_DJANGO}mysite.db        ${VIEWFILES} ${TEMPLATESFILES}
+                  ${DIR_DJANGO}urls.py          ${DIR_VIEWS}views.py           \
+				  ${DIR_DJANGO}context_processors.py                           \
+				  ${DIR_DJANGO}mysite.db                                       \
+				  ${TEMPLATEFILES} ${STATICFILES}
 
 ## APPS
 APP_UTILS       = ${DIR_UTILS}__init__.py       ${DIR_UTILS}urls.py            \
                   ${DIR_UTILS}models.py         ${DIR_UTILS}views.py           \
                   ${DIR_UTILS}functions.py 
-APP_TEMPLATES   = ${DIR_TEMPLATES}__init__.py   ${DIR_TEMPLATES}urls.py        \
-                  ${DIR_TEMPLATES}models.py     ${DIR_TEMPLATES}views.py       \
-                  ${DIR_TEMPLATES}base.html     ${DIR_TEMPLATES}home.html
-## MEDIA/STATIC
-IMGFILES        = ${DIR_IMG}favicon.ico         ${DIR_IMG}favicon.gif
-DOCFILES        = 
-JSFILES         = 
-ICOFILES        = ${DIR_ICO}favicon.ico         ${DIR_ICO}favicon.gif
-LOGOFILES       = 
-CSSFILES        = ${DIR_CSS}style.css           ${DIR_CSS}navbar.css
-STATICFILES     = 
-APP_STATIC      = ${DIR_STATIC}__init__.py      ${DIR_STATIC}urls.py           \
-                  ${DIR_STATIC}models.py        ${DIR_STATIC}views.py          \
-                  ${CSSFILES} ${ICONFILES} ${LOGOFILES} ${IMGFILES} ${JSFILES} \
-                  ${DOCFILES}
+WEBMASTER_TEMP  = ${DIR_WEBMASTER}templates/webmaster/
 APP_WEBMASTER   = ${DIR_WEBMASTER}__init__.py   ${DIR_WEBMASTER}urls.py        \
 				  ${DIR_WEBMASTER}views.py                                     \
-				  ${DIR_WEBMASTER}templates/google0a2e75908547fa0e.html        \
-				  ${DIR_WEBMASTER}templates/BingSiteAuth.xml
+				  ${WEBMASTER_TEMP}google0a2e75908547fa0e.html                 \
+				  ${WEBMASTER_TEMP}BingSiteAuth.xml
+LIMN_TEMP       = ${DIR_LIMN}templates/limn/
+APP_LIMN        = ${DIR_LIMN}__init__.py        ${DIR_LIMN}urls.py             \
+				  ${DIR_LIMN}views.py          ${DIR_LIMN}models.py            \
+				  ${LIMN_TEMP}about.html
+PORJECT_TEMP    = ${DIR_PORJECT}templates/porject/
+APP_PORJECT     = ${DIR_PORJECT}__init__.py     ${DIR_PORJECT}urls.py          \
+				  ${DIR_PORJECT}views.py        ${DIR_PORJECT}models.py        \
+				  ${PORJECT_TEMP}portfolio.html
+ABOUTME_TEMP    = ${DIR_ABOUTME}templates/aboutme/
 APP_ABOUTME     = ${DIR_ABOUTME}__init__.py     ${DIR_ABOUTME}urls.py          \
 				  ${DIR_ABOUTME}views.py        ${DIR_ABOUTME}models.py        \
-				  ${DIR_ABOUTME}templates/aboutme.html
+				  ${ABOUTME_TEMP}aboutme.html
+BLOG_TEMP       = ${DIR_BLOG}templates/blog/
 APP_BLOG        = ${DIR_BLOG}__init__.py        ${DIR_BLOG}urls.py             \
 				  ${DIR_BLOG}views.py           ${DIR_BLOG}models.py           \
-				  ${DIR_BLOG}templates/blog.html                               \
-				  ${DIR_BLOG}templates/blogpost.html                           \
-				  ${DIR_BLOG}templates/bloglinks.html                          \
-				  ${DIR_BLOG}templates/blogsingle.html
+				  ${BLOG_TEMP}posts.html                                       \
+				  ${BLOG_TEMP}entry.html                                       \
+				  ${BLOG_TEMP}links.html                                       \
+				  ${BLOG_TEMP}post_detail.html                                 \
+				  ${BLOG_TEMP}index.html                                       \
+				  ${BLOG_TEMP}archive/post_all.html                            \
+				  ${BLOG_TEMP}archive/post_id.html                             \
+				  ${BLOG_TEMP}archive/post_date.html
+MFF_TEMP        = ${DIR_MFF}templates/mff/
 APP_MFF         = ${DIR_MFF}__init__.py         ${DIR_MFF}urls.py              \
 				  ${DIR_MFF}views.py            ${DIR_MFF}models.py            \
-				  ${DIR_MFF}templates/mff.html
-APP_PORTFOLIO   = ${DIR_PORTFOLIO}__init__.py   ${DIR_PORTFOLIO}urls.py        \
-				  ${DIR_PORTFOLIO}views.py      ${DIR_PORTFOLIO}models.py      \
-				  ${DIR_PORTFOLIO}templates/portfolio.html
-APPSFILES       = ${APP_UTILS} ${APP_TEMPLATES} ${APP_STATIC} ${APP_WEBMASTER} \
-				  ${APP_ABOUTME} ${APP_BLOG} ${APP_MFF} ${APP_PORTFOLIO}
+				  ${MFF_TEMP}mff.html
+APPSFILES       = ${APP_UTILS} ${APP_WEBMASTER} ${APP_LIMN} ${APP_PORJECT}     \
+				  ${APP_BLOG} ${APP_ABOUTME} ${APP_MFF} 
 
 ## MISC
 SERVFILES       = .htaccess
@@ -109,7 +120,7 @@ CHKFILES        =
 
 ## ALL
 ALLFILES        = ${MKFILE}    ${TXT}        ${SERVFILES}  ${DJANGOFILES}      \
-				  ${STATICFILES}             ${APPSFILES}
+				  ${APPSFILES}
 
 #
 # make all

@@ -12,6 +12,8 @@ from django.shortcuts import render_to_response
 from django.shortcuts import redirect
 from django.template.context import RequestContext
 
+from django.contrib.auth import User
+
 # Currently not used, but may be useful
 #from django.conf import settings
 #from django.http import HttpResponse, HttpResponseRedirect
@@ -26,20 +28,25 @@ from django.template.context import RequestContext
 
 # Simplified render_to_response() with populated context.
 def response(request, template, context):
-  """Simplify render_to_response() with context_instance population."""
-  return render_to_response(template, context_instance=RequestContext(request, context))
+    """Simplify render_to_response() with context_instance population."""
+    return render_to_response(template, context_instance=RequestContext(request, context))
  
 # A redirect to home view
 def redirect_to_home(request):
-  return redirect('/')
+    return redirect('/')
 
 # A redirect to php mysql page
 def redirect_to_mysql(request):
-  return redirect('http://mysql.derekmfrank.com/dh_phpmyadmin/mysqldb.derekmfrank.com/')
+    return redirect('http://mysql.derekmfrank.com/dh_phpmyadmin/mysqldb.derekmfrank.com/')
 
 # A function to require the user be authenticated/logged in
 def require_login(request):
-  if not request.user.is_authenticated():
-    #return HttpResponseRedirect('/login/?next=%s&username=%s' % (request.path, username))
-    return redirect('/accounts/login/?next=%s' % request.path)
-  return None
+    if not request.user.is_authenticated():
+        #return HttpResponseRedirect('/login/?next=%s&username=%s' % (request.path, username))
+        return redirect('/accounts/login/?next=%s' % request.path)
+    return None
+
+
+
+def get_default_user():
+    return User.objects.get(id=1)

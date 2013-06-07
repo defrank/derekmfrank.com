@@ -10,7 +10,6 @@
 
 from django.db import models
 from django.contrib import admin
-from mysite.models import SOURCE_TYPE, DOC_TYPE
 
 from django.contrib.auth.models import User
 
@@ -43,7 +42,6 @@ class Source(models.Model):
     person = models.ForeignKey(Person, null=True)
     priority = models.IntegerField()
     title = models.CharField(max_length=127)
-    type = models.CharField(max_length=4, choices=SOURCE_TYPE, blank=True, null=True)
     url = models.URLField()
 
     def __unicode__(self):
@@ -55,13 +53,10 @@ class Document(models.Model):
     person = models.ForeignKey(Person, null=True)
     title = models.CharField(max_length=32)
     description = models.TextField()
-    type = models.CharField(max_length=4, null=True, choices=DOC_TYPE)
     document = models.FileField(blank=True, null=True, upload_to="aboutme/doc/")
     url = models.URLField(blank=True, null=True)
 
     def __unicode__(self):
-        if self.type:
-            return self.title + ' (' + self.type + ')'
         return self.title
 
 
@@ -77,7 +72,7 @@ class DocumentAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'person')
 
 class SourceAdmin(admin.ModelAdmin):
-    list_display = ('title', 'type', 'url', 'priority', 'person')
+    list_display = ('title', 'url', 'priority', 'person')
 
 
 ## ADMIN REGISTER
