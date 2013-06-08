@@ -20,8 +20,6 @@ import urlparse
 ## HELPERS
 
 
-
-
 ####
 ## MODELS
 
@@ -41,15 +39,22 @@ class Project(models.Model):
     repository_url = models.URLField(_(u'project repository link'), blank=True)
 
     def get_repository_name(self):
-        if repository_url:
-            return urlparse.urlsplit(self.repository_url).netloc
-        return None
+        if self.repository_url:
+            return '%s' % urlparse.urlsplit(self.repository_url).netloc
+        return ''
 
-    def Meta(self):
-        ordering = ['owner', '-date', 'title']
+    def get_absolute_url(self):
+        if self.url:
+            return '%s' % self.url
+        elif self.repository_url:
+            return '%s' % self.repository_url
+        return ''
 
     def __unicode__(self):
-        return self.title
+        return u'%s' % self.title
+
+    class Meta:
+        ordering = ('owner', '-date', 'title')
 
 
 class ProjectProgrammingLanguage(models.Model):
@@ -65,17 +70,17 @@ class ProjectProgrammingLanguage(models.Model):
     framework_version = models.CharField(_(u'programming language framework version'), max_length=16, blank=True)
     description = models.TextField(_(u'project programming language description'), blank=True)
 
-    def Meta(self):
-        ordering = ['project', 'language', 'version', 'framework', 'framework_version']
-
     def __unicode__(self):
         if self.language and self.framework:
-            return self.language + self.version + '/' + self.framework + self.framework_version
+            return u'%s%s/%s%s' % (self.language, self.version, self.framework, self.framework_version)
         elif self.language:
-            return self.language + self.version
+            return u'%s%s' % (self.language, self.version)
         elif self.framework:
-            return self.framework + self.framework_version
-        return self.project
+            return u'%s%s' % (self.framework, self.framework_version)
+        return u''
+
+    class Meta(self):
+        ordering = ('project', 'language', 'version', 'framework', 'framework_version')
 
 
 DEPARTMENT_CHOICES = (
@@ -125,15 +130,21 @@ class Education(models.Model):
 
     def get_repository_name(self):
         if repository_url:
-            return urlparse.urlsplit(self.repository_url).netloc
-        return None
+            return '%s' % urlparse.urlsplit(self.repository_url).netloc
+        return ''
 
-    def Meta(self):
-        ordering = ['owner', '-graduation_date', 'name', 'acronym']
-        verbose_name_plural = 'education'
+    def get_absolute_url(self):
+        if self.repository_url:
+            return '%s' % self.repository_url
+        return ''
 
     def __unicode__(self):
-        return self.acronym or self.name
+        return u'%s' % self.acronym or self.name
+
+    class Meta:
+        ordering = ('owner', '-graduation_date', 'name', 'acronym')
+        verbose_name = u'education'
+        verbose_name_plural = u'education'
 
 
 class Course(models.Model):
@@ -154,14 +165,23 @@ class Course(models.Model):
     description = models.TextField(_(u'course description'), blank=True)
 
     def get_repository_name(self):
-        if repository_url:
-            return urlparse.urlsplit(self.repository_url).netloc
-        return None
+        if self.repository_url:
+            return '%s' % urlparse.urlsplit(self.repository_url).netloc
+        return ''
+
+    def get_absolute_url(self):
+        if self.url:
+            return '%s' % self.url
+        elif self.lab_url:
+            return '%s' % self.lab_url
+        elif self.repository_url:
+            return '%s' % self.repository_url
+        return ''
 
     def __unicode__(self):
         if self.lab:
-            return  self.name + ' (' + self.department + ' ' + self.number + '/' + self.lab + ')' 
-        return  self.name + ' (' + self.department + ' ' + self.number + ')' 
+            return u'%s (%s %s/%s)' % (self.title, self.department, self.number, self.lab)
+        return u'%s (%s %s)' % (self.title, self.department, self.number)
 
 
 class Assignment(models.Model):
@@ -174,23 +194,30 @@ class Assignment(models.Model):
     course = models.ForeignKey(Course)
     title = models.CharField(_(u'assignment title'), max_length=128)
     identification = models.CharField(_(u'assignment identification'), max_length=16)
-    programming_language = models.OneToOneField(ProjectProgrammingLanguage, blank=True)
+    programming_language = models.OneToOneField(ProjectProgrammingLanguage, blank=True, null=True)
     url = models.URLField(_(u'assignment website link'), blank=True)
     repository_url = models.URLField(_(u'assignment repository link'), blank=True)
     description = models.TextField(_(u'assignment description'), blank=True)
 
     def get_repository_name(self):
-        if repository_url:
-            return urlparse.urlsplit(self.repository_url).netloc
-        return None
+        if self.repository_url:
+            return '%s' % urlparse.urlsplit(self.repository_url).netloc
+        return ''
 
-    def Meta(self):
-        ordering = ['course', 'identification', 'title']
+    def get_absolute_url(self):
+        if self.url:
+            return '%s' % self.url
+        elif self.repository_url:
+            return '%s' % self.repository_url
+        return ''
 
     def __unicode__(self):
         if self.course.lab:
-            return self.course.department + self.course.number + '/' + self.course.lab + ' - ' + self.identification + ' - ' +  self.title
-        return self.course.department + self.course.number + ' - ' + self.identification + ' - ' +  self.title
+            return u'%s%s/%s - %s - %s' % (self.course.department, self.course.number, self.course.lab, self.identification, self.title)
+        return u'%s%s - %s - %s' % (self.course.department, self.course.number, self.identification, self.title)
+
+    class Meta:
+        ordering = ('course', 'identification', 'title')
 
 
 class AssignmentProgrammingLanguage(ProjectProgrammingLanguage):
@@ -200,21 +227,10 @@ class AssignmentProgrammingLanguage(ProjectProgrammingLanguage):
 
     Project is required. Other fields are optional.
     """
-    project = models.ForeignKey(Assignment)
-
-    def Meta(self):
-        ordering = ['project', 'language', 'version', 'framework', 'framework_version']
-
-    def __unicode__(self):
-        if self.language and self.framework:
-            return self.language + self.version + '/' + self.framework + self.framework_version
-        elif self.language:
-            return self.language + self.version
-        elif self.framework:
-            return self.framework + self.framework_version
-        return self.project
-
-
+    def __init__(self, *args, **kwargs):
+        super(AssignmentProgrammingLanguage, self).__init__(self, *args, **kwargs)
+        project = models.ForeignKey(Assignment)
+        project.contribute_to_class('project', self)
 
 
 ####
@@ -230,32 +246,28 @@ class ProjectAdmin(admin.ModelAdmin):
         return '%s' % obj.owner.get_profile()
     get_owner.short_description = u'Project Owner'
     list_display = ('title', 'get_repository_name', 'date', 'get_owner', 'description')
-    inlines = [ProjectProgrammingLanguageInline]
+    inlines = (ProjectProgrammingLanguageInline,)
 
 
 ## Education
 class CourseInline(admin.TabularInline):
-    models = Course
-    extra = 3
+    model = Course
+    extra = 0
 
 class AssignmentInline(admin.TabularInline):
-    models = Assignment
-    extra = 2
+    model = Assignment
+    extra = 0
 
 class AssignmentProgrammingLanguageInline(admin.TabularInline):
-    models = AssignmentProgrammingLanguage
-    extra = 1
+    model = AssignmentProgrammingLanguage
+    extra = 0
 
 class EducationAdmin(admin.ModelAdmin):
     def get_owner(self, obj):
         return '%s' % obj.owner
     get_owner.short_description = u'Project Owner'
     list_display = ('get_owner', 'name', 'acronym', 'degree', 'major', 'graduation_date')
-    inlines = [
-        CourseInline,
-        AssignmentInline,
-        AssignmentProgrammingLanguageInline,
-    ]
+    inlines = (CourseInline,)
 
 
 class CourseAdmin(admin.ModelAdmin):
@@ -263,7 +275,7 @@ class CourseAdmin(admin.ModelAdmin):
         return '%s' % obj.education
     get_education.short_description = u'Education institution'
     list_display = ('title', 'department', 'number', 'lab', 'get_education')
-
+    inlines = (AssignmentInline,)
 
 
 class AssignmentAdmin(admin.ModelAdmin):
@@ -271,10 +283,12 @@ class AssignmentAdmin(admin.ModelAdmin):
         return '%s' % obj.course
     get_course.short_description = u'Course'
     list_display = ('title', 'identification', 'programming_language', 'get_course')
-
+    inlines = (AssignmentProgrammingLanguageInline,)
 
 
 ####
 ## REGISTER
 admin.site.register(Project, ProjectAdmin)
 admin.site.register(Education, EducationAdmin)
+admin.site.register(Course, CourseAdmin)
+admin.site.register(Assignment, AssignmentAdmin)

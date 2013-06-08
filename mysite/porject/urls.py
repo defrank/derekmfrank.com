@@ -10,10 +10,10 @@
 
 from django.conf.urls import patterns, url
 
-urlpatterns = patterns('portfolio.views',
+urlpatterns = patterns('porject.views',
     # Portfolio
     url(r'^$', 'portfolio', name='portfolio'),
-    url(r'^(?<username>\w+$', 'someone'),
+    url(r'^(?P<username>\w+)/$', 'someone'),
 )
 
 # Necessary redirection for unavailable pages

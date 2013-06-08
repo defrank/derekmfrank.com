@@ -10,7 +10,7 @@
 #
 
 import datetime
-from aboutme.views import get_me
+from utils.functions import get_default_user
 
 def site(request):
     site_years = '2013'
@@ -20,7 +20,7 @@ def site(request):
 
     context = {
         # Me
-        'me': get_me(),
+        'me': get_default_user,
         # Site specific
         'SITE_YEARS': site_years,
         # Base

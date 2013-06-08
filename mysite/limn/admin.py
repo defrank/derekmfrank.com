@@ -13,7 +13,7 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-from limn.models import UserProfile, UserImageInline, UserDocumentInline, UserRepositoryInline, UserProfileInline, UserSourceInline
+from limn.models import UserProfile
 
 
 ####
@@ -22,18 +22,26 @@ from limn.models import UserProfile, UserImageInline, UserDocumentInline, UserRe
 ## User Profile
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
+    extra = 0
     can_delete = False
     verbose_name_plural = u'profile'
 
 class UserAdmin(UserAdmin):
-    inlines = [
+    fieldsets = (
+        (None, {'fields': ('username', 'password',)}),
+        ('Personal info', {'fields': ('first_name', 'last_name', 'email',)}),
+        ('Important dates', {
+            'fields': ('last_login', 'date_joined',),
+            'classes': ('collapse',),
+        }),
+        ('Permissions', {
+            'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions',),
+            'classes': ('collapse',),
+        }),
+    )
+    inlines = (
         UserProfileInline,
-        UserImageInline, 
-        UserDocumentInline, 
-        UserRepositorySourceInline, 
-        UserProfileSourceInline, 
-        UserSourceInline
-    ]
+    )
 
 
 ####

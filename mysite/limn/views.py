@@ -11,17 +11,10 @@
 from django.conf import settings
 from django.contrib.sites.models import get_current_site
 
-from django.contrib.admin import User
+from django.contrib.auth.models import User
 
-from utils.functions import response
+from utils.functions import response, get_default_user
 from models import UserProfile
-
-
-####
-## HELPERS
-
-def get_default_user():
-    return User.objects.get(id=1)
 
 
 ####
@@ -36,10 +29,20 @@ def about_view(request, template, context):
 
 def me(request):
     """About homepage: view default user."""
-    profile = get_default_user()
-    template = 'limn/about.html'
+    #user = get_default_user
+    template = 'limn/aboutme.html'
     context = {
-        'profile': profile,
+        #'user': user,
+    }
+    return response(request, template, context)
+
+
+def mff(request):
+    """About MFF"""
+    user = User.objects.get(username='mff')
+    template = 'limn/mff.html'
+    context = {
+        'user': user,
     }
     return response(request, template, context)
 
@@ -50,10 +53,10 @@ def someone(request, username):
     
     Takes a username.
     """
-    profile = User.objects.get(username=username)
-    template = 'limn/mff.html'
+    user = User.objects.get(username=username)
+    template = 'limn/about.html'
     context = {
-        'profile': profile,
+        'user': user,
     }
     return response(request, template, context)
 

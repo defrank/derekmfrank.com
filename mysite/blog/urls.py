@@ -17,14 +17,14 @@ urlpatterns = patterns('blog.views',
     url(r'^index/$', 'index'),
     # Archives
         # post user
-    url(r'^archive/user/(?<username>\w+)/$', 'archive_user'),
+    url(r'^archive/user/(?P<username>\w+)/$', 'archive_user'),
         # post id
-    url(r'^archive/id/(?<post_id>\d+)/$', 'archive_id'),
+    url(r'^archive/id/(?P<post_id>\d+)/$', 'archive_id'),
         # post date
-    url(r'^archive/date/(?<post_year>\d+)/$', 'archive_year'),
-    url(r'^archive/date/(?<post_year>\d+)/(?<post_month>\d+)/$', 
+    url(r'^archive/date/(?P<post_year>\d+)/$', 'archive_year'),
+    url(r'^archive/date/(?P<post_year>\d+)/(?P<post_month>\d+)/$', 
         'archive_month'),
-    url(r'^archive/date/(?<post_year>\d+)/(?<post_month>\d+)/(?<post_day>\d+)$', 
+    url(r'^archive/date/(?P<post_year>\d+)/(?P<post_month>\d+)/(?P<post_day>\d+)/$', 
         'archive_day'),
 )
 

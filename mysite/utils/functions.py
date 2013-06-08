@@ -12,7 +12,7 @@ from django.shortcuts import render_to_response
 from django.shortcuts import redirect
 from django.template.context import RequestContext
 
-from django.contrib.auth import User
+from django.contrib.auth.models import User
 
 # Currently not used, but may be useful
 #from django.conf import settings
@@ -49,4 +49,4 @@ def require_login(request):
 
 
 def get_default_user():
-    return User.objects.get(id=1)
+    return User.objects.get(pk=1)

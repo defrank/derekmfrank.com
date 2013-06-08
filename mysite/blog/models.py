@@ -15,14 +15,11 @@ from django.utils.translation import ugettext_lazy as _
 
 import markdown
 
+from utils.functions import get_default_user
+
 
 ####
 ## HELPERS
-
-def default_owner():
-    """Function to return the first User from the database."""
-    return User.objects.get(id=1)
-
 
 def markdown_to_html(markdownText, images):
     """Function to parse and add image in html format to a blog post"""
@@ -50,20 +47,24 @@ class Post(models.Model):
 
     Owner, title, and body are required. Other fields optional.
     """
-    owner = models.ForeignKey(User, default=default_owner())
+    owner = models.ForeignKey(User, default=get_default_user)
     title = models.CharField(_(u'post title'), max_length=128)
-    timestamp = models.DateTimeField(_(u'post date and time'), auto_now_add=True)
+    timestamp = models.DateTimeField(_(u'post date and time'))
     body = models.TextField(_(u'post body'))
 
     def body_html(self):
         return markdown_to_html(self.body, self.image_set.all())
 
-    def Meta(self):
-        ordering = ['-timestamp']
-    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('blog.views.archive_id', [str(self.id)])
+   
     def __unicode__(self):
-        return self.title
+        return u'%s' % self.title
 
+    class Meta:
+        ordering = ('-timestamp',)
+ 
 
 class PostImage(models.Model):
     """
@@ -75,20 +76,27 @@ class PostImage(models.Model):
     title = models.CharField(_(u'image title'), max_length=64, unique=True, blank=True)
     def get_upload_dir(instance, filename):
         return 'blog/%s/post%d/%s' % (instance.owner.username, instance.id, filename)
-    image = models.ImageField(_(u'upload post image'), upload_to=get_upload_dir, blank=True)
+    image = models.ImageField(_(u'upload post image'), upload_to=get_upload_dir, blank=True, null=True)
     url = models.URLField(_(u'post image link'), blank=True)
 
-    def Meta(self):
-        ordering = ['-post', 'title']
+    def get_absolute_url(self):
+        if self.image:
+            return '%s' % self.image.url
+        elif self.url:
+            return '%s' % self.url
+        return ''
 
     def __unicode__(self):
         if self.title:
-            return self.title 
+            return u'%s' % self.title 
         elif self.image:
-            return self.image.url
+            return u'%s' % self.image.url
         elif self.url:
-            return self.url
-        return 'image for ' + self.post
+            return u'%s' % self.url
+        return u'image for blog post %d: %s' % (self.id, self.post)
+
+    class Meta:
+        ordering = ('-post', 'title')
 
 
 ## Link Model:
@@ -105,17 +113,21 @@ class Link(models.Model):
 
     All fields required.
     """
-    owner = models.ForeignKey(User, default=default_owner())
+    owner = models.ForeignKey(User, default=get_default_user)
     title = models.CharField(_(u'link title'), max_length=128)
-    timestamp = models.DateTimeField(_(u'link date and time'), auto_add_now=True)
+    timestamp = models.DateTimeField(_(u'link date and time'), auto_now_add=True)
     url = models.URLField(_(u'link address'))
     category = models.CharField(_(u'link category'), max_length=2, choices=CATEGORY_CHOICES, default=u'OT')
+    description = models.TextField()
 
-    def Meta(self):
-        ordering = ['category', '-timestamp', 'title']
+    def get_absolute_url(self):
+        return '%s' % self.url
 
     def __unicode__(self):
-        return self.title
+        return u'%s' % self.title
+
+    class Meta:
+        ordering = ('category', '-timestamp', 'title')
 
 
 ####
@@ -124,29 +136,30 @@ class Link(models.Model):
 ## Post
 class PostImageInline(admin.TabularInline):
     model = PostImage
-    extra = 2
+    extra = 0
 
 class PostAdmin(admin.ModelAdmin):
-    list_display = ('title', 'timestamp', 'get_owner')
-    fieldsets = [
-        (None, {'fields': ['owner']}),
-        ('Post information', {'fields': ['title', 'timestamp']}),
-        ('Post content', {'fields': ['body']}),
-    ]
-    inlines = [PostImageInline]
-
     def get_owner(self, obj):
         return '%s' % obj.owner.get_profile()
     get_owner.short_description = u'Owner'
+
+    list_display = ('title', 'timestamp', 'get_owner')
+    fieldsets = (
+        (None, {'fields': ('owner',)}),
+        ('Post information', {'fields': ('title', 'timestamp')}),
+        #('Post information', {'fields': ('title',)}),
+        ('Post content', {'fields': ('body',)}),
+    )
+    inlines = (PostImageInline,)
 
 
 ## Link
 class LinkAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'timestamp', 'get_owner')
-
     def get_owner(self, obj):
         return '%s' % obj.owner.get_profile()
     get_owner.short_description = u'Owner'
+
+    list_display = ('title', 'category', 'timestamp', 'get_owner')
 
 
 ####

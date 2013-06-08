@@ -3,9 +3,9 @@ from django.contrib.sites.models import get_current_site
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 
-from django.contrib.admin import User as Owner
+from django.contrib.auth.models import User as Owner
 
-from utils import response
+from utils.functions import response
 
 from models import CATEGORY_CHOICES, Post, Link
 

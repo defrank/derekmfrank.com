@@ -17,11 +17,11 @@ from django.contrib import admin
 admin.autodiscover()
 
 
-urlpatterns = patterns('mysite',
+urlpatterns = patterns('mysite.views',
     url(r'^$', 'home', name='home'),
 )
 
-urlpatterns = patterns('',
+urlpatterns += patterns('',
     url(r'^about/', include('limn.urls')),
     url(r'^portfolio/', include('porject.urls')),
     url(r'^blog/', include('blog.urls')),

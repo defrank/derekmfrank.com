@@ -13,8 +13,10 @@ from django.conf.urls import patterns, url
 urlpatterns = patterns('limn.views',
     # About me
     url(r'^$', 'me', name='about'),
+    # About mff
+    url(r'^mff/$', 'mff', name='mff'),
     # About someone
-    url(r'^(?<username>\w+)/$', 'someone'),
+    url(r'^(?P<username>\w+)/$', 'someone'),
 )
 
 # Necessary redirection for unavailable pages

@@ -27,7 +27,7 @@
     <meta name="author" content="Derek M. Frank" />
     <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
     <meta name="Description" content="Derek Michael Frank's personal website." />
-    <title>{% block title %}{{ me }}{% endblock %}</title>
+    <title>{% block title %}{{ me.get_profile }}{% endblock %}</title>
     {% block viewport %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
@@ -117,7 +117,7 @@
         <footer>
             <p>
                 <a href="mailto:{{ me.email }}" 
-                   title="Contact {{ me }}">{{ me }}</a>
+                   title="Contact {{ me.get_profile  }}">{{ me.get_profile }}</a>
                   <span>{{ SITE_YEARS }}</span>
             </p>
             <p>{{ request.get_host }}</p>

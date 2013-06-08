@@ -2,7 +2,7 @@ from django.conf import settings
 from django.contrib.sites.models import get_current_site
 from django.contrib.auth.models import User
 
-from utils.functions import response
+from utils.functions import response, get_default_user
 
 from limn.models import UserSource as Source, UserProfileSource as Profile, UserRepositorySource as Repo
 
@@ -11,41 +11,34 @@ from models import DEPARTMENT_CHOICES
 
 
 ####
-## HELPERS
-
-def get_default_user():
-    return User.objects.get(id=1)
-
-
-####
 ## VIEWS
 
 ## Portfolio:
-def portfolio_views(request, context, user):
+def portfolio_views(request, context, owner):
     """
     Portfolio view: has sources
 
     Takes a context and User.
     """
     sources = []
-    repos = Repo.objects.filter(user=profile)
+    repos = Repo.objects.filter(user=owner)
     sources.append(repos)
-    profiles = Profile.objects.filter(user=profile)
+    profiles = Profile.objects.filter(user=owner)
     sources.append(profiles)
     owners = Project.objects.values_list('owner', flat=True).distinct()
 
-    template = 'portfolio/portfolio.html'
+    template = 'porject/portfolio.html'
     context['sources'] = sources
     context['owners'] = owners
     return response(request, template, context)
 
 def portfolio(request):
     """Outputs the default user's portfolio"""
-    owner = get_default_user()
-    projects = Project.objects.filter(user=owner)
+    owner = get_default_user
+    projects = Project.objects.filter(owner=owner)
     education = []
     departments = DEPARTMENT_CHOICES
-    institution = Education.objects
+    institution = Education.objects.filter(owner=owner)
     for i in institution:
         dept_courses = []
         for d in departments:
@@ -64,7 +57,7 @@ def portfolio(request):
         'projects': projects,
         'education': education,
     }
-    return response(request, template, context)
+    return portfolio_views(request, context, owner)
 
 
 def someone(request, username):
