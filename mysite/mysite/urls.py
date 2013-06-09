@@ -22,10 +22,16 @@ urlpatterns = patterns('mysite.views',
 )
 
 urlpatterns += patterns('',
-    url(r'^about/', include('limn.urls')),
-    url(r'^portfolio/', include('porject.urls')),
+    # Homepage, News Feed
+    url(r'^', include('feed.urls')),
+    url(r'^feed/', include('feed.urls')),
+    # Accounts, about
+    url(r'^accounts/', include('accounts.urls')),
+    url(r'^about/', include('accounts.urls')),
+    # Portfolio
+    url(r'^portfolio/', include('portfolio.urls')),
+    # Blog
     url(r'^blog/', include('blog.urls')),
-    #url(r'^mff/', include('mff.urls')),
 
     # Enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

@@ -9,6 +9,7 @@
 #
 
 from django.conf import settings
+"""
 from django.shortcuts import render_to_response
 from django.shortcuts import redirect
 from django.http import HttpResponse, HttpResponseRedirect
@@ -16,15 +17,22 @@ from django.template import Template, Context
 from django.template.context import RequestContext
 from django.views.decorators.csrf import csrf_protect
 from django.contrib.sites.models import get_current_site
+"""
 
-from utils.functions import response
-from mysite.models import Message
+from utils.functions import response, get_default_user
+from feed.views import feed
 
-# Home page view
+
+####
+## VIEWS
+
 def home(request):
-    messages = Message.objects.order_by('timestamp').reverse()
+    return feed(request)
+    """
+    me = get_default_user
     template = 'home.html'
     context = {
-        'content_messages': messages,
+        'me': me,
     }
     return response(request, template, context)
+    """

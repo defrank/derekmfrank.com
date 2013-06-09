@@ -24,10 +24,5 @@ def site(request):
         # Site specific
         'SITE_YEARS': site_years,
         # Base
-        'HOME_URL': '/home/',
-        'BLOG_URL': '/blog/',
-        'PORTFOLIO_URL': '/portfolio/',
-        'ABOUTME_URL': '/aboutme/',
-        'MFF_URL': '/mff/',
     }
     return context

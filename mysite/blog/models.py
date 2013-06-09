@@ -118,7 +118,7 @@ class Link(models.Model):
     timestamp = models.DateTimeField(_(u'link date and time'), auto_now_add=True)
     url = models.URLField(_(u'link address'))
     category = models.CharField(_(u'link category'), max_length=2, choices=CATEGORY_CHOICES, default=u'OT')
-    description = models.TextField()
+    description = models.TextField(null=True)
 
     def get_absolute_url(self):
         return '%s' % self.url

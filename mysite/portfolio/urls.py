@@ -9,14 +9,14 @@
 #
 
 from django.conf.urls import patterns, url
-import views
 
-urlpatterns = patterns('',
+urlpatterns = patterns('portfolio.views',
     # Portfolio
-    url(r'^$', views.portfolio, name='portfolio'),
+    url(r'^$', 'portfolio', name='portfolio'),
+    url(r'^(?P<username>\w+)/$', 'someone'),
 )
 
 # Necessary redirection for unavailable pages
-urlpatterns += patterns('',
-    url(r'^.+$', views.portfolio),
-)
+#urlpatterns += patterns('',
+    #url(r'^.+$', views.portfolio),
+#)

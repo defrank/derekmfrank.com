@@ -1,12 +1,17 @@
+# $Id: models.py,v 1.1 2013-05-30 23:46:52-07 dmf - $
+# Derek Frank (dmfrank@gmx.com)
+#
+# NAME
+#   views.py - blog
+#
+# DESCRIPTION
+#   Views for blogs.
+#
 from django.conf import settings
-from django.contrib.sites.models import get_current_site
-from django.http import Http404
 from django.shortcuts import get_object_or_404
-
 from django.contrib.auth.models import User as Owner
 
 from utils.functions import response
-
 from models import CATEGORY_CHOICES, Post, Link
 
 

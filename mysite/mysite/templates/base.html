@@ -90,7 +90,7 @@
                             <li id="nb-home"><a href="{{ home_url }}" title="Homepage">Home</a></li>
                             <li id="nb-blog"><a href="{% url "blog" %}" title="My blog">Blog</a></li>
                             <li id="nb-portfolio"><a href="{% url "portfolio" %}" title="My portfolio">Portfolio</a></li>
-                            <li id="nb-aboutme"><a href="{% url "about" %}" title="My about me">About me</a></li>
+                            <li id="nb-aboutme"><a href="{% url "about" %}" title="About {{ me.get_profile }}">About</a></li>
                             <li class="nb-separator"><span class="nb-separator">|</span></li>
                             <li id="nb-mff"><a href="{% url "mff" %}" title="Michael Frank">MFF</a></li>
                         </ul>

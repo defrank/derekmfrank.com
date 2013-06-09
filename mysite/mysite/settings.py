@@ -84,7 +84,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'staticfiles').replace('\\','/')),
+    os.path.abspath(os.path.join(PACKAGE_ROOT, 'staticfiles').replace('\\','/')),
 )
 
 # List of finder classes that know how to find static files in
@@ -144,16 +144,10 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 
-    #os.path.abspath(os.path.join(PACKAGE_ROOT, 'templates').replace('\\','/')),
     #os.path.abspath(os.path.join(PROJECT_ROOT, 'webmaster', 'templates').replace('\\','/')),
-    #os.path.abspath(os.path.join(PROJECT_ROOT, 'limn', 'templates').replace('\\','/')),
-    #os.path.abspath(os.path.join(PROJECT_ROOT, 'blog', 'templates').replace('\\','/')),
-    #os.path.abspath(os.path.join(PROJECT_ROOT, 'porject', 'templates').replace('\\','/')),
-    #os.path.abspath(os.path.join(PROJECT_ROOT, 'aboutme', 'templates').replace('\\','/')),
-    #os.path.abspath(os.path.join(PROJECT_ROOT, 'mff', 'templates').replace('\\','/')),
 )
 
-AUTH_PROFILE_MODULE = 'limn.UserProfile'
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -174,8 +168,9 @@ INSTALLED_APPS = (
     # project
     'utils',
     'webmaster',
-    'limn',
-    'porject',
+    'accounts',
+    'feed',
+    'portfolio',
     'blog',
     'mysite',
 )
