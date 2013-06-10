@@ -19,15 +19,18 @@ admin.autodiscover()
 
 urlpatterns = patterns('mysite.views',
     url(r'^$', 'home', name='home'),
+    url(r'^about/$', 'aboutme', name='about'),
+    url(r'^about/dmf/$', 'aboutme', name='aboutme'),
+    url(r'^about/mff/$', 'aboutmff', name='aboutmff'),
+    url(r'^about/(?P<username>\w+)/$', 'about'),
 )
 
 urlpatterns += patterns('',
     # Homepage, News Feed
     url(r'^', include('feed.urls')),
     url(r'^feed/', include('feed.urls')),
-    # Accounts, about
+    # Accounts
     url(r'^accounts/', include('accounts.urls')),
-    url(r'^about/', include('accounts.urls')),
     # Portfolio
     url(r'^portfolio/', include('portfolio.urls')),
     # Blog
@@ -50,7 +53,7 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # PHP MySQL Database
-urlpatterns += patterns('utils.functions',
+urlpatterns += patterns('utils',
     url(r'^dh_phpmyadmin.*$', 'redirect_to_mysql', name='mysql'),
     url(r'^mysql.*$', 'redirect_to_mysql'),
 )
@@ -62,5 +65,5 @@ urlpatterns += patterns('',
 
 # Necessary redirection for unavailable pages
 #urlpatterns += patterns('',
-    #url(r'^.+$', functions.redirect_to_home, name='redirect'),
+    #url(r'^.+$', redirect_to_home, name='redirect'),
 #)

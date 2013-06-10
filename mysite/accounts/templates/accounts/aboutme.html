@@ -2,20 +2,20 @@
 {% comment %}
  *
  * $Id: aboutme.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
- * Derek Frank (derekmfrank@gmail.com)
+ * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
  *     aboutme.html
  *
  * DESCRIPTION
- *     About Me HTML template.
+ *     About me HTML template.
  *
 {% endcomment %}
 {% load static from staticfiles %}
 {% load url from future %}
 {% load static from staticfiles %}
 
-{% block title %}About Me | {{ me.get_profile }}{% endblock %}
+{% block title %}About Me | {{ myprofile }}{% endblock %}
 
 {% block navbar_class %}nb-aboutme{% endblock %}
 
@@ -24,58 +24,54 @@
         <div class="box" >
             <h2>About me</h2>
             {% autoescape off %}
-                <span>{{ me.get_profile.html_description }}</span>
+                <span>{{ myprofile.description }}</span>
             {% endautoescape %}
         </div>
     </div>
 
     <div id="content-right" >
         <div class="box">
-            {% if me.get_profile.image %}
+            {% if myprofile.image %}
                 <div class="center">
-                    <img id="mypic" class="center" src="{% static me.get_profile.image %}" alt="Me" width="260" height="260" />
+                    <img id="mypic" class="center" src="{% static myprofile.image.get_absolute_url %}" alt="Image for {{ myprofile }}" width="260" height="260" />
                 </div>
             {% endif %}
             <h3>Contact</h3>
             <ul>
-                <div class="block">{{ me.get_profile }}</div>
-                <div class="block">{{ me.get_profile.title }}</div>
+                <div class="block">{{ myprofile }}</div>
+                <div class="block">{{ myprofile.title }}</div>
                 <div class="block">
-                    <a href="mailto:{{ me.get_profile.email }}" 
-                       title="Email Derek Frank: {{ me.get_profile.email }}">{{ me.get_profile.email_name }}</a>
-                    <span>|</span>
-                    <a href="mailto:{{ me.get_profile.alternative_email }}" 
-                       title="Email Derek Frank: {{ me.get_profile.alternative_email }}">{{ me.get_profile.alternative_email_name }}</a>
+                    <a href="mailto:{{ myprofile.email }}" 
+                        title="Email {{ me }}: {{ myprofile.email }}">{{ myprofile.email_name|title }}</a>
+                   {% if myprofile.alternative_email %}
+                        <span>|</span>
+                        <a href="mailto:{{ myprofile.alternative_email }}" 
+                            title="Email {{ me }}: {{ myprofile.alternative_email }}">{{ myprofile.alternative_email_name|title }}</a>
+                    {% endif %}
                 </div>
             </ul>
             <h3>Repositories</h3>
             <ul>
-                {% for repo in sources %}
-                    {% if repo.type == 'RP' %}
-                        <div class="block">
-                            <a href="{{ repo.url }}" title="Derek's {{ repo.title }} repository">{{ repo.title }}</a>
-                        </div>
-                    {% endif %}
+                {% for repo in myprofile.repositories %}
+                    <div class="block">
+                        <a href="{{ repo.get_absolute_url }}" title="{{ me }}'s {{ repo.title }} repository">{{ repo.title }}</a>
+                    </div>
                 {% endfor %}
             </ul>
             <h3>Documents</h3>
             <ul>
-                {% for doc in documents %}
+                {% for doc in myprofile.documents.all %}
                     <div class="block">
-                        <a href="{% if doc.document %}{% static doc.document %}{% else %}{{ doc.url }}{% endif %}" 
-                           title="Derek's {{ doc }}">{{ doc }}</a>
+                        <a href="{% static doc.get_absolute_url %}" title="{{ me }}'s {{ doc }}">{{ doc }}</a>
                     </div>
                 {% endfor %}
             </ul>
             <h3>Other Sources</h3>
             <ul>
-                {% for src in sources %}
-                    {% if src.type != 'RP' %}
-                        <div class="block">
-                            <a href="{{ src.url }}" 
-                               title="Derek's {{ src.title }} {{ src.get_type_display }}">{{ src.title }}</a>
-                        </div>
-                    {% endif %}
+                {% for hob in myprofile.hobbies %}
+                    <div class="block">
+                        <a href="{{ hob.get_absolute_url }}" title="{{ me }}'s {{ hob.title }}">{{ hob.title }}</a>
+                    </div>
                 {% endfor %}
             </ul>
         </div>

@@ -13,21 +13,20 @@
 {% load static from staticfiles %}
 {% load url from future %}
 <!DOCTYPE html>
-
+{% with me.profile as myprofile %}
 <!--
+    Author: {{ myprofile }}
     {{ request.get_host|cut:"www." }}
  -->
 {% url "home" as home_url %}
-
 <html lang="{{ LANGUAGE_CODE }}">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
     <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
     <meta name="author" content="Derek M. Frank" />
     <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
     <meta name="Description" content="Derek Michael Frank's personal website." />
-    <title>{% block title %}{{ me.get_profile }}{% endblock %}</title>
+    <title>{% block title %}{{ myprofile }}{% endblock %}</title>
     {% block viewport %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
@@ -90,9 +89,9 @@
                             <li id="nb-home"><a href="{{ home_url }}" title="Homepage">Home</a></li>
                             <li id="nb-blog"><a href="{% url "blog" %}" title="My blog">Blog</a></li>
                             <li id="nb-portfolio"><a href="{% url "portfolio" %}" title="My portfolio">Portfolio</a></li>
-                            <li id="nb-aboutme"><a href="{% url "about" %}" title="About {{ me.get_profile }}">About</a></li>
+                            <li id="nb-aboutme"><a href="{% url "aboutme" %}" title="About {{ myprofile }}">About</a></li>
                             <li class="nb-separator"><span class="nb-separator">|</span></li>
-                            <li id="nb-mff"><a href="{% url "mff" %}" title="Michael Frank">MFF</a></li>
+                            <li id="nb-mff"><a href="{% url "aboutmff" %}" title="Michael Frank">MFF</a></li>
                         </ul>
                     </div>
                     <div id="navbarwidget" >
@@ -116,8 +115,8 @@
     {% block footer %}
         <footer>
             <p>
-                <a href="mailto:{{ me.email }}" 
-                   title="Contact {{ me.get_profile  }}">{{ me.get_profile }}</a>
+                <a href="mailto:{{ myprofile.email }}" 
+                   title="Contact {{ myprofile }}">{{ myprofile }}</a>
                   <span>{{ SITE_YEARS }}</span>
             </p>
             <p>{{ request.get_host }}</p>
@@ -127,3 +126,4 @@
     {% block body_script %}{% endblock %}
 </body>
 </html>
+{% endwith %}

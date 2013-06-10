@@ -2,50 +2,54 @@
 {% comment %}
  *
  * $Id: aboutme.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
- * Derek Frank (derekmfrank@gmail.com)
+ * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
- *     aboutme.html
+ *     about.html
  *
  * DESCRIPTION
- *     About Me HTML template.
+ *     About someone HTML template.
  *
 {% endcomment %}
 {% load static from staticfiles %}
 {% load url from future %}
 {% load static from staticfiles %}
 
-{% block title %}About Me | {{ me.get_profile }}{% endblock %}
+{% with user.profile as profile %}
+{% block title %}About {{ user }}{% endblock %}
 
 {% block navbar_class %}nb-aboutme{% endblock %}
 
 {% block body_inner_content %}
     <div id="content-left">
         <div class="box" >
-            <h2>About me</h2>
+            <h2>About {{ user }</h2>
             {% autoescape off %}
-                <span>{{ me.get_profile.html_description }}</span>
+                <span>{{ user.description }}</span>
             {% endautoescape %}
         </div>
     </div>
 
     <div id="content-right" >
         <div class="box">
-            {% if me.get_profile.image %}
+            {% if user.image %}
                 <div class="center">
-                    <img id="mypic" class="center" src="{% static me.get_profile.image %}" alt="Me" width="260" height="260" />
+                    <img id="mypic" class="center" src="{% static user.image.get_absolute_url %}" alt="Image for {{ user }}" width="260" height="260" />
+                    <span>{{ user.image }}</span>
                 </div>
             {% endif %}
             <h3>Contact</h3>
             <ul>
-                <div class="block">{{ me.get_profile }}</div>
-                <div class="block">{{ me.get_profile.title }}</div>
+                <div class="block">{{ user }}</div>
+                <div class="block">{{ user.title }}</div>
                 <div class="block">
-                    <a href="mailto:{{ me.get_profile.email }}" 
-                       title="Email Derek Frank: {{ me.get_profile.email }}">{{ me.get_profile.email_name }}</a>
-                    <span>|</span>
-                    <a href="mailto:{{ me.get_profile.alternative_email }}" 
-                       title="Email Derek Frank: {{ me.get_profile.alternative_email }}">{{ me.get_profile.alternative_email_name }}</a>
+                    <a href="mailto:{{ user.email }}" 
+                        title="Email {{ user }}: {{ user.email }}">{{ user.email_name|title }}</a>
+                    {% if profile %}
+                        <span>|</span>
+                        <a href="mailto:{{ profile.alternative_email }}" 
+                           title="Email Derek Frank: {{ profile.alternative_email }}">{{ profile.alternative_email_name }}</a>
+                    {% endif %}
                 </div>
             </ul>
             <h3>Repositories</h3>
@@ -81,3 +85,4 @@
         </div>
     </div>
 {% endblock %}
+{% endwith %}

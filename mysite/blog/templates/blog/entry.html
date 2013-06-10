@@ -7,32 +7,33 @@
  *     entry.html
  *
  * DESCRIPTION
- *     Blog Post Entry HTML template.
+ *     Blog Entry HTML template.
  *
 {% endcomment %}
 {% load static from staticfiles %}
 {% load url from future %}
 
 <div class="block">
-    <a class="header" href="{% url "blog" %}{{ post.id }}/" 
-       title="View blog post {{ post.id }}"><h3>{{ post.title }}</h3>
+    <a class="header" href="{% url "archive_id" %}{{ entry.id }}/" 
+       title="View blog entry {{ entry.id }}"><h3>{{ entry.title }}</h3>
     </a>
     <span class="postinfo">
-        <span>Posted on <span class="timestamp">{{ post.timestamp }}</span> by</span>
-        <a href="{% url "aboutme" %}" title="{{ post.owner }} | {{ post.owner.title }}">{{ post.owner }}</a>
+        <span>Posted on <span class="timestamp">{{ entry.timestamp }}</span> by</span>
+        <a href="{% url "about" %}{{ entry.author.username }}/" 
+           title="{{ entry.author.get_profile }} | {{ entry.author.title }}">{{ entry.author.get_profile }}</a>
     </span>
 </div>
-{% if post.image or post.image_url %}
+{% if entry.image or entry.image_url %}
     <div class="center">
-        {% if post.image %}
-            <img src="{% static post.image %}" alt="Blog Post {{ post.id }} Image" />
+        {% if entry.image %}
+            <img src="{% static entry.image %}" alt="Blog Entry {{ entry.id }} Image" />
         {% else %}
-            <img src="{{ post.image_url }}" alt="Blog Post {{ post.id }} Image" />
+            <img src="{{ entry.image_url }}" alt="Blog Entry {{ entry.id }} Image" />
         {% endif %}
     </div>
 {% endif %}
 <ul>
     {% autoescape off %}
-        <span>{{ post.body|linebreaks }}</span>
+        <span>{{ entry.body|linebreaks }}</span>
     {% endautoescape %}
 </ul>

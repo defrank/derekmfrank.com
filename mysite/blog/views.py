@@ -9,10 +9,10 @@
 #
 from django.conf import settings
 from django.shortcuts import get_object_or_404
-from django.contrib.auth.models import User as Owner
+from django.contrib.auth.models import User
 
-from utils.functions import response
-from models import CATEGORY_CHOICES, Post, Link
+from utils import response
+from models import Entry, Link
 
 
 ####
@@ -21,7 +21,7 @@ from models import CATEGORY_CHOICES, Post, Link
 def blog_view(request, template, context):
     """All blog views: contain links menu"""
     #choices = Link.objects.values_list('category', flat=True).distinct()
-    categories = CATEGORY_CHOICES
+    categories = Link.CATEGORY_CHOICES
     sources = []
     for c in categories:
         links = Link.objects.filter(category=c[0]).order_by('timestamp').reverse()
@@ -33,12 +33,12 @@ def blog_view(request, template, context):
     
 
 def recent(request):
-    """Blog homepage: view eight most recent posts."""
-    posts = Post.objects.order_by('timestamp').reverse()[8:]
+    """Blog homepage: view eight most recent posts/entries."""
+    entries = Entry.objects.order_by('timestamp').reverse()[8:]
 
-    template = 'blog/posts.html'
+    template = 'blog/entries.html'
     context = {
-        'posts': posts,
+        'entries': entries,
     }
     return blog_view(request, template, context)
 
@@ -48,7 +48,7 @@ def index(request):
     """Archive index by post date."""
     #filters = ('user', 'year', 'month', 'day')
     # Retrieve index list of year/month/day
-    index =  Post.objects.filter(draft=False).dates('timestamp', 'day', order='DESC')
+    index =  Entry.objects.filter(draft=False).dates('timestamp', 'day', order='DESC')
 
     template = 'blog/index.html'
     context = {
@@ -58,38 +58,38 @@ def index(request):
 
 
 ## Archives:
-def archive_view(request, posts):
+def archive_view(request, entries):
     """
-    All archive views: contain posts.
+    All archive views: contain blog entries.
     
-    Takes a list of blog posts.
+    Takes a list of blog entries.
     """
-    template = 'blog/posts.html'
+    template = 'blog/entries.html'
     context = {
-        'posts': posts,
+        'entries': entries,
     }
     return blog_view(request, template, context)
 
 
-def archive_user(request, username):
+def archive_author(request, username):
     """
-    Archive: view by user.
+    Archive: view by user author.
 
     Takes a user's username.
     """
-    user = Owner.objects.get(username=username)
-    posts = Post.objects.filter(owner=user).order_by('timestamp')
-    return archive_view(request, posts)
+    user = User.objects.get(username=username)
+    entries = Entry.objects.filter(author=user).order_by('timestamp')
+    return archive_view(request, entries)
 
 
-def archive_id(request, post_id):
+def archive_id(request, entry_id):
     """
     Archive: view by id.
 
-    Takes an integer specifying the post id.
+    Takes an integer specifying the entry id.
     """
-    post = get_object_or_404(Post, id=post_id)
-    return archive_view(request, post)
+    entry = get_object_or_404(Entry, id=entry_id)
+    return archive_view(request, entry)
 
    
 def archive_year(request, year):
@@ -98,9 +98,9 @@ def archive_year(request, year):
     
     Takes an integer specifying the posting year.
     """
-    # Retrieve year list of dates that have posts (descending order)
-    posts = Post.objects.filter(timestamp__year=year).order_by('timestamp').reverse()
-    return archive_view(request, posts)
+    # Retrieve year list of dates that have entries (descending order)
+    entrie = Entry.objects.filter(timestamp__year=year).order_by('timestamp').reverse()
+    return archive_view(request, entries)
 
 
 def archive_month(request, year, month):
@@ -109,9 +109,9 @@ def archive_month(request, year, month):
     
     Takes two integers specifying year and month.
     """
-    # Retrieve year/month list of dates that have posts (descending order)
-    posts = Post.objects.filter(timestamp__year=year, timestamp__month=month).order_by('timestamp').reverse()
-    return archive_view(request, posts)
+    # Retrieve year/month list of dates that have entries (descending order)
+    entries = Entry.objects.filter(timestamp__year=year, timestamp__month=month).order_by('timestamp').reverse()
+    return archive_view(request, entries)
 
 
 def archive_day(request, year, month, day):
@@ -120,6 +120,6 @@ def archive_day(request, year, month, day):
     
     Takes three integers specifying year, month, and day.
     """
-    # Retrieve year/month list of dates that have posts (descending order)
-    posts = Post.objects.filter(timestamp__year=year, timestamp__month=month, timestamp__day=day).order_by('timestamp').reverse()
-    return archive_view(request, posts)
+    # Retrieve year/month list of dates that have entries (descending order)
+    entries = Entry.objects.filter(timestamp__year=year, timestamp__month=month, timestamp__day=day).order_by('timestamp').reverse()
+    return archive_view(request, entries)

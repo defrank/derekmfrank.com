@@ -5,7 +5,7 @@
  * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
- *     posts.html
+ *     entries.html
  *
  * DESCRIPTION
  *     Blog HTML template.
@@ -22,7 +22,7 @@
         <div class="box" >
             {% block blog_content %}
                 <h2>Blog</h2>
-                {% for post in posts %}
+                {% for entry in entries %}
                     {% include "blog/entry.html" %}
                     {% if not forloop.last %}<div class="center blogpostborder"></div>{% endif %}
                 {% endfor %}

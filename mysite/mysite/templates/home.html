@@ -11,6 +11,7 @@
  *     Home HTML template.
  *
 {% endcomment %}
+{% load url from future %}
 
 {% block navbar_class %}nb-home{% endblock %}
 
@@ -18,12 +19,16 @@
     <div id="content">
         <div class="box" >
             <h2>{{ me.get_profile }} | {{ me.get_profile.title }}</h2>
-            {% for message in content_messages %}
-                <h4>{{ message.title }}:</h4>
-                {% autoescape off %}<ul>{{ message.body }}</ul>{% endautoescape %}
+            {% for news in feed %}
+                <h4>{{ news.title }}:</h4>
+                {% autoescape off %}<ul>{{ news.body }}</ul>{% endautoescape %}
                 <span class="postinfo">
                     <span>Updated on</span>
-                    <span class="timestamp">{{ message.timestamp }}</span>
+                    <span class="postinfo">
+                        <span>Posted on <span class="timestamp">{{ news.timestamp }}</span> by</span>
+                        <a href="{% url "about" %}{{ news.owner.username }}/" 
+                           title="{{ news.owner.get_profile }} | {{ news.owner.title }}">{{ news.owner.get_profle }}</a>
+                    </span>
                 </span>
             {% endfor %}
         </div>

@@ -11,8 +11,7 @@
 from django.conf import settings
 from django.contrib.auth.models import User
 
-from utils.functions import response, get_default_user
-from models import UserProfile
+from utils import response, get_default_user as _user
 
 
 ####
@@ -25,17 +24,17 @@ def about_view(request, template, context):
     return response(request, template, context)
 
 
-def me(request):
+def aboutme(request):
     """About homepage: view default user."""
-    #user = get_default_user
+    user = _user
     template = 'accounts/aboutme.html'
     context = {
-        #'user': user,
+        'user': user,
     }
     return response(request, template, context)
 
 
-def mff(request):
+def aboutmff(request):
     """About MFF"""
     user = User.objects.get(username='mff')
     template = 'accounts/mff.html'
@@ -45,7 +44,7 @@ def mff(request):
     return response(request, template, context)
 
 
-def someone(request, username):
+def about(request, username):
     """
     About someone: a specified user.
     

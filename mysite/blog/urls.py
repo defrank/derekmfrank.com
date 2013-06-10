@@ -14,17 +14,19 @@ urlpatterns = patterns('blog.views',
     # Blog
     url(r'^$', 'recent', name='blog'),
     # Index
-    url(r'^index/$', 'index'),
+    url(r'^index/$', 'index', name='index'),
     # Archives
-        # post user
-    url(r'^archive/user/(?P<username>\w+)/$', 'archive_user'),
-        # post id
-    url(r'^archive/id/(?P<post_id>\d+)/$', 'archive_id'),
-        # post date
-    url(r'^archive/date/(?P<post_year>\d+)/$', 'archive_year'),
-    url(r'^archive/date/(?P<post_year>\d+)/(?P<post_month>\d+)/$', 
+        # entry author
+    url(r'^archive/author/$', 'index', name='archive_author'),
+    url(r'^archive/author/(?P<username>\w+)/$', 'archive_author'),
+        # entry id
+    url(r'^archive/id/$', 'index', name='archive_id'),
+    url(r'^archive/id/(?P<entry_id>\d+)/$', 'archive_id'),
+        # entry date
+    url(r'^archive/date/(?P<entry_year>\d+)/$', 'archive_year'),
+    url(r'^archive/date/(?P<entry_year>\d+)/(?P<entry_month>\d+)/$', 
         'archive_month'),
-    url(r'^archive/date/(?P<post_year>\d+)/(?P<post_month>\d+)/(?P<post_day>\d+)/$', 
+    url(r'^archive/date/(?P<entry_year>\d+)/(?P<entry_month>\d+)/(?P<entry_day>\d+)/$', 
         'archive_day'),
 )
 

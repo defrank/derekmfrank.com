@@ -12,11 +12,11 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns('accounts.views',
     # About me
-    url(r'^$', 'me', name='about'),
+    url(r'^$', 'aboutme'),
     # About mff
-    url(r'^mff/$', 'mff', name='mff'),
+    url(r'^mff/$', 'aboutmff'),
     # About someone
-    url(r'^(?P<username>\w+)/$', 'someone'),
+    url(r'^(?P<username>\w+)/$', 'about'),
 )
 
 # Necessary redirection for unavailable pages

@@ -22,7 +22,7 @@ from models import UserProfile
 ## User Profile
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
-    extra = 0
+    extra = 1
     can_delete = False
     verbose_name_plural = u'profile'
 

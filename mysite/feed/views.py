@@ -10,15 +10,15 @@
 
 from django.conf import settings
 
-from utils.functions import response
-from models import Message
+from utils import response
+from models import News 
 
 
 # Home page view
 def feed(request):
-    messages = Message.objects.order_by('timestamp').reverse()
+    feed = News.objects.all()
     template = 'home.html'
     context = {
-        'content_messages': messages,
+        'feed': feed,
     }
     return response(request, template, context)

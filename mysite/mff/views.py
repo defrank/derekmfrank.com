@@ -11,7 +11,7 @@
 from django.conf import settings
 from django.contrib.sites.models import get_current_site
 
-from utils.functions import response
+from utils import response
 from models import Source, Information, Topic, TopicListBit
 
 # MFF page view

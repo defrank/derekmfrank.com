@@ -10,12 +10,14 @@
 
 from django.db import models
 from django.contrib import admin
-from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
+from django.contrib.auth.models import User
 
+from os.path import basename, splitext
+from urlparse import urlsplit
 import markdown
 
-from utils.functions import get_default_user
+from utils import get_default_user as _user
 
 
 ####
@@ -40,20 +42,19 @@ def markdown_to_html(markdownText, images):
 ####
 ## MODELS
 
-## Post Model:
-class Post(models.Model):
+class Entry(models.Model):
     """
-    A blog post.
+    A blog post entry.
 
-    Owner, title, and body are required. Other fields optional.
+    Author, title, and body are required. Other fields optional.
     """
-    owner = models.ForeignKey(User, default=get_default_user)
-    title = models.CharField(_(u'post title'), max_length=128)
-    timestamp = models.DateTimeField(_(u'post date and time'))
-    body = models.TextField(_(u'post body'))
+    author = models.ForeignKey(User, related_name='entries', default=_user)
+    title = models.CharField(_(u'title'), max_length=128)
+    timestamp = models.DateTimeField(_(u'entry date and time'))
+    body = models.TextField(_(u'body (html okay)'))
 
     def body_html(self):
-        return markdown_to_html(self.body, self.image_set.all())
+        return markdown_to_html(self.body, self.images.all)
 
     @models.permalink
     def get_absolute_url(self):
@@ -63,21 +64,23 @@ class Post(models.Model):
         return u'%s' % self.title
 
     class Meta:
-        ordering = ('-timestamp',)
+        ordering = ('-timestamp', 'author', 'title')
+        verbose_name = 'entry'
+        verbose_name_plural = 'entries'
  
 
-class PostImage(models.Model):
+class Image(models.Model):
     """
     A blog post's image.
 
-    Post and either the image or url field are required. Other fields optional.
+    Entry and either the image or url field are required. Other fields optional.
     """
-    post = models.ForeignKey(Post)
-    title = models.CharField(_(u'image title'), max_length=64, unique=True, blank=True)
+    entry = models.ForeignKey(Entry, related_name='images')
+    title = models.CharField(_(u'title'), max_length=64, blank=True)
     def get_upload_dir(instance, filename):
-        return 'blog/%s/post%d/%s' % (instance.owner.username, instance.id, filename)
-    image = models.ImageField(_(u'upload post image'), upload_to=get_upload_dir, blank=True, null=True)
-    url = models.URLField(_(u'post image link'), blank=True)
+        return 'blog/%s/entry%d/%s' % (instance.entry.author.username, instance.entry.pk, filename)
+    image = models.ImageField(_(u'upload image'), upload_to=get_upload_dir, blank=True, null=True)
+    url = models.URLField(_(u'link url address'), blank=True)
 
     def get_absolute_url(self):
         if self.image:
@@ -87,38 +90,42 @@ class PostImage(models.Model):
         return ''
 
     def __unicode__(self):
-        if self.title:
-            return u'%s' % self.title 
-        elif self.image:
-            return u'%s' % self.image.url
+        if self.image:
+            name = basename(self.image.path)
+            if self.title:
+                return u'%s%s' % (self.title, splitext(name)[-1])
+            return u'%s' % name
         elif self.url:
-            return u'%s' % self.url
-        return u'image for blog post %d: %s' % (self.id, self.post)
+            name = urlsplit(self.url).netloc
+            if self.title:
+                return u'%s (hosted on %s)' % (self.url, name)
+            return u'unknown (hosted on %s)' % name
+        elif self.title:
+            return u'%s' % self.title
+        return u'image %d for blog entry %d: %s' % (self.id, self.entry.id, self.entry)
 
     class Meta:
-        ordering = ('-post', 'title')
+        ordering = ('-entry', 'title')
 
 
-## Link Model:
-CATEGORY_CHOICES = (
-    (u'CO', u'Cosmos'),
-    (u'TC', u'Technology'),
-    (u'LH', u'Life Hacks'),
-    (u'PO', u'Politics'),
-    (u'OT', u'Other'),
-)
 class Link(models.Model):
     """
     A link to something of interest.
 
     All fields required.
     """
-    owner = models.ForeignKey(User, default=get_default_user)
-    title = models.CharField(_(u'link title'), max_length=128)
-    timestamp = models.DateTimeField(_(u'link date and time'), auto_now_add=True)
-    url = models.URLField(_(u'link address'))
-    category = models.CharField(_(u'link category'), max_length=2, choices=CATEGORY_CHOICES, default=u'OT')
-    description = models.TextField(null=True)
+    author = models.ForeignKey(User, related_name='links', default=_user)
+    title = models.CharField(_(u'title'), max_length=128)
+    timestamp = models.DateTimeField(_(u'post date and time'), auto_now_add=True)
+    url = models.URLField(_(u'url address'))
+    CATEGORY_CHOICES = (
+        (u'CO', u'Cosmos'),
+        (u'TC', u'Technology'),
+        (u'LH', u'Life Hacks'),
+        (u'PO', u'Politics'),
+    )    
+    category = models.CharField(_(u'category'), max_length=2, choices=CATEGORY_CHOICES)
+    description = models.TextField()
 
     def get_absolute_url(self):
         return '%s' % self.url
@@ -133,36 +140,35 @@ class Link(models.Model):
 ####
 ## ADMIN
 
-## Post
-class PostImageInline(admin.TabularInline):
-    model = PostImage
+class ImageInline(admin.TabularInline):
+    model = Image
     extra = 0
 
-class PostAdmin(admin.ModelAdmin):
-    def get_owner(self, obj):
-        return '%s' % obj.owner.get_profile()
-    get_owner.short_description = u'Owner'
+class EntryAdmin(admin.ModelAdmin):
+    def get_author(self, obj):
+        return '%s' % obj.author
+    get_author.short_description = u'Author'
 
-    list_display = ('title', 'timestamp', 'get_owner')
+    list_display = ('title', 'timestamp', 'get_author')
     fieldsets = (
-        (None, {'fields': ('owner',)}),
-        ('Post information', {'fields': ('title', 'timestamp')}),
-        #('Post information', {'fields': ('title',)}),
-        ('Post content', {'fields': ('body',)}),
+        (None, {'fields': ('author',)}),
+        ('Entry information', {'fields': ('title', 'timestamp')}),
+        #('Entry information', {'fields': ('title',)}),
+        ('Entry content', {'fields': ('body',)}),
     )
-    inlines = (PostImageInline,)
+    inlines = (ImageInline,)
 
 
 ## Link
 class LinkAdmin(admin.ModelAdmin):
-    def get_owner(self, obj):
-        return '%s' % obj.owner.get_profile()
-    get_owner.short_description = u'Owner'
+    def get_author(self, obj):
+        return '%s' % obj.author
+    get_author.short_description = u'Author'
 
-    list_display = ('title', 'category', 'timestamp', 'get_owner')
+    list_display = ('title', 'category', 'timestamp', 'get_author')
 
 
 ####
 ## REGISTER
-admin.site.register(Post, PostAdmin)
+admin.site.register(Entry, EntryAdmin)
 admin.site.register(Link, LinkAdmin)

@@ -19,8 +19,9 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.sites.models import get_current_site
 """
 
-from utils.functions import response, get_default_user
+from utils import response, get_default_user as _user
 from feed.views import feed
+from accounts.views import about as _about, aboutme as _aboutme, aboutmff as _aboutmff
 
 
 ####
@@ -29,10 +30,22 @@ from feed.views import feed
 def home(request):
     return feed(request)
     """
-    me = get_default_user
+    me = _user
     template = 'home.html'
     context = {
         'me': me,
     }
     return response(request, template, context)
     """
+
+
+def aboutme(request):
+    return _aboutme(request)
+
+
+def aboutmff(request):
+    return _aboutmff(request)
+
+
+def about(request, username):
+    return _about(request, username)
