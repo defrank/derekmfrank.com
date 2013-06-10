@@ -5,7 +5,7 @@
  * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
- *     mff.html
+ *     aboutmff.html
  *
  * DESCRIPTION
  *     MFF HTML template.
@@ -23,7 +23,7 @@
         <div class="box" style="min-height: 340px;">
             <h2>{{ mff }} | {{ mff.title }}</h2>
             <div class="center" >
-                <a class="block" href="{% url "mff" %}" title="{{ mff.image_text }}">
+                <a class="block" href="{% url "aboutmff" %}" title="{{ mff.image_text }}">
                     <img  src="{% static mff.image %}" alt="Image for {{ mff }}" />
                 </a>
                 <span class="italic">{{ mff.image_text }}</span>

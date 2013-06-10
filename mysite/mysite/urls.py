@@ -19,15 +19,15 @@ admin.autodiscover()
 
 urlpatterns = patterns('mysite.views',
     url(r'^$', 'home', name='home'),
-    url(r'^about/$', 'aboutme', name='about'),
-    url(r'^about/dmf/$', 'aboutme', name='aboutme'),
+    url(r'^about/$', 'aboutme', name='aboutme'),
+    #url(r'^about/dmf/$', 'aboutme', name='aboutme'),
     url(r'^about/mff/$', 'aboutmff', name='aboutmff'),
     url(r'^about/(?P<username>\w+)/$', 'about'),
 )
 
 urlpatterns += patterns('',
     # Homepage, News Feed
-    url(r'^', include('feed.urls')),
+    #url(r'^', include('feed.urls')),
     url(r'^feed/', include('feed.urls')),
     # Accounts
     url(r'^accounts/', include('accounts.urls')),

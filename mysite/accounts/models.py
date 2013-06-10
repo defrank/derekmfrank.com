@@ -38,7 +38,7 @@ class UserProfile(models.Model):
     middle_name = models.CharField(_(u'middle name'), max_length=32, blank=True)
     def last_name(self):
         return '%s' % self.user.last_name
-    title = models.CharField(_(u'user title or occupation'), max_length=64, blank=True)
+    title = models.CharField(_(u'title or occupation'), max_length=64, blank=True)
     def email(self):
         return '%s' % self.user.email
     def email_name(self):
@@ -53,19 +53,19 @@ class UserProfile(models.Model):
         return self.user.images.get(user=self, default=True)
 
     def images(self):
-        return self.user.images.all
+        return self.user.images.all()
 
     def documents(self):
-        return self.user.documents.all
+        return self.user.documents.all()
 
     def repositories(self):
-        return self.user.repositories.all
+        return self.user.repositories.all()
 
     def profiles(self):
-        return self.user.profiles.all
+        return self.user.profiles.all()
 
     def hobbies(self):
-        return self.user.hobbies.all
+        return self.user.hobbies.all()
 
     def get_absolute_url(self):
         return 'accounts/user/%s/' % self.user.username
@@ -116,6 +116,7 @@ class Image(models.Model):
             return u'%s%s' % (self.title, splitext(name)[-1])
         return u'%s' % name
 
+    """
     @classmethod
     def create(cls, user, title, image, default):
         if default:
@@ -124,15 +125,16 @@ class Image(models.Model):
             old.save()
         userimage = cls(user=user, title=title, image=image, default=default)
         return userimage
+    """
         
+    """
     def save(self, *args, **kwargs):
-        """
         if self.default:
             old = Image.objects.get(user=self.user, default=True)
             old.default = models.F(False)
             old .save()
-        """
         super(Image, self).save(*args, **kwargs)
+    """
 
     class Meta:
         unique_together = ('user', 'default')

@@ -9,6 +9,7 @@
 #
 
 from django.conf import settings
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 
 from utils import response, get_default_user as _user
@@ -36,8 +37,8 @@ def aboutme(request):
 
 def aboutmff(request):
     """About MFF"""
-    user = User.objects.get(username='mff')
-    template = 'accounts/mff.html'
+    user = get_object_or_404(User, username='mff')
+    template = 'accounts/aboutmff.html'
     context = {
         'user': user,
     }
@@ -50,10 +51,10 @@ def about(request, username):
     
     Takes a username.
     """
-    user = User.objects.get(username=username)
+    person = get_object_or_404(User, username='jd')
     template = 'accounts/about.html'
     context = {
-        'user': user,
+        'person': person,
     }
     return response(request, template, context)
 

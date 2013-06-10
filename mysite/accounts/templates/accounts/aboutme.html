@@ -17,7 +17,7 @@
 
 {% block title %}About Me | {{ myprofile }}{% endblock %}
 
-{% block navbar_class %}nb-aboutme{% endblock %}
+{% block navbar_class %}nb-about{% endblock %}
 
 {% block body_inner_content %}
     <div id="content-left">
@@ -52,7 +52,7 @@
             </ul>
             <h3>Repositories</h3>
             <ul>
-                {% for repo in myprofile.repositories %}
+                {% for repo in myprofile.repositories.all %}
                     <div class="block">
                         <a href="{{ repo.get_absolute_url }}" title="{{ me }}'s {{ repo.title }} repository">{{ repo.title }}</a>
                     </div>
@@ -68,7 +68,7 @@
             </ul>
             <h3>Other Sources</h3>
             <ul>
-                {% for hob in myprofile.hobbies %}
+                {% for hob in myprofile.hobbies.all %}
                     <div class="block">
                         <a href="{{ hob.get_absolute_url }}" title="{{ me }}'s {{ hob.title }}">{{ hob.title }}</a>
                     </div>
