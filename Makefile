@@ -48,11 +48,10 @@ DIR_LOGO        = ${DIR_IMG}logo/
 DIR_APPS        = mysite/
 DIR_UTILS       = ${DIR_APPS}utils/
 DIR_WEBMASTER   = ${DIR_APPS}webmaster/
-DIR_LIMN        = ${DIR_APPS}limn/
-DIR_PORJECT     = ${DIR_APPS}porject/
-DIR_ABOUTME     = ${DIR_APPS}aboutme/
+DIR_ACCOUNTS    = ${DIR_APPS}accounts/
+DIR_FEED        = ${DIR_APPS}feed/
+DIR_PORTFOLIO   = ${DIR_APPS}portfolio/
 DIR_BLOG        = ${DIR_APPS}blog/
-DIR_MFF         = ${DIR_APPS}mff/
 
 ## TEMPLATES
 TEMPLATEFILES   = ${DIR_TEMPLATES}base.html     ${DIR_TEMPLATES}home.html
@@ -74,42 +73,37 @@ DJANGOFILES     = ${DIR_APPS}manage.py          ${DIR_DJANGO}settings.py       \
 
 ## APPS
 APP_UTILS       = ${DIR_UTILS}__init__.py       ${DIR_UTILS}urls.py            \
-                  ${DIR_UTILS}models.py         ${DIR_UTILS}views.py           \
-                  ${DIR_UTILS}functions.py 
+                  ${DIR_UTILS}models.py         ${DIR_UTILS}views.py
 WEBMASTER_TEMP  = ${DIR_WEBMASTER}templates/webmaster/
 APP_WEBMASTER   = ${DIR_WEBMASTER}__init__.py   ${DIR_WEBMASTER}urls.py        \
 				  ${DIR_WEBMASTER}views.py                                     \
 				  ${WEBMASTER_TEMP}google0a2e75908547fa0e.html                 \
 				  ${WEBMASTER_TEMP}BingSiteAuth.xml
-LIMN_TEMP       = ${DIR_LIMN}templates/limn/
-APP_LIMN        = ${DIR_LIMN}__init__.py        ${DIR_LIMN}urls.py             \
-				  ${DIR_LIMN}views.py          ${DIR_LIMN}models.py            \
-				  ${LIMN_TEMP}about.html
-PORJECT_TEMP    = ${DIR_PORJECT}templates/porject/
-APP_PORJECT     = ${DIR_PORJECT}__init__.py     ${DIR_PORJECT}urls.py          \
-				  ${DIR_PORJECT}views.py        ${DIR_PORJECT}models.py        \
-				  ${PORJECT_TEMP}portfolio.html
-ABOUTME_TEMP    = ${DIR_ABOUTME}templates/aboutme/
-APP_ABOUTME     = ${DIR_ABOUTME}__init__.py     ${DIR_ABOUTME}urls.py          \
-				  ${DIR_ABOUTME}views.py        ${DIR_ABOUTME}models.py        \
-				  ${ABOUTME_TEMP}aboutme.html
+ACCOUNTS_TEMP   = ${DIR_ACCOUNTS}templates/accounts/
+APP_ACCOUNTS    = ${DIR_ACCOUNTS}__init__.py    ${DIR_ACCOUNTS}urls.py         \
+				  ${DIR_ACCOUNTS}views.py       ${DIR_ACCOUNTS}models.py       \
+				  ${DIR_ACCOUNTS}admin.py                                      \
+				  ${ACCOUNTS_TEMP}about.html                                   \
+				  ${ACCOUNTS_TEMP}aboutme.html                                 \
+				  ${ACCOUNTS_TEMP}aboutmff.html
+FEED_TEMP       = ${DIR_FEED}templates/feed/
+APP_FEED        = ${DIR_FEED}__init__py         ${DIR_FEED}urls.py             \
+				  ${DIR_FEED}views.py           ${DIR_FEED}models.py           
+PORTFOLIO_TEMP  = ${DIR_PORTFOLIO}templates/portfolio/
+APP_PORTFOLIO   = ${DIR_PORTFOLIO}__init__.py   ${DIR_PORTFOLIO}urls.py        \
+				  ${DIR_PORTFOLIO}views.py      ${DIR_PORTFOLIO}models.py      \
+				  ${PORTFOLIO_TEMP}portfolio.html
 BLOG_TEMP       = ${DIR_BLOG}templates/blog/
 APP_BLOG        = ${DIR_BLOG}__init__.py        ${DIR_BLOG}urls.py             \
 				  ${DIR_BLOG}views.py           ${DIR_BLOG}models.py           \
-				  ${BLOG_TEMP}posts.html                                       \
+				  ${BLOG_TEMP}entries.html                                     \
 				  ${BLOG_TEMP}entry.html                                       \
 				  ${BLOG_TEMP}links.html                                       \
-				  ${BLOG_TEMP}post_detail.html                                 \
-				  ${BLOG_TEMP}index.html                                       \
-				  ${BLOG_TEMP}archive/post_all.html                            \
-				  ${BLOG_TEMP}archive/post_id.html                             \
-				  ${BLOG_TEMP}archive/post_date.html
-MFF_TEMP        = ${DIR_MFF}templates/mff/
-APP_MFF         = ${DIR_MFF}__init__.py         ${DIR_MFF}urls.py              \
-				  ${DIR_MFF}views.py            ${DIR_MFF}models.py            \
-				  ${MFF_TEMP}mff.html
-APPSFILES       = ${APP_UTILS} ${APP_WEBMASTER} ${APP_LIMN} ${APP_PORJECT}     \
-				  ${APP_BLOG} ${APP_ABOUTME} ${APP_MFF} 
+				  ${BLOG_TEMP}entry_detail.html                                \
+				  ${BLOG_TEMP}index.html
+APPSFILES       = ${APP_UTILS}  ${APP_WEBMASTER}   ${APP_ACCOUNTS}             \
+				  ${APP_FEED}   ${APP_PORTFOLIO}   ${APP_BLOG}
+				  
 
 ## MISC
 SERVFILES       = .htaccess
@@ -168,7 +162,7 @@ sync : ci
 #
 clean :
 	- rm blah
-    #for i in `find . -name "__pycache__"` ; do rm -r "$i" ; done
-    #for i in `find . -name "*.pyc"` ; do rm "$i" ; done
+#    for i in `find . -name "__pycache__"` ; do rm -r "$i" ; done
+#    for i in `find . -name "*.pyc"` ; do rm "$i" ; done
 
 spotless : clean
