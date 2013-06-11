@@ -1,4 +1,4 @@
-# $Id: $
+# $Id: models.py,v 1.1 2013-06-11 16:31:46-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME

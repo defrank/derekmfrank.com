@@ -1,9 +1,14 @@
-head	1.9;
+head	1.10;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.10
+date	2013.06.11.23.31.46;	author dmf;	state -;
+branches;
+next	1.9;
 
 1.9
 date	2013.06.01.06.55.22;	author dmf;	state -;
@@ -55,13 +60,13 @@ desc
 @@
 
 
-1.9
+1.10
 log
 @-
 @
 text
 @/*******************************************************************************
- * $Id: style.css,v 1.8 2013-05-31 14:13:26-07 dmf - $                                                                       
+ * $Id: style.css,v 1.9 2013-05-31 23:55:22-07 dmf - $                                                                       
  * Derek Frank (derekmfrank@@gmail.com)                                          
  *                                                                              
  * Theme Name: dmf
@@ -457,7 +462,7 @@ textarea {
 #navbar.nb-aboutme ul li#nb-aboutme a,
 #navbar.nb-mff ul li#nb-mff a,
 #navbar.nb-admin ul li#nb-admin a {
-    color: #00ff00;
+    color: #000;
     font-weight: bold;
 }
 
@@ -492,6 +497,20 @@ img#mypic {
     margin:     10px;
     padding:    5px;
 }
+@
+
+
+1.9
+log
+@-
+@
+text
+@d2 1
+a2 1
+ * $Id: style.css,v 1.8 2013-05-31 14:13:26-07 dmf - $                                                                       
+d398 1
+a398 1
+    color: #00ff00;
 @
 
 

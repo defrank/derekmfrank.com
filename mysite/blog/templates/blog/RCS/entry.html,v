@@ -1,0 +1,62 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.06.11.23.31.46;	author dmf;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@{% comment %}
+ *
+ * $Id: blogpost.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
+ * Derek Frank (dmfrank@@gmx.com)
+ *
+ * NAME
+ *     entry.html
+ *
+ * DESCRIPTION
+ *     Blog Entry HTML template.
+ *
+{% endcomment %}
+{% load static from staticfiles %}
+{% load url from future %}
+
+<div class="block">
+    <a class="header" href="{% url "archive_id" %}{{ entry.id }}/" 
+       title="View blog entry {{ entry.id }}"><h3>{{ entry.title }}</h3>
+    </a>
+    <span class="postinfo">
+        <span>Posted on <span class="timestamp">{{ entry.timestamp }}</span> by</span>
+        <a href="{% url "about" %}{{ entry.author.username }}/" 
+           title="{{ entry.author.get_profile }} | {{ entry.author.title }}">{{ entry.author.get_profile }}</a>
+    </span>
+</div>
+{% if entry.image or entry.image_url %}
+    <div class="center">
+        {% if entry.image %}
+            <img src="{% static entry.image %}" alt="Blog Entry {{ entry.id }} Image" />
+        {% else %}
+            <img src="{{ entry.image_url }}" alt="Blog Entry {{ entry.id }} Image" />
+        {% endif %}
+    </div>
+{% endif %}
+<ul>
+    {% autoescape off %}
+        <span>{{ entry.body|linebreaks }}</span>
+    {% endautoescape %}
+</ul>
+@

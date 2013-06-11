@@ -1,4 +1,4 @@
-# $Id: urls.py,v 1.6 2013-05-28 22:00:02-07 dmf - $
+# $Id: urls.py,v 1.7 2013-06-11 16:31:46-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -43,13 +43,15 @@ urlpatterns += patterns('',
 )
 
 # Serve static files
-urlpatterns += patterns('django.views.static',
+#urlpatterns += patterns('django.views.static',
     # Media
-    url(r'^static/(?P<path>.*)$', 'serve', { 'document_root': settings.STATIC_ROOT, }),
-)
+    #url(r'^static/(?P<path>.*)$', 'serve', { 'document_root': settings.STATIC_ROOT, }),
+    #url(r'^media/(?P<path>.*)$', 'serve', { 'document_root': settings.MEDIA_ROOT, }),
+#)
 
 # Media files serve only with DEBUG mode set
 if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # PHP MySQL Database

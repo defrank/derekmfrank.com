@@ -1,0 +1,48 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.06.11.23.31.46;	author dmf;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@# $Id: urls.py,v 1.1 2013-05-30 23:46:52-07 dmf - $
+# Derek Frank (dmfrank@@gmx.com)
+#
+# NAME
+#   urls.py - accounts
+#
+# DESCRIPTION
+#   A url patterns definition for user profiles.
+#
+
+from django.conf.urls import patterns, url
+
+urlpatterns = patterns('accounts.views',
+    # About me
+    url(r'^$', 'aboutme'),
+    # About mff
+    url(r'^mff/$', 'aboutmff'),
+    # About someone
+    url(r'^(?P<username>\w+)/$', 'about'),
+)
+
+# Necessary redirection for unavailable pages
+#urlpatterns += patterns('accounts.views',
+    #url(r'^.+$', 'about'),
+#)
+@

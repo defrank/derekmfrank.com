@@ -1,9 +1,14 @@
-head	1.7;
+head	1.8;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.8
+date	2013.06.11.23.31.46;	author dmf;	state -;
+branches;
+next	1.7;
 
 1.7
 date	2013.06.01.06.55.22;	author dmf;	state -;
@@ -45,13 +50,13 @@ desc
 @@
 
 
-1.7
+1.8
 log
 @-
 @
 text
 @###############################################################################
-# $Id: Makefile,v 1.6 2013-05-30 23:46:52-07 dmf - $
+# $Id: Makefile,v 1.7 2013-05-31 23:55:22-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -88,69 +93,76 @@ CHK80           = checksource -l 80
 DIR_DJANGO      = mysite/mysite/
 DIR_MEDIA       = ${DIR_DJANGO}media/
 DIR_VIEWS       = ${DIR_DJANGO}views/
-# Apps
-DIR_APPS        = mysite/
-DIR_UTILS       = ${DIR_APPS}utils/
-DIR_TEMPLATES   = ${DIR_APPS}templates/
-DIR_STATIC      = ${DIR_APPS}staticfiles/
+DIR_TEMPLATES   = ${DIR_DJANGO}templates/
+DIR_STATIC      = ${DIR_DJANGO}staticfiles/
 DIR_IMG         = ${DIR_STATIC}img/
 DIR_DOC         = ${DIR_STATIC}doc/
 DIR_JS          = ${DIR_STATIC}js/
 DIR_ICO         = ${DIR_STATIC}ico/
 DIR_CSS         = ${DIR_STATIC}css/
 DIR_LOGO        = ${DIR_IMG}logo/
+# Apps
+DIR_APPS        = mysite/
+DIR_UTILS       = ${DIR_APPS}utils/
 DIR_WEBMASTER   = ${DIR_APPS}webmaster/
-DIR_ABOUTME     = ${DIR_APPS}aboutme/
-DIR_BLOG        = ${DIR_APPS}blog/
-DIR_MFF         = ${DIR_APPS}mff/
+DIR_ACCOUNTS    = ${DIR_APPS}accounts/
+DIR_FEED        = ${DIR_APPS}feed/
 DIR_PORTFOLIO   = ${DIR_APPS}portfolio/
+DIR_BLOG        = ${DIR_APPS}blog/
+
+## TEMPLATES
+TEMPLATEFILES   = ${DIR_TEMPLATES}base.html     ${DIR_TEMPLATES}home.html
+
+## MEDIA/STATIC
+IMGFILES        =
+LOGOFILES       = 
+ICOFILES        = ${DIR_ICO}favicon.ico         ${DIR_ICO}favicon.gif
+JSFILES         = 
+CSSFILES        = ${DIR_CSS}style.css           ${DIR_CSS}navbar.css
+STATICFILES     = ${IMGFILES} ${LOGOFILES} ${ICONFILES} ${JSFILES} ${CSSFILES} 
 
 ## DJANGO
-VIEWFILES       = ${DIR_VIEWS}views.py
 DJANGOFILES     = ${DIR_APPS}manage.py          ${DIR_DJANGO}settings.py       \
-                  ${DIR_DJANGO}urls.py     ${DIR_DJANGO}context_processors.py  \
-				  ${DIR_DJANGO}mysite.db        ${VIEWFILES} ${TEMPLATESFILES}
+                  ${DIR_DJANGO}urls.py          ${DIR_VIEWS}views.py           \
+				  ${DIR_DJANGO}context_processors.py                           \
+				  ${DIR_DJANGO}mysite.db                                       \
+				  ${TEMPLATEFILES} ${STATICFILES}
 
 ## APPS
 APP_UTILS       = ${DIR_UTILS}__init__.py       ${DIR_UTILS}urls.py            \
-                  ${DIR_UTILS}models.py         ${DIR_UTILS}views.py           \
-                  ${DIR_UTILS}functions.py 
-APP_TEMPLATES   = ${DIR_TEMPLATES}__init__.py   ${DIR_TEMPLATES}urls.py        \
-                  ${DIR_TEMPLATES}models.py     ${DIR_TEMPLATES}views.py       \
-                  ${DIR_TEMPLATES}base.html     ${DIR_TEMPLATES}home.html
-## MEDIA/STATIC
-IMGFILES        = ${DIR_IMG}favicon.ico         ${DIR_IMG}favicon.gif
-DOCFILES        = 
-JSFILES         = 
-ICOFILES        = ${DIR_ICO}favicon.ico         ${DIR_ICO}favicon.gif
-LOGOFILES       = 
-CSSFILES        = ${DIR_CSS}style.css           ${DIR_CSS}navbar.css
-STATICFILES     = 
-APP_STATIC      = ${DIR_STATIC}__init__.py      ${DIR_STATIC}urls.py           \
-                  ${DIR_STATIC}models.py        ${DIR_STATIC}views.py          \
-                  ${CSSFILES} ${ICONFILES} ${LOGOFILES} ${IMGFILES} ${JSFILES} \
-                  ${DOCFILES}
+                  ${DIR_UTILS}models.py         ${DIR_UTILS}views.py
+WEBMASTER_TEMP  = ${DIR_WEBMASTER}templates/webmaster/
 APP_WEBMASTER   = ${DIR_WEBMASTER}__init__.py   ${DIR_WEBMASTER}urls.py        \
 				  ${DIR_WEBMASTER}views.py                                     \
-				  ${DIR_WEBMASTER}templates/google0a2e75908547fa0e.html        \
-				  ${DIR_WEBMASTER}templates/BingSiteAuth.xml
-APP_ABOUTME     = ${DIR_ABOUTME}__init__.py     ${DIR_ABOUTME}urls.py          \
-				  ${DIR_ABOUTME}views.py        ${DIR_ABOUTME}models.py        \
-				  ${DIR_ABOUTME}templates/aboutme.html
-APP_BLOG        = ${DIR_BLOG}__init__.py        ${DIR_BLOG}urls.py             \
-				  ${DIR_BLOG}views.py           ${DIR_BLOG}models.py           \
-				  ${DIR_BLOG}templates/blog.html                               \
-				  ${DIR_BLOG}templates/blogpost.html                           \
-				  ${DIR_BLOG}templates/bloglinks.html                          \
-				  ${DIR_BLOG}templates/blogsingle.html
-APP_MFF         = ${DIR_MFF}__init__.py         ${DIR_MFF}urls.py              \
-				  ${DIR_MFF}views.py            ${DIR_MFF}models.py            \
-				  ${DIR_MFF}templates/mff.html
+				  ${WEBMASTER_TEMP}google0a2e75908547fa0e.html                 \
+				  ${WEBMASTER_TEMP}BingSiteAuth.xml
+ACCOUNTS_TEMP   = ${DIR_ACCOUNTS}templates/accounts/
+APP_ACCOUNTS    = ${DIR_ACCOUNTS}__init__.py    ${DIR_ACCOUNTS}urls.py         \
+				  ${DIR_ACCOUNTS}views.py       ${DIR_ACCOUNTS}models.py       \
+				  ${DIR_ACCOUNTS}admin.py                                      \
+				  ${ACCOUNTS_TEMP}about_content.html                           \
+				  ${ACCOUNTS_TEMP}source_display.html                          \
+				  ${ACCOUNTS_TEMP}about.html                                   \
+				  ${ACCOUNTS_TEMP}aboutme.html                                 \
+				  ${ACCOUNTS_TEMP}aboutmff.html
+FEED_TEMP       = ${DIR_FEED}templates/feed/
+APP_FEED        = ${DIR_FEED}__init__py         ${DIR_FEED}urls.py             \
+				  ${DIR_FEED}views.py           ${DIR_FEED}models.py           
+PORTFOLIO_TEMP  = ${DIR_PORTFOLIO}templates/portfolio/
 APP_PORTFOLIO   = ${DIR_PORTFOLIO}__init__.py   ${DIR_PORTFOLIO}urls.py        \
 				  ${DIR_PORTFOLIO}views.py      ${DIR_PORTFOLIO}models.py      \
-				  ${DIR_PORTFOLIO}templates/portfolio.html
-APPSFILES       = ${APP_UTILS} ${APP_TEMPLATES} ${APP_STATIC} ${APP_WEBMASTER} \
-				  ${APP_ABOUTME} ${APP_BLOG} ${APP_MFF} ${APP_PORTFOLIO}
+				  ${PORTFOLIO_TEMP}portfolio.html
+BLOG_TEMP       = ${DIR_BLOG}templates/blog/
+APP_BLOG        = ${DIR_BLOG}__init__.py        ${DIR_BLOG}urls.py             \
+				  ${DIR_BLOG}views.py           ${DIR_BLOG}models.py           \
+				  ${BLOG_TEMP}entries.html                                     \
+				  ${BLOG_TEMP}entry.html                                       \
+				  ${BLOG_TEMP}links.html                                       \
+				  ${BLOG_TEMP}entry_detail.html                                \
+				  ${BLOG_TEMP}index.html
+APPSFILES       = ${APP_UTILS}  ${APP_WEBMASTER}   ${APP_ACCOUNTS}             \
+				  ${APP_FEED}   ${APP_PORTFOLIO}   ${APP_BLOG}
+				  
 
 ## MISC
 SERVFILES       = .htaccess
@@ -161,12 +173,12 @@ CHKFILES        =
 
 ## ALL
 ALLFILES        = ${MKFILE}    ${TXT}        ${SERVFILES}  ${DJANGOFILES}      \
-				  ${STATICFILES}             ${APPSFILES}
+				  ${APPSFILES}
 
 #
 # make all
 #
-all : clean sync
+all : clean save
 
 #
 # Run checksource on the files
@@ -197,22 +209,118 @@ gitinit :
 #
 # Sync local and remote repositories
 #
-sync : ci
+save : clean ci
 	git add --all
 	git commit -a
 	git status
+
+push : save
 	git push
-#	git pull
+
+pull :
+	git pull
+
+sync : pull push
 
 #
 # Clean and spotless remove genereated files
 #
 clean :
+	find . -name "blah*" -exec rm -r {} + ;
+	find . -name "__pycache__" -exec rm -r {} + ;
+	find . -name "*.pyc" -exec rm {} + ;
+
+spotless : clean
+@
+
+
+1.7
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: Makefile,v 1.6 2013-05-30 23:46:52-07 dmf - $
+d39 2
+a40 5
+# Apps
+DIR_APPS        = mysite/
+DIR_UTILS       = ${DIR_APPS}utils/
+DIR_TEMPLATES   = ${DIR_APPS}templates/
+DIR_STATIC      = ${DIR_APPS}staticfiles/
+d47 3
+d51 3
+a53 1
+DIR_ABOUTME     = ${DIR_APPS}aboutme/
+d55 11
+a65 2
+DIR_MFF         = ${DIR_APPS}mff/
+DIR_PORTFOLIO   = ${DIR_APPS}portfolio/
+a67 1
+VIEWFILES       = ${DIR_VIEWS}views.py
+d69 4
+a72 2
+                  ${DIR_DJANGO}urls.py     ${DIR_DJANGO}context_processors.py  \
+				  ${DIR_DJANGO}mysite.db        ${VIEWFILES} ${TEMPLATESFILES}
+d76 2
+a77 17
+                  ${DIR_UTILS}models.py         ${DIR_UTILS}views.py           \
+                  ${DIR_UTILS}functions.py 
+APP_TEMPLATES   = ${DIR_TEMPLATES}__init__.py   ${DIR_TEMPLATES}urls.py        \
+                  ${DIR_TEMPLATES}models.py     ${DIR_TEMPLATES}views.py       \
+                  ${DIR_TEMPLATES}base.html     ${DIR_TEMPLATES}home.html
+## MEDIA/STATIC
+IMGFILES        = ${DIR_IMG}favicon.ico         ${DIR_IMG}favicon.gif
+DOCFILES        = 
+JSFILES         = 
+ICOFILES        = ${DIR_ICO}favicon.ico         ${DIR_ICO}favicon.gif
+LOGOFILES       = 
+CSSFILES        = ${DIR_CSS}style.css           ${DIR_CSS}navbar.css
+STATICFILES     = 
+APP_STATIC      = ${DIR_STATIC}__init__.py      ${DIR_STATIC}urls.py           \
+                  ${DIR_STATIC}models.py        ${DIR_STATIC}views.py          \
+                  ${CSSFILES} ${ICONFILES} ${LOGOFILES} ${IMGFILES} ${JSFILES} \
+                  ${DOCFILES}
+d80 19
+a98 5
+				  ${DIR_WEBMASTER}templates/google0a2e75908547fa0e.html        \
+				  ${DIR_WEBMASTER}templates/BingSiteAuth.xml
+APP_ABOUTME     = ${DIR_ABOUTME}__init__.py     ${DIR_ABOUTME}urls.py          \
+				  ${DIR_ABOUTME}views.py        ${DIR_ABOUTME}models.py        \
+				  ${DIR_ABOUTME}templates/aboutme.html
+d101 8
+a108 12
+				  ${DIR_BLOG}templates/blog.html                               \
+				  ${DIR_BLOG}templates/blogpost.html                           \
+				  ${DIR_BLOG}templates/bloglinks.html                          \
+				  ${DIR_BLOG}templates/blogsingle.html
+APP_MFF         = ${DIR_MFF}__init__.py         ${DIR_MFF}urls.py              \
+				  ${DIR_MFF}views.py            ${DIR_MFF}models.py            \
+				  ${DIR_MFF}templates/mff.html
+APP_PORTFOLIO   = ${DIR_PORTFOLIO}__init__.py   ${DIR_PORTFOLIO}urls.py        \
+				  ${DIR_PORTFOLIO}views.py      ${DIR_PORTFOLIO}models.py      \
+				  ${DIR_PORTFOLIO}templates/portfolio.html
+APPSFILES       = ${APP_UTILS} ${APP_TEMPLATES} ${APP_STATIC} ${APP_WEBMASTER} \
+				  ${APP_ABOUTME} ${APP_BLOG} ${APP_MFF} ${APP_PORTFOLIO}
+d119 1
+a119 1
+				  ${STATICFILES}             ${APPSFILES}
+d124 1
+a124 1
+all : clean sync
+d155 1
+a155 1
+sync : ci
+d159 2
+d162 5
+a166 1
+#	git pull
+d172 3
+a174 3
 	- rm blah
     #for i in `find . -name "__pycache__"` ; do rm -r "$i" ; done
     #for i in `find . -name "*.pyc"` ; do rm "$i" ; done
-
-spotless : clean
 @
 
 

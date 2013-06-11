@@ -1,0 +1,62 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.06.11.23.31.46;	author dmf;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@{% extends "base.html" %}
+{% comment %}
+ *
+ * $Id: blog.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
+ * Derek Frank (dmfrank@@gmx.com)
+ *
+ * NAME
+ *     entries.html
+ *
+ * DESCRIPTION
+ *     Blog HTML template.
+ *
+{% endcomment %}
+{% load static from staticfiles %}
+
+{% block title %}Blog | {{ me }}{% endblock %}
+
+{% block navbar_class %}nb-blog{% endblock %}
+
+{% block body_inner_content %}
+    <div id="content-left">
+        <div class="box" >
+            {% block blog_content %}
+                <h2>Blog</h2>
+                {% for entry in entries %}
+                    {% include "blog/entry.html" %}
+                    {% if not forloop.last %}<div class="center blogpostborder"></div>{% endif %}
+                {% endfor %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <div id="content-right">
+        <div class="box">
+            <h2 class="sub">Interersting reads</h2>
+            {% include "blog/links.html" %}
+        </div>
+    </div>
+{% endblock %}
+@

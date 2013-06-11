@@ -1,9 +1,14 @@
-head	1.6;
+head	1.7;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.7
+date	2013.06.11.23.31.46;	author dmf;	state -;
+branches;
+next	1.6;
 
 1.6
 date	2013.05.31.06.30.49;	author dmf;	state -;
@@ -40,13 +45,13 @@ desc
 @@
 
 
-1.6
+1.7
 log
 @-
 @
 text
 @# -*- coding: utf-8 -*-
-# $Id: context_processors.py,v 1.5 2013-05-30 19:34:20-07 dmf - $
+# $Id: context_processors.py,v 1.6 2013-05-30 23:30:49-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -57,7 +62,7 @@ text
 #
 
 import datetime
-from aboutme.views import get_me
+from utils import get_default_user as _user
 
 def site(request):
     site_years = '2013'
@@ -67,17 +72,35 @@ def site(request):
 
     context = {
         # Me
-        'me': get_me(),
+        'me': _user,
         # Site specific
         'SITE_YEARS': site_years,
         # Base
+    }
+    return context
+@
+
+
+1.6
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: context_processors.py,v 1.5 2013-05-30 19:34:20-07 dmf - $
+d13 1
+a13 1
+from aboutme.views import get_me
+d23 1
+a23 1
+        'me': get_me(),
+a26 5
         'HOME_URL': '/home/',
         'BLOG_URL': '/blog/',
         'PORTFOLIO_URL': '/portfolio/',
         'ABOUTME_URL': '/aboutme/',
         'MFF_URL': '/mff/',
-    }
-    return context
 @
 
 

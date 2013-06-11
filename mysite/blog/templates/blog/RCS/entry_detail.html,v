@@ -1,0 +1,43 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.06.11.23.31.46;	author dmf;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@{% extends "blog/entries.html" %}
+{% comment %}
+ *
+ * $Id: blogsingle.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
+ * Derek Frank (dmfrank@@gmx.com)
+ *
+ * NAME
+ *     entry_detail.html
+ *
+ * DESCRIPTION
+ *     Single Blog Entry in detail HTML template.
+ *
+{% endcomment %}
+
+{% with entries|first as entry %}
+{% block title %}{{ entries }} | Blog | {{ me }}{% endblock %}
+{% block blog_content %}
+    <h2>Blog Entry {{ entries.id }}</h2>
+    {% include "blog/entry.html" %}
+{% endblock %}
+@

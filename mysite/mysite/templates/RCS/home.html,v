@@ -1,9 +1,14 @@
-head	1.6;
+head	1.7;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.7
+date	2013.06.11.23.31.46;	author dmf;	state -;
+branches;
+next	1.6;
 
 1.6
 date	2013.06.02.08.38.02;	author dmf;	state -;
@@ -40,7 +45,7 @@ desc
 @@
 
 
-1.6
+1.7
 log
 @-
 @
@@ -48,7 +53,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: home.html,v 1.5 2013-05-30 23:30:49-07 dmf - $
+ * $Id: home.html,v 1.6 2013-06-02 01:38:02-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -58,24 +63,50 @@ text
  *     Home HTML template.
  *
 {% endcomment %}
+{% load url from future %}
 
 {% block navbar_class %}nb-home{% endblock %}
 
 {% block body_inner_content %}
     <div id="content">
         <div class="box" >
-            <h2>{{ me }} | {{ me.title }}</h2>
-            {% for message in content_messages %}
-                <h4>{{ message.title }}:</h4>
-                {% autoescape off %}<ul>{{ message.body }}</ul>{% endautoescape %}
+            <h2>{{ me.get_profile }} | {{ me.get_profile.title }}</h2>
+            {% for news in feed %}
+                <h4>{{ news.title }}:</h4>
+                {% autoescape off %}<ul>{{ news.body }}</ul>{% endautoescape %}
                 <span class="postinfo">
                     <span>Updated on</span>
-                    <span class="timestamp">{{ message.timestamp }}</span>
+                    <span class="postinfo">
+                        <span>Posted on <span class="timestamp">{{ news.timestamp }}</span> by</span>
+                        <a href="{% url "about" %}{{ news.owner.username }}/" 
+                           title="{{ news.owner.get_profile }} | {{ news.owner.title }}">{{ news.owner.get_profle }}</a>
+                    </span>
                 </span>
             {% endfor %}
         </div>
     </div>
 {% endblock %}
+@
+
+
+1.6
+log
+@-
+@
+text
+@d4 1
+a4 1
+ * $Id: home.html,v 1.5 2013-05-30 23:30:49-07 dmf - $
+d14 1
+d21 4
+a24 4
+            <h2>{{ me }} | {{ me.title }}</h2>
+            {% for message in content_messages %}
+                <h4>{{ message.title }}:</h4>
+                {% autoescape off %}<ul>{{ message.body }}</ul>{% endautoescape %}
+d27 5
+a31 1
+                    <span class="timestamp">{{ message.timestamp }}</span>
 @
 
 

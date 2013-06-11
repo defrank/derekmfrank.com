@@ -2,7 +2,7 @@
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
-#   __init__.py - mysite
+#   __init__.py - utils
 #
 # DESCRIPTION
 #   Utility functions.
@@ -11,6 +11,7 @@
 from django.shortcuts import render_to_response
 from django.shortcuts import redirect
 from django.template.context import RequestContext
+from django.shortcuts import get_object_or_404
 
 from django.contrib.auth.models import User
 
@@ -53,4 +54,4 @@ def require_login(request):
 ## MODELS
 
 def get_default_user():
-    return User.objects.get(pk=1)
+    return get_object_or_404(User, pk=1)

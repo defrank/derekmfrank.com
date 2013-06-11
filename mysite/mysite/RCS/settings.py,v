@@ -1,9 +1,14 @@
-head	1.4;
+head	1.5;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.5
+date	2013.06.11.23.31.46;	author dmf;	state -;
+branches;
+next	1.4;
 
 1.4
 date	2013.05.29.05.00.02;	author dmf;	state -;
@@ -30,12 +35,12 @@ desc
 @@
 
 
-1.4
+1.5
 log
 @-
 @
 text
-@# $Id: settings.py,v 1.3 2013-05-24 15:40:36-07 dmf - $
+@# $Id: settings.py,v 1.4 2013-05-28 22:00:02-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -121,7 +126,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'staticfiles').replace('\\','/')),
+    os.path.abspath(os.path.join(PACKAGE_ROOT, 'staticfiles').replace('\\','/')),
 )
 
 # List of finder classes that know how to find static files in
@@ -180,13 +185,11 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'webmaster', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'blog', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'portfolio', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'aboutme', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'mff', 'templates').replace('\\','/')),
+
+    #os.path.abspath(os.path.join(PROJECT_ROOT, 'webmaster', 'templates').replace('\\','/')),
 )
+
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -206,13 +209,11 @@ INSTALLED_APPS = (
 
     # project
     'utils',
-    'staticfiles',
-    'templates',
     'webmaster',
-    'aboutme',
+    'accounts',
+    'feed',
     'portfolio',
     'blog',
-    'mff',
     'mysite',
 )
 
@@ -251,6 +252,37 @@ LOGGING = {
 #)
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+@
+
+
+1.4
+log
+@-
+@
+text
+@d1 1
+a1 1
+# $Id: settings.py,v 1.3 2013-05-24 15:40:36-07 dmf - $
+d87 1
+a87 1
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'staticfiles').replace('\\','/')),
+d146 2
+a147 6
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'webmaster', 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'blog', 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'portfolio', 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'aboutme', 'templates').replace('\\','/')),
+    os.path.abspath(os.path.join(PROJECT_ROOT, 'mff', 'templates').replace('\\','/')),
+d150 2
+a169 2
+    'staticfiles',
+    'templates',
+d171 2
+a172 1
+    'aboutme',
+a174 1
+    'mff',
 @
 
 

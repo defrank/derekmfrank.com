@@ -1,9 +1,14 @@
-head	1.5;
+head	1.6;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.6
+date	2013.06.11.23.31.46;	author dmf;	state -;
+branches;
+next	1.5;
 
 1.5
 date	2013.05.31.02.34.20;	author dmf;	state -;
@@ -35,14 +40,14 @@ desc
 @@
 
 
-1.5
+1.6
 log
 @-
 @
 text
 @{% comment %}<!--
 /*
- * $Id: base.html,v 1.4 2013-05-30 17:07:05-07 dmf - $
+ * $Id: base.html,v 1.5 2013-05-30 19:34:20-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -55,21 +60,20 @@ text
 {% load static from staticfiles %}
 {% load url from future %}
 <!DOCTYPE html>
-
+{% with myprofile=me.profile %}
 <!--
+    Author: {{ myprofile }}
     {{ request.get_host|cut:"www." }}
  -->
 {% url "home" as home_url %}
-
 <html lang="{{ LANGUAGE_CODE }}">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
     <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
     <meta name="author" content="Derek M. Frank" />
     <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
     <meta name="Description" content="Derek Michael Frank's personal website." />
-    <title>{% block head_title %}{{ me }}{% endblock %}</title>
+    <title>{% block title %}{{ myprofile }}{% endblock %}</title>
     {% block viewport %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
@@ -132,9 +136,9 @@ text
                             <li id="nb-home"><a href="{{ home_url }}" title="Homepage">Home</a></li>
                             <li id="nb-blog"><a href="{% url "blog" %}" title="My blog">Blog</a></li>
                             <li id="nb-portfolio"><a href="{% url "portfolio" %}" title="My portfolio">Portfolio</a></li>
-                            <li id="nb-aboutme"><a href="{% url "aboutme" %}" title="My about me">About Me</a></li>
+                            <li id="nb-about"><a href="{% url "aboutme" %}" title="About {{ myprofile }}">About</a></li>
                             <li class="nb-separator"><span class="nb-separator">|</span></li>
-                            <li id="nb-mff"><a href="{% url "mff" %}" title="Michael Frank">MFF</a></li>
+                            <li id="nb-mff"><a href="{% url "aboutmff" %}" title="Michael Frank">MFF</a></li>
                         </ul>
                     </div>
                     <div id="navbarwidget" >
@@ -158,8 +162,8 @@ text
     {% block footer %}
         <footer>
             <p>
-                <a href="mailto:{{ me.email }}" 
-                   title="Contact {{ me }}">{{ me }}</a>
+                <a href="mailto:{{ myprofile.email }}" 
+                   title="Contact {{ myprofile }}">{{ myprofile }}</a>
                   <span>{{ SITE_YEARS }}</span>
             </p>
             <p>{{ request.get_host }}</p>
@@ -169,6 +173,40 @@ text
     {% block body_script %}{% endblock %}
 </body>
 </html>
+{% endwith %}
+@
+
+
+1.5
+log
+@-
+@
+text
+@d3 1
+a3 1
+ * $Id: base.html,v 1.4 2013-05-30 17:07:05-07 dmf - $
+d16 1
+a16 1
+
+d18 1
+a21 1
+
+a22 1
+
+d29 1
+a29 1
+    <title>{% block head_title %}{{ me }}{% endblock %}</title>
+d92 1
+a92 1
+                            <li id="nb-aboutme"><a href="{% url "aboutme" %}" title="My about me">About Me</a></li>
+d94 1
+a94 1
+                            <li id="nb-mff"><a href="{% url "mff" %}" title="Michael Frank">MFF</a></li>
+d118 2
+a119 2
+                <a href="mailto:{{ me.email }}" 
+                   title="Contact {{ me }}">{{ me }}</a>
+d129 1
 @
 
 

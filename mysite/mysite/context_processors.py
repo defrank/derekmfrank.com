@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# $Id: context_processors.py,v 1.6 2013-05-30 23:30:49-07 dmf - $
+# $Id: context_processors.py,v 1.7 2013-06-11 16:31:46-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME

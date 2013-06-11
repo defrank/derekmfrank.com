@@ -1,4 +1,4 @@
-# $Id: models.py,v 1.1 2013-05-30 23:46:52-07 dmf - $
+# $Id: models.py,v 1.1 2013-06-11 16:31:46-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -8,6 +8,7 @@
 #   Models definition for User Profile.
 #
 
+from django.conf import settings
 from django.db import models
 from django.contrib import admin
 from django.contrib.auth.models import User
@@ -31,24 +32,33 @@ class UserProfile(models.Model):
     User is required. Other fields are optional.
     """
     user = models.OneToOneField(User, related_name='profile')
-    def username(self):
-        return '%s' % self.user.username
-    def first_name(self):
-        return '%s' % self.user.first_name
     middle_name = models.CharField(_(u'middle name'), max_length=32, blank=True)
-    def last_name(self):
-        return '%s' % self.user.last_name
     title = models.CharField(_(u'title or occupation'), max_length=64, blank=True)
+    alternative_email = models.EmailField(_(u'alternative email address'), blank=True)
+    description = models.TextField(_(u'description (html okay)'), blank=True)
+
+    def username(self):
+        return self.user.username
+    def get_username(self):
+        return self.user.username
+
+    def first_name(self):
+        return self.user.first_name
+
+    def last_name(self):
+        return self.user.last_name
+
     def email(self):
-        return '%s' % self.user.email
+        return self.user.email
+
     def email_name(self):
         name = sub('^.+[@]', '', self.user.email)
         return sub('[.].+$', '', name)
-    alternative_email = models.EmailField(_(u'alternative email address'), blank=True)
+
     def alternative_email_name(self):
         name = sub('^.+[@]', '', self.alternative_email)
         return sub('[.].+$', '', name)
-    description = models.TextField(_(u'description (html okay)'), blank=True)
+
     def image(self):
         return self.user.images.get(user=self, default=True)
 
@@ -67,15 +77,21 @@ class UserProfile(models.Model):
     def hobbies(self):
         return self.user.hobbies.all()
 
+    def get_full_name(self):
+        return self
+
+    def get_short_name(self):
+        return self.user.first_name
+
     def get_absolute_url(self):
         return 'accounts/user/%s/' % self.user.username
 
     def __unicode__(self):
-        if self.user.first_name:
-            if self.user.last_name:
-                if self.middle_name:
-                    return u'%s %c. %s' % (self.user.first_name, self.middle_name[0], self.user.last_name)
-                return u'%s %s' % (self.user.first_name, self.user.last_name)
+        if self.middle_name and self.user.last_name and self.user.first_name: 
+            return u'%s %c. %s' % (self.user.first_name, self.middle_name[0], self.user.last_name)
+        elif self.user.last_name and self.user.first_name:
+            return u'%s %s' % (self.user.first_name, self.user.last_name)
+        elif self.user.first_name:
             return u'%s' % self.user.first_name
         elif self.user.last_name:
             return u'%s' % self.user.first_name
@@ -154,7 +170,7 @@ class Document(models.Model):
             name = '%s%s' % (instance.title, splitext(filename)[-1])
             return 'accounts/%s/doc/%s' % (instance.user.username, name)
         return 'accounts/%s/doc/%s' % (instance.user.username, filename)
-    file = models.FileField(_(u'file'), upload_to=get_upload_dir, blank=True, null=True)
+    file = models.FileField(_(u'upload file'), upload_to=get_upload_dir, blank=True, null=True)
     url = models.URLField(_(u'link'), blank=True)
     description = models.TextField(_(u'description'), blank=True)
 
@@ -170,10 +186,10 @@ class Document(models.Model):
                 return '%s%s' % (self.title, splitext(name)[-1])
             return '%s' % name
         elif self.url:
-            name = self.domain
+            name = urlsplit(self.url).netloc
             if self.title:
                 return '%s (hosted on %s)' % (self.title, name)
-            return 'unknown (hosted on %s)' % name
+            return 'unknown file (hosted on %s)' % name
         elif self.title:
             return '%s' % self.title
         return ''
@@ -195,7 +211,7 @@ class Document(models.Model):
             name = urlsplit(self.url).netloc
             if self.title:
                 return u'%s (hosted on %s)' % (self.title, name)
-            return u'unknown (hosted on %s)' % name
+            return u'unknown file (hosted on %s)' % name
         elif self.title:
             return u'%s' % self.title
         return u'document %d for %s' % (self.id, self.user)

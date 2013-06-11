@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.7 2013-05-31 23:55:22-07 dmf - $
+# $Id: Makefile,v 1.8 2013-06-11 16:31:46-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -83,6 +83,8 @@ ACCOUNTS_TEMP   = ${DIR_ACCOUNTS}templates/accounts/
 APP_ACCOUNTS    = ${DIR_ACCOUNTS}__init__.py    ${DIR_ACCOUNTS}urls.py         \
 				  ${DIR_ACCOUNTS}views.py       ${DIR_ACCOUNTS}models.py       \
 				  ${DIR_ACCOUNTS}admin.py                                      \
+				  ${ACCOUNTS_TEMP}about_content.html                           \
+				  ${ACCOUNTS_TEMP}source_display.html                          \
 				  ${ACCOUNTS_TEMP}about.html                                   \
 				  ${ACCOUNTS_TEMP}aboutme.html                                 \
 				  ${ACCOUNTS_TEMP}aboutmff.html
@@ -119,7 +121,7 @@ ALLFILES        = ${MKFILE}    ${TXT}        ${SERVFILES}  ${DJANGOFILES}      \
 #
 # make all
 #
-all : clean sync
+all : clean save
 
 #
 # Run checksource on the files
@@ -150,19 +152,25 @@ gitinit :
 #
 # Sync local and remote repositories
 #
-sync : ci
+save : clean ci
 	git add --all
 	git commit -a
 	git status
+
+push : save
 	git push
-#	git pull
+
+pull :
+	git pull
+
+sync : pull push
 
 #
 # Clean and spotless remove genereated files
 #
 clean :
-	- rm blah
-#    for i in `find . -name "__pycache__"` ; do rm -r "$i" ; done
-#    for i in `find . -name "*.pyc"` ; do rm "$i" ; done
+	find . -name "blah*" -exec rm -r {} + ;
+	find . -name "__pycache__" -exec rm -r {} + ;
+	find . -name "*.pyc" -exec rm {} + ;
 
 spotless : clean
