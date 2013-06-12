@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.10 2013-06-12 14:36:27-07 dmf - $
+# $Id: Makefile,v 1.11 2013-06-12 14:37:54-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -159,8 +159,8 @@ gitinit :
 #
 save : clean ci
 	git add --all
-	git commit -a
 	git status
+	git commit -a
 
 push : save
 	git status
