@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.9 2013-06-12 14:33:32-07 dmf - $
+# $Id: Makefile,v 1.10 2013-06-12 14:36:27-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -37,7 +37,7 @@ DIR_DJANGO      = mysite/mysite/
 DIR_MEDIA       = ${DIR_DJANGO}media/
 DIR_VIEWS       = ${DIR_DJANGO}views/
 DIR_TEMPLATES   = ${DIR_DJANGO}templates/
-DIR_STATIC      = ${DIR_DJANGO}staticfiles/
+DIR_STATIC      = ${DIR_DJANGO}static/
 DIR_IMG         = ${DIR_STATIC}img/
 DIR_DOC         = ${DIR_STATIC}doc/
 DIR_JS          = ${DIR_STATIC}js/
