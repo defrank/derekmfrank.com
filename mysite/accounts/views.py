@@ -39,15 +39,8 @@ def about_view(request, template, context):
 
 def aboutme(request):
     """About homepage: view default user."""
-    u = _user
-    try:
-        user = u.profile
-    except Exception:
-        user = u
-
     template = 'accounts/aboutme.html'
     context = {
-        'myuser': user,
     }
     return response(request, template, context)
 

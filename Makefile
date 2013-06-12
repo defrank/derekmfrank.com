@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.8 2013-06-11 16:31:46-07 dmf - $
+# $Id: Makefile,v 1.9 2013-06-12 14:33:32-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -72,17 +72,22 @@ DJANGOFILES     = ${DIR_APPS}manage.py          ${DIR_DJANGO}settings.py       \
 				  ${TEMPLATEFILES} ${STATICFILES}
 
 ## APPS
+UTILS_TAGS      = ${DIR_UTILS}templatetags/
 APP_UTILS       = ${DIR_UTILS}__init__.py       ${DIR_UTILS}urls.py            \
-                  ${DIR_UTILS}models.py         ${DIR_UTILS}views.py
+                  ${DIR_UTILS}models.py         ${DIR_UTILS}views.py           \
+				  ${UTILS_TAGS}__init__.py      ${UTILS_TAGS}utils_tags.py
 WEBMASTER_TEMP  = ${DIR_WEBMASTER}templates/webmaster/
 APP_WEBMASTER   = ${DIR_WEBMASTER}__init__.py   ${DIR_WEBMASTER}urls.py        \
 				  ${DIR_WEBMASTER}views.py                                     \
 				  ${WEBMASTER_TEMP}google0a2e75908547fa0e.html                 \
 				  ${WEBMASTER_TEMP}BingSiteAuth.xml
 ACCOUNTS_TEMP   = ${DIR_ACCOUNTS}templates/accounts/
+ACCOUNTS_TAGS   = ${DIR_ACCOUNTS}templatetags/
 APP_ACCOUNTS    = ${DIR_ACCOUNTS}__init__.py    ${DIR_ACCOUNTS}urls.py         \
 				  ${DIR_ACCOUNTS}views.py       ${DIR_ACCOUNTS}models.py       \
 				  ${DIR_ACCOUNTS}admin.py                                      \
+				  ${ACCOUNTS_TAGS}__init__.py                                  \
+				  ${ACCOUNTS_TAGS}accounts_tags.py                             \
 				  ${ACCOUNTS_TEMP}about_content.html                           \
 				  ${ACCOUNTS_TEMP}source_display.html                          \
 				  ${ACCOUNTS_TEMP}about.html                                   \
@@ -158,10 +163,13 @@ save : clean ci
 	git status
 
 push : save
+	git status
 	git push
 
 pull :
+	git status
 	git pull
+	git status
 
 sync : pull push
 

@@ -13,6 +13,7 @@ from django.conf.urls import patterns, url
 urlpatterns = patterns('accounts.views',
     # About me
     url(r'^$', 'aboutme'),
+    url(r'^dmf/$', 'aboutme'),
     # About mff
     url(r'^mff/$', 'aboutmff'),
     # About someone

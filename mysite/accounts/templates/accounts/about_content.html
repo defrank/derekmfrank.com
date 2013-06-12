@@ -10,11 +10,16 @@
  *     Content about a generic user HTML template.
  *
 {% endcomment %}
-{% load collect from extra_tags %}
+{% load collect from utils_tags %}
+{% load nameof from accounts_tags %}
 
 <div id="content-left">
     <div class="box" >
-        <h2>About {{ myuser.get_full_name|default:myuser.get_short_name|default:myuser }}</h2>
+        {% if myuser == me %}
+            <h2>About me</h2>
+        {% else %}
+            <h2>About {% nameof myuser %}</h2>
+        {% endif %}
         {% autoescape off %}
             {{ myuser.description|default:"Nothing to say." }}
         {% endautoescape %}
@@ -26,14 +31,14 @@
         {% if myuser.image %}
             <div class="center">
                 <img id="mypic" class="center" src="{{ myuser.image.get_absolute_url }}" 
-                     title="{{ myuser.get_full_name|default:myuser.get_short_name|default:myuser }}"
-                     alt="Image for {{ myuser.get_full_name|default:myuser.get_short_name|default:myuser }}"
+                     title="{% nameof myuser %}"
+                     alt="Image for {% nameof myuser %}"
                      width="260" height="260" />
             </div>
         {% endif %}
         <h3>Contact</h3>
         <ul>
-            <div class="block">{{ myuser.get_full_name|default:myuser.get_short_name|default:myuser }}</div>
+            <div class="block">{% nameof myuser %}</div>
             <div class="block">{{ myuser.title }}</div>
             <div class="block">
                 {% if myuser.alternative_email %}

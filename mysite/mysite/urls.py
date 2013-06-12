@@ -1,4 +1,4 @@
-# $Id: urls.py,v 1.7 2013-06-11 16:31:46-07 dmf - $
+# $Id: urls.py,v 1.8 2013-06-12 14:33:32-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -20,7 +20,7 @@ admin.autodiscover()
 urlpatterns = patterns('mysite.views',
     url(r'^$', 'home', name='home'),
     url(r'^about/$', 'aboutme', name='aboutme'),
-    #url(r'^about/dmf/$', 'aboutme', name='aboutme'),
+    url(r'^about/dmf/$', 'aboutme'),
     url(r'^about/mff/$', 'aboutmff', name='aboutmff'),
     url(r'^about/(?P<username>\w+)/$', 'about'),
 )

@@ -1,9 +1,14 @@
-head	1.7;
+head	1.8;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.8
+date	2013.06.12.21.33.32;	author dmf;	state -;
+branches;
+next	1.7;
 
 1.7
 date	2013.06.11.23.31.46;	author dmf;	state -;
@@ -45,12 +50,12 @@ desc
 @@
 
 
-1.7
+1.8
 log
 @-
 @
 text
-@# $Id: urls.py,v 1.6 2013-05-28 22:00:02-07 dmf - $
+@# $Id: urls.py,v 1.7 2013-06-11 16:31:46-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -72,7 +77,7 @@ admin.autodiscover()
 urlpatterns = patterns('mysite.views',
     url(r'^$', 'home', name='home'),
     url(r'^about/$', 'aboutme', name='aboutme'),
-    #url(r'^about/dmf/$', 'aboutme', name='aboutme'),
+    url(r'^about/dmf/$', 'aboutme'),
     url(r'^about/mff/$', 'aboutmff', name='aboutmff'),
     url(r'^about/(?P<username>\w+)/$', 'about'),
 )
@@ -121,6 +126,20 @@ urlpatterns += patterns('',
 #urlpatterns += patterns('',
     #url(r'^.+$', redirect_to_home, name='redirect'),
 #)
+@
+
+
+1.7
+log
+@-
+@
+text
+@d1 1
+a1 1
+# $Id: urls.py,v 1.6 2013-05-28 22:00:02-07 dmf - $
+d23 1
+a23 1
+    #url(r'^about/dmf/$', 'aboutme', name='aboutme'),
 @
 
 

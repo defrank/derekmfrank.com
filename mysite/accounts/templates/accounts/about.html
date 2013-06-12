@@ -11,8 +11,9 @@
  *     About someone HTML template.
  *
 {% endcomment %}
+{% load nameof from accounts_tags %}
 
-{% block title %}About {{ myuser.get_full_name|default:myuser.get_short_name|default:myuser }} | {{ myprofile }}{% endblock %}
+{% block title %}About {% nameof myuser %} | {% nameof me %}{% endblock %}
 
 {% block navbar_class %}nb-about{% endblock %}
 

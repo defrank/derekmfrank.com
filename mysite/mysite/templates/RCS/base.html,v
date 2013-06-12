@@ -1,9 +1,14 @@
-head	1.6;
+head	1.7;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.7
+date	2013.06.12.21.33.32;	author dmf;	state -;
+branches;
+next	1.6;
 
 1.6
 date	2013.06.11.23.31.46;	author dmf;	state -;
@@ -40,14 +45,14 @@ desc
 @@
 
 
-1.6
+1.7
 log
 @-
 @
 text
 @{% comment %}<!--
 /*
- * $Id: base.html,v 1.5 2013-05-30 19:34:20-07 dmf - $
+ * $Id: base.html,v 1.6 2013-06-11 16:31:46-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -59,10 +64,11 @@ text
 -->{% endcomment %}
 {% load static from staticfiles %}
 {% load url from future %}
+{% load nameof from accounts_tags %}
 <!DOCTYPE html>
-{% with myprofile=me.profile %}
+
 <!--
-    Author: {{ myprofile }}
+    Author: {% nameof me %}
     {{ request.get_host|cut:"www." }}
  -->
 {% url "home" as home_url %}
@@ -73,13 +79,13 @@ text
     <meta name="author" content="Derek M. Frank" />
     <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
     <meta name="Description" content="Derek Michael Frank's personal website." />
-    <title>{% block title %}{{ myprofile }}{% endblock %}</title>
+    <title>{% block title %}{% nameof me %}{% endblock %}</title>
     {% block viewport %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
 
     {% block stylesheets %}
-        <link href="{% static "css/style.css" %}?v={% now "U" %}" rel="stylesheet" type="text/css" media="all" />
+        <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" media="all" />
     {% endblock %}
 
     {% block favicon %}
@@ -136,7 +142,7 @@ text
                             <li id="nb-home"><a href="{{ home_url }}" title="Homepage">Home</a></li>
                             <li id="nb-blog"><a href="{% url "blog" %}" title="My blog">Blog</a></li>
                             <li id="nb-portfolio"><a href="{% url "portfolio" %}" title="My portfolio">Portfolio</a></li>
-                            <li id="nb-about"><a href="{% url "aboutme" %}" title="About {{ myprofile }}">About</a></li>
+                            <li id="nb-about"><a href="{% url "aboutme" %}" title="About {% nameof me %}">About</a></li>
                             <li class="nb-separator"><span class="nb-separator">|</span></li>
                             <li id="nb-mff"><a href="{% url "aboutmff" %}" title="Michael Frank">MFF</a></li>
                         </ul>
@@ -162,8 +168,10 @@ text
     {% block footer %}
         <footer>
             <p>
-                <a href="mailto:{{ myprofile.email }}" 
-                   title="Contact {{ myprofile }}">{{ myprofile }}</a>
+                <a href="mailto:{{ me.email }}" 
+                   title="Contact {{ me.get_full_name|default:me.get_short_name|default:me|default:"me" }}">
+                    <span>{{ me.get_full_name|default:me.get_short_name|default:me|default:"me" }}</span>
+                </a>
                   <span>{{ SITE_YEARS }}</span>
             </p>
             <p>{{ request.get_host }}</p>
@@ -173,6 +181,38 @@ text
     {% block body_script %}{% endblock %}
 </body>
 </html>
+@
+
+
+1.6
+log
+@-
+@
+text
+@d3 1
+a3 1
+ * $Id: base.html,v 1.5 2013-05-30 19:34:20-07 dmf - $
+d15 1
+d17 1
+a17 1
+{% with myprofile=me.profile %}
+d19 1
+a19 1
+    Author: {{ myprofile }}
+d30 1
+a30 1
+    <title>{% block title %}{{ myprofile }}{% endblock %}</title>
+d36 1
+a36 1
+        <link href="{% static "css/style.css" %}?v={% now "U" %}" rel="stylesheet" type="text/css" media="all" />
+d93 1
+a93 1
+                            <li id="nb-about"><a href="{% url "aboutme" %}" title="About {{ myprofile }}">About</a></li>
+d119 4
+a122 2
+                <a href="mailto:{{ myprofile.email }}" 
+                   title="Contact {{ myprofile }}">{{ myprofile }}</a>
+a131 1
 {% endwith %}
 @
 

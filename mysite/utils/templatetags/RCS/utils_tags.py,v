@@ -1,8 +1,30 @@
-# $Id: functions.py,v 1.1 2013-05-28 22:00:02-07 dmf - $
-# Derek Frank (dmfrank@gmx.com)
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.06.12.21.33.32;	author dmf;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@# $Id: functions.py,v 1.1 2013-05-28 22:00:02-07 dmf - $
+# Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
-#   extra_tags.py - utils
+#   utils_tags.py - utils
 #
 # DESCRIPTION
 #   Custom template tags and filters.
@@ -15,7 +37,7 @@ register = template.Library()
 ## TAGS
 
 # djangosnippets.org/snippets/2196/
-@register.tag
+@@register.tag
 def collect(parser, token):
     bits = list(token.split_contents())
     if len(bits) > 3 and bits[-2] == 'as':
@@ -34,3 +56,4 @@ class CollectNode(template.Node):
     def render(self, context):
         context[self.varname] = [ i.resolve(context) for i in self.items ]
         return ''
+@

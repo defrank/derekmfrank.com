@@ -11,11 +11,12 @@
  *     About me HTML template.
  *
 {% endcomment %}
+{% load nameof from accounts_tags %}
 
-{% block title %}About me | {{ myprofile }}{% endblock %}
+{% block title %}About me | {% nameof me %}{% endblock %}
 
 {% block navbar_class %}nb-about{% endblock %}
 
 {% block body_inner_content %}
-    {% with myuser=myprofile %}{% include "accounts/about_content.html" %}{% endwith %}
+    {% with myuser=me %}{% include "accounts/about_content.html" %}{% endwith %}
 {% endblock %}

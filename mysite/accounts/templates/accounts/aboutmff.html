@@ -13,21 +13,24 @@
 {% endcomment %}
 {% load static from staticfiles %}
 {% load url from future %}
+{% load nameof from accounts_tags %}
 
-{% block title %}{{ mff }} | {{ mff.title }}{% endblock %}
+{% block title %}{% nameof myuser %}{% if myuser.title %} | {{ myuser.title }}{% endif %}{% endblock %}
 
 {% block navbar_class %}nb-mff{% endblock %}
 
 {% block body_inner_content %}
     <div id="content-left">
         <div class="box" style="min-height: 340px;">
-            <h2>{{ mff }} | {{ mff.title }}</h2>
-            <div class="center" >
-                <a class="block" href="{% url "aboutmff" %}" title="{{ mff.image_text }}">
-                    <img  src="{% static mff.image %}" alt="Image for {{ mff }}" />
-                </a>
-                <span class="italic">{{ mff.image_text }}</span>
-            </div>
+            <h2>{% nameof myuser %}{% if myuser.title %} | {{ myuser.title }}{% endif %}</h2>
+            {% if myuser.image %}
+                <div class="center" >
+                    <a class="block" href="{% url "aboutmff" %}" title="{{ myuser.image.subtext }}">
+                        <img  src="{{ myuser.image.get_absolute_url  }}" alt="Image for {% nameof myuser %}" />
+                    </a>
+                    <span class="italic">{{ myuser.image.subtext }}</span>
+                </div>
+            {% endif %}
             <div class="">
                 {% for topic_bits in topics %}
                 {% with topic_bits|first as topic %}
@@ -57,16 +60,16 @@
         <div class="box">
             <h3>Contact Information</h3>
             <ul>
-                <span class="block">{{ mff }}</span>
-                <span class="block">{{ mff.title }}</span>
-                <a class="block" href="mailto:{{ mff.email }}" 
-                   title="Contact {{ mff }} via {{ mff.email }}">{{ mff.email_name }}</a>
-                <span class="block">{{ mff.contact|linebreaks }}</span>
+                <span class="block">{% nameof myuser %}</span>
+                <span class="block">{{ myuser.title }}</span>
+                <a class="block" href="mailto:{{ myuser.email }}" 
+                   title="Contact {% nameof myuser %} via {{ myuser.email }}">{{ myuser.email_name|default:myuser.email }}</a>
+                <span class="block">{{ myuser.description|linebreaks }}</span>
             </ul>
             <h3>Other Sources</h3>
             <ul>
-                {% for src in mff.sources.all %}
-                    <a class="block" href="{{ src.url }}">{{ src.title }}</a>
+                {% for src in myuser.sources %}
+                    <a class="block" href="{{ src.get_absolute_url }}">{{ src.title }}</a>
                 {% endfor %}
             </ul>
         </div>

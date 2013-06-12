@@ -1,4 +1,4 @@
-# $Id: settings.py,v 1.5 2013-06-11 16:31:46-07 dmf - $
+# $Id: settings.py,v 1.6 2013-06-12 14:33:32-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -73,7 +73,7 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.abspath(os.path.join(PACKAGE_ROOT, 'static').replace('\\','/'))
+STATIC_ROOT = os.path.abspath(os.path.join(PACKAGE_ROOT, 'sitestatic').replace('\\','/'))
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -84,7 +84,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.abspath(os.path.join(PACKAGE_ROOT, 'staticfiles').replace('\\','/')),
+    #os.path.abspath(os.path.join(PACKAGE_ROOT, 'static').replace('\\','/')),
 )
 
 # List of finder classes that know how to find static files in

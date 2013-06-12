@@ -1,5 +1,5 @@
 /*******************************************************************************
- * $Id: style.css,v 1.9 2013-05-31 23:55:22-07 dmf - $                                                                       
+ * $Id: style.css,v 1.10 2013-06-11 16:31:46-07 dmf - $                                                                       
  * Derek Frank (derekmfrank@gmail.com)                                          
  *                                                                              
  * Theme Name: dmf
@@ -16,8 +16,7 @@
  ******************************************************************************/
 
 /* import the global navbar stylesheet */
-/* @import url('{{ CSS_URL }}navbar/navbar.css'); */
-@import url("navbar.css?v=134");
+@import url("navbar.css");
 
 /* simple reset */
 * {
@@ -47,13 +46,14 @@ html[xmlns] .clearfix {
 
 /* general styling */
 body {
-    min-width: 650px; /*1024px;*/
-    min-height: 550px;
-    background: #f6f9fc;
-    color: #001f00;
-    font: normal 100% sans-serif;
-    text-align: center;
-    margin: 0;
+    min-width:              650px; /*1024px;*/
+    min-height:             550px;
+    background:             #f6f9fc;
+    color:                  #001f00;
+    font:                   normal 100% sans-serif;
+    font-family:            Lato, Ubuntu, PT Sans, Open Sans, Droid Sans, Helvetica, Aerial, Arial, sans-serif;
+    text-align:             center;
+    margin:                 0;
 }
 
 p {
@@ -392,7 +392,7 @@ textarea {
 #navbar.nb-home ul li#nb-home a,
 #navbar.nb-blog ul li#nb-blog a,
 #navbar.nb-portfolio ul li#nb-portfolio a,
-#navbar.nb-aboutme ul li#nb-aboutme a,
+#navbar.nb-about ul li#nb-about a,
 #navbar.nb-mff ul li#nb-mff a,
 #navbar.nb-admin ul li#nb-admin a {
     color: #000;

@@ -54,4 +54,9 @@ def require_login(request):
 ## MODELS
 
 def get_default_user():
-    return get_object_or_404(User, pk=1)
+    user = get_object_or_404(User, pk=1)
+    try:
+        profile = user.profile
+        return profile
+    except Exception:
+        return user

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% comment %}
  *
- * $Id: home.html,v 1.7 2013-06-11 16:31:46-07 dmf - $
+ * $Id: home.html,v 1.8 2013-06-12 14:33:32-07 dmf - $
  * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
@@ -12,23 +12,23 @@
  *
 {% endcomment %}
 {% load url from future %}
+{% load nameof from accounts_tags %}
 
 {% block navbar_class %}nb-home{% endblock %}
 
 {% block body_inner_content %}
     <div id="content">
         <div class="box" >
-            <h2>{{ me.get_profile }} | {{ me.get_profile.title }}</h2>
+            <h2>{% nameof me %}{% if me.title %} | {{ me.title }}{% endif %}</h2>
             {% for news in feed %}
                 <h4>{{ news.title }}:</h4>
                 {% autoescape off %}<ul>{{ news.body }}</ul>{% endautoescape %}
                 <span class="postinfo">
-                    <span>Updated on</span>
-                    <span class="postinfo">
-                        <span>Posted on <span class="timestamp">{{ news.timestamp }}</span> by</span>
-                        <a href="{% url "about" %}{{ news.owner.username }}/" 
-                           title="{{ news.owner.get_profile }} | {{ news.owner.title }}">{{ news.owner.get_profle }}</a>
-                    </span>
+                    <span>Posted on <span class="timestamp">{{ news.timestamp }}</span> by</span>
+                    <a href="{% url 'mysite.views._about' username=news.author.username  %}" 
+                        title="{% nameof news.author %}{% if news.author.title %} | {{ news.author.title }}{% endif %}">
+                        <span>{% nameof news.author %}</span>
+                    </a>
                 </span>
             {% endfor %}
         </div>

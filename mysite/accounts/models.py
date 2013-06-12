@@ -116,6 +116,7 @@ class Image(models.Model):
         return 'accounts/%s/img/%s' % (instance.user.username, filename)
     image = models.ImageField(_(u'upload image'), upload_to=get_upload_dir)
     default = models.BooleanField(_(u'default user image'), default=False)
+    subtext = models.TextField(_(u'sub text'), blank=True)
 
     def filename(self):
         name = basename(self.image.path)
