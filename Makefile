@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.11 2013-06-12 14:37:54-07 dmf - $
+# $Id: Makefile,v 1.12 2013-06-14 02:16:58-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -85,7 +85,7 @@ ACCOUNTS_TEMP   = ${DIR_ACCOUNTS}templates/accounts/
 ACCOUNTS_TAGS   = ${DIR_ACCOUNTS}templatetags/
 APP_ACCOUNTS    = ${DIR_ACCOUNTS}__init__.py    ${DIR_ACCOUNTS}urls.py         \
 				  ${DIR_ACCOUNTS}views.py       ${DIR_ACCOUNTS}models.py       \
-				  ${DIR_ACCOUNTS}admin.py                                      \
+				  ${DIR_ACCOUNTS}tests.py       ${DIR_ACCOUNTS}admin.py        \
 				  ${ACCOUNTS_TAGS}__init__.py                                  \
 				  ${ACCOUNTS_TAGS}accounts_tags.py                             \
 				  ${ACCOUNTS_TEMP}about_content.html                           \
@@ -95,14 +95,17 @@ APP_ACCOUNTS    = ${DIR_ACCOUNTS}__init__.py    ${DIR_ACCOUNTS}urls.py         \
 				  ${ACCOUNTS_TEMP}aboutmff.html
 FEED_TEMP       = ${DIR_FEED}templates/feed/
 APP_FEED        = ${DIR_FEED}__init__py         ${DIR_FEED}urls.py             \
-				  ${DIR_FEED}views.py           ${DIR_FEED}models.py           
+				  ${DIR_FEED}views.py           ${DIR_FEED}models.py           \
+				  ${DIR_FEED}tests.py
 PORTFOLIO_TEMP  = ${DIR_PORTFOLIO}templates/portfolio/
 APP_PORTFOLIO   = ${DIR_PORTFOLIO}__init__.py   ${DIR_PORTFOLIO}urls.py        \
 				  ${DIR_PORTFOLIO}views.py      ${DIR_PORTFOLIO}models.py      \
+				  ${DIR_PORTFOLIO}tests.py                                     \
 				  ${PORTFOLIO_TEMP}portfolio.html
 BLOG_TEMP       = ${DIR_BLOG}templates/blog/
 APP_BLOG        = ${DIR_BLOG}__init__.py        ${DIR_BLOG}urls.py             \
 				  ${DIR_BLOG}views.py           ${DIR_BLOG}models.py           \
+				  ${DIR_BLOG}tests.py                                          \
 				  ${BLOG_TEMP}entries.html                                     \
 				  ${BLOG_TEMP}entry.html                                       \
 				  ${BLOG_TEMP}links.html                                       \

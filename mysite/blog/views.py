@@ -34,7 +34,7 @@ def blog_view(request, template, context):
 
 def recent(request):
     """Blog homepage: view eight most recent posts/entries."""
-    entries = Entry.objects.order_by('timestamp').reverse()[8:]
+    entries = Entry.objects.order_by('timestamp').reverse()
 
     template = 'blog/entries.html'
     context = {

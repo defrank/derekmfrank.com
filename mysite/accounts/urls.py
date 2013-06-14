@@ -15,7 +15,7 @@ urlpatterns = patterns('accounts.views',
     url(r'^$', 'aboutme'),
     url(r'^dmf/$', 'aboutme'),
     # About mff
-    url(r'^mff/$', 'aboutmff'),
+    url(r'^mff/$', 'aboutmff', name='aboutmff'),
     # About someone
     url(r'^(?P<username>\w+)/$', 'about'),
 )

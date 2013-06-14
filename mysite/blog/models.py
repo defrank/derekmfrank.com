@@ -26,17 +26,17 @@ from utils import get_default_user as _user
 def markdown_to_html(markdownText, images):
     """Function to parse and add image in html format to a blog post"""
     # create instance of Markdown class
-    md = markdown.Markdown()
-    for image in images:
-        if image.image:
-            image_url = settings.STATIC_URL + image.image.url
-        elif image.url:
-            image_url = image.url
-        # append image reference to Markdown instance
-        # md.reference[id] = (url, title)
-        md.reference[image.title] = (image_url, '%s' % image.title)
-    # parse source text
-    return md.convert(markdownText)
+    if images:
+        md = markdown.Markdown()
+        for image in images:
+            image_url = image.get_absolute_url()
+            # append image reference to Markdown instance
+            # md.references[id] = (url, title)
+            md.references[image.filename()] = (image_url, '%s' % image.filename())
+        # parse source text
+        return md.convert(markdownText)
+    else:
+        return markdownText
 
 
 ####
@@ -51,10 +51,12 @@ class Entry(models.Model):
     author = models.ForeignKey(User, related_name='entries', default=_user)
     title = models.CharField(_(u'title'), max_length=128)
     timestamp = models.DateTimeField(_(u'entry date and time'))
-    body = models.TextField(_(u'body (html okay)'))
+    html = models.BooleanField(_('html in body'))
+    body = models.TextField(_(u'body text'))
 
     def body_html(self):
-        return markdown_to_html(self.body, self.images.all)
+        images = self.images.all()
+        return markdown_to_html(self.body, images)
 
     @models.permalink
     def get_absolute_url(self):
@@ -79,8 +81,17 @@ class Image(models.Model):
     title = models.CharField(_(u'title'), max_length=64, blank=True)
     def get_upload_dir(instance, filename):
         return 'blog/%s/entry%d/%s' % (instance.entry.author.username, instance.entry.pk, filename)
-    image = models.ImageField(_(u'upload image'), upload_to=get_upload_dir, blank=True, null=True)
-    url = models.URLField(_(u'link url address'), blank=True)
+    image = models.ImageField(_(u'uploaded image'), upload_to=get_upload_dir, blank=True, null=True)
+    url = models.URLField(_(u'url address'), blank=True)
+
+    def filename(self):
+        if self.title:
+            return self.title
+        elif self.image:
+            return basename(self.image.url)
+        elif self.url:
+            return basename(urlsplit(self.url).path)
+        return 'image%d' % self.id
 
     def get_absolute_url(self):
         if self.image:
@@ -154,7 +165,7 @@ class EntryAdmin(admin.ModelAdmin):
         (None, {'fields': ('author',)}),
         ('Entry information', {'fields': ('title', 'timestamp')}),
         #('Entry information', {'fields': ('title',)}),
-        ('Entry content', {'fields': ('body',)}),
+        ('Entry content', {'fields': ('html', 'body',)}),
     )
     inlines = (ImageInline,)
 

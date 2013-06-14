@@ -10,8 +10,8 @@
  *     Blog Entry HTML template.
  *
 {% endcomment %}
-{% load static from staticfiles %}
 {% load url from future %}
+{% load nameof from accounts_tags %}
 
 <div class="block">
     <a class="header" href="{% url "archive_id" %}{{ entry.id }}/" 
@@ -19,21 +19,25 @@
     </a>
     <span class="postinfo">
         <span>Posted on <span class="timestamp">{{ entry.timestamp }}</span> by</span>
-        <a href="{% url "about" %}{{ entry.author.username }}/" 
-           title="{{ entry.author.get_profile }} | {{ entry.author.title }}">{{ entry.author.get_profile }}</a>
+        <a href="{% url 'accounts.views.about' username=entry.author.username %}" 
+           title="{% nameof  entry.author %}{% if entry.author.title %} | {{ entry.author.title }}{% endif %}">
+            <span>{% nameof entry.author %}</span>
+        </a>
     </span>
 </div>
-{% if entry.image or entry.image_url %}
+{% if entry.images %}
     <div class="center">
         {% if entry.image %}
-            <img src="{% static entry.image %}" alt="Blog Entry {{ entry.id }} Image" />
-        {% else %}
-            <img src="{{ entry.image_url }}" alt="Blog Entry {{ entry.id }} Image" />
+            <img src="{{ entry.image.get_absolute_url }}" alt="Blog Entry {{ entry.pk }} Image" />
         {% endif %}
     </div>
 {% endif %}
 <ul>
     {% autoescape off %}
-        <span>{{ entry.body|linebreaks }}</span>
+        {% if entry.html %}
+            <span>{{ entry.body_html }}</span>
+        {% else %}
+            <span>{{ entry.body_html|linebreaks }}</span>
+        {% endif %}
     {% endautoescape %}
 </ul>

@@ -12,9 +12,9 @@
  *
 {% endcomment %}
 
-{% with entries|first as entry %}
-{% block title %}{{ entries }} | Blog | {{ me }}{% endblock %}
+{% block title %}{{ entries }} | Blog | {% endblock %}
 {% block blog_content %}
     <h2>Blog Entry {{ entries.id }}</h2>
     {% include "blog/entry.html" %}
 {% endblock %}
+

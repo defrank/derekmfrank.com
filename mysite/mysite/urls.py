@@ -1,4 +1,4 @@
-# $Id: urls.py,v 1.8 2013-06-12 14:33:32-07 dmf - $
+# $Id: urls.py,v 1.9 2013-06-14 02:16:58-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -17,20 +17,13 @@ from django.contrib import admin
 admin.autodiscover()
 
 
-urlpatterns = patterns('mysite.views',
-    url(r'^$', 'home', name='home'),
-    url(r'^about/$', 'aboutme', name='aboutme'),
-    url(r'^about/dmf/$', 'aboutme'),
-    url(r'^about/mff/$', 'aboutmff', name='aboutmff'),
-    url(r'^about/(?P<username>\w+)/$', 'about'),
-)
-
-urlpatterns += patterns('',
+urlpatterns = patterns('',
     # Homepage, News Feed
-    #url(r'^', include('feed.urls')),
+    url(r'^$', 'feed.views.feed', name='home'),
     url(r'^feed/', include('feed.urls')),
-    # Accounts
-    url(r'^accounts/', include('accounts.urls')),
+    # Accounts, About
+    url(r'^about/$', 'accounts.views.aboutme', name='aboutme'),
+    url(r'^user/', include('accounts.urls')),
     # Portfolio
     url(r'^portfolio/', include('portfolio.urls')),
     # Blog

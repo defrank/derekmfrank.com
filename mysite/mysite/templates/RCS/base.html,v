@@ -1,9 +1,14 @@
-head	1.7;
+head	1.8;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.8
+date	2013.06.14.09.16.58;	author dmf;	state -;
+branches;
+next	1.7;
 
 1.7
 date	2013.06.12.21.33.32;	author dmf;	state -;
@@ -45,14 +50,14 @@ desc
 @@
 
 
-1.7
+1.8
 log
 @-
 @
 text
 @{% comment %}<!--
 /*
- * $Id: base.html,v 1.6 2013-06-11 16:31:46-07 dmf - $
+ * $Id: base.html,v 1.7 2013-06-12 14:33:32-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -79,7 +84,7 @@ text
     <meta name="author" content="Derek M. Frank" />
     <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
     <meta name="Description" content="Derek Michael Frank's personal website." />
-    <title>{% block title %}{% nameof me %}{% endblock %}</title>
+    <title>{% block title %}{% endblock %}{% block site_title %}{% nameof me %}{% endblock %}</title>
     {% block viewport %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
@@ -144,7 +149,7 @@ text
                             <li id="nb-portfolio"><a href="{% url "portfolio" %}" title="My portfolio">Portfolio</a></li>
                             <li id="nb-about"><a href="{% url "aboutme" %}" title="About {% nameof me %}">About</a></li>
                             <li class="nb-separator"><span class="nb-separator">|</span></li>
-                            <li id="nb-mff"><a href="{% url "aboutmff" %}" title="Michael Frank">MFF</a></li>
+                            <li id="nb-mff"><a href="{% url 'accounts.views.aboutmff' %}" title="Michael Frank">MFF</a></li>
                         </ul>
                     </div>
                     <div id="navbarwidget" >
@@ -181,6 +186,23 @@ text
     {% block body_script %}{% endblock %}
 </body>
 </html>
+@
+
+
+1.7
+log
+@-
+@
+text
+@d3 1
+a3 1
+ * $Id: base.html,v 1.6 2013-06-11 16:31:46-07 dmf - $
+d30 1
+a30 1
+    <title>{% block title %}{% nameof me %}{% endblock %}</title>
+d95 1
+a95 1
+                            <li id="nb-mff"><a href="{% url "aboutmff" %}" title="Michael Frank">MFF</a></li>
 @
 
 
