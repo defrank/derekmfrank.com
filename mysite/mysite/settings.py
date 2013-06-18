@@ -1,4 +1,4 @@
-# $Id: settings.py,v 1.6 2013-06-12 14:33:32-07 dmf - $
+# $Id: settings.py,v 1.7 2013-06-17 17:48:24-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -172,6 +172,7 @@ INSTALLED_APPS = (
     'feed',
     'portfolio',
     'blog',
+    'business',
     'mysite',
 )
 

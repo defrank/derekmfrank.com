@@ -1,0 +1,43 @@
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.06.18.00.48.24;	author dmf;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@{% extends "base.html" %}
+{% comment %}
+ *
+ * $Id: aboutme.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
+ * Derek Frank (dmfrank@@gmx.com)
+ *
+ * NAME
+ *     about.html
+ *
+ * DESCRIPTION
+ *     About someone HTML template.
+ *
+{% endcomment %}
+{% load nameof from accounts_tags %}
+
+{% block title %}About {% nameof myuser %} | {% endblock %}
+
+{% block navbar_class %}nb-about{% endblock %}
+
+{% block body_inner_content %}{% include "accounts/about_content.html" %}{% endblock %}
+@

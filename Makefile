@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.12 2013-06-14 02:16:58-07 dmf - $
+# $Id: Makefile,v 1.13 2013-06-17 17:48:24-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -52,6 +52,7 @@ DIR_ACCOUNTS    = ${DIR_APPS}accounts/
 DIR_FEED        = ${DIR_APPS}feed/
 DIR_PORTFOLIO   = ${DIR_APPS}portfolio/
 DIR_BLOG        = ${DIR_APPS}blog/
+DIR_BUSINESS    = ${DIR_APPS}business/
 
 ## TEMPLATES
 TEMPLATEFILES   = ${DIR_TEMPLATES}base.html     ${DIR_TEMPLATES}home.html
@@ -90,9 +91,8 @@ APP_ACCOUNTS    = ${DIR_ACCOUNTS}__init__.py    ${DIR_ACCOUNTS}urls.py         \
 				  ${ACCOUNTS_TAGS}accounts_tags.py                             \
 				  ${ACCOUNTS_TEMP}about_content.html                           \
 				  ${ACCOUNTS_TEMP}source_display.html                          \
-				  ${ACCOUNTS_TEMP}about.html                                   \
-				  ${ACCOUNTS_TEMP}aboutme.html                                 \
-				  ${ACCOUNTS_TEMP}aboutmff.html
+				  ${ACCOUNTS_TEMP}user.html                                    \
+				  ${ACCOUNTS_TEMP}aboutme.html                                 
 FEED_TEMP       = ${DIR_FEED}templates/feed/
 APP_FEED        = ${DIR_FEED}__init__py         ${DIR_FEED}urls.py             \
 				  ${DIR_FEED}views.py           ${DIR_FEED}models.py           \
@@ -106,13 +106,18 @@ BLOG_TEMP       = ${DIR_BLOG}templates/blog/
 APP_BLOG        = ${DIR_BLOG}__init__.py        ${DIR_BLOG}urls.py             \
 				  ${DIR_BLOG}views.py           ${DIR_BLOG}models.py           \
 				  ${DIR_BLOG}tests.py                                          \
-				  ${BLOG_TEMP}entries.html                                     \
-				  ${BLOG_TEMP}entry.html                                       \
+				  ${BLOG_TEMP}blog.html                                        \
+				  ${BLOG_TEMP}recent.html                                      \
 				  ${BLOG_TEMP}links.html                                       \
-				  ${BLOG_TEMP}entry_detail.html                                \
-				  ${BLOG_TEMP}index.html
+				  ${BLOG_TEMP}index.html                                       \
+				  ${BLOG_TEMP}entry.html                                       \
+				  ${BLOG_TEMP}entry_detail.html                                
+BUSINESS_TEMP   = ${DIR_BUSINESS}templates/business/
+APP_BUSINESS    = ${DIR_BUSINESS}__init__.py    ${DIR_BUSINESS}urls.py         \
+				  ${DIR_BUSINESS}views.py       ${DIR_BUSINESS}models.py       \
+				  ${BUSINESS_TEMP}business.html
 APPSFILES       = ${APP_UTILS}  ${APP_WEBMASTER}   ${APP_ACCOUNTS}             \
-				  ${APP_FEED}   ${APP_PORTFOLIO}   ${APP_BLOG}
+				  ${APP_FEED}   ${APP_PORTFOLIO}   ${APP_BLOG} ${APP_BUSINESS}
 				  
 
 ## MISC

@@ -12,28 +12,19 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 
-from utils import response, get_default_user as _user
+from utils import response, get_default_user as _user, get_profile_or_user
 
 
 ####
 ## HELPERS
 
-def get_profile_or_user(username):
-    user = get_object_or_404(User, username__exact=username)
-    try:
-        profile = user.profile
-        return profile
-    except Exception:
-        return user
-
-
 ####
 ## VIEWS
 
-def about_view(request, template, context):
+def user_view(request, template, context):
     """All about views: are about users."""
     if not template:
-        template = 'accounts/about.html'
+        template = 'accounts/user.html'
     return response(request, template, context)
 
 
@@ -45,27 +36,15 @@ def aboutme(request):
     return response(request, template, context)
 
 
-def aboutmff(request):
-    """About MFF"""
-    template = 'accounts/aboutmff.html'
-    context = {
-        'myuser': get_profile_or_user('mff'),
-    }
-    return response(request, template, context)
-
-
-def about(request, username):
+def user(request, username):
     """
     About someone: a specified user.
     
     Takes a username.
     """
-    #user = get_profile_or_user(username)
-    #print user.get_full_name()
-    template = 'accounts/about.html'
+    template = 'accounts/user.html'
     context = {
         'myuser': get_profile_or_user(username),
-        #'myuser': user,
     }
     return response(request, template, context)
 

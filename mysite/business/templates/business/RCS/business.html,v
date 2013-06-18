@@ -1,8 +1,30 @@
-{% extends "base.html" %}
+head	1.1;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.1
+date	2013.06.18.00.48.24;	author dmf;	state -;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.1
+log
+@-
+@
+text
+@{% extends "base.html" %}
 {% comment %}
  *
  * $Id: aboutmff.html,v 1.1 2013-06-11 16:31:46-07 dmf - $
- * Derek Frank (dmfrank@gmx.com)
+ * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
  *     aboutmff.html
@@ -62,7 +84,7 @@
                 <span class="block">{% nameof myuser %}</span>
                 <span class="block">{{ myuser.title }}</span>
                 <a class="block" href="mailto:{{ myuser.email }}" 
-                   title="Contact {% nameof myuser %} via {{ myuser.email }}">{{ myuser.email_name|default:myuser.email }}</a>
+                   title="Contact {% nameof myuser %} via {{ myuser.email }}">{{ myuser.email_name|default:myuser.email|capfirst}}</a>
                 <span class="block">{{ myuser.description|linebreaks }}</span>
             </ul>
             <h3>Other Sources</h3>
@@ -74,3 +96,4 @@
         </div>
     </div>
 {% endblock %}
+@

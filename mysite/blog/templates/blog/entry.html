@@ -14,12 +14,12 @@
 {% load nameof from accounts_tags %}
 
 <div class="block">
-    <a class="header" href="{% url "archive_id" %}{{ entry.id }}/" 
+    <a class="header" href="{% url 'blog.views.archive_id' id=entry.id %}" 
        title="View blog entry {{ entry.id }}"><h3>{{ entry.title }}</h3>
     </a>
     <span class="postinfo">
         <span>Posted on <span class="timestamp">{{ entry.timestamp }}</span> by</span>
-        <a href="{% url 'accounts.views.about' username=entry.author.username %}" 
+        <a href="{% url 'blog.views.archive_author' username=entry.author.username %}" 
            title="{% nameof  entry.author %}{% if entry.author.title %} | {{ entry.author.title }}{% endif %}">
             <span>{% nameof entry.author %}</span>
         </a>

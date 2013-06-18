@@ -30,6 +30,9 @@ class NameOfNode(template.Node):
     def render(self, context):
         try:
             myuser = self.user.resolve(context)
-            return u'%s' % (myuser.get_full_name() or myuser.get_profile() or myuser.get_short_name() or myuser)
+            try:
+                 return u'%s' % (myuser.get_profile() or myuser.get_full_name() or myuser.get_short_name() or myuser)
+            except AttributeError:
+                return u'%s' % (myuser.get_full_name() or myuser.get_short_name() or myuser)
         except template.VariableDoesNotExist:
             return ''

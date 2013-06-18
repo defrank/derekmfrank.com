@@ -1,9 +1,14 @@
-head	1.9;
+head	1.10;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.10
+date	2013.06.18.00.48.24;	author dmf;	state -;
+branches;
+next	1.9;
 
 1.9
 date	2013.06.14.09.16.58;	author dmf;	state -;
@@ -55,7 +60,7 @@ desc
 @@
 
 
-1.9
+1.10
 log
 @-
 @
@@ -63,7 +68,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: home.html,v 1.8 2013-06-12 14:33:32-07 dmf - $
+ * $Id: home.html,v 1.9 2013-06-14 02:16:58-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -87,7 +92,7 @@ text
                 {% autoescape off %}<ul>{{ news.body }}</ul>{% endautoescape %}
                 <span class="postinfo">
                     <span>Posted on <span class="timestamp">{{ news.timestamp|date:"M d, Y" }}</span> by</span>
-                    <a href="{% url 'accounts.views.about' username=news.author.username  %}" 
+                    <a href="{% url 'accounts.views.user' username=news.author.username  %}" 
                         title="{% nameof news.author %}{% if news.author.title %} | {{ news.author.title }}{% endif %}">
                         <span>{% nameof news.author %}</span>
                     </a>
@@ -96,6 +101,20 @@ text
         </div>
     </div>
 {% endblock %}
+@
+
+
+1.9
+log
+@-
+@
+text
+@d4 1
+a4 1
+ * $Id: home.html,v 1.8 2013-06-12 14:33:32-07 dmf - $
+d28 1
+a28 1
+                    <a href="{% url 'accounts.views.about' username=news.author.username  %}" 
 @
 
 

@@ -51,10 +51,19 @@ def require_login(request):
 
 
 ####
-## MODELS
+## MODEL HELPERS
 
 def get_default_user():
     user = get_object_or_404(User, pk=1)
+    try:
+        profile = user.profile
+        return profile
+    except Exception:
+        return user
+
+
+def get_profile_or_user(username):
+    user = get_object_or_404(User, username__exact=username)
     try:
         profile = user.profile
         return profile

@@ -1,9 +1,14 @@
-head	1.11;
+head	1.12;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.12
+date	2013.06.18.00.48.24;	author dmf;	state -;
+branches;
+next	1.11;
 
 1.11
 date	2013.06.12.21.36.27;	author dmf;	state -;
@@ -65,13 +70,13 @@ desc
 @@
 
 
-1.11
+1.12
 log
 @-
 @
 text
 @/*******************************************************************************
- * $Id: style.css,v 1.10 2013-06-11 16:31:46-07 dmf - $                                                                       
+ * $Id: style.css,v 1.11 2013-06-12 14:36:27-07 dmf - $                                                                       
  * Derek Frank (derekmfrank@@gmail.com)                                          
  *                                                                              
  * Theme Name: dmf
@@ -492,16 +497,36 @@ img#mypic {
     border-radius:                  12px;
 }
 
-.blogpostborder {
+.blogentryborder {
     border-top: 1px dashed #00ff00;
     max-width: 95%;
     margin-bottom: 10px;
+}
+
+.blogendborder {
+    border-top:                     1px solid #cccccc;
+    margin-bottom:                  10px;
 }
 
 .topic {
     margin:     10px;
     padding:    5px;
 }
+@
+
+
+1.11
+log
+@-
+@
+text
+@d2 1
+a2 1
+ * $Id: style.css,v 1.10 2013-06-11 16:31:46-07 dmf - $                                                                       
+d423 1
+a423 1
+.blogpostborder {
+d427 5
 @
 
 

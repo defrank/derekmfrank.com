@@ -1,6 +1,6 @@
 {% comment %}<!--
 /*
- * $Id: base.html,v 1.8 2013-06-14 02:16:58-07 dmf - $
+ * $Id: base.html,v 1.9 2013-06-17 17:48:24-07 dmf - $
  * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
@@ -92,7 +92,7 @@
                             <li id="nb-portfolio"><a href="{% url "portfolio" %}" title="My portfolio">Portfolio</a></li>
                             <li id="nb-about"><a href="{% url "aboutme" %}" title="About {% nameof me %}">About</a></li>
                             <li class="nb-separator"><span class="nb-separator">|</span></li>
-                            <li id="nb-mff"><a href="{% url 'accounts.views.aboutmff' %}" title="Michael Frank">MFF</a></li>
+                            <li id="nb-mff"><a href="{% url 'business.views.user' username="mff" %}" title="Michael Frank">MFF</a></li>
                         </ul>
                     </div>
                     <div id="navbarwidget" >

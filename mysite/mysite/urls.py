@@ -1,4 +1,4 @@
-# $Id: urls.py,v 1.9 2013-06-14 02:16:58-07 dmf - $
+# $Id: urls.py,v 1.10 2013-06-17 17:48:24-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -28,6 +28,8 @@ urlpatterns = patterns('',
     url(r'^portfolio/', include('portfolio.urls')),
     # Blog
     url(r'^blog/', include('blog.urls')),
+    # Business
+    url(r'^business/', include('business.urls')),
 
     # Enable admin documentation:
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

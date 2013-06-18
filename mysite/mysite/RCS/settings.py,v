@@ -1,9 +1,14 @@
-head	1.6;
+head	1.7;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.7
+date	2013.06.18.00.48.24;	author dmf;	state -;
+branches;
+next	1.6;
 
 1.6
 date	2013.06.12.21.33.32;	author dmf;	state -;
@@ -40,12 +45,12 @@ desc
 @@
 
 
-1.6
+1.7
 log
 @-
 @
 text
-@# $Id: settings.py,v 1.5 2013-06-11 16:31:46-07 dmf - $
+@# $Id: settings.py,v 1.6 2013-06-12 14:33:32-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -219,6 +224,7 @@ INSTALLED_APPS = (
     'feed',
     'portfolio',
     'blog',
+    'business',
     'mysite',
 )
 
@@ -257,6 +263,18 @@ LOGGING = {
 #)
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+@
+
+
+1.6
+log
+@-
+@
+text
+@d1 1
+a1 1
+# $Id: settings.py,v 1.5 2013-06-11 16:31:46-07 dmf - $
+d175 1
 @
 
 

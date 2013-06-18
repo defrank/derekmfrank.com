@@ -1,9 +1,14 @@
-head	1.8;
+head	1.9;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.9
+date	2013.06.18.00.48.24;	author dmf;	state -;
+branches;
+next	1.8;
 
 1.8
 date	2013.06.14.09.16.58;	author dmf;	state -;
@@ -50,14 +55,14 @@ desc
 @@
 
 
-1.8
+1.9
 log
 @-
 @
 text
 @{% comment %}<!--
 /*
- * $Id: base.html,v 1.7 2013-06-12 14:33:32-07 dmf - $
+ * $Id: base.html,v 1.8 2013-06-14 02:16:58-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -149,7 +154,7 @@ text
                             <li id="nb-portfolio"><a href="{% url "portfolio" %}" title="My portfolio">Portfolio</a></li>
                             <li id="nb-about"><a href="{% url "aboutme" %}" title="About {% nameof me %}">About</a></li>
                             <li class="nb-separator"><span class="nb-separator">|</span></li>
-                            <li id="nb-mff"><a href="{% url 'accounts.views.aboutmff' %}" title="Michael Frank">MFF</a></li>
+                            <li id="nb-mff"><a href="{% url 'business.views.user' username="mff" %}" title="Michael Frank">MFF</a></li>
                         </ul>
                     </div>
                     <div id="navbarwidget" >
@@ -186,6 +191,20 @@ text
     {% block body_script %}{% endblock %}
 </body>
 </html>
+@
+
+
+1.8
+log
+@-
+@
+text
+@d3 1
+a3 1
+ * $Id: base.html,v 1.7 2013-06-12 14:33:32-07 dmf - $
+d95 1
+a95 1
+                            <li id="nb-mff"><a href="{% url 'accounts.views.aboutmff' %}" title="Michael Frank">MFF</a></li>
 @
 
 

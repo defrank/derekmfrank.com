@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% comment %}
  *
- * $Id: home.html,v 1.9 2013-06-14 02:16:58-07 dmf - $
+ * $Id: home.html,v 1.10 2013-06-17 17:48:24-07 dmf - $
  * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
@@ -25,7 +25,7 @@
                 {% autoescape off %}<ul>{{ news.body }}</ul>{% endautoescape %}
                 <span class="postinfo">
                     <span>Posted on <span class="timestamp">{{ news.timestamp|date:"M d, Y" }}</span> by</span>
-                    <a href="{% url 'accounts.views.about' username=news.author.username  %}" 
+                    <a href="{% url 'accounts.views.user' username=news.author.username  %}" 
                         title="{% nameof news.author %}{% if news.author.title %} | {{ news.author.title }}{% endif %}">
                         <span>{% nameof news.author %}</span>
                     </a>
