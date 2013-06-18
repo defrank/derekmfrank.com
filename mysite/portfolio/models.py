@@ -127,6 +127,11 @@ class Education(models.Model):
     graduation_date = models.DateField(_(u'graduation date'))
     repository_url = models.URLField(_(u'coursework repository link'), blank=True)
 
+    def repository_name(self):
+        if repository_url:
+            return '%s' % urlsplit(self.repository_url).netloc
+        return ''
+
     def get_repository_name(self):
         if repository_url:
             return '%s' % urlsplit(self.repository_url).netloc
@@ -163,6 +168,11 @@ class Course(models.Model):
     repository_url = models.URLField(_(u'repository link'), blank=True)
     description = models.TextField(_(u'description'), blank=True)
 
+    def repository_name(self):
+        if self.repository_url:
+            return '%s' % urlsplit(self.repository_url).netloc
+        return ''
+
     def get_repository_name(self):
         if self.repository_url:
             return '%s' % urlsplit(self.repository_url).netloc
@@ -196,6 +206,18 @@ class Assignment(models.Model):
     url = models.URLField(_(u'website link'), blank=True)
     repository_url = models.URLField(_(u'repository link'), blank=True)
     description = models.TextField(_(u'description'), blank=True)
+
+    def programming_language(self):
+        try:
+            pl = self.programming_languages.all()
+            return '%s' % pl[0]
+        except Exception:
+            return ''
+
+    def repository_name(self):
+        if self.repository_url:
+            return '%s' % urlsplit(self.repository_url).netloc
+        return ''
 
     def get_repository_name(self):
         if self.repository_url:
@@ -279,16 +301,16 @@ class AssignmentProgrammingLanguageInline(admin.TabularInline):
 
 class ProjectAdmin(admin.ModelAdmin):
     def get_author(self, obj):
-        return '%s' % obj.author.get_profile()
-    get_author.short_description = u'Project author'
+        return '%s' % obj.author.get_full_name()
+    get_author.short_description = u'Author'
     list_display = ('title', 'get_repository_name', 'date', 'get_author', 'description')
     inlines = (ProjectProgrammingLanguageInline,)
 
 
 class EducationAdmin(admin.ModelAdmin):
     def get_author(self, obj):
-        return '%s' % obj.author.get_profile
-    get_author.short_description = u'Project author'
+        return '%s' % obj.author.get_full_name()
+    get_author.short_description = u'Author'
     list_display = ('get_author', 'name', 'acronym', 'degree', 'major', 'graduation_date')
     inlines = (CourseInline,)
 

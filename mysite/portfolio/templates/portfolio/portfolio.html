@@ -20,22 +20,27 @@
     <div id="content-left">
         <div class="box" >
             <h2>Portfolio</h2>
-            {% if not projects and not education %}
-                <span class="italic">Coming soon . . .</span>
-            {% else %}
+            {% if projects or education %}
                 {% if projects %}
                     {% include "portfolio/projects.html" %}
+                {% endif %}
+                {% if projects and education %}
+                    <div class="center endborder"></div>
                 {% endif %}
                 {% if education %}
                     {% include "portfolio/education.html" %}
                 {% endif %}
+            {% else %}
+                <span class="italic">Coming soon . . .</span>
             {% endif %}
         </div>
     </div>
 
     <div id="content-right" >
-        {% if sources %}
-            {% include "portfolio/sources.html" %}
-        {% endif %}
+        {% with repos=myuser.repositories.all profiles=myuser.profiles.all %}
+            {% if repos or profiles %}
+                {% include "portfolio/sources.html" %}
+            {% endif %}
+        {% endwith %}
     </div>
 {% endblock %}

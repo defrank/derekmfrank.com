@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.14 2013-06-17 20:06:04-07 dmf - $
+# $Id: Makefile,v 1.15 2013-06-17 21:52:29-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -102,6 +102,7 @@ APP_PORTFOLIO   = ${DIR_PORTFOLIO}__init__.py   ${DIR_PORTFOLIO}urls.py        \
 				  ${DIR_PORTFOLIO}views.py      ${DIR_PORTFOLIO}models.py      \
 				  ${DIR_PORTFOLIO}tests.py                                     \
 				  ${PORTFOLIO_TEMP}portfolio.html                              \
+				  ${PORTFOLIO_TEMP}sources.html                                \
 				  ${PORTFOLIO_TEMP}projects.html                               \
 				  ${PORTFOLIO_TEMP}education.html
 BLOG_TEMP       = ${DIR_BLOG}templates/blog/

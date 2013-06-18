@@ -13,10 +13,5 @@ from django.conf.urls import patterns, url
 urlpatterns = patterns('portfolio.views',
     # Portfolio
     url(r'^$', 'portfolio', name='portfolio'),
-    url(r'^(?P<username>\w+)/$', 'someone'),
+    url(r'^(?P<username>\w+)/$', 'user'),
 )
-
-# Necessary redirection for unavailable pages
-#urlpatterns += patterns('',
-    #url(r'^.+$', views.portfolio),
-#)

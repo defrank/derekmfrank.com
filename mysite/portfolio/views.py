@@ -35,27 +35,18 @@ def portfolio_views(request, context, author):
 def portfolio(request):
     """Outputs the default user's portfolio"""
     author = _user
+
+    # Projects
     projects = Project.objects.filter(author=author)
+
+    # Education
     education = Education.objects.filter(author=author)
-    #departments = Education.DEPARTMENT_CHOICES
-    departments = Course.objects.values_list('department').distinct()
-    """
-    for i in institutions:
-        dept_courses = []
-        for d in departments:
-            courses = Course.objects.filter(department=d[0])
-            course_asgs = []
-            if courses:
-                for c in courses:
-                    asgs = Assignment.objects.filter(course=c).order_by('identification')
-                    course_asgs.append((c, asgs))
-            if course_asgs:
-                dept_courses.append((d[-1], course_asgs))
-        education.append((i, dept_courses))
-    """
+        # Departments
+    choices = Course.objects.values_list('department', flat=True).distinct()
+    departments = [ (d, D) for d,D in Education.DEPARTMENT_CHOICES if d in choices ]
 
     context = {
-        'author': author,
+        'myuser': author,
         'projects': projects,
         'education': education,
         'departments': departments,
@@ -63,7 +54,7 @@ def portfolio(request):
     return portfolio_views(request, context, author)
 
 
-def someone(request, username):
+def user(request, username):
     """Takes a username value"""
     author = User.objects.get(username=username)
     context = {

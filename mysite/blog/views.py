@@ -22,7 +22,7 @@ def blog_view(request, template, context):
     """All blog views: contain links menu"""
     # Sources
     choices = Link.objects.values_list('category', flat=True).distinct()
-    categories = [ (choices, C) for c,C in Link.CATEGORY_CHOICES if c in choices ]
+    categories = [ (c, C) for c,C in Link.CATEGORY_CHOICES if c in choices ]
     sources = [ (category[-1], Link.objects.filter(category=category[0])) for category in categories ]
 
     # Previous entries
