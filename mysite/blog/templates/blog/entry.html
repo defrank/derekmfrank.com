@@ -13,31 +13,28 @@
 {% load url from future %}
 {% load nameof from accounts_tags %}
 
-<div class="block">
-    <a class="header" href="{% url 'blog.views.archive_id' id=entry.id %}" 
-       title="View blog entry {{ entry.id }}"><h3>{{ entry.title }}</h3>
-    </a>
-    <span class="postinfo">
-        <span>Posted on <span class="timestamp">{{ entry.timestamp }}</span> by</span>
-        <a href="{% url 'blog.views.archive_author' username=entry.author.username %}" 
-           title="{% nameof  entry.author %}{% if entry.author.title %} | {{ entry.author.title }}{% endif %}">
-            <span>{% nameof entry.author %}</span>
+<div>
+    <div class="block">
+        <a class="header" href="{% url 'blog.views.archive_id' id=entry.id %}" 
+           title="View blog entry {{ entry.id }}"><h3>{{ entry.title }}</h3>
         </a>
-    </span>
-</div>
-{% if entry.images %}
-    <div class="center">
-        {% if entry.image %}
-            <img src="{{ entry.image.get_absolute_url }}" alt="Blog Entry {{ entry.pk }} Image" />
-        {% endif %}
+        <span class="postinfo">
+            <span>Posted on <span class="timestamp">{{ entry.timestamp }}</span> by</span>
+            <a href="{% url 'accounts.views.user' username=entry.author.username %}" 
+               title="View profile for {% nameof entry.author %}{% if entry.author.title %} | {{ entry.author.title }}{% endif %}">
+                <span>{% nameof entry.author %}</span>
+            </a>
+        </span>
     </div>
-{% endif %}
-<ul>
-    {% autoescape off %}
-        {% if entry.html %}
-            <span>{{ entry.body_html }}</span>
-        {% else %}
-            <span>{{ entry.body_html|linebreaks }}</span>
-        {% endif %}
-    {% endautoescape %}
-</ul>
+    <div>
+        <ul>
+            {% autoescape off %}
+                {% if entry.html %}
+                    <span>{{ entry.body_html }}</span>
+                {% else %}
+                    <span>{{ entry.body_html|linebreaks }}</span>
+                {% endif %}
+            {% endautoescape %}
+        </ul>
+    </div>
+</div>

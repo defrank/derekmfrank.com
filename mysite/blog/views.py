@@ -20,10 +20,15 @@ from models import Entry, Link
 
 def blog_view(request, template, context):
     """All blog views: contain links menu"""
+    # Sources
     choices = Link.objects.values_list('category', flat=True).distinct()
     categories = [ (choices, C) for c,C in Link.CATEGORY_CHOICES if c in choices ]
     sources = [ (category[-1], Link.objects.filter(category=category[0])) for category in categories ]
 
+    # Previous entries
+    previous = Entry.objects.all()[:16]
+
+    # Dates archive
     dates = Entry.objects.values_list('timestamp', flat=True).distinct()
     dates_index = list(set([ date.year for date in set(dates) ]))
     for y in range(len(dates_index)):
@@ -33,10 +38,12 @@ def blog_view(request, template, context):
             months[m]= (months[m], days)
         dates_index[y] = (dates_index[y], months)
 
+    # Author archive
     ids = list(set(Entry.objects.values_list('author', flat=True).distinct()))
     authors_index = [ User.objects.get(pk=id) for id in ids ]
             
     context['sources'] = sources
+    context['previous'] = previous
     context['authors'] = authors_index
     context['dates'] = dates_index
     return response(request, template, context)

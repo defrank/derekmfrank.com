@@ -1,0 +1,17 @@
+{% comment %}
+ *
+ * $Id: entry_detail.html,v 1.1 2013-06-11 16:31:46-07 dmf - $
+ * Derek Frank (dmfrank@gmx.com)
+ *
+ * NAME
+ *     entries.html
+ *
+ * DESCRIPTION
+ *     Blog entries HTML template.
+ *
+{% endcomment %}
+
+{% for entry in entries %}
+    {% include "blog/entry.html" %}
+    {% if not forloop.last %}<div class="center blogentryborder"></div>{% endif %}
+{% endfor %}

@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.13 2013-06-17 17:48:24-07 dmf - $
+# $Id: Makefile,v 1.14 2013-06-17 20:06:04-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -101,17 +101,20 @@ PORTFOLIO_TEMP  = ${DIR_PORTFOLIO}templates/portfolio/
 APP_PORTFOLIO   = ${DIR_PORTFOLIO}__init__.py   ${DIR_PORTFOLIO}urls.py        \
 				  ${DIR_PORTFOLIO}views.py      ${DIR_PORTFOLIO}models.py      \
 				  ${DIR_PORTFOLIO}tests.py                                     \
-				  ${PORTFOLIO_TEMP}portfolio.html
+				  ${PORTFOLIO_TEMP}portfolio.html                              \
+				  ${PORTFOLIO_TEMP}projects.html                               \
+				  ${PORTFOLIO_TEMP}education.html
 BLOG_TEMP       = ${DIR_BLOG}templates/blog/
 APP_BLOG        = ${DIR_BLOG}__init__.py        ${DIR_BLOG}urls.py             \
 				  ${DIR_BLOG}views.py           ${DIR_BLOG}models.py           \
 				  ${DIR_BLOG}tests.py                                          \
 				  ${BLOG_TEMP}blog.html                                        \
 				  ${BLOG_TEMP}recent.html                                      \
-				  ${BLOG_TEMP}links.html                                       \
-				  ${BLOG_TEMP}index.html                                       \
+				  ${BLOG_TEMP}entries.html                                     \
 				  ${BLOG_TEMP}entry.html                                       \
-				  ${BLOG_TEMP}entry_detail.html                                
+				  ${BLOG_TEMP}links.html                                       \
+				  ${BLOG_TEMP}previous.html                                    \
+				  ${BLOG_TEMP}index.html                                       
 BUSINESS_TEMP   = ${DIR_BUSINESS}templates/business/
 APP_BUSINESS    = ${DIR_BUSINESS}__init__.py    ${DIR_BUSINESS}urls.py         \
 				  ${DIR_BUSINESS}views.py       ${DIR_BUSINESS}models.py       \

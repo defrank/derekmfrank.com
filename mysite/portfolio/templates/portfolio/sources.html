@@ -1,0 +1,23 @@
+{% comment %}
+ *
+ * $Id: portfolio.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
+ * Derek Frank (dmfrank@gmx.com)
+ *
+ * NAME
+ *     sources.html
+ *
+ * DESCRIPTION
+ *     Portfolio sources HTML template.
+ *
+{% endcomment %}
+
+<div class="box">
+    <h2 class="sub">More Sources</h2>
+    <ul>
+        {% for source in sources %}
+            <div class="block">
+                <a href="{{ source.get_absolute_url }}" title="Visit {{ source.title }}">{{ source.title }}</a>
+            </div>
+        {% endfor %}
+    </ul>
+</div>

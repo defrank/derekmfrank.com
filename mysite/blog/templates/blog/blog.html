@@ -20,29 +20,25 @@
 {% block body_inner_content %}
     <div id="content-left">
         <div class="box" >
-            {% block blog_content %}
-                <h2>Blog</h2>
-                {% for entry in entries %}
-                    {% include "blog/entry.html" %}
-                    {% if not forloop.last %}<div class="center blogentryborder"></div>{% endif %}
-                {% endfor %}
-            {% endblock %}
-            {% block blog_more %}{% endblock %}
+            <h2>Blog</h2>
+            {% if entries %}
+                {% include "blog/entries.html" %}
+                {% block blog_more %}{% endblock %}
+            {% else %}
+                <span>No entries . . .</span>
+            {% endif %}
         </div>
     </div>
 
     <div id="content-right">
         {% if sources %}
-            <div class="box">
-                <h2 class="sub">Interersting reads</h2>
-                {% include "blog/links.html" %}
-            </div>
+            {% include "blog/links.html" %}
+        {% endif %}
+        {% if previous %}
+            {% include "blog/previous.html" %}
         {% endif %}
         {% if authors or dates %}
-            <div class="box">
-                <h2 class="sub">Archive</h2>
-                {% include "blog/index.html" %}
-            </div>
+            {% include "blog/index.html" %}
         {% endif %}
     </div>
 {% endblock %}

@@ -1,0 +1,33 @@
+{% comment %}
+ *
+ * $Id: previous.html,v 1.1 2013-06-17 20:06:04-07 dmf - $
+ * Derek Frank (dmfrank@gmx.com)
+ *
+ * NAME
+ *     previous.html
+ *
+ * DESCRIPTION
+ *     Blog previous entries HTML template.
+ *
+{% endcomment %}
+{% load url from future %}
+{% load nameof from accounts_tags %}
+
+<div class="box">
+    <h2 class="sub">Previous entries</h2>
+    <div>
+        {% for entry in previous %}
+            <a href="{% url 'blog.views.archive_id' id=entry.pk %}" 
+               title="Posted on {{ entry.timestamp }} by {% nameof entry.author %}{% if entry.author.title %} | {{ entry.author.title }}{% endif %}">
+                <span>{{ entry.title|truncatechars:48 }}</span><br />
+            </a>
+        {% endfor %}
+    </div>
+    <div class="center blogendborder"></div>
+    <div class="center">
+        <a href="{% url 'blog.views.blog' %}"
+           title="View all entries">
+            <span class="postinfo">View all entries . . .</span>
+       </a>
+    </div>
+</div>
