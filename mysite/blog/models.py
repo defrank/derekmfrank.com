@@ -134,6 +134,7 @@ class Link(models.Model):
         (u'TC', u'Technology'),
         (u'LH', u'Life Hacks'),
         (u'PO', u'Politics'),
+        (u'BG', u'Blogs'),
     )    
     category = models.CharField(_(u'category'), max_length=2, choices=CATEGORY_CHOICES)
     description = models.TextField()

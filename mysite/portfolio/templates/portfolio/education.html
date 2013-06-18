@@ -20,15 +20,15 @@
             {% if edu.degree %}
                 <h5>Degree:</h5>
                 <ul>
-                    <div class="block">
-                        <span>{{ edu.get_degree_display }}</span>
+                    <span>{{ edu.get_degree_display }}</span>
+                    <ul>
                         {% if edu.major %}
-                            <span>with major in {{ edu.get_major_display }}</span>
-                            {% if edu.minor %}
-                                <span>and minor in {{ edu.get_minor_display }}</span>
-                            {% endif %}
+                            <li>Major in {{ edu.get_major_display }}</li>
                         {% endif %}
-                    </div>
+                        {% if edu.minor %}
+                            <li>Minor in {{ edu.get_minor_display }}</li>
+                        {% endif %}
+                    </ul>
                 </ul>
             {% endif %}
             {% if departments %}
