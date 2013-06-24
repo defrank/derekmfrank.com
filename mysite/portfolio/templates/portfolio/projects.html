@@ -31,7 +31,7 @@
                 <h5 class="inline">Repository:</h5>
                 <a href="{{ project.repository_url }}"
                    title="Visit {{ project }} repository on {{ project.repository_name }}">
-                    <span>{{ project.repository_name }}</span>
+                    <span>{{ project.repository_name|capfirst }}</span>
                 </a>
             {% endif %}
             {% with langs=project.programming_languages.all %}

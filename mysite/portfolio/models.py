@@ -40,12 +40,12 @@ class Project(models.Model):
 
     def repository_name(self):
         if self.repository_url:
-            return '%s' % urlsplit(self.repository_url).netloc
+            return '%s' % urlsplit(self.repository_url).netloc.replace('www.', '')
         return ''
 
     def get_repository_name(self):
         if self.repository_url:
-            return '%s' % urlsplit(self.repository_url).netloc
+            return '%s' % urlsplit(self.repository_url).netloc.replace('www.', '')
         return ''
 
     def get_absolute_url(self):
@@ -134,12 +134,12 @@ class Education(models.Model):
 
     def repository_name(self):
         if self.repository_url:
-            return '%s' % urlsplit(self.repository_url).netloc
+            return '%s' % urlsplit(self.repository_url).netloc.replace('www.', '')
         return ''
 
     def get_repository_name(self):
         if self.repository_url:
-            return '%s' % urlsplit(self.repository_url).netloc
+            return '%s' % urlsplit(self.repository_url).netloc.replace('www.', '')
         return ''
 
     def get_absolute_url(self):
@@ -175,12 +175,12 @@ class Course(models.Model):
 
     def repository_name(self):
         if self.repository_url:
-            return '%s' % urlsplit(self.repository_url).netloc
+            return '%s' % urlsplit(self.repository_url).netloc.replace('www.', '')
         return ''
 
     def get_repository_name(self):
         if self.repository_url:
-            return '%s' % urlsplit(self.repository_url).netloc
+            return '%s' % urlsplit(self.repository_url).netloc.replace('www.', '')
         return ''
 
     def get_absolute_url(self):
@@ -221,12 +221,12 @@ class Assignment(models.Model):
 
     def repository_name(self):
         if self.repository_url:
-            return '%s' % urlsplit(self.repository_url).netloc
+            return '%s' % urlsplit(self.repository_url).netloc.replace('www.', '')
         return ''
 
     def get_repository_name(self):
         if self.repository_url:
-            return '%s' % urlsplit(self.repository_url).netloc
+            return '%s' % urlsplit(self.repository_url).netloc.replace('www.', '')
         return ''
 
     def get_absolute_url(self):
