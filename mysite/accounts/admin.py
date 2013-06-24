@@ -13,18 +13,25 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-from models import UserProfile
+from models import UserProfile, Image
 
 
 ####
-## ADMIN
+## INLINE
 
-## User Profile
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
     extra = 1
     can_delete = False
     verbose_name_plural = u'profile'
+
+class ImageInline(admin.StackedInline):
+    model = Image
+    extra = 0
+
+
+####
+## ADMIN
 
 class UserAdmin(UserAdmin):
     fieldsets = (
@@ -41,6 +48,7 @@ class UserAdmin(UserAdmin):
     )
     inlines = (
         UserProfileInline,
+        ImageInline,
     )
 
 

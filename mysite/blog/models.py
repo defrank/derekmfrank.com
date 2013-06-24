@@ -119,7 +119,7 @@ class Link(models.Model):
         (u'BG', u'Blogs'),
     )    
     category = models.CharField(_(u'category'), max_length=2, choices=CATEGORY_CHOICES)
-    description = models.TextField()
+    description = models.TextField(_('description'), blank=True)
 
     def get_absolute_url(self):
         return '%s' % self.url

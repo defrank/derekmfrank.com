@@ -61,7 +61,7 @@
                 <a class="block" href="mailto:{{ myuser.email }}" 
                    title="Contact {% nameof myuser %} via {{ myuser.email }}">{{ myuser.email_name|default:myuser.email|capfirst}}</a>
                 <span class="block">{{ myuser.description|linebreaks }}</span>
-                {% with contact_info=myuser.contact %}
+                {% with contact_info=myuser.contact_info %}
                     {% if contact_info %}
                         <span class="block">{{ contact_info.body|linebreaks }}</span>
                     {% else %}
@@ -69,12 +69,16 @@
                     {% endif %}
                 {% endwith %}
             </ul>
-            <h3>Other Sources</h3>
-            <ul>
-                {% for src in myuser.sources %}
-                    <a class="block" href="{{ src.get_absolute_url }}">{{ src.title }}</a>
-                {% endfor %}
-            </ul>
+            {% with sources=myuser.profiles.all %}
+                {% if sources %}
+                    <h3>Other Sources</h3>
+                    <ul>
+                        {% for src in sources %}
+                            <a class="block" href="{{ src.get_absolute_url }}">{{ src|cut:"www."|capfirst }}</a>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
         </div>
     </div>
 {% endblock %}

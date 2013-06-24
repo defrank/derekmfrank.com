@@ -35,7 +35,7 @@ class UserProfile(models.Model):
     middle_name = models.CharField(_(u'middle name'), max_length=32, blank=True)
     title = models.CharField(_(u'title or occupation'), max_length=64, blank=True)
     alternative_email = models.EmailField(_(u'alternative email address'), blank=True)
-    html = models.BooleanField(_('html in body?'))
+    html = models.BooleanField(_('html in description?'))
     description = models.TextField(_(u'description'), blank=True)
 
     def body_html(self):
@@ -83,6 +83,9 @@ class UserProfile(models.Model):
 
     def hobbies(self):
         return self.user.hobbies.all()
+
+    def contact_info(self):
+        return self.user.contact_info
 
     def topics(self):
         return self.user.topics.all()

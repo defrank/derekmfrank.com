@@ -128,12 +128,12 @@ class Education(models.Model):
     repository_url = models.URLField(_(u'coursework repository link'), blank=True)
 
     def repository_name(self):
-        if repository_url:
+        if self.repository_url:
             return '%s' % urlsplit(self.repository_url).netloc
         return ''
 
     def get_repository_name(self):
-        if repository_url:
+        if self.repository_url:
             return '%s' % urlsplit(self.repository_url).netloc
         return ''
 

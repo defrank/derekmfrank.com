@@ -14,7 +14,7 @@
 {% for source in sources %}
     <div class="block">
             <a href="{{ source.get_absolute_url }}" title="{{ source.description|default:source|capfirst }}">
-                <span>{{ source|capfirst }}</span>
+                <span>{{ source|cut:"www."|capfirst }}</span>
             </a>
     </div>
 {% endfor %}

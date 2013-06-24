@@ -18,7 +18,7 @@ from django.contrib.auth.models import User
 ## MODELS
 
 class ContactInformation(models.Model):
-    user = models.OneToOneField(User, related_name='contact')
+    user = models.OneToOneField(User, related_name='contact_info')
     body = models.TextField(_('contact information'))
 
     def __unicode__(self):
@@ -26,6 +26,8 @@ class ContactInformation(models.Model):
 
     class Meta:
         ordering = ('user', 'body')
+        verbose_name = u'contact information'
+        verbose_name_plural = u'contact information'
 
 
 class Topic(models.Model):
@@ -64,10 +66,16 @@ class BulletInline(admin.TabularInline):
 ## ADMIN
 
 class ContactInformationAdmin(admin.ModelAdmin):
-    list_display = ('user', 'body')
+    def get_user(self, obj):
+        return '%s' % obj.user.get_full_name()
+    get_user.short_description = u'Full name'
+    list_display = ('get_user', 'body')
 
 class TopicAdmin(admin.ModelAdmin):
-    list_display = ('user', 'title')
+    def get_user(self, obj):
+        return '%s' % obj.user.get_full_name()
+    get_user.short_description = u'Full name'
+    list_display = ('get_user', 'title')
     inlines = (BulletInline,)
 
 
