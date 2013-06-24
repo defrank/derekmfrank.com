@@ -68,26 +68,30 @@
                                                 </a>
                                             {% endif %}
                                         </div>
-                                        <ul>
-                                            {% for asg in course.assignments.all %}
-                                                <li>
-                                                    {% if asg.url %}<a href="{{ asg.url }}"
-                                                       title="Visit '{{ asg }}' specifications">{% endif %}
-                                                        <span>{{ asg.identification|title }} -</span>
-                                                        {% for pl in asg.programming_languages.all %}
-                                                            <span>{{ pl|title }}{% if not forloop.last %},{% endif %}</span>
-                                                        {% endfor %}
-                                                        <span>- {{ asg.title }}</span>
-                                                    {% if asg.url %}</a>{% endif %}
-                                                    {% if asg.repository_url %}
-                                                        <a href="{{ asg.repository_url }}"
-                                                           title="Visit '{{ asg }}' repository on {{ asg.repository_name|capfirst }}">
-                                                            <span>[{{ asg.repository_name|capfirst }}]</span>
-                                                        </a>
-                                                    {% endif %}
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
+                                        {% with assignments=course.assignments.all %}
+                                            {% if assignments %}
+                                                <ul>
+                                                    {% for asg in assignments %}
+                                                        <li>
+                                                            {% if asg.url %}<a href="{{ asg.url }}"
+                                                               title="Visit '{{ asg }}' specifications">{% endif %}
+                                                                <span>{{ asg.identification|title }} -</span>
+                                                                {% for pl in asg.programming_languages.all %}
+                                                                    <span>{{ pl|title }}{% if not forloop.last %},{% endif %}</span>
+                                                                {% endfor %}
+                                                                <span>- {{ asg.title }}</span>
+                                                            {% if asg.url %}</a>{% endif %}
+                                                            {% if asg.repository_url %}
+                                                                <a href="{{ asg.repository_url }}"
+                                                                   title="Visit '{{ asg }}' repository on {{ asg.repository_name|capfirst }}">
+                                                                    <span>[{{ asg.repository_name|capfirst }}]</span>
+                                                                </a>
+                                                            {% endif %}
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        {% endwith %}
                                     {% endif %}
                                 {% endfor %}
                             </ul>

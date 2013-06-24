@@ -74,7 +74,7 @@
                     <h3>Other Sources</h3>
                     <ul>
                         {% for src in sources %}
-                            <a class="block" href="{{ src.get_absolute_url }}">{{ src|cut:"www."|capfirst }}</a>
+                            <a class="block" href="{{ src.get_absolute_url }}">{{ src|capfirst }}</a>
                         {% endfor %}
                     </ul>
                 {% endif %}
