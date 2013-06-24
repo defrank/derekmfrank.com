@@ -14,7 +14,7 @@
 {% load url from future %}
 {% load nameof from accounts_tags %}
 
-{% block title %}{% nameof myuser %}{% if myuser.title %} | {{ myuser.title }}{% endif %}{% endblock %}
+{% block title %}{% nameof myuser %}{% if myuser.title %} | {{ myuser.title }} | {% endif %}{% endblock %}
 
 {% block navbar_class %}nb-about{% endblock %}
 
