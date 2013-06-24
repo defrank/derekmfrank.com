@@ -245,13 +245,13 @@ class Link(models.Model):
     priority = models.IntegerField(_(u'priority'), blank=True, null=True)
 
     def domain(self):
-        return '%s' % urlsplit(self.url).netloc.replace('www.')
+        return '%s' % urlsplit(self.url).netloc.replace('www.', '')
 
     def get_absolute_url(self):
         return '%s' % self.url
        
     def __unicode__(self):
-        return u'%s' % urlsplit(self.url).netloc.replace('www.')
+        return u'%s' % urlsplit(self.url).netloc.replace('www.', '')
 
     class Meta:
         abstract = True
