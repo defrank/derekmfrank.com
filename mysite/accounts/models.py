@@ -245,13 +245,13 @@ class Link(models.Model):
     priority = models.IntegerField(_(u'priority'), blank=True, null=True)
 
     def domain(self):
-        return '%s' % urlsplit(self.url).netloc
+        return '%s' % urlsplit(self.url).netloc.replace('www.')
 
     def get_absolute_url(self):
         return '%s' % self.url
        
     def __unicode__(self):
-        return u'%s' % urlsplit(self.url).netloc
+        return u'%s' % urlsplit(self.url).netloc.replace('www.')
 
     class Meta:
         abstract = True
@@ -279,7 +279,7 @@ class ProfileLink(Link):
     user = models.ForeignKey(User, related_name='profiles', default=_user)
 
     def __unicode__(self):
-        return u'%s profile' % urlsplit(self.url).netloc
+        return u'%s profile' % urlsplit(self.url).netloc.replace('www.', '')
 
     class Meta:
         ordering = ('user', 'priority', 'url')
@@ -294,7 +294,7 @@ class RepositoryLink(Link):
     user = models.ForeignKey(User, related_name='repositories', default=_user)
 
     def __unicode__(self):
-        return u'%s repository' % urlsplit(self.url).netloc
+        return u'%s repository' % urlsplit(self.url).netloc.replace('www.', '')
 
     class Meta:
         ordering = ('user', 'priority', 'url')
