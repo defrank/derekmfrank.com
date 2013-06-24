@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.15 2013-06-17 21:52:29-07 dmf - $
+# $Id: Makefile,v 1.16 2013-06-23 23:19:58-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -119,7 +119,8 @@ APP_BLOG        = ${DIR_BLOG}__init__.py        ${DIR_BLOG}urls.py             \
 BUSINESS_TEMP   = ${DIR_BUSINESS}templates/business/
 APP_BUSINESS    = ${DIR_BUSINESS}__init__.py    ${DIR_BUSINESS}urls.py         \
 				  ${DIR_BUSINESS}views.py       ${DIR_BUSINESS}models.py       \
-				  ${BUSINESS_TEMP}business.html
+				  ${BUSINESS_TEMP}business.html                                \
+				  ${BUSINESS_TEMP}mff.html
 APPSFILES       = ${APP_UTILS}  ${APP_WEBMASTER}   ${APP_ACCOUNTS}             \
 				  ${APP_FEED}   ${APP_PORTFOLIO}   ${APP_BLOG} ${APP_BUSINESS}
 				  

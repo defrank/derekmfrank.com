@@ -18,7 +18,7 @@ from os.path import basename, splitext
 from re import sub
 from urlparse import urlsplit
 
-from utils import get_default_user as _user
+from utils import get_default_user as _user, markdown_to_html
 
 
 ####
@@ -35,7 +35,14 @@ class UserProfile(models.Model):
     middle_name = models.CharField(_(u'middle name'), max_length=32, blank=True)
     title = models.CharField(_(u'title or occupation'), max_length=64, blank=True)
     alternative_email = models.EmailField(_(u'alternative email address'), blank=True)
-    description = models.TextField(_(u'description (html okay)'), blank=True)
+    html = models.BooleanField(_('html in body?'))
+    description = models.TextField(_(u'description'), blank=True)
+
+    def body_html(self):
+        if self.html:
+            images = self.user.images.all()
+            return markdown_to_html(self.description, images)
+        return self.description
 
     def username(self):
         return self.user.username
@@ -76,6 +83,9 @@ class UserProfile(models.Model):
 
     def hobbies(self):
         return self.user.hobbies.all()
+
+    def topics(self):
+        return self.user.topics.all()
 
     def get_full_name(self):
         return self

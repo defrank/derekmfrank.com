@@ -13,7 +13,7 @@ from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
-from utils import get_default_user as _user
+from utils import get_default_user as _user, markdown_to_html
 
 
 ####
@@ -27,8 +27,15 @@ class News(models.Model):
     """
     author = models.ForeignKey(User, default=_user)
     title = models.CharField(_(u'title'), max_length=150)
-    body = models.TextField(_(u'content'))
+    html = models.BooleanField(_('html in body?'))
+    body = models.TextField(_(u'body text'))
     timestamp = models.DateTimeField(_(u'last updated'), auto_now=True, auto_now_add=True)
+
+    def body_html(self):
+        if self.html:
+            images = self.images.all()
+            return markdown_to_html(self.body, images)
+        return self.body
 
     def __unicode__(self):
         return u'%s' % self.title
@@ -39,17 +46,26 @@ class News(models.Model):
         verbose_name_plural = 'news'
 
 
-class NewsImage(models.Model):
+class Image(models.Model):
     """
     Image for News post.
 
     """
-    news = models.ForeignKey(News)
+    news = models.ForeignKey(News, related_name='images')
     title = models.CharField(_(u'title'), max_length=128)
     def get_upload_dir(instance, filename):
         return 'feed/%s/news%d/%s' % (instance.author.username, instance.news.id, filename)
     image = models.ImageField(_(u'upload image'), upload_to=get_upload_dir, blank=True, null=True)
     url = models.URLField(_(u'url address'), blank=True)
+
+    def filename(self):
+        if self.title:
+            return self.title
+        elif self.image:
+            return basename(self.image.url)
+        elif self.url:
+            return basename(urlsplit(self.url).path)
+        return 'image%d' % self.id
 
     def get_absolute_url(self):
         if self.image:
@@ -74,13 +90,13 @@ class NewsImage(models.Model):
 ####
 ## ADMIN
 
-class NewsImageInline(admin.TabularInline):
-    model = NewsImage
+class ImageInline(admin.TabularInline):
+    model = Image
     extra = 0
 
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'timestamp')
-    inlines = (NewsImageInline,)
+    inlines = (ImageInline,)
 
 
 ####

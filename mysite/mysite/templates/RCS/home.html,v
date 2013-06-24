@@ -1,9 +1,14 @@
-head	1.10;
+head	1.11;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.11
+date	2013.06.24.06.19.58;	author dmf;	state -;
+branches;
+next	1.10;
 
 1.10
 date	2013.06.18.00.48.24;	author dmf;	state -;
@@ -60,7 +65,7 @@ desc
 @@
 
 
-1.10
+1.11
 log
 @-
 @
@@ -68,7 +73,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: home.html,v 1.9 2013-06-14 02:16:58-07 dmf - $
+ * $Id: home.html,v 1.10 2013-06-17 17:48:24-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -89,18 +94,43 @@ text
             <h2>{% nameof me %}{% if me.title %} | {{ me.title }}{% endif %}</h2>
             {% for news in feed %}
                 <h4>{{ news.title }}:</h4>
-                {% autoescape off %}<ul>{{ news.body }}</ul>{% endautoescape %}
+                {% if news.html %}
+                    {% autoescape off %}
+                        <ul>{{ news.body_html|default:"No news . . ." }}</ul>
+                    {% endautoescape %}
+                {% else %}
+                        <ul>{{ news.body|linebreaks|default:"No news . . ." }}</ul>
+                {% endif %}
                 <span class="postinfo">
-                    <span>Posted on <span class="timestamp">{{ news.timestamp|date:"M d, Y" }}</span> by</span>
+                    <span>By</span>
                     <a href="{% url 'accounts.views.user' username=news.author.username  %}" 
                         title="{% nameof news.author %}{% if news.author.title %} | {{ news.author.title }}{% endif %}">
                         <span>{% nameof news.author %}</span>
                     </a>
+                    <span> - {{ news.timestamp|date:"F d, Y" }}</span>
                 </span>
             {% endfor %}
         </div>
     </div>
 {% endblock %}
+@
+
+
+1.10
+log
+@-
+@
+text
+@d4 1
+a4 1
+ * $Id: home.html,v 1.9 2013-06-14 02:16:58-07 dmf - $
+d25 7
+a31 1
+                {% autoescape off %}<ul>{{ news.body }}</ul>{% endautoescape %}
+d33 1
+a33 1
+                    <span>Posted on <span class="timestamp">{{ news.timestamp|date:"M d, Y" }}</span> by</span>
+d38 1
 @
 
 

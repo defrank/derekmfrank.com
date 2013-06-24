@@ -5,18 +5,18 @@
  * Derek Frank (dmfrank@gmx.com)
  *
  * NAME
- *     aboutmff.html
+ *     business.html
  *
  * DESCRIPTION
- *     MFF HTML template.
+ *     Business HTML template.
  *
 {% endcomment %}
 {% load url from future %}
 {% load nameof from accounts_tags %}
 
-{% block title %}{% nameof myuser %}{% if myuser.title %} | {{ myuser.title }}{% endif %} | {% endblock %}
+{% block title %}{% nameof myuser %}{% if myuser.title %} | {{ myuser.title }}{% endif %}{% endblock %}
 
-{% block navbar_class %}nb-mff{% endblock %}
+{% block navbar_class %}nb-about{% endblock %}
 
 {% block body_inner_content %}
     <div id="content-left">
@@ -24,34 +24,31 @@
             <h2>{% nameof myuser %}{% if myuser.title %} | {{ myuser.title }}{% endif %}</h2>
             {% if myuser.image %}
                 <div class="center" >
-                    <a class="block" href="{% url "aboutmff" %}" title="{{ myuser.image.subtext }}">
+                    <a class="block" title="{{ myuser.image.subtext }}">
                         <img  src="{{ myuser.image.get_absolute_url  }}" alt="Image for {% nameof myuser %}" />
                     </a>
                     <span class="italic">{{ myuser.image.subtext }}</span>
                 </div>
             {% endif %}
+
             <div class="">
-                {% for topic_bits in topics %}
-                {% with topic_bits|first as topic %}
-                {% with topic_bits|last as bits %}
+                {% for topic in myuser.topics.all %}
                     <div class="topic clearfix">
                         <h3>{{ topic }}</h3>
-                        {% if topic.pretopic_list %}
-                            <span>{{ topic.pretopic_list|linebreaks }}</span>
+                        {% if topic.bullets_body %}
+                            <span>{{ topic.bullets_body|linebreaks }}</span>
                         {% endif %}
                         <ul>
-                            {% for bit in bits %}
-                                <li>{{ bit }}</li>
+                            {% for bullet in topic.bullets.all %}
+                                <li>{{ bullet.body }}</li>
                             {% endfor %}
                         </ul>
                         {% if topic.body %}
                             <span>{{ topic.body|linebreaks }}</span>
                         {% endif %}
                     </div>
-                {% endwith %}
-                {% endwith %}
                 {% endfor %}
-                </div>
+            </div>
         </div>
     </div>
   
@@ -64,6 +61,13 @@
                 <a class="block" href="mailto:{{ myuser.email }}" 
                    title="Contact {% nameof myuser %} via {{ myuser.email }}">{{ myuser.email_name|default:myuser.email|capfirst}}</a>
                 <span class="block">{{ myuser.description|linebreaks }}</span>
+                {% with contact_info=myuser.contact %}
+                    {% if contact_info %}
+                        <span class="block">{{ contact_info.body|linebreaks }}</span>
+                    {% else %}
+                        <span class="block">{{ myuser.description|linebreaks }}</span>
+                    {% endif %}
+                {% endwith %}
             </ul>
             <h3>Other Sources</h3>
             <ul>

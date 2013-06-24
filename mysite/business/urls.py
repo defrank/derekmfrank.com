@@ -12,5 +12,6 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns('business.views',
     # Businesses
+    url(r'mff/$', 'mff', name='mff'),
     url(r'(?P<username>\w+)/$', 'user'),
 )

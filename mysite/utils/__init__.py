@@ -14,6 +14,7 @@ from django.template.context import RequestContext
 from django.shortcuts import get_object_or_404
 
 from django.contrib.auth.models import User
+import markdown
 
 # Currently not used, but may be useful
 #from django.conf import settings
@@ -69,3 +70,19 @@ def get_profile_or_user(username):
         return profile
     except Exception:
         return user
+
+
+def markdown_to_html(markdownText, images):
+    """Function to parse and add image in html format to a blog post"""
+    # create instance of Markdown class
+    if images:
+        md = markdown.Markdown()
+        for image in images:
+            image_url = image.get_absolute_url()
+            # append image reference to Markdown instance
+            # md.references[id] = (url, title)
+            md.references[image.filename()] = (image_url, '%s' % image.filename())
+        # parse source text
+        return md.convert(markdownText)
+    else:
+        return markdownText

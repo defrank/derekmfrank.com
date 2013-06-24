@@ -15,28 +15,8 @@ from django.contrib.auth.models import User
 
 from os.path import basename, splitext
 from urlparse import urlsplit
-import markdown
 
-from utils import get_default_user as _user
-
-
-####
-## HELPERS
-
-def markdown_to_html(markdownText, images):
-    """Function to parse and add image in html format to a blog post"""
-    # create instance of Markdown class
-    if images:
-        md = markdown.Markdown()
-        for image in images:
-            image_url = image.get_absolute_url()
-            # append image reference to Markdown instance
-            # md.references[id] = (url, title)
-            md.references[image.filename()] = (image_url, '%s' % image.filename())
-        # parse source text
-        return md.convert(markdownText)
-    else:
-        return markdownText
+from utils import get_default_user as _user, markdown_to_html
 
 
 ####
@@ -51,12 +31,14 @@ class Entry(models.Model):
     author = models.ForeignKey(User, related_name='entries', default=_user)
     title = models.CharField(_(u'title'), max_length=128)
     timestamp = models.DateTimeField(_(u'entry date and time'))
-    html = models.BooleanField(_('html in body'))
+    html = models.BooleanField(_('html in body?'))
     body = models.TextField(_(u'body text'))
 
     def body_html(self):
-        images = self.images.all()
-        return markdown_to_html(self.body, images)
+        if self.html:
+            images = self.images.all()
+            return markdown_to_html(self.body, images)
+        return self.body
 
     @models.permalink
     def get_absolute_url(self):

@@ -20,9 +20,13 @@
         {% else %}
             <h2>About {% nameof myuser %}</h2>
         {% endif %}
-        {% autoescape off %}
-            {{ myuser.description|default:"Nothing to say." }}
-        {% endautoescape %}
+        {% if myuser.html %}
+            {% autoescape off %}
+                <span>{{ myuser.body_html|default:"Nothing to say . . ." }}</span>
+            {% endautoescape %}
+        {% else %}
+                <span>{{ myuser.description|linebreaks|default:"Nothing to say . . ." }}</span>
+        {% endif %}
     </div>
 </div>
 

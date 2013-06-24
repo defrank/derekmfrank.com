@@ -28,3 +28,14 @@ def user(request, username):
         'myuser': get_profile_or_user(username),
     }
     return response(request, template, context)
+
+
+def mff(request):
+    """
+    Business view for MFF.
+    """
+    template = 'business/mff.html'
+    context = {
+        'myuser': get_profile_or_user('mff'),
+    }
+    return response(request, template, context)

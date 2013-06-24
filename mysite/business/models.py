@@ -17,10 +17,21 @@ from django.contrib.auth.models import User
 ####
 ## MODELS
 
+class ContactInformation(models.Model):
+    user = models.OneToOneField(User, related_name='contact')
+    body = models.TextField(_('contact information'))
+
+    def __unicode__(self):
+        return u'%s' % self.body
+
+    class Meta:
+        ordering = ('user', 'body')
+
+
 class Topic(models.Model):
     user = models.ForeignKey(User, related_name='topics')
     title = models.CharField(_('title'), max_length=128)
-    bullet_body = models.TextField(_('pre bullet body'), blank=True)
+    bullets_body = models.TextField(_('bullet body pre-text'), blank=True)
     body = models.TextField(_('body'), blank=True)
 
     def __unicode__(self):
@@ -52,6 +63,9 @@ class BulletInline(admin.TabularInline):
 ####
 ## ADMIN
 
+class ContactInformationAdmin(admin.ModelAdmin):
+    list_display = ('user', 'body')
+
 class TopicAdmin(admin.ModelAdmin):
     list_display = ('user', 'title')
     inlines = (BulletInline,)
@@ -59,4 +73,5 @@ class TopicAdmin(admin.ModelAdmin):
 
 ####
 ## REGISTER
+admin.site.register(ContactInformation, ContactInformationAdmin)
 admin.site.register(Topic, TopicAdmin)
