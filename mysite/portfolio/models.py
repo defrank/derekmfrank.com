@@ -38,6 +38,11 @@ class Project(models.Model):
     url = models.URLField(_(u'website link'), blank=True)
     repository_url = models.URLField(_(u'repository link'), blank=True)
 
+    def repository_name(self):
+        if self.repository_url:
+            return '%s' % urlsplit(self.repository_url).netloc
+        return ''
+
     def get_repository_name(self):
         if self.repository_url:
             return '%s' % urlsplit(self.repository_url).netloc
