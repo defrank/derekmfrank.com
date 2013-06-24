@@ -1,9 +1,14 @@
-head	1.16;
+head	1.17;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.17
+date	2013.06.24.06.21.33;	author dmf;	state -;
+branches;
+next	1.16;
 
 1.16
 date	2013.06.24.06.19.58;	author dmf;	state -;
@@ -90,13 +95,13 @@ desc
 @@
 
 
-1.16
+1.17
 log
 @-
 @
 text
 @###############################################################################
-# $Id: Makefile,v 1.15 2013-06-17 21:52:29-07 dmf - $
+# $Id: Makefile,v 1.16 2013-06-23 23:19:58-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -260,7 +265,7 @@ gitinit :
 	touch README
 	git init
 	git add README Makefile
-	git commit -m "First commit"
+	- git commit -m "First commit"
 	git remote add origin git@@bitbucket.org:dmfrank/${CWD}.git
 	git push -u origin master
 
@@ -292,6 +297,20 @@ clean :
 	find . -name "*.pyc" -exec rm {} + ;
 
 spotless : clean
+@
+
+
+1.16
+log
+@-
+@
+text
+@d2 1
+a2 1
+# $Id: Makefile,v 1.15 2013-06-17 21:52:29-07 dmf - $
+d166 1
+a166 1
+	git commit -m "First commit"
 @
 
 

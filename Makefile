@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.16 2013-06-23 23:19:58-07 dmf - $
+# $Id: Makefile,v 1.17 2013-06-23 23:21:33-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -163,7 +163,7 @@ gitinit :
 	touch README
 	git init
 	git add README Makefile
-	git commit -m "First commit"
+	- git commit -m "First commit"
 	git remote add origin git@bitbucket.org:dmfrank/${CWD}.git
 	git push -u origin master
 
