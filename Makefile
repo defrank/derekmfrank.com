@@ -1,5 +1,5 @@
 ###############################################################################
-# $Id: Makefile,v 1.17 2013-06-23 23:21:33-07 dmf - $
+# $Id: Makefile,v 1.18 2013-06-24 17:07:30-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -55,7 +55,9 @@ DIR_BLOG        = ${DIR_APPS}blog/
 DIR_BUSINESS    = ${DIR_APPS}business/
 
 ## TEMPLATES
-TEMPLATEFILES   = ${DIR_TEMPLATES}base.html     ${DIR_TEMPLATES}home.html
+TEMPLATEFILES   = ${DIR_TEMPLATES}base.html     ${DIR_TEMPLATES}home.html      \
+				  ${DIR_TEMPLATES}admin/base_site.html                         \
+				  ${DIR_TEMPLATES}admin/inc/userlinks.html
 
 ## MEDIA/STATIC
 IMGFILES        =

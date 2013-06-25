@@ -1,4 +1,4 @@
-# $Id: settings.py,v 1.7 2013-06-17 17:48:24-07 dmf - $
+# $Id: settings.py,v 1.8 2013-06-24 17:07:30-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME
@@ -100,8 +100,8 @@ SECRET_KEY = '7bg85vn0cz7%3qwliju6rkuqox&amp;1=_c#=v4^te9i7kaa*%sa7f'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.filesystem.Loader',
     'django.template.loaders.eggs.Loader',
 )
 
@@ -157,14 +157,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    'django.contrib.admindocs',
-
-    # external
-    'django_evolution',
-
     # project
     'utils',
     'webmaster',
@@ -174,6 +166,12 @@ INSTALLED_APPS = (
     'blog',
     'business',
     'mysite',
+
+    # external
+    'djangocms_admin_style',
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    'django_evolution',
 )
 
 
