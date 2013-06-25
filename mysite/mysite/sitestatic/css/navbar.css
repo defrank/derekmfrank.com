@@ -24,7 +24,7 @@
 #navbar { 
     height:                     30px !important; 
     width:                      100% !important; 
-    min-width:                  930px !important; 
+    min-width:                  938px !important; 
     /*
     min-width:                  1030px !important; 
     */
@@ -32,6 +32,7 @@
     padding:                    6px 0 !important; 
     background:                 #00aa00 !important; 
     border-bottom:              5px #00ff00 solid !important; 
+    font-size:                  10pt;
 }
 
 /* container for the navbar */
