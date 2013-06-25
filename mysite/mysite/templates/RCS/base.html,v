@@ -1,9 +1,14 @@
-head	1.10;
+head	1.11;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.11
+date	2013.06.25.03.26.52;	author dmf;	state -;
+branches;
+next	1.10;
 
 1.10
 date	2013.06.24.06.19.58;	author dmf;	state -;
@@ -60,14 +65,14 @@ desc
 @@
 
 
-1.10
+1.11
 log
 @-
 @
 text
 @{% comment %}<!--
 /*
- * $Id: base.html,v 1.9 2013-06-17 17:48:24-07 dmf - $
+ * $Id: base.html,v 1.10 2013-06-23 23:19:58-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -86,15 +91,16 @@ text
     Author: {% nameof me %}
     {{ request.get_host|cut:"www." }}
  -->
-{% url "home" as home_url %}
+
 <html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
     <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
     <meta name="author" content="Derek M. Frank" />
-    <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
+    <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about,michael,frank,attorney,law" />
     <meta name="Description" content="Derek Michael Frank's personal website." />
     <title>{% block title %}{% endblock %}{% block site_title %}{% nameof me %}{% endblock %}</title>
+    <link rel="home" title="Home page" href="{% url "home" as home_url %}" />
     {% block viewport %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% endblock %}
@@ -102,6 +108,7 @@ text
     {% block stylesheets %}
         <link href="{% static "css/style.css" %}" rel="stylesheet" type="text/css" media="all" />
     {% endblock %}
+    {% block extrastyle %}{% endblock %}
 
     {% block favicon %}
         <link href="{% static "ico/favicon.ico" %}" rel="icon" type="image/x-icon" />
@@ -196,6 +203,25 @@ text
     {% block body_script %}{% endblock %}
 </body>
 </html>
+@
+
+
+1.10
+log
+@-
+@
+text
+@d3 1
+a3 1
+ * $Id: base.html,v 1.9 2013-06-17 17:48:24-07 dmf - $
+d22 1
+a22 1
+{% url "home" as home_url %}
+d28 1
+a28 1
+    <meta name="Keywords" content="derek,michael,frank,dmf,derekmfrank,dmfrank,portfolio,blog,about" />
+d31 1
+d39 1
 @
 
 

@@ -50,7 +50,7 @@ body {
     min-height:             550px;
     background:             #f6f9fc;
     color:                  #001f00;
-    font:                   normal 100% sans-serif;
+    font:                   normal 9pt sans-serif;
     font-family:            Lato, Ubuntu, PT Sans, Open Sans, Droid Sans, Helvetica, Aerial, Arial, sans-serif;
     text-align:             center;
     margin:                 0;
@@ -232,7 +232,10 @@ div#miscinfo {
 }
 
 div#container {
+    width: 924px;
+    /*
     width: 1024px;
+    */
     margin: auto;
 }
 
@@ -262,12 +265,18 @@ div#content {
 div#content-left {
     margin: 12px 340px 0 12px;
     float: left;
+    width: 64%;
+    /*
     width: 672px;
+    */
 }
 
 div#content-right {
     float: left;
+    width: 30%;
+    /*
     width: 300px;
+    */
     margin-left: -312px;
     margin-top: 12px;
     margin-right: 12px;
@@ -420,6 +429,8 @@ img#mypic {
     -moz-border-radius:             12px;
     -webkit-border-radius:          12px;
     border-radius:                  12px;
+    width:                          90%;
+    height:                         90%;
 }
 
 .entryborder {

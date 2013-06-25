@@ -1,9 +1,14 @@
-head	1.15;
+head	1.16;
 access;
 symbols;
 locks;
 comment	@# @;
 
+
+1.16
+date	2013.06.25.03.26.52;	author dmf;	state -;
+branches;
+next	1.15;
 
 1.15
 date	2013.06.24.06.19.58;	author dmf;	state -;
@@ -85,13 +90,13 @@ desc
 @@
 
 
-1.15
+1.16
 log
 @-
 @
 text
 @/*******************************************************************************
- * $Id: style.css,v 1.14 2013-06-17 21:52:29-07 dmf - $                                                                       
+ * $Id: style.css,v 1.15 2013-06-23 23:19:58-07 dmf - $                                                                       
  * Derek Frank (derekmfrank@@gmail.com)                                          
  *                                                                              
  * Theme Name: dmf
@@ -142,7 +147,7 @@ body {
     min-height:             550px;
     background:             #f6f9fc;
     color:                  #001f00;
-    font:                   normal 100% sans-serif;
+    font:                   normal 9pt sans-serif;
     font-family:            Lato, Ubuntu, PT Sans, Open Sans, Droid Sans, Helvetica, Aerial, Arial, sans-serif;
     text-align:             center;
     margin:                 0;
@@ -324,7 +329,10 @@ div#miscinfo {
 }
 
 div#container {
+    width: 924px;
+    /*
     width: 1024px;
+    */
     margin: auto;
 }
 
@@ -354,12 +362,18 @@ div#content {
 div#content-left {
     margin: 12px 340px 0 12px;
     float: left;
+    width: 64%;
+    /*
     width: 672px;
+    */
 }
 
 div#content-right {
     float: left;
+    width: 30%;
+    /*
     width: 300px;
+    */
     margin-left: -312px;
     margin-top: 12px;
     margin-right: 12px;
@@ -512,6 +526,8 @@ img#mypic {
     -moz-border-radius:             12px;
     -webkit-border-radius:          12px;
     border-radius:                  12px;
+    width:                          90%;
+    height:                         90%;
 }
 
 .entryborder {
@@ -530,6 +546,27 @@ img#mypic {
     margin:     10px;
     padding:    5px;
 }
+@
+
+
+1.15
+log
+@-
+@
+text
+@d2 1
+a2 1
+ * $Id: style.css,v 1.14 2013-06-17 21:52:29-07 dmf - $                                                                       
+d53 1
+a53 1
+    font:                   normal 100% sans-serif;
+d235 2
+d238 1
+d268 2
+d271 1
+d276 2
+d279 1
+d432 2
 @
 
 

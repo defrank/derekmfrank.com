@@ -24,7 +24,10 @@
 #navbar { 
     height:                     30px !important; 
     width:                      100% !important; 
+    min-width:                  930px !important; 
+    /*
     min-width:                  1030px !important; 
+    */
     margin                      0 !important; 
     padding:                    6px 0 !important; 
     background:                 #00aa00 !important; 
@@ -33,7 +36,10 @@
 
 /* container for the navbar */
 #navbarcontainer { 
+    width:                      924px !important; 
+    /*
     width:                      1000px !important; 
+    */
     margin:                     0 auto !important; 
     padding:                    0 14px !important;
 }
