@@ -1,5 +1,5 @@
 /*******************************************************************************
- * $Id: style.css,v 1.17 2013-06-24 20:58:12-07 dmf - $                                                                       
+ * $Id: style.css,v 1.18 2013-06-24 21:10:23-07 dmf - $                                                                       
  * Derek Frank (derekmfrank@gmail.com)                                          
  *                                                                              
  * Theme Name: dmf
@@ -435,8 +435,13 @@ img#mypic {
     -moz-border-radius:             12px;
     -webkit-border-radius:          12px;
     border-radius:                  12px;
-    max-width:                      90%;
-    max-height:                     90%;
+    height:                         90%;
+    width:                          90%;
+    /*
+    width:                          230px;
+    height:                         230px;
+    max-height:                     50%;
+    */
 }
 
 .entryborder {

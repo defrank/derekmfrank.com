@@ -23,8 +23,8 @@
 /* container for the entire bar */
 #navbar { 
     height:                     30px !important; 
+    min-width:                  960px !important; 
     width:                      100% !important; 
-    min-width:                  938px !important; 
     /*
     min-width:                  1030px !important; 
     */
