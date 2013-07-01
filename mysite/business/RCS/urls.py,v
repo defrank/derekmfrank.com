@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.05.31.06.46.52;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -20,26 +20,21 @@ log
 @-
 @
 text
-@# $Id: $
+@# $Id: urls.py,v 1.1 2013-05-30 23:46:52-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
-#   urls.py - mff
+#   urls.py - business
 #
 # DESCRIPTION
-#   A url patterns definition for MFF pages.
+#   A url patterns definition for user business pages.
 #
 
 from django.conf.urls import patterns, url
-import views
 
-urlpatterns = patterns('',
-    # MFF
-    url(r'^$', views.mff, name='mff'),
-)
-
-# Necessary redirection for unavailable pages
-urlpatterns += patterns('',
-    url(r'^.+$', views.mff),
+urlpatterns = patterns('business.views',
+    # Businesses
+    url(r'mff/$', 'mff', name='mff'),
+    url(r'(?P<username>\w+)/$', 'user'),
 )
 @

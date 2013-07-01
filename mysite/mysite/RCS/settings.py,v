@@ -1,47 +1,12 @@
-head	1.8;
+head	1.1;
 access;
 symbols;
-locks;
+locks; strict;
 comment	@# @;
 
 
-1.8
-date	2013.06.25.00.07.30;	author dmf;	state -;
-branches;
-next	1.7;
-
-1.7
-date	2013.06.18.00.48.24;	author dmf;	state -;
-branches;
-next	1.6;
-
-1.6
-date	2013.06.12.21.33.32;	author dmf;	state -;
-branches;
-next	1.5;
-
-1.5
-date	2013.06.11.23.31.46;	author dmf;	state -;
-branches;
-next	1.4;
-
-1.4
-date	2013.05.29.05.00.02;	author dmf;	state -;
-branches;
-next	1.3;
-
-1.3
-date	2013.05.24.22.40.36;	author dmf;	state -;
-branches;
-next	1.2;
-
-1.2
-date	2013.05.18.00.33.56;	author dmfrank;	state -;
-branches;
-next	1.1;
-
 1.1
-date	2013.04.19.21.12.27;	author dmfrank;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -50,12 +15,12 @@ desc
 @@
 
 
-1.8
+1.1
 log
 @-
 @
 text
-@# $Id: settings.py,v 1.7 2013-06-17 17:48:24-07 dmf - $
+@# $Id: settings.py,v 1.8 2013-06-24 17:07:30-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -266,163 +231,4 @@ LOGGING = {
 #)
 
 #EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-@
-
-
-1.7
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: settings.py,v 1.6 2013-06-12 14:33:32-07 dmf - $
-d103 1
-a104 1
-    'django.template.loaders.app_directories.Loader',
-a159 8
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    'django.contrib.admindocs',
-
-    # external
-    'django_evolution',
-
-d169 6
-@
-
-
-1.6
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: settings.py,v 1.5 2013-06-11 16:31:46-07 dmf - $
-d175 1
-@
-
-
-1.5
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: settings.py,v 1.4 2013-05-28 22:00:02-07 dmf - $
-d76 1
-a76 1
-STATIC_ROOT = os.path.abspath(os.path.join(PACKAGE_ROOT, 'static').replace('\\','/'))
-d87 1
-a87 1
-    os.path.abspath(os.path.join(PACKAGE_ROOT, 'staticfiles').replace('\\','/')),
-@
-
-
-1.4
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: settings.py,v 1.3 2013-05-24 15:40:36-07 dmf - $
-d87 1
-a87 1
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'staticfiles').replace('\\','/')),
-d146 2
-a147 6
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'webmaster', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'blog', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'portfolio', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'aboutme', 'templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'mff', 'templates').replace('\\','/')),
-d150 2
-a169 2
-    'staticfiles',
-    'templates',
-d171 2
-a172 1
-    'aboutme',
-a174 1
-    'mff',
-@
-
-
-1.3
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: settings.py,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
-d65 1
-a65 1
-MEDIA_ROOT = os.path.abspath(os.path.join(DOMAIN_ROOT, 'public/media').replace('\\','/'))
-d148 4
-a151 3
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'blog/templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'portfolio/templates').replace('\\','/')),
-    os.path.abspath(os.path.join(PROJECT_ROOT, 'aboutme/templates').replace('\\','/')),
-d171 1
-a171 4
-    'blog',
-    'portfolio',
-    'aboutme',
-    'webmaster',
-d174 5
-@
-
-
-1.2
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: $
-d87 1
-a87 1
-    STATIC_ROOT,
-d146 5
-a150 1
-    os.path.abspath(os.path.join(PACKAGE_ROOT, 'templates').replace('\\','/')),
-d162 1
-a162 1
-    #'django.contrib.admin',
-d164 1
-a164 1
-    #'django.contrib.admindocs',
-d167 1
-d170 3
-d174 2
-@
-
-
-1.1
-log
-@-
-@
-text
-@d1 10
-a10 1
-# Django settings for mysite project.
-d22 1
-a22 2
-    # ('Your Name', 'your_email@@domain.com'),
-    ('Derek Frank', 'derekmfrank@@gmail.com'),
-d29 6
-a34 6
-        'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'dmfdb',                      # Or path to database file if using sqlite3.
-        'USER': 'dmfrank',                      # Not used with sqlite3.
-        'PASSWORD': 'bugnem2125',                  # Not used with sqlite3.
-        'HOST': 'mysqldb.derekmfrank.com',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
 @

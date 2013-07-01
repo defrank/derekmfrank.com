@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.05.31.06.46.52;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -20,36 +20,45 @@ log
 @-
 @
 text
-@# $Id: views.py,v 1.4 2013-05-27 12:40:43-07 dmf - $
+@# $Id: views.py,v 1.1 2013-05-30 23:46:52-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
-#   views.py - mff
+#   views.py - business
 #
 # DESCRIPTION
-#   A template views definition for MFF.
+#   A template views definition for user business pages.
 #
 
 from django.conf import settings
 from django.contrib.sites.models import get_current_site
 
-from utils.functions import response
-from models import Source, Information, Topic, TopicListBit
+from utils import response, get_profile_or_user
 
-# MFF page view
-def mff(request):
-    errors = []
-    topics = []
-    alltopics = Topic.objects.all()
-    for topic in alltopics:
-        bits = TopicListBit.objects.filter(topic=topic)
-        topics.append((topic, bits))
-    mff = Information.objects.get(id=1)
-    template = 'mff.html'
+
+####
+## VIEWS
+
+def user(request, username):
+    """
+    Business view for a user.
+
+    Takes a username.
+    """
+    template = 'business/business.html'
     context = {
-        'errors': errors,
-        'topics': topics,
-        'mff': mff,
+        'myuser': get_profile_or_user(username),
+    }
+    return response(request, template, context)
+
+
+def mff(request):
+    """
+    Business view for MFF.
+    """
+    template = 'business/mff.html'
+    context = {
+        'myuser': get_profile_or_user('mff'),
     }
     return response(request, template, context)
 @

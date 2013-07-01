@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.05.31.06.46.52;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -20,43 +20,67 @@ log
 @-
 @
 text
-@from django.conf import settings
-from django.contrib.sites.models import get_current_site
-import datetime
+@# $Id: models.py,v 1.1 2013-05-30 23:46:52-07 dmf - $
+# Derek Frank (dmfrank@@gmx.com)
+#
+# NAME
+#   views.py - portfolio
+#
+# DESCRIPTION
+#   Views for portfolio.
+#
+from django.conf import settings
+from django.contrib.auth.models import User
 
-from utils.functions import response
-from mysite.models import DEPARTMENT_CHOICES
-from aboutme.models import Source
-from models import Project, Education, Course, Assignment
+from utils import response, get_default_user as _user
+
+from models import Project, Education, Course
 
 
-# Portfolio page view
+####
+## VIEWS
+
+## Portfolio:
+def portfolio_views(request, context, author):
+    """
+    Portfolio view: has sources
+
+    Takes a context and User.
+    """
+    authors = Project.objects.values_list('author', flat=True).distinct()
+
+    template = 'portfolio/portfolio.html'
+    context['authors'] = authors
+    return response(request, template, context)
+
+
 def portfolio(request):
-    errors = []
-    sources = Source.objects.order_by('priority', 'type', 'title' )
-    projects = Project.objects.order_by('date').reverse()
-    education = []
-    departments = DEPARTMENT_CHOICES
-    institution = Education.objects.order_by('graduation_date').reverse()
-    for i in institution:
-        dept_courses = []
-        for d in departments:
-            courses = Course.objects.filter(department=d[0]).order_by('number').reverse()
-            course_asgs = []
-            if courses:
-                for c in courses:
-                    asgs = Assignment.objects.filter(course=c).order_by('identification')
-                    course_asgs.append((c, asgs))
-            if course_asgs:
-                dept_courses.append((d[-1], course_asgs))
-        education.append((i, dept_courses))
+    """Outputs the default user's portfolio"""
+    author = _user
 
-    template = 'portfolio.html'
+    # Projects
+    projects = Project.objects.filter(author=author)
+
+    # Education
+    education = Education.objects.filter(author=author)
+        # Departments
+    choices = Course.objects.values_list('department', flat=True).distinct()
+    departments = [ (d, D) for d,D in Education.DEPARTMENT_CHOICES if d in choices ]
+
     context = {
-        'errors': errors,
-        'sources': sources,
+        'myuser': author,
         'projects': projects,
         'education': education,
+        'departments': departments,
+    }
+    return portfolio_views(request, context, author)
+
+
+def user(request, username):
+    """Takes a username value"""
+    author = User.objects.get(username=username)
+    context = {
+        'author': author,
     }
     return response(request, template, context)
 @

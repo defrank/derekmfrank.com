@@ -1,5 +1,5 @@
 #!/usr/bin/env python2.6
-# $Id: manage.py,v 1.3 2013-06-02 14:52:47-07 dmf - $
+# $Id: manage.py,v 1.1 2013-06-30 17:02:40-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME

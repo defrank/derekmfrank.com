@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.06.18.03.06.04;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -22,7 +22,7 @@ log
 text
 @{% comment %}
  *
- * $Id: portfolio.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
+ * $Id: education.html,v 1.1 2013-06-17 20:06:04-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -35,93 +35,93 @@ text
 
 <h3>Education:</h3>
 <ul>
-    {% for school, departments in education %}
-        {% if school %}
-            <h4>{{ school.name }}</h4>
-            <span class="timestamp">{{ school.graduation_date }}</span>
-            <ul>
-                {% if school.degree %}
-                    <h5>Degree:</h5>
+    {% for edu in education %}
+        <h4>{{ edu.name }}</h4>
+        <span class="timestamp">{{ edu.graduation_date }}</span>
+        <ul>
+            {% if edu.degree %}
+                <h5>Degree:</h5>
+                <ul>
+                    <span>{{ edu.get_degree_display }}</span>
                     <ul>
-                        <div class="block">
-                            <span>{{ school.get_degree_display }}</span>
-                            {% if school.major %}
-                                <span>with a major in {{ school.get_major_display }}</span>
-                                {% if school.minor %}
-                                    <span>and a minor in {{ school.get_minor_display }}</span>
-                                {% endif %}
-                            {% endif %}
-                        </div>
+                        {% if edu.major %}
+                            <li>Major in {{ edu.get_major_display }}</li>
+                        {% endif %}
+                        {% if edu.minor %}
+                            <li>Minor in {{ edu.get_minor_display }}</li>
+                        {% endif %}
                     </ul>
+                </ul>
+            {% endif %}
+            {% if departments %}
+                <h5 class="inline">Classes and coursework:</h5>
+                {% if edu.repository_url %}
+                    <a href="{{ edu.repository_url }}" 
+                       title="Visit coursework repository on {{ edu.repository_name|capfirst }}">
+                        <span class="repo">[{{ edu.repository_name|capfirst }}]</span>
+                    </a>
                 {% endif %}
-                {% if departments %}
-                    <h5 class="inline">Classes and coursework:</h5>
-                    {% if school.coursework_repository_url %}
-                        <a href="{{ school.coursework_repository_url }}" 
-                           title="Visit coursework repository on {{ school.get_coursework_repository_name_display }}">
-                            <span class="repo">[{{ school.get_coursework_repository_name_display }}]</span>
-                        </a>
-                    {% endif %}
-                    <ul>
-                        {% for department, courses in departments %}
-                            {% if department %}
-                                <span class="edudept">{{ department }}:</span>
-                                <ul>
-                                    {% for course, asgs in courses %}
-                                        {% if course %}
-                                            <div class="block educourse">
-                                                {% if course.course_url %}
-                                                    <a href="{{ course.course_url }}" 
-                                                       title="{{ course.description }}">
-                                                        <span>{{ course }}</span>
-                                                    </a>
-                                                {% else %}
+                <ul>
+                    {% with courses=edu.courses.all %}
+                        {% for dept, department in departments %}
+                            <span>{{ department }}:</span>
+                            <ul>
+                                {% for course in courses %}
+                                    {% if dept == course.department %}
+                                        <div class="block">
+                                            {% if course.url %}
+                                                <a href="{{ course.url }}" 
+                                                   title="{{ course.description }}">
                                                     <span>{{ course }}</span>
-                                                {% endif %}
-                                                {% if course.repository_url %}
-                                                    <a href="{{ course.repository_url }}" 
-                                                       title="Visit course repository on {{ course.get_repository_name_display }}">
-                                                        <span>[{{ course.get_repository_name_display }}]</span>
-                                                    </a>
-                                                {% endif %}
-                                                {% if course.lab_letter %}
-                                                    <a href="{{ course.lab_url }}"
-                                                       title="Visit course lab website">
-                                                        <span>with Lab {{ course.lab_letter|title }}</span>
-                                                    </a>
-                                                {% endif %}
-                                            </div>
-                                            {% if asgs %}
+                                                </a>
+                                            {% else %}
+                                                <span>{{ course }}</span>
+                                            {% endif %}
+                                            {% if course.repository_url %}
+                                                <a href="{{ course.repository_url }}" 
+                                                   title="Visit course repository on {{ course.repository_name|capfirst }}">
+                                                    <span>[{{ course.repository_name|capfirst }}]</span>
+                                                </a>
+                                            {% endif %}
+                                            {% if course.lab %}
+                                                <a href="{{ course.lab_url }}"
+                                                   title="Visit course lab website">
+                                                    <span>with Lab {{ course.lab|title }}</span>
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                        {% with assignments=course.assignments.all %}
+                                            {% if assignments %}
                                                 <ul>
-                                                    {% for asg in asgs %}
-                                                        <li class="eduasg">
-                                                            {% if asg.assignment_url %}
-                                                                <a href="{{ asg.assignment_url }}"
-                                                                   title="Visit '{{ asg }}' specifications">
-                                                                    <span>{{ asg.identification|title }} - {{ asg.get_programming_language_display }} - {{ asg.name }}</span>
-                                                                </a>
-                                                            {% else %}
-                                                                <span>{{ asg.identification|title }} - {{ asg.get_programming_language_display }} - {{ asg.name }}</span>
-                                                            {% endif %}
+                                                    {% for asg in assignments %}
+                                                        <li>
+                                                            {% if asg.url %}<a href="{{ asg.url }}"
+                                                               title="Visit '{{ asg }}' specifications">{% endif %}
+                                                                <span>{{ asg.identification|title }} -</span>
+                                                                {% for pl in asg.programming_languages.all %}
+                                                                    <span>{{ pl|title }}{% if not forloop.last %},{% endif %}</span>
+                                                                {% endfor %}
+                                                                <span>- {{ asg.title }}</span>
+                                                            {% if asg.url %}</a>{% endif %}
                                                             {% if asg.repository_url %}
                                                                 <a href="{{ asg.repository_url }}"
-                                                                   title="Visit '{{ asg }}' repository on {{ asg.get_repository_name_display }}">
-                                                                    <span>[{{ asg.get_repository_name_display }}]</span>
+                                                                   title="Visit '{{ asg }}' repository on {{ asg.repository_name|capfirst }}">
+                                                                    <span>[{{ asg.repository_name|capfirst }}]</span>
                                                                 </a>
                                                             {% endif %}
                                                         </li>
                                                     {% endfor %}
                                                 </ul>
                                             {% endif %}
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
+                                        {% endwith %}
+                                    {% endif %}
+                                {% endfor %}
+                            </ul>
                         {% endfor %}
-                    </ul>
-                {% endif %}
-            </ul>
-        {% endif %}
+                    {% endwith %}
+                </ul>
+            {% endif %}
+        </ul>
     {% endfor %}
 </ul>
 @

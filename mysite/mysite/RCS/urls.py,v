@@ -1,57 +1,12 @@
-head	1.10;
+head	1.1;
 access;
 symbols;
-locks;
+locks; strict;
 comment	@# @;
 
 
-1.10
-date	2013.06.18.00.48.24;	author dmf;	state -;
-branches;
-next	1.9;
-
-1.9
-date	2013.06.14.09.16.58;	author dmf;	state -;
-branches;
-next	1.8;
-
-1.8
-date	2013.06.12.21.33.32;	author dmf;	state -;
-branches;
-next	1.7;
-
-1.7
-date	2013.06.11.23.31.46;	author dmf;	state -;
-branches;
-next	1.6;
-
-1.6
-date	2013.05.29.05.00.02;	author dmf;	state -;
-branches;
-next	1.5;
-
-1.5
-date	2013.05.27.20.29.17;	author dmf;	state -;
-branches;
-next	1.4;
-
-1.4
-date	2013.05.27.19.40.43;	author dmf;	state -;
-branches;
-next	1.3;
-
-1.3
-date	2013.05.24.22.40.36;	author dmf;	state -;
-branches;
-next	1.2;
-
-1.2
-date	2013.05.18.00.33.56;	author dmfrank;	state -;
-branches;
-next	1.1;
-
 1.1
-date	2013.04.19.21.12.27;	author dmfrank;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -60,12 +15,12 @@ desc
 @@
 
 
-1.10
+1.1
 log
 @-
 @
 text
-@# $Id: urls.py,v 1.9 2013-06-14 02:16:58-07 dmf - $
+@# $Id: urls.py,v 1.10 2013-06-17 17:48:24-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -131,220 +86,4 @@ urlpatterns += patterns('',
 #urlpatterns += patterns('',
     #url(r'^.+$', redirect_to_home, name='redirect'),
 #)
-@
-
-
-1.9
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: urls.py,v 1.8 2013-06-12 14:33:32-07 dmf - $
-d31 2
-@
-
-
-1.8
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: urls.py,v 1.7 2013-06-11 16:31:46-07 dmf - $
-d20 1
-a20 9
-urlpatterns = patterns('mysite.views',
-    url(r'^$', 'home', name='home'),
-    url(r'^about/$', 'aboutme', name='aboutme'),
-    url(r'^about/dmf/$', 'aboutme'),
-    url(r'^about/mff/$', 'aboutmff', name='aboutmff'),
-    url(r'^about/(?P<username>\w+)/$', 'about'),
-)
-
-urlpatterns += patterns('',
-d22 1
-a22 1
-    #url(r'^', include('feed.urls')),
-d24 3
-a26 2
-    # Accounts
-    url(r'^accounts/', include('accounts.urls')),
-@
-
-
-1.7
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: urls.py,v 1.6 2013-05-28 22:00:02-07 dmf - $
-d23 1
-a23 1
-    #url(r'^about/dmf/$', 'aboutme', name='aboutme'),
-@
-
-
-1.6
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: urls.py,v 1.5 2013-05-27 13:29:17-07 dmf - $
-d12 1
-a12 1
-from django.conf.urls.defaults import patterns, include, url
-a13 4
-from django.views.static import serve as views_static_serve
-
-import views
-from utils import functions
-d19 18
-a36 3
-urlpatterns = patterns('',
-    # Base Views
-    url(r'^$', views.home, name='home'),
-a37 3
-    url(r'^portfolio/', include('portfolio.urls')),
-    url(r'^aboutme/', include('aboutme.urls')),
-    url(r'^mff/', include('mff.urls')),
-d39 1
-a39 4
-    # Media
-    url(r'^static/(?P<path>.*)$', views_static_serve, { 'document_root': settings.STATIC_ROOT, }),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-d41 1
-a41 2
-
-    # Uncomment the next line to enable the admin:
-d45 7
-d54 1
-d58 3
-a60 3
-urlpatterns += patterns('',
-    url(r'^dh_phpmyadmin.*$', functions.redirect_to_mysql, name='mysql'),
-    url(r'^mysql.*$', functions.redirect_to_mysql, name='mysql'),
-d69 3
-a71 3
-urlpatterns += patterns('',
-    url(r'^.+$', functions.redirect_to_home, name='redirect'),
-)
-@
-
-
-1.5
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: urls.py,v 1.4 2013-05-27 12:40:43-07 dmf - $
-d15 3
-a17 1
-from mysite.views import view_functions, views
-d28 2
-a29 2
-    url(r'^aboutme/$', views.aboutme, name='aboutme'),
-    url(r'^mff/$', views.mff, name='mff'),
-d47 2
-a48 2
-    url(r'^dh_phpmyadmin.*$', view_functions.redirect_to_mysql, name='mysql'),
-    url(r'^mysql.*$', view_functions.redirect_to_mysql, name='mysql'),
-d58 1
-a58 1
-    url(r'^.+$', view_functions.redirect_to_home, name='redirect'),
-@
-
-
-1.4
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: urls.py,v 1.3 2013-05-24 15:40:36-07 dmf - $
-d24 4
-a27 4
-    url(r'^blog/?', include('blog.urls')),
-    url(r'^portfolio/?', include('portfolio.urls')),
-    url(r'^aboutme/?$', views.aboutme, name='aboutme'),
-    url(r'^mff/?$', views.mff, name='mff'),
-d33 1
-a33 1
-    url(r'^admin/doc/?', include('django.contrib.admindocs.urls')),
-d36 1
-a36 1
-    url(r'^admin/?', include(admin.site.urls)),
-@
-
-
-1.3
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: urls.py,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
-d24 4
-a27 4
-    url(r'^blog/', include('blog.urls')),
-    url(r'^portfolio/$', views.portfolio, name='portfolio'),
-    url(r'^aboutme/$', views.aboutme, name='aboutme'),
-    url(r'^mff/$', views.mff, name='mff'),
-a31 3
-    # Example:
-    # (r'^mysite/', include('mysite.foo.urls')),
-
-d33 1
-a33 1
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-d36 1
-a36 1
-    url(r'^admin/', include(admin.site.urls)),
-@
-
-
-1.2
-log
-@-
-@
-text
-@d1 1
-a1 1
-# $Id: context_processors.py,v 1.1 2013-04-19 14:12:27-07 dmfrank - $
-d18 2
-a19 2
-#from django.contrib import admin
-#admin.autodiscover()
-d24 1
-a24 1
-    url(r'^blog/$', views.blog, name='blog'),
-d36 1
-a36 1
-    #url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-d39 1
-a39 1
-    #url(r'^admin/', include(admin.site.urls)),
-@
-
-
-1.1
-log
-@-
-@
-text
-@d1 10
-d54 1
-a54 1
-    url(r'^$', include('webmaster.urls')),
 @

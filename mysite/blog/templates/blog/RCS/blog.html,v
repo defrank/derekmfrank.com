@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.05.31.06.46.52;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -23,7 +23,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: blog.html,v 1.3 2013-05-23 19:47:36-07 dmf - $
+ * $Id: entries.html,v 1.1 2013-06-11 16:31:46-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -33,30 +33,35 @@ text
  *     Blog HTML template.
  *
 {% endcomment %}
-{% load static from staticfiles %}
+{% load nameof from accounts_tags %}
 
-{% block head_title %}Blog | {{ me }}{% endblock %}
+{% block title %}Blog | {% endblock %}
 
 {% block navbar_class %}nb-blog{% endblock %}
 
 {% block body_inner_content %}
     <div id="content-left">
         <div class="box" >
-            {% block blog_content %}
-                <h2>Blog</h2>
-                {% for post in posts %}
-                    {% include "blogpost.html" %}
-                    {% if not forloop.last %}<div class="center blogpostborder"></div>{% endif %}
-                {% endfor %}
-            {% endblock %}
+            <h2>Blog</h2>
+            {% if entries %}
+                {% include "blog/entries.html" %}
+                {% block blog_more %}{% endblock %}
+            {% else %}
+                <span>No entries . . .</span>
+            {% endif %}
         </div>
     </div>
 
     <div id="content-right">
-        <div class="box">
-            <h2 class="sub">Interersting reads</h2>
-            {% include "bloglinks.html" %}
-        </div>
+        {% if sources %}
+            {% include "blog/links.html" %}
+        {% endif %}
+        {% if previous %}
+            {% include "blog/previous.html" %}
+        {% endif %}
+        {% if authors or dates %}
+            {% include "blog/index.html" %}
+        {% endif %}
     </div>
 {% endblock %}
 @

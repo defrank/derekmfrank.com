@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.05.24.22.40.36;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -20,7 +20,7 @@ log
 @-
 @
 text
-@# $Id: $
+@# $Id: urls.py,v 1.1 2013-05-24 15:40:36-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -31,7 +31,7 @@ text
 #
 
 from django.conf.urls import patterns, url
-from webmaster import views
+import views
 
 
 # Webmasters and other 3rd party site apps

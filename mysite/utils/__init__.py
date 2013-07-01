@@ -1,4 +1,4 @@
-# $Id: functions.py,v 1.1 2013-05-28 22:00:02-07 dmf - $
+# $Id: __init__.py,v 1.1 2013-06-30 17:02:40-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME

@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.06.11.23.31.46;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -23,7 +23,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: aboutme.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
+ * $Id: aboutme.html,v 1.1 2013-06-11 16:31:46-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -33,12 +33,13 @@ text
  *     About me HTML template.
  *
 {% endcomment %}
+{% load nameof from accounts_tags %}
 
-{% block title %}About me | {{ myprofile }}{% endblock %}
+{% block title %}About me | {% endblock %}
 
 {% block navbar_class %}nb-about{% endblock %}
 
 {% block body_inner_content %}
-    {% with myuser=myprofile %}{% include "accounts/about_content.html" %}{% endwith %}
+    {% with myuser=me %}{% include "accounts/about_content.html" %}{% endwith %}
 {% endblock %}
 @

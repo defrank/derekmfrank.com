@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.05.31.06.46.52;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -20,7 +20,7 @@ log
 @-
 @
 text
-@# $Id: $
+@# $Id: urls.py,v 1.1 2013-05-30 23:46:52-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -32,16 +32,25 @@ text
 
 from django.conf.urls import patterns, url
 
-import views
-
-urlpatterns = patterns('',
+urlpatterns = patterns('blog.views',
     # Blog
-    url(r'^$', views.blog, name='blog'),
-    url(r'^(\d)/$', views.blogsingle),
+    url(r'^$', 'recent', name='blog'),
+    # Archives
+    url(r'^archive/all/$', 'blog', name='blog_all'),
+        # entry author
+    url(r'^archive/author/(?P<username>\w+)/$', 'archive_author'),
+        # entry id
+    url(r'^archive/id/(?P<id>\d+)/$', 'archive_id'),
+        # entry date
+    url(r'^archive/date/(?P<year>\d+)/$', 'archive_year'),
+    url(r'^archive/date/(?P<year>\d+)/(?P<month>\d+)/$', 
+        'archive_month'),
+    url(r'^archive/date/(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/$', 
+        'archive_day'),
 )
 
 # Necessary redirection for unavailable pages
-urlpatterns += patterns('',
-    url(r'^.+$', views.blog),
-)
+#urlpatterns += patterns('blog.views',
+    #url(r'^.+$', 'blog'),
+#)
 @

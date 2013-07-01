@@ -1,4 +1,4 @@
-# $Id: settings.py,v 1.8 2013-06-24 17:07:30-07 dmf - $
+# $Id: settings.py,v 1.1 2013-06-30 17:02:40-07 dmf - $
 # Derek Frank (dmfrank@gmx.com)
 #
 # NAME

@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.06.12.21.33.32;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -20,7 +20,7 @@ log
 @-
 @
 text
-@# $Id: functions.py,v 1.1 2013-05-28 22:00:02-07 dmf - $
+@# $Id: accounts_tags.py,v 1.1 2013-06-12 14:33:32-07 dmf - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -52,7 +52,10 @@ class NameOfNode(template.Node):
     def render(self, context):
         try:
             myuser = self.user.resolve(context)
-            return u'%s' % (myuser.get_full_name() or myuser.get_profile() or myuser.get_short_name() or myuser)
+            try:
+                 return u'%s' % (myuser.get_profile() or myuser.get_full_name() or myuser.get_short_name() or myuser)
+            except AttributeError:
+                return u'%s' % (myuser.get_full_name() or myuser.get_short_name() or myuser)
         except template.VariableDoesNotExist:
             return ''
 @

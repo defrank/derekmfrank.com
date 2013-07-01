@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.06.18.04.52.29;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -22,7 +22,7 @@ log
 text
 @{% comment %}
  *
- * $Id: portfolio.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
+ * $Id: sources.html,v 1.1 2013-06-17 21:52:29-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME

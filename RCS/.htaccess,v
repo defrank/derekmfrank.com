@@ -1,17 +1,12 @@
-head	1.2;
+head	1.1;
 access;
 symbols;
-locks;
+locks; strict;
 comment	@# @;
 
 
-1.2
-date	2013.05.18.00.33.56;	author dmfrank;	state -;
-branches;
-next	1.1;
-
 1.1
-date	2013.04.12.05.19.33;	author dmfrank;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -20,12 +15,12 @@ desc
 @@
 
 
-1.2
+1.1
 log
 @-
 @
 text
-@# $Id: $
+@# $Id: .htaccess,v 1.2 2013-05-17 17:33:56-07 dmfrank - $
 # Derek Frank (dmfrank@@gmx.com)
 #
 # NAME
@@ -43,18 +38,4 @@ RewriteBase /
 #redirect /portfolio/ https://www.greenghoti.com/portfolio/
 #redirect /portfolio https://www.greenghoti.com/portfolio/
 #redirect / https://www.greenghoti.com/aboutme/
-@
-
-
-1.1
-log
-@-
-@
-text
-@d1 10
-d16 3
-a18 3
-redirect /portfolio/ https://www.greenghoti.com/portfolio/
-redirect /portfolio https://www.greenghoti.com/portfolio/
-redirect / https://www.greenghoti.com/aboutme/
 @

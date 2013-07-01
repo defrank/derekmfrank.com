@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.06.18.00.48.24;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -23,7 +23,7 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: aboutme.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
+ * $Id: user.html,v 1.1 2013-06-17 17:48:24-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME

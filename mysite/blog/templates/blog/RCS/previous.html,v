@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.06.18.03.06.04;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -22,7 +22,7 @@ log
 text
 @{% comment %}
  *
- * $Id: entry.html,v 1.1 2013-06-11 16:31:46-07 dmf - $
+ * $Id: previous.html,v 1.1 2013-06-17 20:06:04-07 dmf - $
  * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
@@ -45,7 +45,7 @@ text
             </a>
         {% endfor %}
     </div>
-    <div class="center blogendborder"></div>
+    <div class="center endborder"></div>
     <div class="center">
         <a href="{% url 'blog.views.blog' %}"
            title="View all entries">

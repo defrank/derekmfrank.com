@@ -6,7 +6,7 @@ comment	@# @;
 
 
 1.1
-date	2013.05.31.06.46.52;	author dmf;	state -;
+date	2013.07.01.00.02.40;	author dmf;	state -;
 branches;
 next	;
 
@@ -23,8 +23,8 @@ text
 @{% extends "base.html" %}
 {% comment %}
  *
- * $Id: portfolio.html,v 1.4 2013-05-23 19:47:36-07 dmf - $
- * Derek Frank (derekmfrank@@gmail.com)
+ * $Id: portfolio.html,v 1.1 2013-05-30 23:46:52-07 dmf - $
+ * Derek Frank (dmfrank@@gmx.com)
  *
  * NAME
  *     portfolio.html
@@ -34,7 +34,7 @@ text
  *
 {% endcomment %}
 
-{% block head_title %}Portfolio | {{ me }}{% endblock %}
+{% block title %}Portfolio | {% endblock %}
 
 {% block navbar_class %}nb-portfolio{% endblock %}
 
@@ -42,148 +42,28 @@ text
     <div id="content-left">
         <div class="box" >
             <h2>Portfolio</h2>
-                <h3>Projects:</h3>
-                <ul>
-                    {% for project in projects %}
-                        {% if project.url %}
-                            <h4 class="project">
-                                <a href="{{ project.url }}"
-                                   title="Visit the website for {{ project.title }}">
-                                    <span>{{ project.title }}</span>
-                                </a>
-                            </h4>
-                        {% else %}
-                            <h4 class="project">{{ project.title }}</h4>
-                        {% endif %}
-                        <span class="timestamp">{{ project.date }}</span>
-                        <ul><span>{{ project.description|linebreaks }}</span></ul>
-                        <ul>
-                        {% if project.repository_url %}
-                            <h5 class="inline">Repository:</h5>
-                            <a href="{{ project.repository_url }}"
-                               title="Visit {{ project }} repository on {{ project.get_repository_name_display }}">
-                                <span>{{ project.get_repository_name_display }}</span>
-                            </a>
-                        {% endif %}
-                        {% if project.language %}
-                            <h5>Language(s):</h5>
-                            <ul>
-                                {% for lang in project.language.all  %}
-                                    <h5 class="inline">{{ lang.get_type_display }} language:</h5>
-                                    <span>{{ lang }}</span>
-                                {% endfor %}
-                            </ul>
-                        {% endif %}
-                        </ul>
-                    {% endfor %}
-                </ul>
-            <h3>Education:</h3>
-            <ul>
-                {% for school, departments in education %}
-                    {% if school %}
-                        <h4>{{ school.name }}</h4>
-                        <span class="timestamp">{{ school.graduation_date }}</span>
-                        <ul>
-                            {% if school.degree %}
-                                <h5>Degree:</h5>
-                                <ul>
-                                    <div class="block">
-                                        <span>{{ school.get_degree_display }}</span>
-                                        {% if school.major %}
-                                            <span>with a major in {{ school.get_major_display }}</span>
-                                            {% if school.minor %}
-                                                <span>and a minor in {{ school.get_minor_display }}</span>
-                                            {% endif %}
-                                        {% endif %}
-                                    </div>
-                                </ul>
-                            {% endif %}
-                            {% if departments %}
-                                <h5 class="inline">Classes and coursework:</h5>
-                                {% if school.coursework_repository_url %}
-                                    <a href="{{ school.coursework_repository_url }}" 
-                                       title="Visit coursework repository on {{ school.get_coursework_repository_name_display }}">
-                                        <span class="repo">[{{ school.get_coursework_repository_name_display }}]</span>
-                                    </a>
-                                {% endif %}
-                                <ul>
-                                    {% for department, courses in departments %}
-                                        {% if department %}
-                                            <span class="edudept">{{ department }}:</span>
-                                            <ul>
-                                                {% for course, asgs in courses %}
-                                                    {% if course %}
-                                                        <div class="block educourse">
-                                                            {% if course.course_url %}
-                                                                <a href="{{ course.course_url }}" 
-                                                                   title="{{ course.description }}">
-                                                                    <span>{{ course }}</span>
-                                                                </a>
-                                                            {% else %}
-                                                                <span>{{ course }}</span>
-                                                            {% endif %}
-                                                            {% if course.repository_url %}
-                                                                <a href="{{ course.repository_url }}" 
-                                                                   title="Visit course repository on {{ course.get_repository_name_display }}">
-                                                                    <span>[{{ course.get_repository_name_display }}]</span>
-                                                                </a>
-                                                            {% endif %}
-                                                            {% if course.lab_letter %}
-                                                                <a href="{{ course.lab_url }}"
-                                                                   title="Visit course lab website">
-                                                                    <span>with Lab {{ course.lab_letter|title }}</span>
-                                                                </a>
-                                                            {% endif %}
-                                                        </div>
-                                                        {% if asgs %}
-                                                            <ul>
-                                                                {% for asg in asgs %}
-                                                                    <li class="eduasg">
-                                                                        {% if asg.assignment_url %}
-                                                                            <a href="{{ asg.assignment_url }}"
-                                                                               title="Visit '{{ asg }}' specifications">
-                                                                                <span>{{ asg.identification|title }} - {{ asg.get_programming_language_display }} - {{ asg.name }}</span>
-                                                                            </a>
-                                                                        {% else %}
-                                                                            <span>{{ asg.identification|title }} - {{ asg.get_programming_language_display }} - {{ asg.name }}</span>
-                                                                        {% endif %}
-                                                                        {% if asg.repository_url %}
-                                                                            <a href="{{ asg.repository_url }}"
-                                                                               title="Visit '{{ asg }}' repository on {{ asg.get_repository_name_display }}">
-                                                                                <span>[{{ asg.get_repository_name_display }}]</span>
-                                                                            </a>
-                                                                        {% endif %}
-                                                                    </li>
-                                                                {% endfor %}
-                                                            </ul>
-                                                        {% endif %}
-                                                    {% endif %}
-                                                {% endfor %}
-                                            </ul>
-                                        {% endif %}
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-                        </ul>
-                    {% endif %}
-                {% endfor %}
-            </ul>
+            {% if projects or education %}
+                {% if projects %}
+                    {% include "portfolio/projects.html" %}
+                {% endif %}
+                {% if projects and education %}
+                    <div class="center endborder"></div>
+                {% endif %}
+                {% if education %}
+                    {% include "portfolio/education.html" %}
+                {% endif %}
+            {% else %}
+                <span class="italic">Coming soon . . .</span>
+            {% endif %}
         </div>
     </div>
 
     <div id="content-right" >
-        <div class="box">
-            <h2 class="sub">More Sources</h2>
-            <ul>
-                {% for source in sources %}
-                    {% if source.type == 'RP' or source.type == 'PF' %}
-                        <div class="block">
-                            <a href="{{ source.url }}" title="Visit {{ source.title }}">{{ source.title }}</a>
-                        </div>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
+        {% with repos=myuser.repositories.all profiles=myuser.profiles.all %}
+            {% if repos or profiles %}
+                {% include "portfolio/sources.html" %}
+            {% endif %}
+        {% endwith %}
     </div>
 {% endblock %}
 @
