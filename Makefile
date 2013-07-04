@@ -166,7 +166,7 @@ gitinit :
 	git init
 	git add README Makefile
 	- git commit -m "First commit"
-	git remote add origin git@bitbucket.org:dmfrank/${CWD}.git
+	git remote add origin git@derekmfrank.com:dmfrank/${CWD}.git
 	git push -u origin master
 
 #
