@@ -1,5 +1,5 @@
 # $Id: settings.py,v 1.1 2013-06-30 17:08:56-07 dmf - $
-# Derek Frank (dmfrank@gmx.com)
+# Derek Frank
 #
 # NAME
 #   settings.py
@@ -19,7 +19,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Derek Frank', 'dmfrank@gmx.com'),
+    ('Derek Frank', 'webmaster@derekmfrank.com'),
 )
 
 MANAGERS = ADMINS

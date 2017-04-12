@@ -1,5 +1,5 @@
 # $Id: $
-# Derek Frank (dmfrank@gmx.com)
+# Derek Frank
 #
 # NAME
 #   wsgi.py - mysite
